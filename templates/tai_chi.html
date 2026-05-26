@@ -1,118 +1,173 @@
 {% extends "base.html" %}
-{% block title %}Tai Chi 太极拳 - WuDeRuiBo{% endblock %}
+{% block title %}Tai Chi Course — WuDeRuiBo{% endblock %}
 {% block content %}
 
-<!-- Hero -->
-<div class="hero-china py-5">
-  <div class="container text-center position-relative" style="z-index:1;">
-    <h1 class="fw-bold">🥋 Tai Chi 太极拳</h1>
-    <p class="lead">24-Form Tai Chi — Ancient Wisdom, Modern Wellness</p>
+<div class="hero-ink py-5">
+  <div class="container position-relative" style="z-index:1;">
+    <h1 class="fw-bold" style="font-family:'Noto Serif SC',serif;">Tai Chi Course</h1>
+    <p class="lead" style="opacity:.8;">24-Form Simplified Tai Chi — by National Champions</p>
   </div>
 </div>
 
 <div class="container py-5">
-  <!-- 太极介绍 -->
+
+  <!-- 课程介绍 -->
   <div class="row align-items-center mb-5">
     <div class="col-md-6 mb-4">
-      <h3 class="fw-bold brush-font">🎋 什么是太极拳？</h3>
-      <p>Tai Chi (太极拳) is a centuries-old Chinese martial art that combines gentle physical exercise with mental focus. Originating from ancient China, it's often described as "meditation in motion."</p>
-      <p>Our <strong>24-form simplified Tai Chi</strong> course is perfect for beginners — designed by Chinese martial arts experts for international learners.</p>
+      <h3 class="section-title mb-4">About the Course</h3>
+      <p>Our 24-form Tai Chi course is taught by a <strong>national Tai Chi champion</strong>. This simplified form was designed for beginners and is perfect for international learners of all ages.</p>
+      <p class="text-muted">Tai Chi is often called "meditation in motion" — it combines gentle physical exercise with mental focus, improving balance, flexibility, and overall well-being.</p>
+      <div class="d-flex gap-4 mt-3">
+        <div><strong style="color:var(--cinnabar)">2</strong><br><small class="text-muted">Free Lessons</small></div>
+        <div><strong style="color:var(--cinnabar)">22</strong><br><small class="text-muted">Premium</small></div>
+        <div><strong style="color:var(--cinnabar)">24</strong><br><small class="text-muted">Total Forms</small></div>
+      </div>
     </div>
-    <div class="col-md-6 text-center mb-4">
-      <div class="porcelain-section p-4">
-        <div class="panda-emoji">☯️</div>
-        <h5 class="fw-bold mt-3 brush-font">阴阳平衡 Yin-Yang Balance</h5>
-        <p class="small text-muted mb-0">身体 · 呼吸 · 心灵<br>Body · Breath · Mind</p>
+    <div class="col-md-6 mb-4 text-center">
+      <div class="paper-section p-5">
+        <div style="font-size:4rem;line-height:1;">☯️</div>
+        <p class="fw-bold mt-3 mb-0" style="font-family:'Noto Serif SC',serif;">太极拳</p>
+        <small class="text-muted">Yin-Yang Balance · Body · Breath · Mind</small>
       </div>
     </div>
   </div>
 
-  <div class="china-divider"><span>🥋</span></div>
+  <div class="ink-divider"><span class="seal">课程</span></div>
 
-  <!-- 课程大纲 -->
-  <h2 class="text-center fw-bold brush-font mb-4">📋 Course Outline 课程大纲</h2>
-  <div class="row g-4 mb-5">
-    <div class="col-md-4">
-      <div class="card card-hover card-china h-100">
-        <div class="card-body text-center p-4">
-          <span class="badge bg-success mb-3">✅ FREE</span>
-          <div class="icon-lg mb-2">🧘</div>
-          <h6 class="fw-bold">Lesson 1-2: 起势 Opening</h6>
-          <ul class="list-unstyled small text-muted">
-            <li>起势 Commencing Form</li>
-            <li>左右野马分鬃 Part the Wild Horse's Mane</li>
-            <li>白鹤亮翅 White Crane Spreads Wings</li>
-          </ul>
-          <span class="badge bg-success">免费试听 Free Preview</span>
-        </div>
+  <!-- 24式网格 -->
+  <h3 class="section-title mb-4">24-Form Course</h3>
+  <p class="text-muted small mb-4">Click any free lesson to preview. Premium lessons require unlock via PayPal.</p>
+
+  <div class="row g-3 mb-5">
+    <!-- Form 1 -->
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="card-ink p-3 text-center">
+        <div class="fw-bold">1</div>
+        <small class="d-block">起势</small>
+        <small class="text-muted">Commencing</small>
+        <div class="mt-1"><span class="badge rounded-pill" style="background:var(--cinnabar);font-size:.65rem;">FREE</span></div>
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="card card-hover card-china h-100">
-        <div class="card-body text-center p-4">
-          <span class="badge badge-china mb-3">💰 Premium</span>
-          <div class="icon-lg mb-2">💪</div>
-          <h6 class="fw-bold">Lesson 3-16: 核心 Core Forms</h6>
-          <ul class="list-unstyled small text-muted">
-            <li>搂膝拗步 Brush Knee</li>
-            <li>手挥琵琶 Play the Lute</li>
-            <li>倒卷肱 Repulse Monkey</li>
-            <li>云手 Cloud Hands</li>
-            <li>... and more</li>
-          </ul>
-          <span class="badge badge-gold">PayPal / Stripe</span>
-        </div>
+    <!-- Form 2 -->
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="card-ink p-3 text-center">
+        <div class="fw-bold">2</div>
+        <small class="d-block">左右野马分鬃</small>
+        <small class="text-muted">Part Wild Horse's Mane</small>
+        <div class="mt-1"><span class="badge rounded-pill" style="background:var(--cinnabar);font-size:.65rem;">FREE</span></div>
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="card card-hover card-china h-100">
-        <div class="card-body text-center p-4">
-          <span class="badge badge-china mb-3">💰 Premium</span>
-          <div class="icon-lg mb-2">🏆</div>
-          <h6 class="fw-bold">Lesson 17-24: 高级 Advanced</h6>
-          <ul class="list-unstyled small text-muted">
-            <li>海底针 Needle at Sea Bottom</li>
-            <li>闪通臂 Flash the Arms</li>
-            <li>收势 Closing Form</li>
-            <li>完整套路复习 Full Routine Review</li>
-          </ul>
-          <span class="badge badge-gold">PayPal / Stripe</span>
-        </div>
+    <!-- Form 3 -->
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="card-ink p-3 text-center" style="opacity:.5;">
+        <div class="fw-bold">3</div>
+        <small class="d-block">白鹤亮翅</small>
+        <small class="text-muted">White Crane Spreads Wings</small>
+        <div class="mt-1"><i class="bi bi-lock small"></i></div>
+      </div>
+    </div>
+    <!-- Form 4 -->
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="card-ink p-3 text-center" style="opacity:.5;">
+        <div class="fw-bold">4</div>
+        <small class="d-block">左右搂膝拗步</small>
+        <small class="text-muted">Brush Knee</small>
+        <div class="mt-1"><i class="bi bi-lock small"></i></div>
+      </div>
+    </div>
+    <!-- Form 5 -->
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="card-ink p-3 text-center" style="opacity:.5;">
+        <div class="fw-bold">5</div>
+        <small class="d-block">手挥琵琶</small>
+        <small class="text-muted">Play the Lute</small>
+        <div class="mt-1"><i class="bi bi-lock small"></i></div>
+      </div>
+    </div>
+    <!-- Form 6 -->
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="card-ink p-3 text-center" style="opacity:.5;">
+        <div class="fw-bold">6</div>
+        <small class="d-block">左右倒卷肱</small>
+        <small class="text-muted">Repulse Monkey</small>
+        <div class="mt-1"><i class="bi bi-lock small"></i></div>
+      </div>
+    </div>
+    <!-- Form 7 -->
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="card-ink p-3 text-center" style="opacity:.5;">
+        <div class="fw-bold">7</div>
+        <small class="d-block">左揽雀尾</small>
+        <small class="text-muted">Grasp Peacock's Tail</small>
+        <div class="mt-1"><i class="bi bi-lock small"></i></div>
+      </div>
+    </div>
+    <!-- Form 8 -->
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="card-ink p-3 text-center" style="opacity:.5;">
+        <div class="fw-bold">8</div>
+        <small class="d-block">右揽雀尾</small>
+        <small class="text-muted">Grasp Peacock's Tail R</small>
+        <div class="mt-1"><i class="bi bi-lock small"></i></div>
+      </div>
+    </div>
+    <!-- Forms 9-16 compact -->
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="card-ink p-3 text-center" style="opacity:.5;">
+        <div class="fw-bold">9–16</div>
+        <small class="text-muted">Single Whip · Cloud Hands · High Pat on Horse · Kick · Heel Strike · ...</small>
+        <div class="mt-1"><i class="bi bi-lock small"></i></div>
+      </div>
+    </div>
+    <!-- Forms 17-24 compact -->
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="card-ink p-3 text-center" style="opacity:.5;">
+        <div class="fw-bold">17–24</div>
+        <small class="text-muted">Needle at Sea Bottom · Flash Arms · Fair Lady Works · Cross Hands · Closing...</small>
+        <div class="mt-1"><i class="bi bi-lock small"></i></div>
+      </div>
+    </div>
+    <!-- Unlock CTA -->
+    <div class="col-12 col-md-4 col-lg-6">
+      <div class="paper-section p-4 text-center">
+        <h6 class="fw-bold">Unlock Full Course</h6>
+        <p class="small text-muted mb-3">Access all 24 forms with video, English narration, and detailed breakdowns.</p>
+        <a href="{{ url_for('contact') }}" class="btn btn-cinnabar">Unlock via PayPal</a>
       </div>
     </div>
   </div>
 
-  <div class="china-divider"><span>🎋</span></div>
+  <div class="ink-divider"><span class="seal">好处</span></div>
 
-  <!-- 太极好处 -->
-  <h2 class="text-center fw-bold brush-font mb-4">🌟 Benefits of Tai Chi 太极的好处</h2>
+  <!-- Benefits -->
+  <h3 class="section-title mb-4">Why Tai Chi?</h3>
   <div class="row g-4 mb-5">
     <div class="col-md-3 text-center">
-      <div class="icon-lg mb-2">🫀</div>
-      <h6 class="fw-bold">Heart Health</h6>
-      <p class="small text-muted">改善心血管健康</p>
+      <div class="mb-2" style="font-size:2rem;">🫀</div>
+      <h6 class="fw-bold small">Heart Health</h6>
+      <p class="text-muted small">Gentle cardiovascular exercise suitable for all ages.</p>
     </div>
     <div class="col-md-3 text-center">
-      <div class="icon-lg mb-2">🧠</div>
-      <h6 class="fw-bold">Mental Clarity</h6>
-      <p class="small text-muted">提升专注力和冥想</p>
+      <div class="mb-2" style="font-size:2rem;">🧠</div>
+      <h6 class="fw-bold small">Mental Clarity</h6>
+      <p class="text-muted small">Improves focus and reduces stress through mindful movement.</p>
     </div>
     <div class="col-md-3 text-center">
-      <div class="icon-lg mb-2">💪</div>
-      <h6 class="fw-bold">Flexibility</h6>
-      <p class="small text-muted">增强柔韧性平衡力</p>
+      <div class="mb-2" style="font-size:2rem;">💪</div>
+      <h6 class="fw-bold small">Flexibility</h6>
+      <p class="text-muted small">Enhances balance, coordination, and range of motion.</p>
     </div>
     <div class="col-md-3 text-center">
-      <div class="icon-lg mb-2">😌</div>
-      <h6 class="fw-bold">Stress Relief</h6>
-      <p class="small text-muted">缓解压力放松身心</p>
+      <div class="mb-2" style="font-size:2rem;">😌</div>
+      <h6 class="fw-bold small">Stress Relief</h6>
+      <p class="text-muted small">A moving meditation that calms body and mind.</p>
     </div>
   </div>
 
   <!-- CTA -->
   <div class="text-center py-4">
-    <a href="{{ url_for('contact') }}" class="btn btn-china-red btn-lg me-3">🥋 免费预览前两式</a>
-    <a href="{{ url_for('contact') }}" class="btn btn-china-gold btn-lg">💳 解锁完整课程</a>
+    <a href="{{ url_for('contact') }}" class="btn btn-cinnabar btn-lg me-3">Start Free Preview</a>
+    <a href="{{ url_for('contact') }}" class="btn btn-ink btn-lg">Unlock Full Course</a>
   </div>
 </div>
 

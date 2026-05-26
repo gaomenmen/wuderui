@@ -1,159 +1,176 @@
 {% extends "base.html" %}
-{% block title %}Contact 联系我们 - WuDeRuiBo{% endblock %}
+{% block title %}Contact — WuDeRuiBo{% endblock %}
 {% block content %}
 
-<!-- Hero -->
-<div class="hero-china py-5">
-  <div class="container text-center position-relative" style="z-index:1;">
-    <h1 class="fw-bold">💌 Contact Us 联系我们</h1>
-    <p class="lead">We'd Love to Hear from You — Reach Out Anytime!</p>
+<div class="hero-ink py-5">
+  <div class="container position-relative" style="z-index:1;">
+    <h1 class="fw-bold" style="font-family:'Noto Serif SC',serif;">Contact Us</h1>
+    <p class="lead" style="opacity:.8;">We'd Love to Hear from You</p>
   </div>
 </div>
 
 <div class="container py-5">
   <div class="row g-5">
-    <!-- 联系方式 -->
-    <div class="col-md-6">
-      <h3 class="fw-bold brush-font mb-4">🏮 Get in Touch</h3>
 
-      <div class="card card-china mb-3">
-        <div class="card-body d-flex align-items-center">
-          <div class="icon-circle me-3 flex-shrink-0" style="background:#25d366;color:#fff;font-size:1.4rem;">
+    <!-- 联系方式 -->
+    <div class="col-md-5">
+      <h3 class="section-title mb-4">Get in Touch</h3>
+
+      <div class="card-ink p-3 mb-3">
+        <div class="d-flex align-items-center">
+          <div class="rounded-circle d-flex align-items-center justify-content-center me-3 flex-shrink-0" style="width:40px;height:40px;background:#25d366;color:#fff;font-size:1.1rem;">
             <i class="bi bi-whatsapp"></i>
           </div>
           <div>
-            <h6 class="fw-bold mb-1">WhatsApp</h6>
-            <p class="text-muted small mb-0">Preferred for international clients. Quick response guaranteed!</p>
+            <h6 class="fw-bold mb-0 small">WhatsApp</h6>
+            <small class="text-muted">Preferred for international clients</small>
           </div>
         </div>
       </div>
 
-      <div class="card card-china mb-3">
-        <div class="card-body d-flex align-items-center">
-          <div class="icon-circle me-3 flex-shrink-0" style="background:#07c160;color:#fff;font-size:1.4rem;">
+      <div class="card-ink p-3 mb-3">
+        <div class="d-flex align-items-center">
+          <div class="rounded-circle d-flex align-items-center justify-content-center me-3 flex-shrink-0" style="width:40px;height:40px;background:#07c160;color:#fff;font-size:1.1rem;">
             <i class="bi bi-wechat"></i>
           </div>
           <div>
-            <h6 class="fw-bold mb-1">WeChat 微信</h6>
-            <p class="text-muted small mb-0">中国客户首选，扫码添加即可咨询。</p>
+            <h6 class="fw-bold mb-0 small">WeChat</h6>
+            <small class="text-muted">For users already in China</small>
           </div>
         </div>
       </div>
 
-      <div class="card card-china mb-3">
-        <div class="card-body d-flex align-items-center">
-          <div class="icon-circle me-3 flex-shrink-0" style="background:#1877f2;color:#fff;font-size:1.4rem;">
+      <div class="card-ink p-3 mb-3">
+        <div class="d-flex align-items-center">
+          <div class="rounded-circle d-flex align-items-center justify-content-center me-3 flex-shrink-0" style="width:40px;height:40px;background:#1877f2;color:#fff;font-size:1.1rem;">
             <i class="bi bi-facebook"></i>
           </div>
           <div>
-            <h6 class="fw-bold mb-1">Facebook</h6>
-            <p class="text-muted small mb-0">Follow us for China travel inspiration and course updates.</p>
+            <h6 class="fw-bold mb-0 small">Facebook</h6>
+            <small class="text-muted">Follow us for updates</small>
           </div>
         </div>
       </div>
 
-      <div class="card card-china mb-3">
-        <div class="card-body d-flex align-items-center">
-          <div class="icon-circle me-3 flex-shrink-0" style="background:var(--china-red);color:#fff;font-size:1.4rem;">
+      <div class="card-ink p-3 mb-3">
+        <div class="d-flex align-items-center">
+          <div class="rounded-circle d-flex align-items-center justify-content-center me-3 flex-shrink-0" style="width:40px;height:40px;background:var(--ink-black);color:#fff;font-size:1.1rem;">
             <i class="bi bi-envelope"></i>
           </div>
           <div>
-            <h6 class="fw-bold mb-1">Email</h6>
-            <p class="text-muted small mb-0">For detailed inquiries and partnership opportunities.</p>
+            <h6 class="fw-bold mb-0 small">Email</h6>
+            <small class="text-muted">For detailed inquiries</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-ink p-3">
+        <div class="d-flex align-items-center">
+          <div class="rounded-circle d-flex align-items-center justify-content-center me-3 flex-shrink-0" style="width:40px;height:40px;background:var(--ink-gray);color:#fff;font-size:1.1rem;">
+            <i class="bi bi-telephone"></i>
+          </div>
+          <div>
+            <h6 class="fw-bold mb-0 small">Phone</h6>
+            <small class="text-muted">For premium travel clients</small>
           </div>
         </div>
       </div>
     </div>
 
     <!-- 咨询表单 -->
-    <div class="col-md-6">
-      <div class="porcelain-section p-4">
-        <h4 class="fw-bold brush-font text-center mb-4">📝 Quick Inquiry 快速咨询</h4>
+    <div class="col-md-7">
+      <div class="paper-section p-4">
+        <h4 class="fw-bold mb-4">Quick Inquiry</h4>
         <form>
-          <div class="mb-3">
-            <label class="form-label small fw-bold">Your Name 姓名</label>
-            <input type="text" class="form-control" placeholder="e.g. John Smith">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label small fw-bold">Your Name</label>
+              <input type="text" class="form-control" placeholder="e.g. John Smith">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label small fw-bold">Email / WhatsApp</label>
+              <input type="text" class="form-control" placeholder="How can we reach you?">
+            </div>
           </div>
-          <div class="mb-3">
-            <label class="form-label small fw-bold">Email / WhatsApp</label>
-            <input type="text" class="form-control" placeholder="How can we reach you?">
-          </div>
-          <div class="mb-3">
-            <label class="form-label small fw-bold">I'm interested in 感兴趣的服务</label>
-            <div class="d-flex flex-wrap gap-2">
+          <div class="mt-3">
+            <label class="form-label small fw-bold">I'm interested in</label>
+            <div class="d-flex flex-wrap gap-3">
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" id="chk1">
-                <label class="form-check-label small" for="chk1">📖 学中文</label>
+                <label class="form-check-label small" for="chk1">Chinese Course</label>
               </div>
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" id="chk2">
-                <label class="form-check-label small" for="chk2">🥋 太极拳</label>
+                <label class="form-check-label small" for="chk2">Tai Chi</label>
               </div>
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" id="chk3">
-                <label class="form-check-label small" for="chk3">✈️ 定制旅行</label>
+                <label class="form-check-label small" for="chk3">Custom Travel</label>
               </div>
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" id="chk4">
-                <label class="form-check-label small" for="chk4">💰 推荐分佣</label>
+                <label class="form-check-label small" for="chk4">Affiliate Program</label>
               </div>
             </div>
           </div>
-          <div class="mb-3">
-            <label class="form-label small fw-bold">Message 留言</label>
-            <textarea class="form-control" rows="3" placeholder="Tell us about your needs..."></textarea>
+          <div class="mt-3">
+            <label class="form-label small fw-bold">Message</label>
+            <textarea class="form-control" rows="4" placeholder="Tell us about your needs..."></textarea>
           </div>
-          <button type="submit" class="btn btn-china-red w-100">📩 Send Inquiry 提交咨询</button>
+          <div class="mt-3">
+            <label class="form-label small fw-bold">Referral Code (optional)</label>
+            <input type="text" class="form-control" placeholder="If someone referred you, enter their code">
+          </div>
+          <button type="submit" class="btn btn-cinnabar mt-3">Send Inquiry</button>
         </form>
       </div>
     </div>
   </div>
 
-  <div class="china-divider"><span>🐼</span></div>
+  <div class="ink-divider"><span class="seal">FAQ</span></div>
 
   <!-- FAQ -->
-  <h3 class="text-center fw-bold brush-font mb-4">❓ Frequently Asked Questions 常见问题</h3>
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="accordion" id="faqAccordion">
-        <div class="accordion-item border-0 mb-2">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-              🐼 Do I need any prior Chinese knowledge?
+        <div class="card-ink mb-2">
+          <div class="accordion-header p-3">
+            <button class="btn btn-link text-decoration-none text-dark text-start w-100 p-0 fw-bold small" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+              Do I need any prior Chinese knowledge?
             </button>
-          </h2>
-          <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-            <div class="accordion-body small text-muted">No! Our courses are designed for complete beginners. We start from Pinyin and basic strokes.</div>
+          </div>
+          <div id="faq1" class="collapse" data-bs-parent="#faqAccordion">
+            <div class="px-3 pb-3 small text-muted">No! Our courses are designed for complete beginners. We start from Pinyin and basic strokes.</div>
           </div>
         </div>
-        <div class="accordion-item border-0 mb-2">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-              🥋 Is Tai Chi suitable for seniors?
+        <div class="card-ink mb-2">
+          <div class="accordion-header p-3">
+            <button class="btn btn-link text-decoration-none text-dark text-start w-100 p-0 fw-bold small" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+              Is Tai Chi suitable for seniors?
             </button>
-          </h2>
-          <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-            <div class="accordion-body small text-muted">Absolutely! Tai Chi is gentle and low-impact. The 24-form is specifically designed for all ages and fitness levels.</div>
+          </div>
+          <div id="faq2" class="collapse" data-bs-parent="#faqAccordion">
+            <div class="px-3 pb-3 small text-muted">Absolutely! Tai Chi is gentle and low-impact. The 24-form is designed for all ages and fitness levels.</div>
           </div>
         </div>
-        <div class="accordion-item border-0 mb-2">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-              ✈️ Can I customize my travel package?
+        <div class="card-ink mb-2">
+          <div class="accordion-header p-3">
+            <button class="btn btn-link text-decoration-none text-dark text-start w-100 p-0 fw-bold small" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+              Can I customize my travel package?
             </button>
-          </h2>
-          <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-            <div class="accordion-body small text-muted">Yes! All packages can be mixed and matched. Contact us and we'll create a bespoke itinerary just for you.</div>
+          </div>
+          <div id="faq3" class="collapse" data-bs-parent="#faqAccordion">
+            <div class="px-3 pb-3 small text-muted">Yes! All packages can be mixed and matched. Contact us and we'll create a bespoke itinerary just for you.</div>
           </div>
         </div>
-        <div class="accordion-item border-0 mb-2">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
-              💰 How does the referral program work?
+        <div class="card-ink mb-2">
+          <div class="accordion-header p-3">
+            <button class="btn btn-link text-decoration-none text-dark text-start w-100 p-0 fw-bold small" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+              What payment methods do you accept?
             </button>
-          </h2>
-          <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-            <div class="accordion-body small text-muted">Refer friends to our courses or travel packages and earn 5-10% commission. Contact us for details and your unique referral code.</div>
+          </div>
+          <div id="faq4" class="collapse" data-bs-parent="#faqAccordion">
+            <div class="px-3 pb-3 small text-muted">We primarily support PayPal. Stripe and credit card payments will be available in Phase 2.</div>
           </div>
         </div>
       </div>

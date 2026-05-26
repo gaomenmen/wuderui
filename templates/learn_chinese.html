@@ -1,107 +1,117 @@
 {% extends "base.html" %}
-{% block title %}Learn Chinese 学中文 - WuDeRuiBo{% endblock %}
+{% block title %}Learn Chinese — WuDeRuiBo{% endblock %}
 {% block content %}
 
-<!-- Hero -->
-<div class="hero-china py-5">
-  <div class="container text-center position-relative" style="z-index:1;">
-    <h1 class="fw-bold">📖 Learn Chinese 学中文</h1>
-    <p class="lead">From Pinyin to Conversation — Systematic Courses for All Ages</p>
+<div class="hero-ink py-5">
+  <div class="container position-relative" style="z-index:1;">
+    <h1 class="fw-bold" style="font-family:'Noto Serif SC',serif;">Learn Chinese</h1>
+    <p class="lead" style="opacity:.8;">From Pinyin to Conversation — Structured Courses for All Ages</p>
   </div>
 </div>
 
 <div class="container py-5">
-  <!-- 课程特色 -->
-  <div class="row g-4 mb-5">
-    <div class="col-md-4 text-center">
-      <div class="icon-circle mx-auto mb-3" style="background:var(--china-red);color:#fff;">✍️</div>
-      <h5 class="fw-bold">毛笔字 Calligraphy</h5>
-      <p class="text-muted">Learn to write Chinese characters with traditional brush and ink. A meditative art form.</p>
-    </div>
-    <div class="col-md-4 text-center">
-      <div class="icon-circle mx-auto mb-3" style="background:var(--porcelain-blue);color:#fff;">🗣️</div>
-      <h5 class="fw-bold">拼音对话 Pinyin & Dialogue</h5>
-      <p class="text-muted">Master pronunciation with Pinyin system, then move to real-world conversations.</p>
-    </div>
-    <div class="col-md-4 text-center">
-      <div class="icon-circle mx-auto mb-3" style="background:var(--jade-green);color:#fff;">🧒</div>
-      <h5 class="fw-bold">儿童 & 成人 Kids & Adults</h5>
-      <p class="text-muted">Tailored courses for different age groups and skill levels. Beginners welcome!</p>
-    </div>
-  </div>
 
-  <div class="china-divider"><span>🎋</span></div>
-
-  <!-- 课程体系 -->
-  <h2 class="text-center fw-bold brush-font mb-4">📚 Course Structure 课程体系</h2>
+  <!-- 课程分类 -->
+  <h3 class="section-title mb-4">Course Categories</h3>
   <div class="row g-4 mb-5">
-    <div class="col-md-3">
-      <div class="card card-hover card-china h-100">
-        <div class="card-body text-center">
-          <span class="badge badge-china mb-2">Level 1</span>
-          <h6 class="fw-bold">拼音启蒙 Pinyin</h6>
-          <ul class="list-unstyled small text-muted">
-            <li>🔊 声母 & 韵母</li>
-            <li>🎵 声调练习 Tones</li>
-            <li>📝 基础书写 Basic Writing</li>
-          </ul>
-        </div>
+    <div class="col-md-4">
+      <div class="card-ink p-4 h-100">
+        <h6 class="fw-bold mb-2">Children's Chinese</h6>
+        <p class="text-muted small">Fun, engaging lessons designed for kids. Pinyin, characters, and basic sentences through games and stories.</p>
+        <ul class="list-unstyled small text-muted">
+          <li>Pinyin Foundations</li>
+          <li>Character Recognition</li>
+          <li>Story-based Learning</li>
+        </ul>
       </div>
     </div>
-    <div class="col-md-3">
-      <div class="card card-hover card-china h-100">
-        <div class="card-body text-center">
-          <span class="badge badge-china mb-2">Level 2</span>
-          <h6 class="fw-bold">基础词汇 Vocabulary</h6>
-          <ul class="list-unstyled small text-muted">
-            <li>🏠 日常生活 Daily Life</li>
-            <li>🍜 美食文化 Food & Culture</li>
-            <li>👨‍👩‍👧 家庭话题 Family Topics</li>
-          </ul>
-        </div>
+    <div class="col-md-4">
+      <div class="card-ink p-4 h-100">
+        <h6 class="fw-bold mb-2">Adult Chinese</h6>
+        <p class="text-muted small">Practical courses for daily life, travel, and business. From zero to conversational.</p>
+        <ul class="list-unstyled small text-muted">
+          <li>Daily Conversation</li>
+          <li>Travel Chinese</li>
+          <li>Business Chinese (Coming Soon)</li>
+        </ul>
       </div>
     </div>
-    <div class="col-md-3">
-      <div class="card card-hover card-china h-100">
-        <div class="card-body text-center">
-          <span class="badge badge-china mb-2">Level 3</span>
-          <h6 class="fw-bold">情景对话 Dialogue</h6>
-          <ul class="list-unstyled small text-muted">
-            <li>🛒 购物 Shopping</li>
-            <li>🚆 旅行 Travel</li>
-            <li>💼 商务 Business</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card card-hover card-china h-100">
-        <div class="card-body text-center">
-          <span class="badge badge-gold mb-2">Advanced</span>
-          <h6 class="fw-bold">文化进阶 Culture</h6>
-          <ul class="list-unstyled small text-muted">
-            <li>📜 古诗词 Poetry</li>
-            <li>🏯 历史故事 History</li>
-            <li>🍵 茶道文化 Tea Ceremony</li>
-          </ul>
-        </div>
+    <div class="col-md-4">
+      <div class="card-ink p-4 h-100">
+        <h6 class="fw-bold mb-2">Heritage Families</h6>
+        <p class="text-muted small">Designed for overseas Chinese families who want their children to maintain cultural and language connections.</p>
+        <ul class="list-unstyled small text-muted">
+          <li>Reading & Writing</li>
+          <li>Cultural Context</li>
+          <li>Age-appropriate Levels</li>
+        </ul>
       </div>
     </div>
   </div>
 
-  <div class="china-divider"><span>🐉</span></div>
+  <div class="ink-divider"><span class="seal">师资</span></div>
 
-  <!-- CTA -->
-  <div class="row align-items-center">
-    <div class="col-md-6 text-center mb-4">
-      <div class="panda-emoji">🐼</div>
-      <h4 class="fw-bold brush-font mt-3">免费试听 Free Trial Lesson</h4>
-      <p class="text-muted">一键 WhatsApp 咨询，开启你的中文学习之旅！</p>
+  <!-- 师资展示 -->
+  <h3 class="section-title mb-4">Our Teachers</h3>
+  <div class="row g-4 mb-5">
+    <div class="col-md-6">
+      <div class="card-ink p-4">
+        <div class="d-flex align-items-center mb-3">
+          <div class="rounded-circle bg-dark text-white d-flex align-items-center justify-content-center me-3" style="width:64px;height:64px;font-size:1.5rem;">师</div>
+          <div>
+            <h6 class="fw-bold mb-0">Teacher Profile</h6>
+            <small class="text-muted">Senior Chinese Instructor</small>
+          </div>
+        </div>
+        <p class="small text-muted mb-1"><i class="bi bi-mortarboard me-1"></i> Certified Chinese language teacher</p>
+        <p class="small text-muted mb-1"><i class="bi bi-globe me-1"></i> Bilingual: Chinese & English</p>
+        <p class="small text-muted mb-1"><i class="bi bi-clock-history me-1"></i> 5+ years teaching experience</p>
+        <p class="small text-muted"><i class="bi bi-star me-1"></i> Specializes in children's education</p>
+      </div>
     </div>
-    <div class="col-md-6 text-center mb-4">
-      <a href="{{ url_for('contact') }}" class="btn btn-china-red btn-lg">💬 WhatsApp 咨询</a>
-      <p class="text-muted small mt-2">Also available on WeChat & Facebook</p>
+    <div class="col-md-6">
+      <div class="card-ink p-4">
+        <div class="d-flex align-items-center mb-3">
+          <div class="rounded-circle bg-dark text-white d-flex align-items-center justify-content-center me-3" style="width:64px;height:64px;font-size:1.5rem;">师</div>
+          <div>
+            <h6 class="fw-bold mb-0">Teacher Profile</h6>
+            <small class="text-muted">Conversational Chinese Specialist</small>
+          </div>
+        </div>
+        <p class="small text-muted mb-1"><i class="bi bi-mortarboard me-1"></i> Certified Chinese language teacher</p>
+        <p class="small text-muted mb-1"><i class="bi bi-globe me-1"></i> Multilingual communication</p>
+        <p class="small text-muted mb-1"><i class="bi bi-clock-history me-1"></i> Adult education expertise</p>
+        <p class="small text-muted"><i class="bi bi-star me-1"></i> Specializes in travel & business Chinese</p>
+      </div>
     </div>
+  </div>
+  <p class="text-muted small text-center mb-5"><em>Detailed teacher profiles and photos coming soon. Contact us for current availability.</em></p>
+
+  <div class="ink-divider"><span class="seal">试听</span></div>
+
+  <!-- 样板课 -->
+  <h3 class="section-title mb-4">Sample Lesson</h3>
+  <div class="paper-section p-5 mb-5 text-center">
+    <div style="font-size:3rem;">✍️</div>
+    <h5 class="fw-bold mt-3">Try a Free Lesson</h5>
+    <p class="text-muted">Experience our teaching style with a complimentary trial lesson. Covering Pinyin, basic characters, and your first Chinese conversation.</p>
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-8">
+        <div class="card-ink p-3 text-start">
+          <small class="fw-bold">Lesson 1 Preview:</small>
+          <p class="small text-muted mb-1">🔊 Tones: mā, má, mǎ, mà</p>
+          <p class="small text-muted mb-1">📝 Characters: 你(nǐ) 好(hǎo) — Hello</p>
+          <p class="small text-muted mb-0">🗣️ Dialogue: "你好！我是..." — "Hello! I am..."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 转化路径 -->
+  <div class="text-center py-4">
+    <h4 class="fw-bold mb-3">Start Your Chinese Journey</h4>
+    <p class="text-muted mb-3">One-click WhatsApp consultation. We'll match you with the right course and teacher.</p>
+    <a href="{{ url_for('contact') }}" class="btn btn-cinnabar btn-lg"><i class="bi bi-whatsapp me-1"></i> Book Free Trial</a>
   </div>
 </div>
 

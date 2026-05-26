@@ -38,6 +38,10 @@ def custom_trips():
 def about():
     return render_template("about.html")
 
+@app.route("/affiliate")
+def affiliate():
+    return render_template("affiliate.html")
+
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
