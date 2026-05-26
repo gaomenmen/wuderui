@@ -1,45 +1,116 @@
 {% extends "base.html" %}
 {% block title %}WuDeRuiBo - 学中文·太极·中国旅行{% endblock %}
 {% block content %}
-<div class="py-5 text-center bg-light rounded-3">
-    <h1>Learn Chinese. Experience China.</h1>
-    <p class="lead">冠军太极 · 体系化中文课程 · 精品定制游</p>
-    <a class="btn btn-primary btn-lg me-2" href="{{ url_for('learn_chinese') }}">免费试听中文课</a>
-    <a class="btn btn-success btn-lg" href="{{ url_for('tai_chi') }}">太极免费预览</a>
+
+<!-- Hero -->
+<div class="hero-china py-5">
+  <div class="container text-center position-relative" style="z-index:1;">
+    <p class="display-6 brush-font" style="letter-spacing:8px;">🏯 吴 德 瑞 博 🏯</p>
+    <h1 class="fw-bold mb-3">Learn Chinese. Experience China.</h1>
+    <p class="lead mb-4" style="opacity:.9;">冠军太极 · 体系化中文课程 · 精品定制游</p>
+    <a class="btn btn-china-gold btn-lg me-2 mb-2" href="{{ url_for('learn_chinese') }}">📖 免费试听中文课</a>
+    <a class="btn btn-outline-light btn-lg mb-2" href="{{ url_for('tai_chi') }}">🥋 太极免费预览</a>
+  </div>
 </div>
-<div class="row my-5 text-center">
-    <div class="col"><h2 class="display-6">24</h2><span>太极拳课</span></div>
-    <div class="col"><h2 class="display-6">10</h2><span>特色旅行套餐</span></div>
-    <div class="col"><h2 class="display-6">5-10%</h2><span>推荐分佣</span></div>
-    <div class="col"><h2 class="display-6">WhatsApp</h2><span>一对一支持</span></div>
+
+<!-- 数据亮点 -->
+<div class="container">
+  <div class="row text-center py-4">
+    <div class="col-6 col-md-3 mb-3">
+      <div class="panda-emoji">🐼</div>
+      <h3 class="fw-bold mt-2" style="color:var(--china-red);">10+</h3>
+      <p class="text-muted small">旅行套餐<br>Travel Packages</p>
+    </div>
+    <div class="col-6 col-md-3 mb-3">
+      <div class="panda-emoji">🎋</div>
+      <h3 class="fw-bold mt-2" style="color:var(--china-red);">24</h3>
+      <p class="text-muted small">太极拳课<br>Tai Chi Lessons</p>
+    </div>
+    <div class="col-6 col-md-3 mb-3">
+      <div class="panda-emoji">✍️</div>
+      <h3 class="fw-bold mt-2" style="color:var(--china-red);">100+</h3>
+      <p class="text-muted small">中文课时<br>Chinese Lessons</p>
+    </div>
+    <div class="col-6 col-md-3 mb-3">
+      <div class="panda-emoji">💬</div>
+      <h3 class="fw-bold mt-2" style="color:var(--china-red);">1-on-1</h3>
+      <p class="text-muted small">WhatsApp 支持<br>Personal Support</p>
+    </div>
+  </div>
 </div>
-<div class="row my-4">
+
+<div class="china-divider"><span>🐉</span></div>
+
+<!-- 三大服务 -->
+<div class="container pb-4">
+  <h2 class="text-center fw-bold brush-font mb-4">🏮 Our Services 我们的服务</h2>
+  <div class="row g-4">
     <div class="col-md-4">
-        <div class="card h-100">
-            <div class="card-body">
-                <h5 class="card-title">学中文</h5>
-                <p class="card-text">体系化课程，拼音到对话，适合儿童与成人。随时一键WhatsApp咨询。</p>
-                <a href="{{ url_for('learn_chinese') }}" class="btn btn-outline-primary">详情</a>
-            </div>
+      <div class="card card-hover card-china h-100">
+        <div class="card-body text-center p-4">
+          <div class="icon-lg mb-3">📖</div>
+          <h5 class="card-title fw-bold">学中文 Learn Chinese</h5>
+          <p class="card-text text-muted">体系化课程，从拼音到日常对话，适合儿童与成人。Professional courses from Pinyin to daily conversation.</p>
+          <a href="{{ url_for('learn_chinese') }}" class="btn btn-outline-china">了解更多 →</a>
         </div>
+      </div>
     </div>
     <div class="col-md-4">
-        <div class="card h-100">
-            <div class="card-body">
-                <h5 class="card-title">太极拳课</h5>
-                <p class="card-text">24式课程，前两式免费试听，后续PayPal/Stripe解锁。</p>
-                <a href="{{ url_for('tai_chi') }}" class="btn btn-outline-success">详情</a>
-            </div>
+      <div class="card card-hover card-china h-100">
+        <div class="card-body text-center p-4">
+          <div class="icon-lg mb-3">🥋</div>
+          <h5 class="card-title fw-bold">太极拳 Tai Chi</h5>
+          <p class="card-text text-muted">24式太极拳课程，前两式免费试听。24-form Tai Chi, first 2 lessons free. Unlock the rest via PayPal/Stripe.</p>
+          <a href="{{ url_for('tai_chi') }}" class="btn btn-outline-china">免费预览 →</a>
         </div>
+      </div>
     </div>
     <div class="col-md-4">
-        <div class="card h-100">
-            <div class="card-body">
-                <h5 class="card-title">定制中国旅行</h5>
-                <p class="card-text">10大主题套餐，管家式规划，顶级服务体验。</p>
-                <a href="{{ url_for('custom_trips') }}" class="btn btn-outline-dark">详情</a>
-            </div>
+      <div class="card card-hover card-china h-100">
+        <div class="card-body text-center p-4">
+          <div class="icon-lg mb-3">✈️</div>
+          <h5 class="card-title fw-bold">定制旅行 Custom Trips</h5>
+          <p class="card-text text-muted">10大主题套餐，覆盖长城、故宫、熊猫基地。Bespoke itineraries covering the Great Wall, Pandas & more.</p>
+          <a href="{{ url_for('custom_trips') }}" class="btn btn-outline-china">探索路线 →</a>
         </div>
+      </div>
     </div>
+  </div>
 </div>
+
+<div class="china-divider"><span>🎋</span></div>
+
+<!-- 为什么选择我们 -->
+<div class="container pb-4">
+  <h2 class="text-center fw-bold brush-font mb-4">🌟 Why Choose Us? 为什么选择我们</h2>
+  <div class="row g-4">
+    <div class="col-md-4 text-center">
+      <div class="icon-circle mx-auto mb-3" style="background:var(--china-red);color:#fff;">🏮</div>
+      <h6 class="fw-bold">东方美学 Oriental Aesthetic</h6>
+      <p class="text-muted small">原汁原味的中国文化体验，不是流水线旅游。</p>
+    </div>
+    <div class="col-md-4 text-center">
+      <div class="icon-circle mx-auto mb-3" style="background:var(--china-gold);color:#fff;">🏆</div>
+      <h6 class="fw-bold">专业团队 Expert Team</h6>
+      <p class="text-muted small">冠军教练、资深中文教师、金牌导游团队。</p>
+    </div>
+    <div class="col-md-4 text-center">
+      <div class="icon-circle mx-auto mb-3" style="background:var(--porcelain-blue);color:#fff;">🌍</div>
+      <h6 class="fw-bold">全球服务 Global Service</h6>
+      <p class="text-muted small">支持 PayPal/Stripe，WhatsApp 一对一支持，推荐分佣 5-10%。</p>
+    </div>
+  </div>
+</div>
+
+<div class="china-divider"><span>🐉</span></div>
+
+<!-- CTA -->
+<div class="container text-center pb-5">
+  <div class="porcelain-section p-5">
+    <h3 class="fw-bold brush-font">🎁 免费资源包 Free Resource Pack</h3>
+    <p class="text-muted mt-2 mb-4">领取免费中文试听课、太极 PDF 和旅行攻略</p>
+    <a href="{{ url_for('contact') }}" class="btn btn-china-red btn-lg">💬 立即咨询 Contact Now</a>
+  </div>
+</div>
+
 {% endblock %}

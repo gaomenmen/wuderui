@@ -1,6 +1,89 @@
 {% extends "base.html" %}
-{% block title %}{{ _('About') }}{% endblock %}
+{% block title %}About 关于我们 - WuDeRuiBo{% endblock %}
 {% block content %}
-<h2>{{ _('About WuDeRuiBo') }}</h2>
-<p>{{ _('Oriental aesthetic, professional team, global service. Free resource pack: trial Chinese lesson, Tai Chi PDF, travel advice.') }}</p>
+
+<!-- Hero -->
+<div class="hero-china py-5">
+  <div class="container text-center position-relative" style="z-index:1;">
+    <h1 class="fw-bold">🏯 About WuDeRuiBo 关于吴德瑞博</h1>
+    <p class="lead">Oriental Aesthetic · Professional Team · Global Service</p>
+  </div>
+</div>
+
+<div class="container py-5">
+  <!-- 品牌故事 -->
+  <div class="row align-items-center mb-5">
+    <div class="col-md-6 mb-4">
+      <h3 class="fw-bold brush-font">🏮 Our Story 品牌故事</h3>
+      <p>WuDeRuiBo (吴德瑞博) was born from a passion for sharing China's rich cultural heritage with the world. Our name embodies our values:</p>
+      <ul>
+        <li><strong>吴 Wú</strong> — A timeless Chinese surname, rooted in Jiangnan culture</li>
+        <li><strong>德 Dé</strong> — Virtue and moral excellence, the foundation of our service</li>
+        <li><strong>瑞 Ruì</strong> — Auspiciousness and good fortune for every journey</li>
+        <li><strong>博 Bó</strong> — Broad knowledge and profound cultural depth</li>
+      </ul>
+    </div>
+    <div class="col-md-6 text-center mb-4">
+      <div class="porcelain-section p-5">
+        <div class="brush-font" style="font-size:3rem;color:var(--porcelain-blue);">吴德瑞博</div>
+        <p class="text-muted mt-2 mb-0">Virtue · Fortune · Knowledge</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="china-divider"><span>🐼</span></div>
+
+  <!-- 我们的理念 -->
+  <h2 class="text-center fw-bold brush-font mb-4">🎋 Our Philosophy 理念</h2>
+  <div class="row g-4 mb-5">
+    <div class="col-md-4 text-center">
+      <div class="icon-circle mx-auto mb-3" style="background:var(--china-red);color:#fff;">🏮</div>
+      <h5 class="fw-bold">东方美学 Oriental Aesthetic</h5>
+      <p class="text-muted small">We don't do cookie-cutter tourism. Every experience is infused with authentic Chinese aesthetics — from calligraphy to tea ceremonies.</p>
+    </div>
+    <div class="col-md-4 text-center">
+      <div class="icon-circle mx-auto mb-3" style="background:var(--china-gold);color:#fff;">🏆</div>
+      <h5 class="fw-bold">专业团队 Expert Team</h5>
+      <p class="text-muted small">Champion Tai Chi coaches, certified Chinese language teachers, and licensed tour guides with years of international experience.</p>
+    </div>
+    <div class="col-md-4 text-center">
+      <div class="icon-circle mx-auto mb-3" style="background:var(--porcelain-blue);color:#fff;">🌍</div>
+      <h5 class="fw-bold">全球视野 Global Vision</h5>
+      <p class="text-muted small">Multi-language support, international payment (PayPal/Stripe), and 5-10% referral commissions for our global partners.</p>
+    </div>
+  </div>
+
+  <div class="china-divider"><span>🐉</span></div>
+
+  <!-- 免费资源包 -->
+  <div class="porcelain-section p-5 text-center mb-5">
+    <h3 class="fw-bold brush-font">🎁 Free Resource Pack 免费资源包</h3>
+    <div class="row mt-4">
+      <div class="col-md-4 mb-3">
+        <div class="icon-lg">📖</div>
+        <h6 class="fw-bold">Trial Chinese Lesson</h6>
+        <p class="small text-muted">免费中文试听课</p>
+      </div>
+      <div class="col-md-4 mb-3">
+        <div class="icon-lg">🥋</div>
+        <h6 class="fw-bold">Tai Chi PDF Guide</h6>
+        <p class="small text-muted">太极入门电子书</p>
+      </div>
+      <div class="col-md-4 mb-3">
+        <div class="icon-lg">🗺️</div>
+        <h6 class="fw-bold">China Travel Tips</h6>
+        <p class="small text-muted">中国旅行攻略</p>
+      </div>
+    </div>
+    <a href="{{ url_for('contact') }}" class="btn btn-china-red btn-lg mt-2">📩 立即领取 Get It Free</a>
+  </div>
+
+  <!-- 推荐分佣 -->
+  <div class="text-center py-4">
+    <h4 class="fw-bold brush-font">💰 Referral Program 推荐分佣</h4>
+    <p class="text-muted">Earn <strong style="color:var(--china-red)">5-10%</strong> commission by referring friends to our courses and travel packages.</p>
+    <a href="{{ url_for('contact') }}" class="btn btn-china-gold">了解详情 Learn More →</a>
+  </div>
+</div>
+
 {% endblock %}

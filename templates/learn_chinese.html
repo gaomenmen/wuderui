@@ -1,7 +1,108 @@
 {% extends "base.html" %}
-{% block title %}{{ _('Learn Chinese') }}{% endblock %}
+{% block title %}Learn Chinese 学中文 - WuDeRuiBo{% endblock %}
 {% block content %}
-<h2>{{ _('Learn Chinese') }}</h2>
-<p>{{ _('Courses for children and adults, from Pinyin to dialogue. One-click WhatsApp consultation.') }}</p>
-<!-- 具体课程设置与咨询方式，可后续补充 -->
+
+<!-- Hero -->
+<div class="hero-china py-5">
+  <div class="container text-center position-relative" style="z-index:1;">
+    <h1 class="fw-bold">📖 Learn Chinese 学中文</h1>
+    <p class="lead">From Pinyin to Conversation — Systematic Courses for All Ages</p>
+  </div>
+</div>
+
+<div class="container py-5">
+  <!-- 课程特色 -->
+  <div class="row g-4 mb-5">
+    <div class="col-md-4 text-center">
+      <div class="icon-circle mx-auto mb-3" style="background:var(--china-red);color:#fff;">✍️</div>
+      <h5 class="fw-bold">毛笔字 Calligraphy</h5>
+      <p class="text-muted">Learn to write Chinese characters with traditional brush and ink. A meditative art form.</p>
+    </div>
+    <div class="col-md-4 text-center">
+      <div class="icon-circle mx-auto mb-3" style="background:var(--porcelain-blue);color:#fff;">🗣️</div>
+      <h5 class="fw-bold">拼音对话 Pinyin & Dialogue</h5>
+      <p class="text-muted">Master pronunciation with Pinyin system, then move to real-world conversations.</p>
+    </div>
+    <div class="col-md-4 text-center">
+      <div class="icon-circle mx-auto mb-3" style="background:var(--jade-green);color:#fff;">🧒</div>
+      <h5 class="fw-bold">儿童 & 成人 Kids & Adults</h5>
+      <p class="text-muted">Tailored courses for different age groups and skill levels. Beginners welcome!</p>
+    </div>
+  </div>
+
+  <div class="china-divider"><span>🎋</span></div>
+
+  <!-- 课程体系 -->
+  <h2 class="text-center fw-bold brush-font mb-4">📚 Course Structure 课程体系</h2>
+  <div class="row g-4 mb-5">
+    <div class="col-md-3">
+      <div class="card card-hover card-china h-100">
+        <div class="card-body text-center">
+          <span class="badge badge-china mb-2">Level 1</span>
+          <h6 class="fw-bold">拼音启蒙 Pinyin</h6>
+          <ul class="list-unstyled small text-muted">
+            <li>🔊 声母 & 韵母</li>
+            <li>🎵 声调练习 Tones</li>
+            <li>📝 基础书写 Basic Writing</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card card-hover card-china h-100">
+        <div class="card-body text-center">
+          <span class="badge badge-china mb-2">Level 2</span>
+          <h6 class="fw-bold">基础词汇 Vocabulary</h6>
+          <ul class="list-unstyled small text-muted">
+            <li>🏠 日常生活 Daily Life</li>
+            <li>🍜 美食文化 Food & Culture</li>
+            <li>👨‍👩‍👧 家庭话题 Family Topics</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card card-hover card-china h-100">
+        <div class="card-body text-center">
+          <span class="badge badge-china mb-2">Level 3</span>
+          <h6 class="fw-bold">情景对话 Dialogue</h6>
+          <ul class="list-unstyled small text-muted">
+            <li>🛒 购物 Shopping</li>
+            <li>🚆 旅行 Travel</li>
+            <li>💼 商务 Business</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card card-hover card-china h-100">
+        <div class="card-body text-center">
+          <span class="badge badge-gold mb-2">Advanced</span>
+          <h6 class="fw-bold">文化进阶 Culture</h6>
+          <ul class="list-unstyled small text-muted">
+            <li>📜 古诗词 Poetry</li>
+            <li>🏯 历史故事 History</li>
+            <li>🍵 茶道文化 Tea Ceremony</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="china-divider"><span>🐉</span></div>
+
+  <!-- CTA -->
+  <div class="row align-items-center">
+    <div class="col-md-6 text-center mb-4">
+      <div class="panda-emoji">🐼</div>
+      <h4 class="fw-bold brush-font mt-3">免费试听 Free Trial Lesson</h4>
+      <p class="text-muted">一键 WhatsApp 咨询，开启你的中文学习之旅！</p>
+    </div>
+    <div class="col-md-6 text-center mb-4">
+      <a href="{{ url_for('contact') }}" class="btn btn-china-red btn-lg">💬 WhatsApp 咨询</a>
+      <p class="text-muted small mt-2">Also available on WeChat & Facebook</p>
+    </div>
+  </div>
+</div>
+
 {% endblock %}

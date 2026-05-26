@@ -1,7 +1,119 @@
 {% extends "base.html" %}
-{% block title %}{{ _('Tai Chi') }}{% endblock %}
+{% block title %}Tai Chi 太极拳 - WuDeRuiBo{% endblock %}
 {% block content %}
-<h2>{{ _('Tai Chi') }}</h2>
-<p>{{ _('24-form Tai Chi course, first two lessons free, unlock the rest by payment. PayPal/Stripe supported.') }}</p>
-<!-- 进度条、免费试听、付费提示等后续可增强 -->
+
+<!-- Hero -->
+<div class="hero-china py-5">
+  <div class="container text-center position-relative" style="z-index:1;">
+    <h1 class="fw-bold">🥋 Tai Chi 太极拳</h1>
+    <p class="lead">24-Form Tai Chi — Ancient Wisdom, Modern Wellness</p>
+  </div>
+</div>
+
+<div class="container py-5">
+  <!-- 太极介绍 -->
+  <div class="row align-items-center mb-5">
+    <div class="col-md-6 mb-4">
+      <h3 class="fw-bold brush-font">🎋 什么是太极拳？</h3>
+      <p>Tai Chi (太极拳) is a centuries-old Chinese martial art that combines gentle physical exercise with mental focus. Originating from ancient China, it's often described as "meditation in motion."</p>
+      <p>Our <strong>24-form simplified Tai Chi</strong> course is perfect for beginners — designed by Chinese martial arts experts for international learners.</p>
+    </div>
+    <div class="col-md-6 text-center mb-4">
+      <div class="porcelain-section p-4">
+        <div class="panda-emoji">☯️</div>
+        <h5 class="fw-bold mt-3 brush-font">阴阳平衡 Yin-Yang Balance</h5>
+        <p class="small text-muted mb-0">身体 · 呼吸 · 心灵<br>Body · Breath · Mind</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="china-divider"><span>🥋</span></div>
+
+  <!-- 课程大纲 -->
+  <h2 class="text-center fw-bold brush-font mb-4">📋 Course Outline 课程大纲</h2>
+  <div class="row g-4 mb-5">
+    <div class="col-md-4">
+      <div class="card card-hover card-china h-100">
+        <div class="card-body text-center p-4">
+          <span class="badge bg-success mb-3">✅ FREE</span>
+          <div class="icon-lg mb-2">🧘</div>
+          <h6 class="fw-bold">Lesson 1-2: 起势 Opening</h6>
+          <ul class="list-unstyled small text-muted">
+            <li>起势 Commencing Form</li>
+            <li>左右野马分鬃 Part the Wild Horse's Mane</li>
+            <li>白鹤亮翅 White Crane Spreads Wings</li>
+          </ul>
+          <span class="badge bg-success">免费试听 Free Preview</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card card-hover card-china h-100">
+        <div class="card-body text-center p-4">
+          <span class="badge badge-china mb-3">💰 Premium</span>
+          <div class="icon-lg mb-2">💪</div>
+          <h6 class="fw-bold">Lesson 3-16: 核心 Core Forms</h6>
+          <ul class="list-unstyled small text-muted">
+            <li>搂膝拗步 Brush Knee</li>
+            <li>手挥琵琶 Play the Lute</li>
+            <li>倒卷肱 Repulse Monkey</li>
+            <li>云手 Cloud Hands</li>
+            <li>... and more</li>
+          </ul>
+          <span class="badge badge-gold">PayPal / Stripe</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card card-hover card-china h-100">
+        <div class="card-body text-center p-4">
+          <span class="badge badge-china mb-3">💰 Premium</span>
+          <div class="icon-lg mb-2">🏆</div>
+          <h6 class="fw-bold">Lesson 17-24: 高级 Advanced</h6>
+          <ul class="list-unstyled small text-muted">
+            <li>海底针 Needle at Sea Bottom</li>
+            <li>闪通臂 Flash the Arms</li>
+            <li>收势 Closing Form</li>
+            <li>完整套路复习 Full Routine Review</li>
+          </ul>
+          <span class="badge badge-gold">PayPal / Stripe</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="china-divider"><span>🎋</span></div>
+
+  <!-- 太极好处 -->
+  <h2 class="text-center fw-bold brush-font mb-4">🌟 Benefits of Tai Chi 太极的好处</h2>
+  <div class="row g-4 mb-5">
+    <div class="col-md-3 text-center">
+      <div class="icon-lg mb-2">🫀</div>
+      <h6 class="fw-bold">Heart Health</h6>
+      <p class="small text-muted">改善心血管健康</p>
+    </div>
+    <div class="col-md-3 text-center">
+      <div class="icon-lg mb-2">🧠</div>
+      <h6 class="fw-bold">Mental Clarity</h6>
+      <p class="small text-muted">提升专注力和冥想</p>
+    </div>
+    <div class="col-md-3 text-center">
+      <div class="icon-lg mb-2">💪</div>
+      <h6 class="fw-bold">Flexibility</h6>
+      <p class="small text-muted">增强柔韧性平衡力</p>
+    </div>
+    <div class="col-md-3 text-center">
+      <div class="icon-lg mb-2">😌</div>
+      <h6 class="fw-bold">Stress Relief</h6>
+      <p class="small text-muted">缓解压力放松身心</p>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="text-center py-4">
+    <a href="{{ url_for('contact') }}" class="btn btn-china-red btn-lg me-3">🥋 免费预览前两式</a>
+    <a href="{{ url_for('contact') }}" class="btn btn-china-gold btn-lg">💳 解锁完整课程</a>
+  </div>
+</div>
+
 {% endblock %}
