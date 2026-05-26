@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ get_locale() }}">
+<html lang="{{ get_locale() }}" class="{{ get_locale() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -114,6 +114,10 @@
         @media (max-width: 768px) {
             .hero-ink { text-align: center; }
         }
+
+        /* 中英文切换 */
+        html.en .zh { display: none !important; }
+        html.zh .en { display: none !important; }
     </style>
     {% block extra_head %}{% endblock %}
 </head>
@@ -129,13 +133,13 @@
     </button>
     <div class="collapse navbar-collapse" id="navContent">
       <ul class="navbar-nav me-auto ms-3">
-        <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">{{ _('Home') }}</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ url_for('learn_chinese') }}">{{ _('Learn Chinese') }}</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ url_for('tai_chi') }}">{{ _('Tai Chi') }}</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ url_for('custom_trips') }}">{{ _('Custom Trips') }}</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ url_for('affiliate') }}">{{ _('Affiliate') }}</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">{{ _('About') }}</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">{{ _('Contact') }}</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}"><span class="en">Home</span><span class="zh">首页</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('learn_chinese') }}"><span class="en">Learn Chinese</span><span class="zh">学中文</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('tai_chi') }}"><span class="en">Tai Chi</span><span class="zh">太极拳</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('custom_trips') }}"><span class="en">Custom Trips</span><span class="zh">定制旅行</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('affiliate') }}"><span class="en">Affiliate</span><span class="zh">推荐分佣</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}"><span class="en">About</span><span class="zh">关于我们</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}"><span class="en">Contact</span><span class="zh">联系我们</span></a></li>
       </ul>
       <div class="d-flex align-items-center gap-2">
         <a href="?lang=en" class="lang-switch text-decoration-none">EN</a>
@@ -159,10 +163,10 @@
       <div class="col-md-3 mb-4">
         <h6 class="fw-bold mb-3" style="color:var(--gold-subtle);font-size:.8rem;letter-spacing:1px;">EXPLORE</h6>
         <ul class="list-unstyled small">
-          <li class="mb-1"><a href="{{ url_for('learn_chinese') }}">{{ _('Learn Chinese') }}</a></li>
-          <li class="mb-1"><a href="{{ url_for('tai_chi') }}">{{ _('Tai Chi') }}</a></li>
-          <li class="mb-1"><a href="{{ url_for('custom_trips') }}">{{ _('Custom Trips') }}</a></li>
-          <li class="mb-1"><a href="{{ url_for('affiliate') }}">{{ _('Affiliate Program') }}</a></li>
+          <li class="mb-1"><a href="{{ url_for('learn_chinese') }}"><span class="en">Learn Chinese</span><span class="zh">学中文</span></a></li>
+          <li class="mb-1"><a href="{{ url_for('tai_chi') }}"><span class="en">Tai Chi</span><span class="zh">太极拳</span></a></li>
+          <li class="mb-1"><a href="{{ url_for('custom_trips') }}"><span class="en">Custom Trips</span><span class="zh">定制旅行</span></a></li>
+          <li class="mb-1"><a href="{{ url_for('affiliate') }}"><span class="en">Affiliate Program</span><span class="zh">推荐分佣</span></a></li>
         </ul>
       </div>
       <div class="col-md-3 mb-4">
@@ -177,7 +181,7 @@
       </div>
     </div>
     <hr style="border-color:rgba(255,255,255,.1)">
-    <p class="text-center small mb-0" style="color:rgba(255,255,255,.3)">&copy; 2026 WuDeRuiBo 吴德瑞博 · {{ _('All Rights Reserved.') }}</p>
+    <p class="text-center small mb-0" style="color:rgba(255,255,255,.3)">&copy; 2026 WuDeRuiBo 吴德瑞博 · <span class="en">All Rights Reserved.</span><span class="zh">版权所有</span></p>
   </div>
 </footer>
 

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}WuDeRuiBo — Learn Chinese · Tai Chi · China Travel{% endblock %}
+{% block title %}<span class="en">WuDeRuiBo — Learn Chinese · Tai Chi · China Travel</span><span class="zh">吴德瑞博 — 学中文 · 太极 · 中国旅行</span>{% endblock %}
 {% block content %}
 
 <!-- Hero 首屏 -->
@@ -7,11 +7,24 @@
   <div class="container position-relative py-5" style="z-index:1;">
     <div class="row align-items-center">
       <div class="col-lg-7 mb-4 mb-lg-0">
-        <p class="small text-uppercase mb-3" style="letter-spacing:3px;color:var(--gold-subtle)">Chinese Culture · Global Access</p>
-        <h1 class="fw-bold mb-3" style="font-family:'Noto Serif SC',serif;">Experience China,<br>One Lesson at a Time.</h1>
-        <p class="lead mb-4" style="opacity:.8;max-width:480px;">Systematic Chinese courses, authentic Tai Chi from national champions, and bespoke China travel — all in one place.</p>
-        <a href="{{ url_for('learn_chinese') }}" class="btn btn-cinnabar btn-lg me-2 mb-2">Free Trial Lesson</a>
-        <a href="{{ url_for('tai_chi') }}" class="btn btn-outline-light btn-lg mb-2">Preview Tai Chi</a>
+        <p class="small text-uppercase mb-3" style="letter-spacing:3px;color:var(--gold-subtle)">
+          <span class="en">Chinese Culture · Global Access</span>
+          <span class="zh">中国文化 · 全球共享</span>
+        </p>
+        <h1 class="fw-bold mb-3" style="font-family:'Noto Serif SC',serif;">
+          <span class="en">Experience China,<br>One Lesson at a Time.</span>
+          <span class="zh">体验中国，<br>从每一课开始。</span>
+        </h1>
+        <p class="lead mb-4" style="opacity:.8;max-width:480px;">
+          <span class="en">Systematic Chinese courses, authentic Tai Chi from national champions, and bespoke China travel — all in one place.</span>
+          <span class="zh">体系化中文课程、全国冠军太极拳、精品定制旅行——一站式中国文化体验平台。</span>
+        </p>
+        <a href="{{ url_for('learn_chinese') }}" class="btn btn-cinnabar btn-lg me-2 mb-2">
+          <span class="en">Free Trial Lesson</span><span class="zh">免费试听课</span>
+        </a>
+        <a href="{{ url_for('tai_chi') }}" class="btn btn-outline-light btn-lg mb-2">
+          <span class="en">Preview Tai Chi</span><span class="zh">太极预览</span>
+        </a>
       </div>
       <div class="col-lg-5 text-center">
         <div style="font-family:'Noto Serif SC',serif;font-size:5rem;color:rgba(255,255,255,.08);line-height:1;">吴<br>德<br>瑞<br>博</div>
@@ -26,23 +39,23 @@
   <div class="row g-4 py-5">
     <div class="col-md-4">
       <div class="card-ink p-4 h-100">
-        <h5 class="fw-bold mb-2">Learn Chinese</h5>
-        <p class="text-muted small">From Pinyin to daily conversation. Courses for kids, adults, and heritage families.</p>
-        <a href="{{ url_for('learn_chinese') }}" class="btn btn-outline-ink btn-sm">Explore →</a>
+        <h5 class="fw-bold mb-2"><span class="en">Learn Chinese</span><span class="zh">学中文</span></h5>
+        <p class="text-muted small"><span class="en">From Pinyin to daily conversation. Courses for kids, adults, and heritage families.</span><span class="zh">从拼音到日常对话，适合儿童、成人及华裔家庭。</span></p>
+        <a href="{{ url_for('learn_chinese') }}" class="btn btn-outline-ink btn-sm"><span class="en">Explore →</span><span class="zh">了解详情 →</span></a>
       </div>
     </div>
     <div class="col-md-4">
       <div class="card-ink p-4 h-100">
-        <h5 class="fw-bold mb-2">Tai Chi Course</h5>
-        <p class="text-muted small">24-form Tai Chi by national champions. First 2 lessons free, unlock the full course online.</p>
-        <a href="{{ url_for('tai_chi') }}" class="btn btn-outline-ink btn-sm">Preview Free →</a>
+        <h5 class="fw-bold mb-2"><span class="en">Tai Chi Course</span><span class="zh">太极拳课程</span></h5>
+        <p class="text-muted small"><span class="en">24-form Tai Chi by national champions. First 2 lessons free, unlock the full course online.</span><span class="zh">全国冠军24式太极拳，前两式免费，在线解锁全套课程。</span></p>
+        <a href="{{ url_for('tai_chi') }}" class="btn btn-outline-ink btn-sm"><span class="en">Preview Free →</span><span class="zh">免费预览 →</span></a>
       </div>
     </div>
     <div class="col-md-4">
       <div class="card-ink p-4 h-100">
-        <h5 class="fw-bold mb-2">Custom China Trips</h5>
-        <p class="text-muted small">10 curated packages from Beijing to Tibet. Premium service with photography & local food.</p>
-        <a href="{{ url_for('custom_trips') }}" class="btn btn-outline-ink btn-sm">View Packages →</a>
+        <h5 class="fw-bold mb-2"><span class="en">Custom China Trips</span><span class="zh">定制中国旅行</span></h5>
+        <p class="text-muted small"><span class="en">10 curated packages from Beijing to Tibet. Premium service with photography & local food.</span><span class="zh">10大经典套餐，从北京到西藏，管家式高端定制服务。</span></p>
+        <a href="{{ url_for('custom_trips') }}" class="btn btn-outline-ink btn-sm"><span class="en">View Packages →</span><span class="zh">查看套餐 →</span></a>
       </div>
     </div>
   </div>
@@ -52,19 +65,22 @@
   <!-- 太极课程试看区 -->
   <div class="row align-items-center py-4">
     <div class="col-md-6 mb-4">
-      <h3 class="section-title mb-4">Tai Chi Preview</h3>
-      <p class="text-muted">Our 24-form Tai Chi course is recorded by a national champion. Start with 2 free lessons — experience the art before committing to the full course.</p>
+      <h3 class="section-title mb-4"><span class="en">Tai Chi Preview</span><span class="zh">太极课程试看</span></h3>
+      <p class="text-muted">
+        <span class="en">Our 24-form Tai Chi course is recorded by a national champion. Start with 2 free lessons — experience the art before committing to the full course.</span>
+        <span class="zh">24式太极拳课程由全国冠军录制，前两式免费试看，体验后再决定是否解锁全套课程。</span>
+      </p>
       <div class="d-flex gap-3 mt-3">
         <div class="text-center">
           <div class="card-ink p-3" style="min-width:80px;">
             <div class="fw-bold" style="color:var(--cinnabar)">1</div>
-            <small class="text-muted">Free</small>
+            <small class="text-muted"><span class="en">Free</span><span class="zh">免费</span></small>
           </div>
         </div>
         <div class="text-center">
           <div class="card-ink p-3" style="min-width:80px;">
             <div class="fw-bold" style="color:var(--cinnabar)">2</div>
-            <small class="text-muted">Free</small>
+            <small class="text-muted"><span class="en">Free</span><span class="zh">免费</span></small>
           </div>
         </div>
         <div class="text-center">
@@ -74,7 +90,7 @@
           </div>
         </div>
       </div>
-      <a href="{{ url_for('tai_chi') }}" class="btn btn-cinnabar mt-3">Start Free Preview</a>
+      <a href="{{ url_for('tai_chi') }}" class="btn btn-cinnabar mt-3"><span class="en">Start Free Preview</span><span class="zh">免费试看</span></a>
     </div>
     <div class="col-md-6 mb-4 text-center">
       <div class="paper-section p-5">
@@ -89,56 +105,32 @@
 
   <!-- 旅游套餐预览 -->
   <div class="py-4">
-    <h3 class="section-title mb-4">Premium China Trips</h3>
-    <p class="text-muted mb-4">10 curated itineraries covering China's most iconic destinations. Each package includes professional photography, local food experiences, and English-speaking guides.</p>
+    <h3 class="section-title mb-4"><span class="en">Premium China Trips</span><span class="zh">精品定制旅行</span></h3>
+    <p class="text-muted mb-4"><span class="en">10 curated itineraries covering China's most iconic destinations. Each package includes professional photography, local food experiences, and English-speaking guides.</span><span class="zh">10大经典路线覆盖中国最标志性目的地。每个套餐包含专业摄影、当地美食体验和英文导游。</span></p>
     <div class="row g-3">
       <div class="col-6 col-md-4 col-lg-3">
-        <div class="card-ink p-3 text-center">
-          <div class="fw-bold small">Beijing</div>
-          <small class="text-muted">Imperial City</small>
-        </div>
+        <div class="card-ink p-3 text-center"><div class="fw-bold small"><span class="en">Beijing</span><span class="zh">北京</span></div><small class="text-muted"><span class="en">Imperial City</span><span class="zh">皇城文化</span></small></div>
       </div>
       <div class="col-6 col-md-4 col-lg-3">
-        <div class="card-ink p-3 text-center">
-          <div class="fw-bold small">Xi'an</div>
-          <small class="text-muted">Ancient Capital</small>
-        </div>
+        <div class="card-ink p-3 text-center"><div class="fw-bold small"><span class="en">Xi'an</span><span class="zh">西安</span></div><small class="text-muted"><span class="en">Ancient Capital</span><span class="zh">千年古都</span></small></div>
       </div>
       <div class="col-6 col-md-4 col-lg-3">
-        <div class="card-ink p-3 text-center">
-          <div class="fw-bold small">Shanghai</div>
-          <small class="text-muted">Modern Metropolis</small>
-        </div>
+        <div class="card-ink p-3 text-center"><div class="fw-bold small"><span class="en">Shanghai</span><span class="zh">上海</span></div><small class="text-muted"><span class="en">Modern Metropolis</span><span class="zh">魔都风情</span></small></div>
       </div>
       <div class="col-6 col-md-4 col-lg-3">
-        <div class="card-ink p-3 text-center">
-          <div class="fw-bold small">Chengdu</div>
-          <small class="text-muted">Pandas & Hot Pot</small>
-        </div>
+        <div class="card-ink p-3 text-center"><div class="fw-bold small"><span class="en">Chengdu</span><span class="zh">成都</span></div><small class="text-muted"><span class="en">Pandas & Hot Pot</span><span class="zh">熊猫美食</span></small></div>
       </div>
       <div class="col-6 col-md-4 col-lg-3">
-        <div class="card-ink p-3 text-center">
-          <div class="fw-bold small">Guilin</div>
-          <small class="text-muted">River & Mountains</small>
-        </div>
+        <div class="card-ink p-3 text-center"><div class="fw-bold small"><span class="en">Guilin</span><span class="zh">桂林</span></div><small class="text-muted"><span class="en">River & Mountains</span><span class="zh">山水甲天下</span></small></div>
       </div>
       <div class="col-6 col-md-4 col-lg-3">
-        <div class="card-ink p-3 text-center">
-          <div class="fw-bold small">Yunnan</div>
-          <small class="text-muted">Ethnic Culture</small>
-        </div>
+        <div class="card-ink p-3 text-center"><div class="fw-bold small"><span class="en">Yunnan</span><span class="zh">云南</span></div><small class="text-muted"><span class="en">Ethnic Culture</span><span class="zh">民族风情</span></small></div>
       </div>
       <div class="col-6 col-md-4 col-lg-3">
-        <div class="card-ink p-3 text-center">
-          <div class="fw-bold small">Silk Road</div>
-          <small class="text-muted">Desert Adventure</small>
-        </div>
+        <div class="card-ink p-3 text-center"><div class="fw-bold small"><span class="en">Silk Road</span><span class="zh">丝绸之路</span></div><small class="text-muted"><span class="en">Desert Adventure</span><span class="zh">沙漠探险</span></small></div>
       </div>
       <div class="col-6 col-md-4 col-lg-3">
-        <div class="card-ink p-3 text-center">
-          <div class="fw-bold small">+ 3 more</div>
-          <small class="text-muted"><a href="{{ url_for('custom_trips') }}" class="text-decoration-none" style="color:var(--cinnabar)">View all →</a></small>
-        </div>
+        <div class="card-ink p-3 text-center"><div class="fw-bold small"><span class="en">+ 3 more</span><span class="zh">+ 更多</span></div><small class="text-muted"><a href="{{ url_for('custom_trips') }}" class="text-decoration-none" style="color:var(--cinnabar)"><span class="en">View all →</span><span class="zh">查看全部 →</span></a></small></div>
       </div>
     </div>
   </div>
@@ -149,23 +141,23 @@
   <div class="row g-4 py-4">
     <div class="col-md-4 text-center">
       <h2 class="fw-bold" style="color:var(--cinnabar)">24</h2>
-      <p class="text-muted small">Tai Chi Lessons<br>by National Champion</p>
+      <p class="text-muted small"><span class="en">Tai Chi Lessons<br>by National Champion</span><span class="zh">太极拳课<br>全国冠军录制</span></p>
     </div>
     <div class="col-md-4 text-center">
       <h2 class="fw-bold" style="color:var(--cinnabar)">10</h2>
-      <p class="text-muted small">Curated Travel Packages<br>Covering All of China</p>
+      <p class="text-muted small"><span class="en">Curated Travel Packages<br>Covering All of China</span><span class="zh">经典旅行套餐<br>覆盖全中国</span></p>
     </div>
     <div class="col-md-4 text-center">
       <h2 class="fw-bold" style="color:var(--cinnabar)">5–10%</h2>
-      <p class="text-muted small">Referral Commission<br>for Partners</p>
+      <p class="text-muted small"><span class="en">Referral Commission<br>for Partners</span><span class="zh">推荐分佣<br>合作伙伴计划</span></p>
     </div>
   </div>
 
   <!-- CTA -->
   <div class="paper-section p-5 my-5 text-center">
-    <h4 class="fw-bold">Ready to Explore China?</h4>
-    <p class="text-muted mb-3">Get your free resource pack: trial Chinese lesson, Tai Chi PDF guide, and travel tips.</p>
-    <a href="{{ url_for('contact') }}" class="btn btn-cinnabar btn-lg"><i class="bi bi-whatsapp me-1"></i> Contact Us</a>
+    <h4 class="fw-bold"><span class="en">Ready to Explore China?</span><span class="zh">准备好探索中国了吗？</span></h4>
+    <p class="text-muted mb-3"><span class="en">Get your free resource pack: trial Chinese lesson, Tai Chi PDF guide, and travel tips.</span><span class="zh">领取免费资源包：中文试听课、太极PDF指南和旅行攻略。</span></p>
+    <a href="{{ url_for('contact') }}" class="btn btn-cinnabar btn-lg"><i class="bi bi-whatsapp me-1"></i> <span class="en">Contact Us</span><span class="zh">联系我们</span></a>
   </div>
 
 </div>

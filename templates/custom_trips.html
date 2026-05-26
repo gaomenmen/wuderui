@@ -1,202 +1,67 @@
 {% extends "base.html" %}
-{% block title %}Custom China Travel — WuDeRuiBo{% endblock %}
+{% block title %}<span class="en">Custom China Travel — WuDeRuiBo</span><span class="zh">定制中国旅行 — 吴德瑞博</span>{% endblock %}
 {% block content %}
 
 <div class="hero-ink py-5">
   <div class="container position-relative" style="z-index:1;">
-    <h1 class="fw-bold" style="font-family:'Noto Serif SC',serif;">Custom China Travel</h1>
-    <p class="lead" style="opacity:.8;">10 Curated Packages — Bespoke Itineraries for the Discerning Traveler</p>
+    <h1 class="fw-bold" style="font-family:'Noto Serif SC',serif;"><span class="en">Custom China Travel</span><span class="zh">定制中国旅行</span></h1>
+    <p class="lead" style="opacity:.8;"><span class="en">10 Curated Packages — Bespoke Itineraries for the Discerning Traveler</span><span class="zh">10大经典套餐——为品质旅行者量身定制</span></p>
   </div>
 </div>
 
 <div class="container py-5">
 
   <div class="row g-4">
-
-    <!-- 01 Beijing -->
+    {% set trips = [
+      ("01", "京", "Beijing Imperial City", "北京皇城文化游", "The Forbidden City · Great Wall · Temple of Heaven · Hutong Tour · Peking Duck", "故宫·长城·天坛·胡同·烤鸭", "4–6 days", "4-6天", "All ages", "所有年龄段"),
+      ("02", "秦", "Xi'an Ancient Capital", "西安古都文化游", "Terracotta Warriors · Ancient City Wall · Muslim Quarter · Tang Dynasty Show", "兵马俑·古城墙·回民街·大唐文化", "3–5 days", "3-5天", "History lovers", "历史爱好者"),
+      ("03", "沪", "Shanghai Modern", "上海现代都市游", "The Bund · Yu Garden · Pudong Skyline · French Concession · Xiaolongbao", "外滩·豫园·陆家嘴·法租界·小笼包", "3–4 days", "3-4天", "Urban explorers", "都市探索者"),
+      ("04", "桂", "Guilin Landscape", "桂林山水游", "Li River Cruise · Yangshuo · Longji Rice Terraces · Reed Flute Cave", "漓江·阳朔·龙脊梯田·芦笛岩", "3–5 days", "3-5天", "Nature lovers", "自然爱好者"),
+      ("05", "蜀", "Chengdu Pandas", "成都熊猫美食游", "Giant Panda Base · Jinli Street · Sichuan Hot Pot · Leshan Giant Buddha · Face-Changing Opera", "熊猫基地·锦里·火锅·乐山大佛·变脸", "3–5 days", "3-5天", "Families & foodies", "家庭与美食家"),
+      ("06", "滇", "Yunnan Mystique", "云南民族风情游", "Lijiang Old Town · Dali Erhai Lake · Shangri-La · Jade Dragon Snow Mountain", "丽江古城·大理洱海·香格里拉·玉龙雪山", "5–7 days", "5-7天", "Culture seekers", "文化探索者"),
+      ("07", "丝", "Silk Road", "丝绸之路文化游", "Dunhuang Mogao Caves · Crescent Lake · Turpan · Jiayuguan Pass · Camel Caravan", "敦煌莫高窟·月牙泉·吐鲁番·嘉峪关·驼队体验", "5–8 days", "5-8天", "Adventurers", "探险爱好者"),
+      ("08", "藏", "Tibet Sanctuary", "西藏圣地游", "Potala Palace · Jokhang Temple · Namtso Lake · Tibetan Culture · Highland Scenery", "布达拉宫·大昭寺·纳木错·藏族文化·高原风光", "5–7 days", "5-7天", "Spiritual seekers", "心灵探索者"),
+      ("09", "湘", "Zhangjiajie", "张家界自然奇观游", "Avatar Mountains · Glass Bridge · Tianzi Mountain · Golden Whip Stream", "阿凡达山·玻璃桥·天子山·金鞭溪", "3–5 days", "3-5天", "Thrill seekers", "刺激爱好者"),
+      ("10", "徽", "Huangshan", "黄山徽州文化游", "Sea of Clouds · Ancient Villages (Hongcun) · Hot Springs · Pine Trees on Cliffs · Hui Cuisine", "云海·宏村古村落·温泉·迎客松·徽菜", "3–4 days", "3-4天", "Poetic souls", "诗意旅行者"),
+    ] %}
+    {% for num, seal_char, en_name, zh_name, en_desc, zh_desc, en_days, zh_days, en_audience, zh_audience in trips %}
     <div class="col-md-6">
       <div class="card-ink p-4 h-100">
         <div class="d-flex justify-content-between align-items-start mb-2">
-          <h5 class="fw-bold mb-0">01 Beijing Imperial City</h5>
-          <span class="seal">京</span>
+          <h5 class="fw-bold mb-0">{{ num }} <span class="en">{{ en_name }}</span><span class="zh">{{ zh_name }}</span></h5>
+          <span class="seal">{{ seal_char }}</span>
         </div>
-        <p class="text-muted small mb-2">The Forbidden City · Great Wall · Temple of Heaven · Hutong Tour · Peking Duck</p>
+        <p class="text-muted small mb-2"><span class="en">{{ en_desc }}</span><span class="zh">{{ zh_desc }}</span></p>
         <div class="d-flex gap-3 small text-muted">
-          <span><i class="bi bi-calendar3"></i> 4–6 days</span>
-          <span><i class="bi bi-people"></i> All ages</span>
+          <span><i class="bi bi-calendar3"></i> <span class="en">{{ en_days }}</span><span class="zh">{{ zh_days }}</span></span>
+          <span><i class="bi bi-people"></i> <span class="en">{{ en_audience }}</span><span class="zh">{{ zh_audience }}</span></span>
         </div>
-        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm mt-3">Inquire →</a>
+        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm mt-3"><span class="en">Inquire →</span><span class="zh">咨询 →</span></a>
       </div>
     </div>
-
-    <!-- 02 Xi'an -->
-    <div class="col-md-6">
-      <div class="card-ink p-4 h-100">
-        <div class="d-flex justify-content-between align-items-start mb-2">
-          <h5 class="fw-bold mb-0">02 Xi'an Ancient Capital</h5>
-          <span class="seal">秦</span>
-        </div>
-        <p class="text-muted small mb-2">Terracotta Warriors · Ancient City Wall · Muslim Quarter · Tang Dynasty Show · Biangbiang Noodles</p>
-        <div class="d-flex gap-3 small text-muted">
-          <span><i class="bi bi-calendar3"></i> 3–5 days</span>
-          <span><i class="bi bi-people"></i> History lovers</span>
-        </div>
-        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm mt-3">Inquire →</a>
-      </div>
-    </div>
-
-    <!-- 03 Shanghai -->
-    <div class="col-md-6">
-      <div class="card-ink p-4 h-100">
-        <div class="d-flex justify-content-between align-items-start mb-2">
-          <h5 class="fw-bold mb-0">03 Shanghai Modern</h5>
-          <span class="seal">沪</span>
-        </div>
-        <p class="text-muted small mb-2">The Bund · Yu Garden · Pudong Skyline · French Concession · Xiaolongbao</p>
-        <div class="d-flex gap-3 small text-muted">
-          <span><i class="bi bi-calendar3"></i> 3–4 days</span>
-          <span><i class="bi bi-people"></i> Urban explorers</span>
-        </div>
-        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm mt-3">Inquire →</a>
-      </div>
-    </div>
-
-    <!-- 04 Guilin -->
-    <div class="col-md-6">
-      <div class="card-ink p-4 h-100">
-        <div class="d-flex justify-content-between align-items-start mb-2">
-          <h5 class="fw-bold mb-0">04 Guilin Landscape</h5>
-          <span class="seal">桂</span>
-        </div>
-        <p class="text-muted small mb-2">Li River Cruise · Yangshuo · Longji Rice Terraces · Reed Flute Cave</p>
-        <div class="d-flex gap-3 small text-muted">
-          <span><i class="bi bi-calendar3"></i> 3–5 days</span>
-          <span><i class="bi bi-people"></i> Nature lovers</span>
-        </div>
-        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm mt-3">Inquire →</a>
-      </div>
-    </div>
-
-    <!-- 05 Chengdu -->
-    <div class="col-md-6">
-      <div class="card-ink p-4 h-100">
-        <div class="d-flex justify-content-between align-items-start mb-2">
-          <h5 class="fw-bold mb-0">05 Chengdu Pandas</h5>
-          <span class="seal">蜀</span>
-        </div>
-        <p class="text-muted small mb-2">Giant Panda Base · Jinli Street · Sichuan Hot Pot · Leshan Giant Buddha · Face-Changing Opera</p>
-        <div class="d-flex gap-3 small text-muted">
-          <span><i class="bi bi-calendar3"></i> 3–5 days</span>
-          <span><i class="bi bi-people"></i> Families & foodies</span>
-        </div>
-        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm mt-3">Inquire →</a>
-      </div>
-    </div>
-
-    <!-- 06 Yunnan -->
-    <div class="col-md-6">
-      <div class="card-ink p-4 h-100">
-        <div class="d-flex justify-content-between align-items-start mb-2">
-          <h5 class="fw-bold mb-0">06 Yunnan Mystique</h5>
-          <span class="seal">滇</span>
-        </div>
-        <p class="text-muted small mb-2">Lijiang Old Town · Dali Erhai Lake · Shangri-La · Jade Dragon Snow Mountain · Ethnic Villages</p>
-        <div class="d-flex gap-3 small text-muted">
-          <span><i class="bi bi-calendar3"></i> 5–7 days</span>
-          <span><i class="bi bi-people"></i> Culture seekers</span>
-        </div>
-        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm mt-3">Inquire →</a>
-      </div>
-    </div>
-
-    <!-- 07 Silk Road -->
-    <div class="col-md-6">
-      <div class="card-ink p-4 h-100">
-        <div class="d-flex justify-content-between align-items-start mb-2">
-          <h5 class="fw-bold mb-0">07 Silk Road</h5>
-          <span class="seal">丝</span>
-        </div>
-        <p class="text-muted small mb-2">Dunhuang Mogao Caves · Crescent Lake · Turpan · Jiayuguan Pass · Camel Caravan Experience</p>
-        <div class="d-flex gap-3 small text-muted">
-          <span><i class="bi bi-calendar3"></i> 5–8 days</span>
-          <span><i class="bi bi-people"></i> Adventurers</span>
-        </div>
-        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm mt-3">Inquire →</a>
-      </div>
-    </div>
-
-    <!-- 08 Tibet -->
-    <div class="col-md-6">
-      <div class="card-ink p-4 h-100">
-        <div class="d-flex justify-content-between align-items-start mb-2">
-          <h5 class="fw-bold mb-0">08 Tibet Sanctuary</h5>
-          <span class="seal">藏</span>
-        </div>
-        <p class="text-muted small mb-2">Potala Palace · Jokhang Temple · Namtso Lake · Tibetan Culture · Highland Scenery</p>
-        <div class="d-flex gap-3 small text-muted">
-          <span><i class="bi bi-calendar3"></i> 5–7 days</span>
-          <span><i class="bi bi-people"></i> Spiritual seekers</span>
-        </div>
-        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm mt-3">Inquire →</a>
-      </div>
-    </div>
-
-    <!-- 09 Zhangjiajie -->
-    <div class="col-md-6">
-      <div class="card-ink p-4 h-100">
-        <div class="d-flex justify-content-between align-items-start mb-2">
-          <h5 class="fw-bold mb-0">09 Zhangjiajie</h5>
-          <span class="seal">湘</span>
-        </div>
-        <p class="text-muted small mb-2">Avatar Mountains · Glass Bridge · Tianzi Mountain · Golden Whip Stream · Tianmen Cave</p>
-        <div class="d-flex gap-3 small text-muted">
-          <span><i class="bi bi-calendar3"></i> 3–5 days</span>
-          <span><i class="bi bi-people"></i> Thrill seekers</span>
-        </div>
-        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm mt-3">Inquire →</a>
-      </div>
-    </div>
-
-    <!-- 10 Huangshan -->
-    <div class="col-md-6">
-      <div class="card-ink p-4 h-100">
-        <div class="d-flex justify-content-between align-items-start mb-2">
-          <h5 class="fw-bold mb-0">10 Huangshan</h5>
-          <span class="seal">徽</span>
-        </div>
-        <p class="text-muted small mb-2">Sea of Clouds · Ancient Villages (Hongcun) · Hot Springs · Pine Trees on Cliffs · Hui Cuisine</p>
-        <div class="d-flex gap-3 small text-muted">
-          <span><i class="bi bi-calendar3"></i> 3–4 days</span>
-          <span><i class="bi bi-people"></i> Poetic souls</span>
-        </div>
-        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm mt-3">Inquire →</a>
-      </div>
-    </div>
-
+    {% endfor %}
   </div>
 
   <div class="ink-divider"><span class="seal">定制</span></div>
 
-  <!-- Every package includes -->
   <div class="paper-section p-4 mb-5">
-    <h6 class="fw-bold mb-3">Every Package Includes</h6>
+    <h6 class="fw-bold mb-3"><span class="en">Every Package Includes</span><span class="zh">每个套餐包含</span></h6>
     <div class="row">
-      <div class="col-md-3 mb-2"><small><i class="bi bi-check me-1"></i> Professional Photography</small></div>
-      <div class="col-md-3 mb-2"><small><i class="bi bi-check me-1"></i> Local Food Experience</small></div>
-      <div class="col-md-3 mb-2"><small><i class="bi bi-check me-1"></i> Airport Transfers</small></div>
-      <div class="col-md-3 mb-2"><small><i class="bi bi-check me-1"></i> English-Speaking Guide</small></div>
-      <div class="col-md-3 mb-2"><small><i class="bi bi-check me-1"></i> 24/7 Booking Support</small></div>
-      <div class="col-md-3 mb-2"><small><i class="bi bi-check me-1"></i> Handpicked Hotels</small></div>
-      <div class="col-md-3 mb-2"><small><i class="bi bi-check me-1"></i> Flexible Itinerary</small></div>
-      <div class="col-md-3 mb-2"><small><i class="bi bi-check me-1"></i> Mix & Match Destinations</small></div>
+      <div class="col-md-3 mb-2"><small><i class="bi bi-check me-1"></i> <span class="en">Professional Photography</span><span class="zh">专业摄影</span></small></div>
+      <div class="col-md-3 mb-2"><small><i class="bi bi-check me-1"></i> <span class="en">Local Food Experience</span><span class="zh">当地美食体验</span></small></div>
+      <div class="col-md-3 mb-2"><small><i class="bi bi-check me-1"></i> <span class="en">Airport Transfers</span><span class="zh">机场接送</span></small></div>
+      <div class="col-md-3 mb-2"><small><i class="bi bi-check me-1"></i> <span class="en">English-Speaking Guide</span><span class="zh">英文导游</span></small></div>
+      <div class="col-md-3 mb-2"><small><i class="bi bi-check me-1"></i> <span class="en">24/7 Booking Support</span><span class="zh">24小时预订支持</span></small></div>
+      <div class="col-md-3 mb-2"><small><i class="bi bi-check me-1"></i> <span class="en">Handpicked Hotels</span><span class="zh">精选酒店</span></small></div>
+      <div class="col-md-3 mb-2"><small><i class="bi bi-check me-1"></i> <span class="en">Flexible Itinerary</span><span class="zh">灵活行程</span></small></div>
+      <div class="col-md-3 mb-2"><small><i class="bi bi-check me-1"></i> <span class="en">Mix & Match Destinations</span><span class="zh">自由组合目的地</span></small></div>
     </div>
   </div>
 
-  <!-- CTA -->
   <div class="text-center py-4">
-    <h4 class="fw-bold mb-3">Plan Your China Trip</h4>
-    <p class="text-muted mb-3">Tell us your interests — we'll craft a bespoke itinerary just for you.</p>
-    <a href="{{ url_for('contact') }}" class="btn btn-cinnabar btn-lg"><i class="bi bi-whatsapp me-1"></i> Get a Quote</a>
+    <h4 class="fw-bold mb-3"><span class="en">Plan Your China Trip</span><span class="zh">规划你的中国之旅</span></h4>
+    <p class="text-muted mb-3"><span class="en">Tell us your interests — we'll craft a bespoke itinerary just for you.</span><span class="zh">告诉我们你的兴趣，我们为你量身定制行程。</span></p>
+    <a href="{{ url_for('contact') }}" class="btn btn-cinnabar btn-lg"><i class="bi bi-whatsapp me-1"></i> <span class="en">Get a Quote</span><span class="zh">获取报价</span></a>
   </div>
 </div>
 
