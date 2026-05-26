@@ -11,7 +11,7 @@ app.config['BABEL_SUPPORTED_LOCALES'] = ['en', 'zh']
 babel = Babel(app)
 
 # 兼容 Flask-Babel 新旧版本装饰器
-if hasattr(Babel, "locale_selector"):  # Flask-Babel >=3.0.0
+if hasattr(babel, "locale_selector"):  # Flask-Babel >=3.0.0
     @babel.locale_selector
     def get_locale():
         lang = request.args.get('lang')
