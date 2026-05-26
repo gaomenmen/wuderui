@@ -16,6 +16,7 @@ def get_locale():
     return session.get('lang', 'zh')
 
 babel = Babel(app, locale_selector=get_locale)
+app.jinja_env.globals['get_locale'] = get_locale
 
 @app.route("/")
 def home():
