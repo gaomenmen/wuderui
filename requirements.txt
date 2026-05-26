@@ -1,3 +1,9 @@
 Flask
 Flask-Babel
+Flask-SQLAlchemy
+Flask-Login
+Flask-WTF
+WTForms
+psycopg2-binary
+email-validator
 gunicorn

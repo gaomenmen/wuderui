@@ -1,0 +1,47 @@
+{% extends "admin/base.html" %}
+{% block admin_content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h2 class="fw-bold mb-0">Inquiries</h2>
+  <div class="d-flex gap-2">
+    <a href="{{ url_for('admin.inquiries') }}" class="btn btn-sm {{ 'btn-cinnabar' if not status else 'btn-outline-ink' }}">All</a>
+    <a href="?status=new" class="btn btn-sm {{ 'btn-cinnabar' if status=='new' else 'btn-outline-ink' }}">New</a>
+    <a href="?status=contacted" class="btn btn-sm {{ 'btn-cinnabar' if status=='contacted' else 'btn-outline-ink' }}">Contacted</a>
+    <a href="?status=converted" class="btn btn-sm {{ 'btn-cinnabar' if status=='converted' else 'btn-outline-ink' }}">Converted</a>
+    <a href="?status=closed" class="btn btn-sm {{ 'btn-cinnabar' if status=='closed' else 'btn-outline-ink' }}">Closed</a>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="admin-table">
+    <thead>
+      <tr><th>#</th><th>Name</th><th>Email</th><th>Interests</th><th>Referred By</th><th>Status</th><th>Date</th><th></th></tr>
+    </thead>
+    <tbody>
+      {% for inq in inquiries.items %}
+      <tr>
+        <td>{{ inq.id }}</td>
+        <td>{{ inq.name }}</td>
+        <td class="text-muted">{{ inq.email }}</td>
+        <td>{{ inq.interests or '-' }}</td>
+        <td>{{ inq.affiliate.name if inq.affiliate else '-' }}</td>
+        <td><span class="badge-status badge-{{ inq.status }}">{{ inq.status }}</span></td>
+        <td class="text-muted small">{{ inq.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+        <td><a href="{{ url_for('admin.inquiry_detail', id=inq.id) }}" class="btn btn-sm btn-outline-ink">View</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% if inquiries.has_prev or inquiries.has_next %}
+<div class="d-flex justify-content-center gap-2 mt-3">
+  {% if inquiries.has_prev %}
+  <a href="?page={{ inquiries.prev_num }}{% if status %}&status={{ status }}{% endif %}" class="btn btn-sm btn-outline-ink">← Prev</a>
+  {% endif %}
+  <span class="small text-muted align-self-center">Page {{ inquiries.page }} of {{ inquiries.pages }}</span>
+  {% if inquiries.has_next %}
+  <a href="?page={{ inquiries.next_num }}{% if status %}&status={{ status }}{% endif %}" class="btn btn-sm btn-outline-ink">Next →</a>
+  {% endif %}
+</div>
+{% endif %}
+{% endblock %}

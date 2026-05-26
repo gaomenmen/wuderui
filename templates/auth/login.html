@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" class="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login — WuDeRuiBo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            min-height: 100vh; display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(170deg, #2c2c2c 0%, #1a1a1a 100%);
+            font-family: 'Inter', sans-serif;
+        }
+        .login-card {
+            background: #faf9f6; border-radius: 12px; padding: 2.5rem;
+            width: 100%; max-width: 380px; border: 1px solid rgba(0,0,0,.06);
+        }
+        .login-card h2 { font-family: 'Playfair Display', serif; }
+        .login-card .seal {
+            display: inline-block; border: 2px solid #c23a2a; color: #c23a2a;
+            padding: 2px 8px; font-size: .75rem; letter-spacing: 2px;
+            font-family: 'Noto Serif SC', serif; transform: rotate(-2deg);
+        }
+        .btn-cinnabar { background: #b5362e; color: #fff; border: none; border-radius: 6px; }
+        .btn-cinnabar:hover { background: #d4564e; color: #fff; }
+        .alert { font-size: .85rem; }
+    </style>
+</head>
+<body>
+<div class="login-card">
+    <div class="text-center mb-4">
+        <span class="seal">吴德瑞博</span>
+        <h2 class="fw-bold mt-2 mb-1">Admin Login</h2>
+        <small class="text-muted">WuDeRuiBo Management</small>
+    </div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ 'danger' if category == 'error' else 'success' }} py-2 small">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <form method="POST">
+        <div class="mb-3">
+            <label class="form-label small fw-bold">Username</label>
+            <input type="text" name="username" class="form-control" required autofocus>
+        </div>
+        <div class="mb-3">
+            <label class="form-label small fw-bold">Password</label>
+            <input type="password" name="password" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-cinnabar w-100">Login</button>
+    </form>
+</div>
+</body>
+</html>

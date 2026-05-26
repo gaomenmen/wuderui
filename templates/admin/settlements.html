@@ -1,0 +1,31 @@
+{% extends "admin/base.html" %}
+{% block admin_content %}
+<h2 class="fw-bold mb-4">Settlements</h2>
+
+<div class="admin-stat mb-4" style="display:inline-block;">
+  <div class="small text-muted">Total Paid Out</div>
+  <div class="stat-val">${{ "%.2f"|format(total_paid) }}</div>
+</div>
+
+<div class="table-responsive">
+  <table class="admin-table">
+    <thead>
+      <tr><th>Affiliate</th><th>Inquiry</th><th>Service</th><th>Sale</th><th>Commission</th><th>Paid On</th></tr>
+    </thead>
+    <tbody>
+      {% for c in paid.items %}
+      <tr>
+        <td>{{ c.affiliate.name }}</td>
+        <td><a href="{{ url_for('admin.inquiry_detail', id=c.inquiry_id) }}">#{{ c.inquiry_id }}</a></td>
+        <td>{{ c.service_type }}</td>
+        <td>${{ "%.2f"|format(c.sale_amount) }}</td>
+        <td><strong>${{ "%.2f"|format(c.commission_amount) }}</strong></td>
+        <td class="text-muted small">{{ c.paid_at.strftime('%Y-%m-%d') if c.paid_at else '-' }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="6" class="text-muted text-center">No settlements yet.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

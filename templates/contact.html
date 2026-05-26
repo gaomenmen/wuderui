@@ -82,45 +82,53 @@
     <div class="col-md-7">
       <div class="paper-section p-4">
         <h4 class="fw-bold mb-4"><span class="en">Quick Inquiry</span><span class="zh">快速咨询</span></h4>
-        <form>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ 'danger' if category == 'error' else 'success' }} small py-2">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        <form method="POST" action="{{ url_for('contact.contact') }}">
+          <input type="hidden" name="source_page" value="contact">
           <div class="row g-3">
             <div class="col-md-6">
               <label class="form-label small fw-bold"><span class="en">Your Name</span><span class="zh">您的姓名</span></label>
-              <input type="text" class="form-control" style="border-radius:8px;">
+              <input type="text" name="name" class="form-control" style="border-radius:8px;" required>
             </div>
             <div class="col-md-6">
               <label class="form-label small fw-bold">Email / WhatsApp</label>
-              <input type="text" class="form-control" style="border-radius:8px;">
+              <input type="text" name="email" class="form-control" style="border-radius:8px;" required>
             </div>
           </div>
           <div class="mt-3">
             <label class="form-label small fw-bold"><span class="en">I'm interested in</span><span class="zh">感兴趣的服务</span></label>
             <div class="d-flex flex-wrap gap-3">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="chk1">
+                <input class="form-check-input" type="checkbox" name="interests" value="chinese" id="chk1">
                 <label class="form-check-label small" for="chk1"><span class="en">Chinese Course</span><span class="zh">中文课程</span></label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="chk2">
+                <input class="form-check-input" type="checkbox" name="interests" value="taichi" id="chk2">
                 <label class="form-check-label small" for="chk2"><span class="en">Tai Chi</span><span class="zh">太极拳</span></label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="chk3">
+                <input class="form-check-input" type="checkbox" name="interests" value="travel" id="chk3">
                 <label class="form-check-label small" for="chk3"><span class="en">Custom Travel</span><span class="zh">定制旅行</span></label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="chk4">
+                <input class="form-check-input" type="checkbox" name="interests" value="affiliate" id="chk4">
                 <label class="form-check-label small" for="chk4"><span class="en">Affiliate Program</span><span class="zh">推荐分佣</span></label>
               </div>
             </div>
           </div>
           <div class="mt-3">
             <label class="form-label small fw-bold"><span class="en">Message</span><span class="zh">留言</span></label>
-            <textarea class="form-control" rows="4" style="border-radius:8px;"></textarea>
+            <textarea name="message" class="form-control" rows="4" style="border-radius:8px;"></textarea>
           </div>
           <div class="mt-3">
             <label class="form-label small fw-bold"><span class="en">Referral Code (optional)</span><span class="zh">推荐码（选填）</span></label>
-            <input type="text" class="form-control" style="border-radius:8px;" placeholder="">
+            <input type="text" name="referral_code" class="form-control" style="border-radius:8px;" placeholder="">
           </div>
           <button type="submit" class="btn btn-cinnabar mt-3"><span class="en">Send Inquiry</span><span class="zh">提交咨询</span></button>
         </form>

@@ -1,0 +1,81 @@
+{% extends "admin/base.html" %}
+{% block admin_content %}
+<h2 class="fw-bold mb-4">Dashboard</h2>
+
+<div class="row g-3 mb-4">
+  <div class="col-6 col-md-3">
+    <div class="admin-stat">
+      <div class="stat-val">{{ total_inquiries }}</div>
+      <div class="small text-muted mt-1">Total Inquiries</div>
+    </div>
+  </div>
+  <div class="col-6 col-md-3">
+    <div class="admin-stat">
+      <div class="stat-val" style="color:var(--cinnabar);">{{ new_inquiries }}</div>
+      <div class="small text-muted mt-1">New (Unread)</div>
+    </div>
+  </div>
+  <div class="col-6 col-md-3">
+    <div class="admin-stat">
+      <div class="stat-val">{{ active_affiliates }}</div>
+      <div class="small text-muted mt-1">Active Affiliates</div>
+    </div>
+  </div>
+  <div class="col-6 col-md-3">
+    <div class="admin-stat">
+      <div class="stat-val">${{ "%.2f"|format(month_commission_total) }}</div>
+      <div class="small text-muted mt-1">Commissions (This Month)</div>
+    </div>
+  </div>
+</div>
+
+{% if pending_total > 0 %}
+<div class="alert alert-warning small py-2">
+  <strong>${{ "%.2f"|format(pending_total) }}</strong> in pending commissions awaiting approval/payment.
+  <a href="{{ url_for('admin.commissions', status='pending') }}">View →</a>
+</div>
+{% endif %}
+
+<h5 class="fw-bold mb-3">Recent Inquiries</h5>
+<div class="table-responsive mb-4">
+  <table class="admin-table">
+    <thead>
+      <tr><th>Name</th><th>Email</th><th>Interests</th><th>Affiliate</th><th>Status</th><th>Date</th></tr>
+    </thead>
+    <tbody>
+      {% for inq in recent_inquiries %}
+      <tr>
+        <td><a href="{{ url_for('admin.inquiry_detail', id=inq.id) }}">{{ inq.name }}</a></td>
+        <td class="text-muted">{{ inq.email }}</td>
+        <td>{{ inq.interests or '-' }}</td>
+        <td>{{ inq.affiliate.name if inq.affiliate else '-' }}</td>
+        <td><span class="badge-status badge-{{ inq.status }}">{{ inq.status }}</span></td>
+        <td class="text-muted">{{ inq.created_at.strftime('%m/%d') }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<h5 class="fw-bold mb-3">Recent Commissions</h5>
+<div class="table-responsive">
+  <table class="admin-table">
+    <thead>
+      <tr><th>Affiliate</th><th>Service</th><th>Sale</th><th>Commission</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      {% for c in recent_commissions %}
+      <tr>
+        <td>{{ c.affiliate.name }}</td>
+        <td>{{ c.service_type }}</td>
+        <td>${{ "%.2f"|format(c.sale_amount) }}</td>
+        <td><strong>${{ "%.2f"|format(c.commission_amount) }}</strong></td>
+        <td><span class="badge-status badge-{{ c.status }}">{{ c.status }}</span></td>
+      </tr>
+      {% else %}
+      <tr><td colspan="5" class="text-muted text-center">No commissions yet.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

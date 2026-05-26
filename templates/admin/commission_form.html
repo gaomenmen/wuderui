@@ -1,0 +1,42 @@
+{% extends "admin/base.html" %}
+{% block admin_content %}
+<h2 class="fw-bold mb-4">Create Commission</h2>
+<form method="POST">
+<div class="row">
+  <div class="col-md-8">
+    <div class="card-ink p-4">
+      <div class="mb-3">
+        <label class="form-label small fw-bold">Select Inquiry</label>
+        <select name="inquiry_id" class="form-select form-select-sm" required>
+          <option value="">-- Choose an inquiry --</option>
+          {% for inq in inquiries %}
+          <option value="{{ inq.id }}" {{ 'selected' if request.args.get('inquiry_id')|string == inq.id|string }}>
+            #{{ inq.id }} {{ inq.name }} — {{ inq.interests or 'No interests' }} ({{ inq.affiliate.name if inq.affiliate else 'No affiliate' }})
+          </option>
+          {% endfor %}
+        </select>
+        <small class="text-muted">Only inquiries with an affiliate are shown.</small>
+      </div>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label small fw-bold">Service Type</label>
+          <select name="service_type" class="form-select form-select-sm" required>
+            <option value="chinese">Chinese Course (5%)</option>
+            <option value="taichi">Tai Chi Course (8%)</option>
+            <option value="travel">Custom Travel (10%)</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label small fw-bold">Sale Amount ($)</label>
+          <input type="number" step="0.01" min="0" name="sale_amount" class="form-control form-control-sm" required placeholder="0.00">
+        </div>
+      </div>
+      <div class="mt-3">
+        <button type="submit" class="btn btn-cinnabar">Create Commission</button>
+        <a href="{{ url_for('admin.commissions') }}" class="btn btn-outline-ink ms-2">Cancel</a>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+{% endblock %}

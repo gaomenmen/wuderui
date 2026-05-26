@@ -1,0 +1,60 @@
+{% extends "admin/base.html" %}
+{% block admin_content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h2 class="fw-bold mb-0">Monthly Reports</h2>
+</div>
+
+<div class="card-ink p-4 mb-4">
+  <h6 class="fw-bold mb-3">Generate Report</h6>
+  <form method="POST" action="{{ url_for('admin.report_generate') }}" class="row g-3 align-items-end">
+    <div class="col-md-3">
+      <label class="form-label small">Year</label>
+      <input type="number" name="year" class="form-control form-control-sm" value="2026" required>
+    </div>
+    <div class="col-md-3">
+      <label class="form-label small">Month</label>
+      <select name="month" class="form-select form-select-sm" required>
+        {% for m in range(1,13) %}
+        <option value="{{ m }}" {{ 'selected' if m == 5 }}>{{ m }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-md-3">
+      <label class="form-label small">Affiliate (blank = all)</label>
+      <select name="affiliate_id" class="form-select form-select-sm">
+        <option value="">All Affiliates</option>
+        {% for aff in affiliates %}
+        <option value="{{ aff.id }}">{{ aff.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-md-3">
+      <button type="submit" class="btn btn-cinnabar btn-sm">Generate</button>
+    </div>
+  </form>
+</div>
+
+<div class="table-responsive">
+  <table class="admin-table">
+    <thead>
+      <tr><th>Period</th><th>Affiliate</th><th>Clicks</th><th>Inquiries</th><th>Commissions</th><th>Total Earned</th><th>Total Paid</th><th>Generated</th></tr>
+    </thead>
+    <tbody>
+      {% for r in reports %}
+      <tr>
+        <td>{{ r.year }}-{{ '%02d'|format(r.month) }}</td>
+        <td>{{ r.affiliate.name if r.affiliate else 'ALL' }}</td>
+        <td>{{ r.total_clicks }}</td>
+        <td>{{ r.total_inquiries }}</td>
+        <td>{{ r.total_commissions }}</td>
+        <td><strong>${{ "%.2f"|format(r.total_commission_amount) }}</strong></td>
+        <td>${{ "%.2f"|format(r.total_paid) }}</td>
+        <td class="text-muted small">{{ r.generated_at.strftime('%Y-%m-%d %H:%M') if r.generated_at else '-' }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="8" class="text-muted text-center">No reports yet. Generate one above.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "admin/base.html" %}
+{% block admin_content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h2 class="fw-bold mb-0">Commissions</h2>
+  <div class="d-flex gap-2">
+    <a href="{{ url_for('admin.commissions') }}" class="btn btn-sm {{ 'btn-cinnabar' if not status else 'btn-outline-ink' }}">All</a>
+    <a href="?status=pending" class="btn btn-sm {{ 'btn-cinnabar' if status=='pending' else 'btn-outline-ink' }}">Pending</a>
+    <a href="?status=approved" class="btn btn-sm {{ 'btn-cinnabar' if status=='approved' else 'btn-outline-ink' }}">Approved</a>
+    <a href="?status=paid" class="btn btn-sm {{ 'btn-cinnabar' if status=='paid' else 'btn-outline-ink' }}">Paid</a>
+    <a href="{{ url_for('admin.commission_new') }}" class="btn btn-cinnabar btn-sm">+ New</a>
+  </div>
+</div>
+
+<form method="POST" action="{{ url_for('admin.commission_bulk_pay') }}">
+<div class="table-responsive">
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th><input type="checkbox" id="selectAll"></th>
+        <th>Affiliate</th><th>Inquiry</th><th>Service</th><th>Sale</th><th>Rate</th><th>Commission</th><th>Status</th><th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for c in commissions.items %}
+      <tr>
+        <td><input type="checkbox" name="commission_ids" value="{{ c.id }}" class="row-check" {{ 'disabled' if c.status=='paid' }}></td>
+        <td><a href="{{ url_for('admin.affiliate_detail', id=c.affiliate_id) }}">{{ c.affiliate.name }}</a></td>
+        <td><a href="{{ url_for('admin.inquiry_detail', id=c.inquiry_id) }}">#{{ c.inquiry_id }}</a></td>
+        <td>{{ c.service_type }}</td>
+        <td>${{ "%.2f"|format(c.sale_amount) }}</td>
+        <td>{{ (c.commission_rate*100)|round }}%</td>
+        <td><strong>${{ "%.2f"|format(c.commission_amount) }}</strong></td>
+        <td><span class="badge-status badge-{{ c.status }}">{{ c.status }}</span></td>
+        <td class="text-muted small">{{ c.created_at.strftime('%Y-%m-%d') }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<div class="d-flex justify-content-between align-items-center mt-3">
+  <button type="submit" class="btn btn-cinnabar btn-sm" onclick="return confirm('Mark selected as paid?')">Mark Selected as Paid</button>
+  <span class="small text-muted">Page {{ commissions.page }} of {{ commissions.pages }}</span>
+</div>
+</form>
+
+<script>
+document.getElementById('selectAll').addEventListener('change', function(){
+  document.querySelectorAll('.row-check:not(:disabled)').forEach(cb => cb.checked = this.checked);
+});
+</script>
+{% endblock %}

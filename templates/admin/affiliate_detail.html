@@ -1,0 +1,69 @@
+{% extends "admin/base.html" %}
+{% block admin_content %}
+<h2 class="fw-bold mb-4">{{ affiliate.name }}</h2>
+
+<div class="row g-4 mb-4">
+  <div class="col-6 col-md-3">
+    <div class="admin-stat"><div class="stat-val">{{ affiliate.clicks.count() }}</div><div class="small text-muted mt-1">Clicks</div></div>
+  </div>
+  <div class="col-6 col-md-3">
+    <div class="admin-stat"><div class="stat-val">{{ affiliate.inquiries.count() }}</div><div class="small text-muted mt-1">Inquiries</div></div>
+  </div>
+  <div class="col-6 col-md-3">
+    <div class="admin-stat"><div class="stat-val">${{ "%.2f"|format(total_earned) }}</div><div class="small text-muted mt-1">Earned</div></div>
+  </div>
+  <div class="col-6 col-md-3">
+    <div class="admin-stat"><div class="stat-val">${{ "%.2f"|format(total_paid) }}</div><div class="small text-muted mt-1">Paid Out</div></div>
+  </div>
+</div>
+
+<div class="card-ink p-4 mb-4">
+  <div class="row g-3">
+    <div class="col-sm-4"><small class="text-muted d-block">Email</small>{{ affiliate.email }}</div>
+    <div class="col-sm-4"><small class="text-muted d-block">Referral Code</small><code>{{ affiliate.referral_code }}</code></div>
+    <div class="col-sm-4"><small class="text-muted d-block">Referral Link</small><code>{{ request.host_url }}?ref={{ affiliate.referral_code }}</code></div>
+    <div class="col-sm-4"><small class="text-muted d-block">Rates</small>{{ (affiliate.commission_rate_chinese*100)|round }}% / {{ (affiliate.commission_rate_taichi*100)|round }}% / {{ (affiliate.commission_rate_travel*100)|round }}%</div>
+    <div class="col-sm-4"><small class="text-muted d-block">Status</small><span class="badge-status badge-{{ affiliate.status }}">{{ affiliate.status }}</span></div>
+    <div class="col-sm-4"><small class="text-muted d-block">PayPal</small>{{ affiliate.paypal_email or '-' }}</div>
+  </div>
+  <div class="mt-3">
+    <a href="{{ url_for('admin.affiliate_form', id=affiliate.id) }}" class="btn btn-outline-ink btn-sm">Edit</a>
+  </div>
+</div>
+
+<h5 class="fw-bold mb-2">Inquiries ({{ inquiries|length }})</h5>
+<div class="table-responsive mb-4">
+  <table class="admin-table">
+    <thead><tr><th>Name</th><th>Interests</th><th>Status</th><th>Date</th></tr></thead>
+    <tbody>
+      {% for inq in inquiries %}
+      <tr>
+        <td><a href="{{ url_for('admin.inquiry_detail', id=inq.id) }}">{{ inq.name }}</a></td>
+        <td>{{ inq.interests or '-' }}</td>
+        <td><span class="badge-status badge-{{ inq.status }}">{{ inq.status }}</span></td>
+        <td class="text-muted small">{{ inq.created_at.strftime('%Y-%m-%d') }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<h5 class="fw-bold mb-2">Commissions ({{ commissions|length }})</h5>
+<div class="table-responsive">
+  <table class="admin-table">
+    <thead><tr><th>Service</th><th>Sale</th><th>Rate</th><th>Commission</th><th>Status</th><th>Date</th></tr></thead>
+    <tbody>
+      {% for c in commissions %}
+      <tr>
+        <td>{{ c.service_type }}</td>
+        <td>${{ "%.2f"|format(c.sale_amount) }}</td>
+        <td>{{ (c.commission_rate*100)|round }}%</td>
+        <td><strong>${{ "%.2f"|format(c.commission_amount) }}</strong></td>
+        <td><span class="badge-status badge-{{ c.status }}">{{ c.status }}</span></td>
+        <td class="text-muted small">{{ c.created_at.strftime('%Y-%m-%d') }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "admin/base.html" %}
+{% block admin_content %}
+<h2 class="fw-bold mb-4">Inquiry #{{ inquiry.id }}</h2>
+
+<div class="row g-4">
+  <div class="col-md-8">
+    <div class="card-ink p-4 mb-3">
+      <div class="row g-3">
+        <div class="col-sm-6"><small class="text-muted d-block">Name</small><strong>{{ inquiry.name }}</strong></div>
+        <div class="col-sm-6"><small class="text-muted d-block">Email</small><strong>{{ inquiry.email }}</strong></div>
+        <div class="col-sm-6"><small class="text-muted d-block">Phone / WhatsApp</small>{{ inquiry.phone or '-' }}</div>
+        <div class="col-sm-6"><small class="text-muted d-block">Interests</small>{{ inquiry.interests or '-' }}</div>
+        <div class="col-sm-6"><small class="text-muted d-block">Source Page</small>{{ inquiry.source_page or '-' }}</div>
+        <div class="col-sm-6"><small class="text-muted d-block">Referral Code</small>{{ inquiry.referral_code or '-' }}</div>
+        <div class="col-12"><small class="text-muted d-block">Message</small>{{ inquiry.message or '-' }}</div>
+      </div>
+    </div>
+    {% if inquiry.affiliate %}
+    <div class="card-ink p-4 mb-3">
+      <h6 class="fw-bold">Referred By</h6>
+      <a href="{{ url_for('admin.affiliate_detail', id=inquiry.affiliate.id) }}">{{ inquiry.affiliate.name }}</a>
+      <small class="text-muted">({{ inquiry.affiliate.referral_code }})</small>
+    </div>
+    {% endif %}
+    {% if inquiry.commissions %}
+    <div class="card-ink p-4">
+      <h6 class="fw-bold mb-2">Commissions</h6>
+      {% for c in inquiry.commissions %}
+      <div class="d-flex justify-content-between small mb-1">
+        <span>{{ c.service_type }} — ${{ "%.2f"|format(c.commission_amount) }}</span>
+        <span class="badge-status badge-{{ c.status }}">{{ c.status }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+  <div class="col-md-4">
+    <form method="POST">
+      <div class="card-ink p-4 mb-3">
+        <h6 class="fw-bold mb-3">Update Status</h6>
+        <label class="form-label small">Status</label>
+        <select name="status" class="form-select form-select-sm mb-3">
+          {% for s in ['new', 'contacted', 'converted', 'closed'] %}
+          <option value="{{ s }}" {{ 'selected' if inquiry.status == s }}>{{ s }}</option>
+          {% endfor %}
+        </select>
+        <label class="form-label small">Estimated Value ($)</label>
+        <input type="number" step="0.01" name="estimated_value" class="form-control form-control-sm mb-3"
+          value="{{ inquiry.estimated_value or '' }}" placeholder="0.00">
+        <label class="form-label small">Admin Notes</label>
+        <textarea name="admin_notes" class="form-control form-control-sm mb-3" rows="3">{{ inquiry.admin_notes or '' }}</textarea>
+        <button type="submit" class="btn btn-cinnabar btn-sm w-100">Save Changes</button>
+      </div>
+    </form>
+    {% if inquiry.affiliate_id and inquiry.status == 'converted' %}
+    <a href="{{ url_for('admin.commission_new') }}?inquiry_id={{ inquiry.id }}" class="btn btn-outline-ink btn-sm w-100">Create Commission</a>
+    {% endif %}
+    <div class="text-muted small mt-3">Created: {{ inquiry.created_at.strftime('%Y-%m-%d %H:%M') }}</div>
+  </div>
+</div>
+{% endblock %}
