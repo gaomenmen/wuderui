@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}WuDeRuiBo - {{ _('Learn Chinese. Experience China.') }}{% endblock %}
+{% block content %}
+<div class="jumbotron text-center">
+    <h1 class="display-4">{{ _('Learn Chinese. Experience China.') }}</h1>
+    <p>{{ _('Champion Tai Chi, systematic Chinese courses, and premium custom tours. Explore Chinese aesthetics and expert service.') }}</p>
+    <p>
+        <a class="btn btn-primary btn-lg" href="{{ url_for('learn_chinese') }}">{{ _('Trial Chinese Lesson') }}</a>
+        <a class="btn btn-success btn-lg" href="{{ url_for('tai_chi') }}">{{ _('Tai Chi Free Preview') }}</a>
+    </p>
+</div>
+<div class="row text-center">
+    <div class="col"><b>24</b><br>{{ _('Tai Chi class steps') }}</div>
+    <div class="col"><b>10</b><br>{{ _('Travel packages') }}</div>
+    <div class="col"><b>5–10%</b><br>{{ _('Referral commission') }}</div>
+    <div class="col"><b>WhatsApp</b><br>{{ _('One-on-one support') }}</div>
+</div>
+<!-- 可添加更多卡片/简要介绍各主入口 -->
+{% endblock %}
