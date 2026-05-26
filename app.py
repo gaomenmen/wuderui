@@ -10,7 +10,7 @@ app.config['BABEL_DEFAULT_LOCALE'] = 'zh'
 app.config['BABEL_SUPPORTED_LOCALES'] = ['en', 'zh']
 babel = Babel(app)
 
-@babel.localeselector
+@babel.locale_selector
 def get_locale():
     lang = request.args.get('lang')
     if lang:
