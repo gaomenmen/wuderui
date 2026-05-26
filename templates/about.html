@@ -2,68 +2,104 @@
 {% block title %}<span class="en">About Us — WuDeRuiBo</span><span class="zh">关于我们 — 吴德瑞博</span>{% endblock %}
 {% block content %}
 
-<div class="hero-ink py-5">
-  <div class="container position-relative" style="z-index:1;">
-    <h1 class="fw-bold" style="font-family:'Noto Serif SC',serif;"><span class="en">About WuDeRuiBo</span><span class="zh">关于吴德瑞博</span></h1>
-    <p class="lead" style="opacity:.8;"><span class="en">Bridging Chinese Culture and the World</span><span class="zh">连接中国文化与世界</span></p>
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<div class="hero-photo">
+  <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=1600&h=800&fit=crop');"></div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content py-5">
+    <div style="min-height:280px;" class="d-flex flex-column justify-content-center">
+      <p class="small text-uppercase mb-3 fade-up" style="letter-spacing:4px;color:var(--gold-subtle);">
+        <span class="en">About Us</span><span class="zh">关于我们</span>
+      </p>
+      <h1 class="fw-bold mb-3 fade-up d1" style="font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.15;">
+        <span class="en">Bridging Chinese<br>Culture & the World.</span>
+        <span class="zh">连接中国<br>文化与世界。</span>
+      </h1>
+    </div>
   </div>
 </div>
 
 <div class="container py-5">
 
+  <!-- ═══════════════════ OUR STORY ═══════════════════ -->
   <div class="row align-items-center mb-5">
     <div class="col-md-6 mb-4">
-      <h3 class="section-title mb-4"><span class="en">Our Story</span><span class="zh">品牌故事</span></h3>
-      <p><span class="en">WuDeRuiBo (吴德瑞博) is a cultural exchange platform founded with a clear mission: to make authentic Chinese culture — language, Tai Chi, and travel — accessible to people worldwide.</span><span class="zh">吴德瑞博是一个文化交流平台，使命是让真正的中国文化——语言、太极拳和旅行——走向全世界。</span></p>
+      <p class="small text-uppercase mb-2" style="letter-spacing:3px;color:var(--cinnabar);">
+        <span class="en">Our Story</span><span class="zh">品牌故事</span>
+      </p>
+      <h2 class="fw-bold mb-3">
+        <span class="en">WuDeRuiBo (吴德瑞博)</span>
+        <span class="zh">吴德瑞博</span>
+      </h2>
+      <p><span class="en">A cultural exchange platform founded with a clear mission: to make authentic Chinese culture — language, Tai Chi, and travel — accessible to people worldwide.</span><span class="zh">一个文化交流平台，使命是让真正的中国文化——语言、太极拳和旅行——走向全世界。</span></p>
       <p class="text-muted"><span class="en">Our name carries deep meaning in Chinese tradition:</span><span class="zh">我们的名字承载着中国传统文化的深厚内涵：</span></p>
       <div class="mt-3">
-        <div class="d-flex align-items-center mb-2">
-          <span class="seal me-2">吴</span>
-          <small class="text-muted"><span class="en">Wú — A timeless Chinese surname rooted in Jiangnan culture</span><span class="zh">吴 — 源自江南文化的悠久姓氏</span></small>
+        <div class="d-flex align-items-center mb-3">
+          <span class="seal me-3" style="font-size:.9rem;">吴</span>
+          <div>
+            <strong>Wú</strong>
+            <small class="text-muted d-block"><span class="en">A timeless Chinese surname rooted in Jiangnan culture</span><span class="zh">源自江南文化的悠久姓氏</span></small>
+          </div>
         </div>
-        <div class="d-flex align-items-center mb-2">
-          <span class="seal me-2">德</span>
-          <small class="text-muted"><span class="en">Dé — Virtue and moral excellence, the foundation of our service</span><span class="zh">德 — 品德与修养，我们的服务根基</span></small>
+        <div class="d-flex align-items-center mb-3">
+          <span class="seal me-3" style="font-size:.9rem;">德</span>
+          <div>
+            <strong>Dé</strong>
+            <small class="text-muted d-block"><span class="en">Virtue and moral excellence — the foundation of our service</span><span class="zh">品德与修养——我们的服务根基</span></small>
+          </div>
         </div>
-        <div class="d-flex align-items-center mb-2">
-          <span class="seal me-2">瑞</span>
-          <small class="text-muted"><span class="en">Ruì — Auspiciousness and good fortune for every journey</span><span class="zh">瑞 — 祥瑞与好运，祝福每一段旅程</span></small>
+        <div class="d-flex align-items-center mb-3">
+          <span class="seal me-3" style="font-size:.9rem;">瑞</span>
+          <div>
+            <strong>Ruì</strong>
+            <small class="text-muted d-block"><span class="en">Auspiciousness and good fortune for every journey</span><span class="zh">祥瑞与好运——祝福每一段旅程</span></small>
+          </div>
         </div>
-        <div class="d-flex align-items-center mb-2">
-          <span class="seal me-2">博</span>
-          <small class="text-muted"><span class="en">Bó — Broad knowledge and profound cultural depth</span><span class="zh">博 — 广博的知识与深厚的文化底蕴</span></small>
+        <div class="d-flex align-items-center mb-3">
+          <span class="seal me-3" style="font-size:.9rem;">博</span>
+          <div>
+            <strong>Bó</strong>
+            <small class="text-muted d-block"><span class="en">Broad knowledge and profound cultural depth</span><span class="zh">广博的知识与深厚的文化底蕴</span></small>
+          </div>
         </div>
       </div>
     </div>
     <div class="col-md-6 mb-4 text-center">
       <div class="paper-section p-5">
-        <div style="font-family:'Noto Serif SC',serif;font-size:3.5rem;color:var(--ink-black);">吴德瑞博</div>
-        <p class="text-muted mt-2 mb-0"><span class="en">Virtue · Fortune · Knowledge</span><span class="zh">品德 · 祥瑞 · 博学</span></p>
+        <div style="font-family:'Noto Serif SC',serif;font-size:4rem;color:var(--ink-black);line-height:1.2;">吴德瑞博</div>
+        <p class="text-muted mt-3 mb-0" style="letter-spacing:2px;">Virtue · Fortune · Knowledge</p>
       </div>
     </div>
   </div>
 
   <div class="ink-divider"><span class="seal">团队</span></div>
 
-  <h3 class="section-title mb-4"><span class="en">Our Team</span><span class="zh">我们的团队</span></h3>
+  <!-- ═══════════════════ TEAM ═══════════════════ -->
+  <div class="text-center mb-5">
+    <h2 class="fw-bold">
+      <span class="en">Our Team</span>
+      <span class="zh">我们的团队</span>
+    </h2>
+  </div>
+
   <div class="row g-4 mb-5">
     <div class="col-md-4">
       <div class="card-ink p-4 text-center">
-        <div class="rounded-circle bg-dark text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width:64px;height:64px;">陈</div>
+        <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width:64px;height:64px;background:var(--ink-black);color:#fff;font-size:1.5rem;font-family:'Noto Serif SC',serif;">陈</div>
         <h6 class="fw-bold"><span class="en">Leadership</span><span class="zh">创始人</span></h6>
         <small class="text-muted"><span class="en">Former tourism bureau professional with deep industry connections.</span><span class="zh">前旅游局资深从业者，拥有深厚行业资源。</span></small>
       </div>
     </div>
     <div class="col-md-4">
       <div class="card-ink p-4 text-center">
-        <div class="rounded-circle bg-dark text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width:64px;height:64px;">尹</div>
+        <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width:64px;height:64px;background:var(--cinnabar);color:#fff;font-size:1.5rem;font-family:'Noto Serif SC',serif;">尹</div>
         <h6 class="fw-bold"><span class="en">Operations</span><span class="zh">运营负责人</span></h6>
         <small class="text-muted"><span class="en">Experienced in cross-cultural communication and international business.</span><span class="zh">丰富的跨文化沟通与国际商务经验。</span></small>
       </div>
     </div>
     <div class="col-md-4">
       <div class="card-ink p-4 text-center">
-        <div class="rounded-circle bg-dark text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width:64px;height:64px;">师</div>
+        <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width:64px;height:64px;background:var(--gold-subtle);color:#fff;font-size:1.5rem;font-family:'Noto Serif SC',serif;">师</div>
         <h6 class="fw-bold"><span class="en">Tai Chi Champion</span><span class="zh">太极冠军教练</span></h6>
         <small class="text-muted"><span class="en">National Tai Chi champion, recording the 24-form course professionally.</span><span class="zh">全国太极拳比赛冠军，专业录制24式课程。</span></small>
       </div>
@@ -72,27 +108,57 @@
 
   <div class="ink-divider"><span class="seal">理念</span></div>
 
-  <h3 class="section-title mb-4"><span class="en">Our Philosophy</span><span class="zh">我们的理念</span></h3>
+  <!-- ═══════════════════ PHILOSOPHY ═══════════════════ -->
+  <div class="text-center mb-5">
+    <h2 class="fw-bold">
+      <span class="en">Our Philosophy</span>
+      <span class="zh">我们的理念</span>
+    </h2>
+  </div>
+
   <div class="row g-4 mb-5">
     <div class="col-md-4 text-center">
-      <h6 class="fw-bold"><span class="en">Authentic, Not Commercialized</span><span class="zh">原汁原味，不是流水线</span></h6>
-      <p class="text-muted small"><span class="en">Genuine cultural experiences, not cookie-cutter tourist products.</span><span class="zh">提供真正的文化体验，拒绝千篇一律的旅游产品。</span></p>
+      <div class="card-ink p-4 h-100">
+        <div class="mb-3" style="width:48px;height:48px;border-radius:50%;background:var(--paper-warm);display:flex;align-items:center;justify-content:center;margin:0 auto;">
+          <i class="bi bi-gem" style="font-size:1.3rem;color:var(--cinnabar);"></i>
+        </div>
+        <h6 class="fw-bold"><span class="en">Authentic, Not Commercialized</span><span class="zh">原汁原味，不是流水线</span></h6>
+        <p class="text-muted small"><span class="en">Genuine cultural experiences, not cookie-cutter tourist products.</span><span class="zh">提供真正的文化体验，拒绝千篇一律的旅游产品。</span></p>
+      </div>
     </div>
     <div class="col-md-4 text-center">
-      <h6 class="fw-bold"><span class="en">Expert-Led</span><span class="zh">专家领航</span></h6>
-      <p class="text-muted small"><span class="en">National champion coaches, certified teachers, and licensed guides.</span><span class="zh">全国冠军教练、认证教师、持证导游。</span></p>
+      <div class="card-ink p-4 h-100">
+        <div class="mb-3" style="width:48px;height:48px;border-radius:50%;background:var(--paper-warm);display:flex;align-items:center;justify-content:center;margin:0 auto;">
+          <i class="bi bi-award" style="font-size:1.3rem;color:var(--cinnabar);"></i>
+        </div>
+        <h6 class="fw-bold"><span class="en">Expert-Led</span><span class="zh">专家领航</span></h6>
+        <p class="text-muted small"><span class="en">National champion coaches, certified teachers, and licensed guides.</span><span class="zh">全国冠军教练、认证教师、持证导游。</span></p>
+      </div>
     </div>
     <div class="col-md-4 text-center">
-      <h6 class="fw-bold"><span class="en">Globally Accessible</span><span class="zh">面向全球</span></h6>
-      <p class="text-muted small"><span class="en">PayPal, English support, WhatsApp — built for international users.</span><span class="zh">PayPal支付、英文支持、WhatsApp咨询——为国际用户而生。</span></p>
+      <div class="card-ink p-4 h-100">
+        <div class="mb-3" style="width:48px;height:48px;border-radius:50%;background:var(--paper-warm);display:flex;align-items:center;justify-content:center;margin:0 auto;">
+          <i class="bi bi-globe" style="font-size:1.3rem;color:var(--cinnabar);"></i>
+        </div>
+        <h6 class="fw-bold"><span class="en">Globally Accessible</span><span class="zh">面向全球</span></h6>
+        <p class="text-muted small"><span class="en">PayPal, English support, WhatsApp — built for international users.</span><span class="zh">PayPal支付、英文支持、WhatsApp咨询——为国际用户而生。</span></p>
+      </div>
     </div>
   </div>
 
-  <div class="paper-section p-5 text-center mb-4">
-    <h4 class="fw-bold"><span class="en">Free Resource Pack</span><span class="zh">免费资源包</span></h4>
-    <p class="text-muted mb-4"><span class="en">Trial Chinese lesson, Tai Chi PDF guide, and China travel tips.</span><span class="zh">中文试听课、太极PDF指南和中国旅行攻略。</span></p>
-    <a href="{{ url_for('contact') }}" class="btn btn-cinnabar"><span class="en">Claim Your Free Pack</span><span class="zh">免费领取</span></a>
+  <!-- ═══════════════════ CTA ═══════════════════ -->
+  <div class="row align-items-center my-5 rounded overflow-hidden" style="background:var(--ink-black);min-height:240px;">
+    <div class="col-md-6 p-5 text-white">
+      <h3 class="fw-bold mb-3">
+        <span class="en">Free Resource Pack</span>
+        <span class="zh">免费资源包</span>
+      </h3>
+      <p class="mb-4" style="opacity:.7;"><span class="en">Trial Chinese lesson, Tai Chi PDF guide, and China travel tips — all free.</span><span class="zh">中文试听课、太极PDF指南和中国旅行攻略——全部免费。</span></p>
+      <a href="{{ url_for('contact') }}" class="btn btn-cinnabar btn-lg"><span class="en">Claim Your Free Pack</span><span class="zh">免费领取</span></a>
+    </div>
+    <div class="col-md-6 d-none d-md-block" style="min-height:240px;background:url('https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&h=500&fit=crop') center/cover;opacity:.5;"></div>
   </div>
+
 </div>
 
 {% endblock %}

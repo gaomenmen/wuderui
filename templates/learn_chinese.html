@@ -2,48 +2,81 @@
 {% block title %}<span class="en">Learn Chinese — WuDeRuiBo</span><span class="zh">学中文 — 吴德瑞博</span>{% endblock %}
 {% block content %}
 
-<div class="hero-ink py-5">
-  <div class="container position-relative" style="z-index:1;">
-    <h1 class="fw-bold" style="font-family:'Noto Serif SC',serif;"><span class="en">Learn Chinese</span><span class="zh">学中文</span></h1>
-    <p class="lead" style="opacity:.8;"><span class="en">From Pinyin to Conversation — Structured Courses for All Ages</span><span class="zh">从拼音到日常对话——适合所有年龄段的体系化课程</span></p>
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<div class="hero-photo">
+  <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=1600&h=800&fit=crop');"></div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content py-5">
+    <div style="min-height:300px;" class="d-flex flex-column justify-content-center">
+      <p class="small text-uppercase mb-3 fade-up" style="letter-spacing:4px;color:var(--gold-subtle);">
+        <span class="en">Mandarin Courses</span>
+        <span class="zh">中文课程</span>
+      </p>
+      <h1 class="fw-bold mb-3 fade-up d1" style="font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.15;">
+        <span class="en">From Pinyin<br>to Conversation.</span>
+        <span class="zh">从拼音<br>到日常对话。</span>
+      </h1>
+      <p class="fade-up d2" style="font-size:1.05rem;opacity:.8;max-width:500px;">
+        <span class="en">Structured courses for kids, adults, and heritage families. Native teachers, proven methods, real results.</span>
+        <span class="zh">适合儿童、成人及华裔家庭的体系化课程。母语教师，成熟方法，真实效果。</span>
+      </p>
+    </div>
   </div>
 </div>
 
 <div class="container py-5">
 
-  <!-- 课程分类 -->
-  <h3 class="section-title mb-4"><span class="en">Course Categories</span><span class="zh">课程分类</span></h3>
+  <!-- ═══════════════════ COURSE CATEGORIES ═══════════════════ -->
+  <div class="text-center mb-5">
+    <p class="small text-uppercase mb-2" style="letter-spacing:3px;color:var(--cinnabar);">
+      <span class="en">Course Categories</span><span class="zh">课程分类</span>
+    </p>
+    <h2 class="fw-bold">
+      <span class="en">Choose Your Path</span>
+      <span class="zh">选择你的学习路径</span>
+    </h2>
+  </div>
+
   <div class="row g-4 mb-5">
     <div class="col-md-4">
       <div class="card-ink p-4 h-100">
-        <h6 class="fw-bold mb-2"><span class="en">Children's Chinese</span><span class="zh">儿童中文</span></h6>
-        <p class="text-muted small"><span class="en">Fun, engaging lessons designed for kids. Pinyin, characters, and basic sentences through games and stories.</span><span class="zh">专为儿童设计的趣味课程，通过游戏和故事学习拼音、汉字和基础句子。</span></p>
-        <ul class="list-unstyled small text-muted">
-          <li><span class="en">Pinyin Foundations</span><span class="zh">拼音基础</span></li>
-          <li><span class="en">Character Recognition</span><span class="zh">汉字认读</span></li>
-          <li><span class="en">Story-based Learning</span><span class="zh">故事化学习</span></li>
+        <div class="mb-3" style="width:48px;height:48px;border-radius:12px;background:var(--paper-warm);display:flex;align-items:center;justify-content:center;">
+          <span style="font-family:'Noto Serif SC',serif;font-size:1.3rem;">童</span>
+        </div>
+        <h5 class="fw-bold mb-2"><span class="en">Children's Chinese</span><span class="zh">儿童中文</span></h5>
+        <p class="text-muted small mb-3"><span class="en">Fun, engaging lessons designed for kids. Pinyin, characters, and basic sentences through games and stories.</span><span class="zh">专为儿童设计的趣味课程，通过游戏和故事学习拼音、汉字和基础句子。</span></p>
+        <ul class="list-unstyled small text-muted mb-0">
+          <li class="mb-1"><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">Pinyin Foundations</span><span class="zh">拼音基础</span></li>
+          <li class="mb-1"><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">Character Recognition</span><span class="zh">汉字认读</span></li>
+          <li><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">Story-based Learning</span><span class="zh">故事化学习</span></li>
         </ul>
       </div>
     </div>
     <div class="col-md-4">
       <div class="card-ink p-4 h-100">
-        <h6 class="fw-bold mb-2"><span class="en">Adult Chinese</span><span class="zh">成人中文</span></h6>
-        <p class="text-muted small"><span class="en">Practical courses for daily life, travel, and business. From zero to conversational.</span><span class="zh">面向日常生活、旅行和商务的实用课程，零基础到流利对话。</span></p>
-        <ul class="list-unstyled small text-muted">
-          <li><span class="en">Daily Conversation</span><span class="zh">日常会话</span></li>
-          <li><span class="en">Travel Chinese</span><span class="zh">旅行中文</span></li>
-          <li><span class="en">Business Chinese (Coming Soon)</span><span class="zh">商务中文（即将推出）</span></li>
+        <div class="mb-3" style="width:48px;height:48px;border-radius:12px;background:var(--paper-warm);display:flex;align-items:center;justify-content:center;">
+          <span style="font-family:'Noto Serif SC',serif;font-size:1.3rem;">成</span>
+        </div>
+        <h5 class="fw-bold mb-2"><span class="en">Adult Chinese</span><span class="zh">成人中文</span></h5>
+        <p class="text-muted small mb-3"><span class="en">Practical courses for daily life, travel, and business. From zero to conversational.</span><span class="zh">面向日常生活、旅行和商务的实用课程，零基础到流利对话。</span></p>
+        <ul class="list-unstyled small text-muted mb-0">
+          <li class="mb-1"><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">Daily Conversation</span><span class="zh">日常会话</span></li>
+          <li class="mb-1"><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">Travel Chinese</span><span class="zh">旅行中文</span></li>
+          <li><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">Business Chinese (Coming Soon)</span><span class="zh">商务中文（即将推出）</span></li>
         </ul>
       </div>
     </div>
     <div class="col-md-4">
       <div class="card-ink p-4 h-100">
-        <h6 class="fw-bold mb-2"><span class="en">Heritage Families</span><span class="zh">华裔家庭</span></h6>
-        <p class="text-muted small"><span class="en">Designed for overseas Chinese families who want their children to maintain cultural and language connections.</span><span class="zh">专为海外华裔家庭设计，帮助孩子保持中文和文化传承。</span></p>
-        <ul class="list-unstyled small text-muted">
-          <li><span class="en">Reading & Writing</span><span class="zh">阅读与写作</span></li>
-          <li><span class="en">Cultural Context</span><span class="zh">文化背景</span></li>
-          <li><span class="en">Age-appropriate Levels</span><span class="zh">分年龄段教学</span></li>
+        <div class="mb-3" style="width:48px;height:48px;border-radius:12px;background:var(--paper-warm);display:flex;align-items:center;justify-content:center;">
+          <span style="font-family:'Noto Serif SC',serif;font-size:1.3rem;">裔</span>
+        </div>
+        <h5 class="fw-bold mb-2"><span class="en">Heritage Families</span><span class="zh">华裔家庭</span></h5>
+        <p class="text-muted small mb-3"><span class="en">For overseas Chinese families who want their children to maintain cultural and language connections.</span><span class="zh">专为海外华裔家庭设计，帮助孩子保持中文和文化传承。</span></p>
+        <ul class="list-unstyled small text-muted mb-0">
+          <li class="mb-1"><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">Reading & Writing</span><span class="zh">阅读与写作</span></li>
+          <li class="mb-1"><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">Cultural Context</span><span class="zh">文化背景</span></li>
+          <li><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">Age-appropriate Levels</span><span class="zh">分年龄段教学</span></li>
         </ul>
       </div>
     </div>
@@ -51,65 +84,96 @@
 
   <div class="ink-divider"><span class="seal">师资</span></div>
 
-  <h3 class="section-title mb-4"><span class="en">Our Teachers</span><span class="zh">师资展示</span></h3>
+  <!-- ═══════════════════ TEACHERS ═══════════════════ -->
+  <div class="text-center mb-5">
+    <p class="small text-uppercase mb-2" style="letter-spacing:3px;color:var(--cinnabar);">
+      <span class="en">Our Teachers</span><span class="zh">师资展示</span>
+    </p>
+    <h2 class="fw-bold">
+      <span class="en">Learn from the Best</span>
+      <span class="zh">向最优秀的老师学习</span>
+    </h2>
+  </div>
+
   <div class="row g-4 mb-5">
     <div class="col-md-6">
       <div class="card-ink p-4">
         <div class="d-flex align-items-center mb-3">
-          <div class="rounded-circle bg-dark text-white d-flex align-items-center justify-content-center me-3" style="width:64px;height:64px;font-size:1.5rem;">师</div>
+          <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width:56px;height:56px;background:var(--ink-black);color:#fff;font-size:1.3rem;font-family:'Noto Serif SC',serif;">师</div>
           <div>
-            <h6 class="fw-bold mb-0"><span class="en">Teacher Profile</span><span class="zh">教师简介</span></h6>
-            <small class="text-muted"><span class="en">Senior Chinese Instructor</span><span class="zh">资深中文教师</span></small>
+            <h6 class="fw-bold mb-0"><span class="en">Senior Instructor</span><span class="zh">资深教师</span></h6>
+            <small class="text-muted"><span class="en">Children's Education Specialist</span><span class="zh">儿童教育专家</span></small>
           </div>
         </div>
-        <p class="small text-muted mb-1"><i class="bi bi-mortarboard me-1"></i> <span class="en">Certified Chinese language teacher</span><span class="zh">认证中文教师</span></p>
-        <p class="small text-muted mb-1"><i class="bi bi-globe me-1"></i> <span class="en">Bilingual: Chinese & English</span><span class="zh">中英双语教学</span></p>
-        <p class="small text-muted mb-1"><i class="bi bi-clock-history me-1"></i> <span class="en">5+ years teaching experience</span><span class="zh">5年以上教学经验</span></p>
-        <p class="small text-muted"><i class="bi bi-star me-1"></i> <span class="en">Specializes in children's education</span><span class="zh">擅长儿童教育</span></p>
+        <div class="row g-2">
+          <div class="col-6"><small class="text-muted"><i class="bi bi-mortarboard me-1" style="color:var(--cinnabar);"></i> <span class="en">Certified Teacher</span><span class="zh">认证教师</span></small></div>
+          <div class="col-6"><small class="text-muted"><i class="bi bi-globe me-1" style="color:var(--cinnabar);"></i> <span class="en">Bilingual</span><span class="zh">中英双语</span></small></div>
+          <div class="col-6"><small class="text-muted"><i class="bi bi-clock-history me-1" style="color:var(--cinnabar);"></i> <span class="en">5+ Years</span><span class="zh">5年以上</span></small></div>
+          <div class="col-6"><small class="text-muted"><i class="bi bi-star me-1" style="color:var(--cinnabar);"></i> <span class="en">Kids Expert</span><span class="zh">儿童专家</span></small></div>
+        </div>
       </div>
     </div>
     <div class="col-md-6">
       <div class="card-ink p-4">
         <div class="d-flex align-items-center mb-3">
-          <div class="rounded-circle bg-dark text-white d-flex align-items-center justify-content-center me-3" style="width:64px;height:64px;font-size:1.5rem;">师</div>
+          <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width:56px;height:56px;background:var(--cinnabar);color:#fff;font-size:1.3rem;font-family:'Noto Serif SC',serif;">师</div>
           <div>
-            <h6 class="fw-bold mb-0"><span class="en">Teacher Profile</span><span class="zh">教师简介</span></h6>
-            <small class="text-muted"><span class="en">Conversational Chinese Specialist</span><span class="zh">口语教学专家</span></small>
+            <h6 class="fw-bold mb-0"><span class="en">Conversational Specialist</span><span class="zh">口语教学专家</span></h6>
+            <small class="text-muted"><span class="en">Adult Education Expert</span><span class="zh">成人教育专家</span></small>
           </div>
         </div>
-        <p class="small text-muted mb-1"><i class="bi bi-mortarboard me-1"></i> <span class="en">Certified Chinese language teacher</span><span class="zh">认证中文教师</span></p>
-        <p class="small text-muted mb-1"><i class="bi bi-globe me-1"></i> <span class="en">Multilingual communication</span><span class="zh">多语言沟通能力</span></p>
-        <p class="small text-muted mb-1"><i class="bi bi-clock-history me-1"></i> <span class="en">Adult education expertise</span><span class="zh">成人教育专家</span></p>
-        <p class="small text-muted"><i class="bi bi-star me-1"></i> <span class="en">Specializes in travel & business Chinese</span><span class="zh">擅长旅行和商务中文</span></p>
+        <div class="row g-2">
+          <div class="col-6"><small class="text-muted"><i class="bi bi-mortarboard me-1" style="color:var(--cinnabar);"></i> <span class="en">Certified Teacher</span><span class="zh">认证教师</span></small></div>
+          <div class="col-6"><small class="text-muted"><i class="bi bi-globe me-1" style="color:var(--cinnabar);"></i> <span class="en">Multilingual</span><span class="zh">多语言</span></small></div>
+          <div class="col-6"><small class="text-muted"><i class="bi bi-clock-history me-1" style="color:var(--cinnabar);"></i> <span class="en">Adult Focus</span><span class="zh">成人专注</span></small></div>
+          <div class="col-6"><small class="text-muted"><i class="bi bi-star me-1" style="color:var(--cinnabar);"></i> <span class="en">Travel & Business</span><span class="zh">旅行商务</span></small></div>
+        </div>
       </div>
     </div>
   </div>
-  <p class="text-muted small text-center mb-5"><em><span class="en">Detailed teacher profiles and photos coming soon.</span><span class="zh">详细教师简介和照片即将更新。</span></em></p>
 
   <div class="ink-divider"><span class="seal">试听</span></div>
 
-  <h3 class="section-title mb-4"><span class="en">Sample Lesson</span><span class="zh">样板课</span></h3>
-  <div class="paper-section p-5 mb-5 text-center">
-    <div style="font-size:3rem;">✍️</div>
-    <h5 class="fw-bold mt-3"><span class="en">Try a Free Lesson</span><span class="zh">免费试听</span></h5>
-    <p class="text-muted"><span class="en">Experience our teaching style with a complimentary trial lesson.</span><span class="zh">体验我们的教学风格，预约免费试听课。</span></p>
-    <div class="row justify-content-center mt-4">
-      <div class="col-md-8">
-        <div class="card-ink p-3 text-start">
-          <small class="fw-bold"><span class="en">Lesson 1 Preview:</span><span class="zh">第一课预览：</span></small>
-          <p class="small text-muted mb-1">🔊 <span class="en">Tones: mā, má, mǎ, mà</span><span class="zh">声调：mā, má, mǎ, mà</span></p>
-          <p class="small text-muted mb-1">📝 <span class="en">Characters: 你(nǐ) 好(hǎo) — Hello</span><span class="zh">汉字：你(nǐ) 好(hǎo) — 你好</span></p>
-          <p class="small text-muted mb-0">🗣️ <span class="en">Dialogue: "你好！我是..."</span><span class="zh">对话："你好！我是..."</span></p>
+  <!-- ═══════════════════ SAMPLE LESSON ═══════════════════ -->
+  <div class="row align-items-center my-5">
+    <div class="col-md-6 mb-4">
+      <p class="small text-uppercase mb-2" style="letter-spacing:3px;color:var(--cinnabar);">
+        <span class="en">Free Trial</span><span class="zh">免费试听</span>
+      </p>
+      <h2 class="fw-bold mb-3">
+        <span class="en">Try a Lesson<br>Before You Commit.</span>
+        <span class="zh">先试听<br>再决定。</span>
+      </h2>
+      <p class="text-muted mb-4">
+        <span class="en">Experience our teaching style with a complimentary trial lesson. No credit card, no commitment.</span>
+        <span class="zh">免费体验我们的教学风格。无需信用卡，无需承诺。</span>
+      </p>
+      <a href="{{ url_for('contact') }}" class="btn btn-cinnabar btn-lg">
+        <span class="en">Book Free Trial</span><span class="zh">预约免费试听</span>
+      </a>
+    </div>
+    <div class="col-md-6 mb-4">
+      <div class="paper-section p-4">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <span class="seal">课</span>
+          <h6 class="fw-bold mb-0"><span class="en">Lesson 1 Preview</span><span class="zh">第一课预览</span></h6>
+        </div>
+        <div class="card-ink p-3 mb-2">
+          <small class="fw-bold" style="color:var(--cinnabar);">🔊 <span class="en">Tones</span><span class="zh">声调</span></small>
+          <p class="small text-muted mb-0 mt-1" style="font-size:1.1rem;letter-spacing:2px;">mā &nbsp; má &nbsp; mǎ &nbsp; mà</p>
+        </div>
+        <div class="card-ink p-3 mb-2">
+          <small class="fw-bold" style="color:var(--cinnabar);">📝 <span class="en">Characters</span><span class="zh">汉字</span></small>
+          <p class="small text-muted mb-0 mt-1"><span style="font-size:1.2rem;">你好</span> nǐ hǎo — <span class="en">Hello</span><span class="zh">你好</span></p>
+        </div>
+        <div class="card-ink p-3">
+          <small class="fw-bold" style="color:var(--cinnabar);">🗣️ <span class="en">Dialogue</span><span class="zh">对话</span></small>
+          <p class="small text-muted mb-0 mt-1"><span style="font-size:1.1rem;">"你好！我是…"</span> <span class="en">— Hello! I am...</span><span class="zh">— 你好！我是…</span></p>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="text-center py-4">
-    <h4 class="fw-bold mb-3"><span class="en">Start Your Chinese Journey</span><span class="zh">开始你的中文之旅</span></h4>
-    <p class="text-muted mb-3"><span class="en">One-click WhatsApp consultation.</span><span class="zh">一键WhatsApp咨询。</span></p>
-    <a href="{{ url_for('contact') }}" class="btn btn-cinnabar btn-lg"><i class="bi bi-whatsapp me-1"></i> <span class="en">Book Free Trial</span><span class="zh">预约免费试听</span></a>
-  </div>
 </div>
 
 {% endblock %}

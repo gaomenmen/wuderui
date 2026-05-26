@@ -7,115 +7,240 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap');
 
         :root {
             --ink-black: #1a1a1a;
             --ink-gray: #4a4a4a;
             --ink-light: #8a8a8a;
-            --paper: #f8f5f0;
-            --paper-warm: #f0ebe3;
+            --paper: #faf9f6;
+            --paper-warm: #f5f0e8;
             --cinnabar: #b5362e;
             --cinnabar-light: #d4564e;
             --seal-red: #c23a2a;
             --gold-subtle: #c9a96e;
         }
 
+        * { box-sizing: border-box; }
+
         body {
             display: flex; flex-direction: column; min-height: 100vh;
-            font-family: 'Inter', 'Noto Serif SC', sans-serif;
+            font-family: 'Inter', sans-serif;
             background: var(--paper); color: var(--ink-black);
+            -webkit-font-smoothing: antialiased;
         }
         .content { flex: 1; }
 
-        /* 顶部导航 — 简约白底 */
-        .navbar-ink {
-            background: rgba(255,255,255,.95); backdrop-filter: blur(8px);
-            border-bottom: 1px solid rgba(0,0,0,.08);
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', 'Noto Serif SC', serif;
         }
-        .navbar-ink .navbar-brand { font-family: 'Noto Serif SC', serif; color: var(--ink-black); letter-spacing: 2px; }
-        .navbar-ink .nav-link { color: var(--ink-gray); font-size: .9rem; font-weight: 400; }
+
+        /* ─── Navigation ─── */
+        .navbar-ink {
+            background: rgba(255,255,255,.97); backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,.06);
+            padding: .75rem 0;
+            transition: box-shadow .3s;
+        }
+        .navbar-ink.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,.06); }
+        .navbar-ink .navbar-brand {
+            font-family: 'Noto Serif SC', serif; color: var(--ink-black);
+            letter-spacing: 2px; font-size: 1.1rem;
+        }
+        .navbar-ink .nav-link {
+            color: var(--ink-gray); font-size: .85rem; font-weight: 500;
+            padding: .5rem .85rem !important; letter-spacing: .3px;
+            transition: color .2s;
+        }
         .navbar-ink .nav-link:hover { color: var(--cinnabar); }
 
-        /* 语言切换 */
-        .lang-switch { font-size: .8rem; border: 1px solid rgba(0,0,0,.15); border-radius: 20px; padding: 2px 10px; color: var(--ink-gray); }
-        .lang-switch:hover { border-color: var(--cinnabar); color: var(--cinnabar); }
+        /* Language switch */
+        .lang-toggle {
+            display: flex; border: 1px solid rgba(0,0,0,.15); border-radius: 20px;
+            overflow: hidden; font-size: .78rem;
+        }
+        .lang-toggle a {
+            padding: 3px 12px; color: var(--ink-light); text-decoration: none;
+            transition: all .2s;
+        }
+        .lang-toggle a:hover { color: var(--cinnabar); }
 
-        /* 水墨风 Hero */
+        /* ─── Hero Sections ─── */
         .hero-ink {
             background: linear-gradient(170deg, #2c2c2c 0%, #1a1a1a 60%, var(--ink-black) 100%);
             color: #fff; position: relative; overflow: hidden;
         }
         .hero-ink::after {
-            content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 60px;
+            content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 80px;
             background: linear-gradient(to bottom, transparent, var(--paper));
         }
 
-        /* 朱砂红分割线 */
+        .hero-photo {
+            position: relative; color: #fff; overflow: hidden;
+            min-height: 520px; display: flex; align-items: center;
+        }
+        .hero-photo .hero-bg {
+            position: absolute; inset: 0;
+            background-size: cover; background-position: center;
+        }
+        .hero-photo .hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(26,26,26,.82) 0%, rgba(26,26,26,.55) 50%, rgba(26,26,26,.75) 100%);
+        }
+        .hero-photo .hero-content { position: relative; z-index: 2; }
+
+        /* ─── Ink Divider ─── */
         .ink-divider {
             display: flex; align-items: center; gap: 16px; margin: 3rem 0; padding: 0 1rem;
         }
         .ink-divider::before, .ink-divider::after {
             content: ''; flex: 1; height: 1px;
-            background: linear-gradient(to right, transparent, rgba(0,0,0,.12), transparent);
+            background: linear-gradient(to right, transparent, rgba(0,0,0,.1), transparent);
         }
 
-        /* 印章效果 */
+        /* ─── Seal (Chinese stamp) ─── */
         .seal {
-            display: inline-block; border: 2px solid var(--seal-red); color: var(--seal-red);
+            display: inline-flex; align-items: center; justify-content: center;
+            border: 2px solid var(--seal-red); color: var(--seal-red);
             padding: 2px 8px; font-family: 'Noto Serif SC', serif; font-size: .75rem;
-            letter-spacing: 2px; transform: rotate(-3deg); line-height: 1.4;
+            letter-spacing: 2px; transform: rotate(-2deg); line-height: 1.4;
+            min-width: 28px;
         }
 
-        /* 卡片 — 宣纸质感 */
+        /* ─── Cards ─── */
         .card-ink {
-            background: #fff; border: 1px solid rgba(0,0,0,.06); border-radius: 8px;
-            transition: transform .3s ease, box-shadow .3s ease;
+            background: #fff; border: 1px solid rgba(0,0,0,.06); border-radius: 12px;
+            transition: transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s cubic-bezier(.4,0,.2,1);
         }
-        .card-ink:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.08); }
+        .card-ink:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,.08);
+        }
 
-        /* 章节标题 */
+        /* Image cards for destination grid */
+        .card-photo {
+            position: relative; border-radius: 12px; overflow: hidden;
+            height: 320px; cursor: pointer;
+            transition: transform .4s cubic-bezier(.4,0,.2,1);
+        }
+        .card-photo:hover { transform: scale(1.02); }
+        .card-photo img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform .6s cubic-bezier(.4,0,.2,1);
+        }
+        .card-photo:hover img { transform: scale(1.08); }
+        .card-photo .card-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(0deg, rgba(0,0,0,.7) 0%, rgba(0,0,0,.1) 50%, transparent 100%);
+        }
+        .card-photo .card-label {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            padding: 1.25rem; color: #fff;
+        }
+
+        /* ─── Section Title ─── */
         .section-title {
-            font-family: 'Noto Serif SC', serif; font-weight: 600; color: var(--ink-black);
+            font-weight: 700; color: var(--ink-black);
             position: relative; display: inline-block;
         }
         .section-title::after {
-            content: ''; position: absolute; bottom: -6px; left: 0; width: 40px; height: 2px;
-            background: var(--cinnabar);
+            content: ''; position: absolute; bottom: -8px; left: 0; width: 40px; height: 3px;
+            background: var(--cinnabar); border-radius: 2px;
         }
 
-        /* 按钮 */
-        .btn-ink { background: var(--ink-black); color: #fff; border: none; border-radius: 4px; }
-        .btn-ink:hover { background: var(--ink-gray); color: #fff; }
-        .btn-cinnabar { background: var(--cinnabar); color: #fff; border: none; border-radius: 4px; }
-        .btn-cinnabar:hover { background: var(--cinnabar-light); color: #fff; }
-        .btn-outline-ink { border: 1px solid var(--ink-black); color: var(--ink-black); background: transparent; border-radius: 4px; }
+        /* ─── Buttons ─── */
+        .btn-ink {
+            background: var(--ink-black); color: #fff; border: none; border-radius: 6px;
+            padding: .65rem 1.5rem; font-weight: 500; letter-spacing: .3px;
+            transition: all .25s;
+        }
+        .btn-ink:hover { background: var(--ink-gray); color: #fff; transform: translateY(-1px); }
+
+        .btn-cinnabar {
+            background: var(--cinnabar); color: #fff; border: none; border-radius: 6px;
+            padding: .65rem 1.5rem; font-weight: 500; letter-spacing: .3px;
+            transition: all .25s;
+        }
+        .btn-cinnabar:hover { background: var(--cinnabar-light); color: #fff; transform: translateY(-1px); }
+
+        .btn-outline-ink {
+            border: 1.5px solid var(--ink-black); color: var(--ink-black); background: transparent;
+            border-radius: 6px; padding: .6rem 1.4rem; font-weight: 500; letter-spacing: .3px;
+            transition: all .25s;
+        }
         .btn-outline-ink:hover { background: var(--ink-black); color: #fff; }
 
-        /* 宣纸纹理区块 */
-        .paper-section { background: var(--paper-warm); border-radius: 8px; border: 1px solid rgba(0,0,0,.06); }
+        .btn-outline-light {
+            border: 1.5px solid rgba(255,255,255,.5); color: #fff; background: transparent;
+            border-radius: 6px; padding: .6rem 1.4rem; font-weight: 500;
+            transition: all .25s;
+        }
+        .btn-outline-light:hover { background: #fff; color: var(--ink-black); }
 
-        /* 底部 */
-        footer { background: var(--ink-black); border-top: 2px solid var(--cinnabar); }
-        footer a { text-decoration: none; color: rgba(255,255,255,.6); transition: color .2s; }
+        /* ─── Paper Section ─── */
+        .paper-section {
+            background: var(--paper-warm); border-radius: 12px;
+            border: 1px solid rgba(0,0,0,.05);
+        }
+
+        /* ─── Stat Counter ─── */
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem; font-weight: 700; color: var(--cinnabar);
+            line-height: 1;
+        }
+
+        /* ─── Testimonial ─── */
+        .testimonial-card {
+            background: #fff; border-radius: 12px; padding: 2rem;
+            border: 1px solid rgba(0,0,0,.06);
+            position: relative;
+        }
+        .testimonial-card::before {
+            content: '"'; font-family: 'Playfair Display', serif;
+            font-size: 4rem; color: var(--cinnabar); opacity: .15;
+            position: absolute; top: .5rem; left: 1.2rem; line-height: 1;
+        }
+
+        /* ─── Footer ─── */
+        footer {
+            background: var(--ink-black);
+            border-top: 2px solid var(--cinnabar);
+        }
+        footer a { text-decoration: none; color: rgba(255,255,255,.5); transition: color .2s; }
         footer a:hover { color: var(--gold-subtle); }
 
-        /* WhatsApp 浮动按钮 */
+        /* ─── WhatsApp Float ─── */
         .wa-float {
             position: fixed; bottom: 24px; right: 24px; z-index: 999;
             width: 56px; height: 56px; border-radius: 50%; background: #25d366;
             display: flex; align-items: center; justify-content: center; color: #fff;
-            font-size: 1.6rem; box-shadow: 0 4px 16px rgba(0,0,0,.2);
-            transition: transform .2s;
+            font-size: 1.6rem; box-shadow: 0 4px 20px rgba(37,211,102,.4);
+            transition: transform .25s;
         }
-        .wa-float:hover { transform: scale(1.1); color: #fff; }
+        .wa-float:hover { transform: scale(1.12); color: #fff; }
 
-        /* 响应式 */
+        /* ─── Animations ─── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-up {
+            opacity: 0; animation: fadeUp .8s cubic-bezier(.4,0,.2,1) forwards;
+        }
+        .fade-up.d1 { animation-delay: .1s; }
+        .fade-up.d2 { animation-delay: .2s; }
+        .fade-up.d3 { animation-delay: .3s; }
+        .fade-up.d4 { animation-delay: .4s; }
+
+        /* ─── Responsive ─── */
         @media (max-width: 768px) {
-            .hero-ink { text-align: center; }
+            .hero-photo { min-height: 400px; }
+            .hero-photo h1 { font-size: 1.8rem; }
+            .stat-number { font-size: 2rem; }
         }
 
-        /* 中英文切换 */
+        /* ─── Bilingual Toggle ─── */
         html.en .zh { display: none !important; }
         html.zh .en { display: none !important; }
     </style>
@@ -126,7 +251,8 @@
 <nav class="navbar navbar-expand-lg navbar-ink sticky-top">
   <div class="container">
     <a class="navbar-brand" href="{{ url_for('home') }}">
-      <span class="seal">吴德瑞博</span> <span class="ms-1" style="font-size:.85rem;">WuDeRuiBo</span>
+      <span class="seal me-1">吴德瑞博</span>
+      <span style="font-family:'Inter',sans-serif;font-size:.78rem;font-weight:500;color:var(--ink-light);">WuDeRuiBo</span>
     </a>
     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
       <span class="navbar-toggler-icon"></span>
@@ -137,13 +263,17 @@
         <li class="nav-item"><a class="nav-link" href="{{ url_for('learn_chinese') }}"><span class="en">Learn Chinese</span><span class="zh">学中文</span></a></li>
         <li class="nav-item"><a class="nav-link" href="{{ url_for('tai_chi') }}"><span class="en">Tai Chi</span><span class="zh">太极拳</span></a></li>
         <li class="nav-item"><a class="nav-link" href="{{ url_for('custom_trips') }}"><span class="en">Custom Trips</span><span class="zh">定制旅行</span></a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ url_for('affiliate') }}"><span class="en">Affiliate</span><span class="zh">推荐分佣</span></a></li>
         <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}"><span class="en">About</span><span class="zh">关于我们</span></a></li>
         <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}"><span class="en">Contact</span><span class="zh">联系我们</span></a></li>
       </ul>
-      <div class="d-flex align-items-center gap-2">
-        <a href="?lang=en" class="lang-switch text-decoration-none">EN</a>
-        <a href="?lang=zh" class="lang-switch text-decoration-none">中文</a>
+      <div class="d-flex align-items-center gap-3">
+        <a href="{{ url_for('affiliate') }}" class="text-decoration-none" style="font-size:.82rem;font-weight:600;color:var(--cinnabar);">
+          <span class="en">Affiliate</span><span class="zh">推荐分佣</span>
+        </a>
+        <div class="lang-toggle">
+          <a href="?lang=en">EN</a>
+          <a href="?lang=zh">中文</a>
+        </div>
       </div>
     </div>
   </div>
@@ -155,39 +285,66 @@
 
 <footer class="text-light py-5 mt-5">
   <div class="container">
-    <div class="row">
-      <div class="col-md-3 mb-4">
-        <div class="seal mb-2" style="border-color:var(--gold-subtle);color:var(--gold-subtle);">吴德瑞博</div>
-        <p class="small" style="color:rgba(255,255,255,.4)">WuDeRuiBo — Your Gateway to Chinese Culture</p>
+    <div class="row g-4">
+      <div class="col-md-3">
+        <div class="seal mb-3" style="border-color:var(--gold-subtle);color:var(--gold-subtle);">吴德瑞博</div>
+        <p class="small" style="color:rgba(255,255,255,.4);line-height:1.7;">Your gateway to authentic Chinese culture — language, Tai Chi, and bespoke travel experiences.</p>
       </div>
-      <div class="col-md-3 mb-4">
-        <h6 class="fw-bold mb-3" style="color:var(--gold-subtle);font-size:.8rem;letter-spacing:1px;">EXPLORE</h6>
+      <div class="col-md-3">
+        <h6 class="fw-bold mb-3" style="color:var(--gold-subtle);font-size:.75rem;letter-spacing:2px;">EXPLORE</h6>
         <ul class="list-unstyled small">
-          <li class="mb-1"><a href="{{ url_for('learn_chinese') }}"><span class="en">Learn Chinese</span><span class="zh">学中文</span></a></li>
-          <li class="mb-1"><a href="{{ url_for('tai_chi') }}"><span class="en">Tai Chi</span><span class="zh">太极拳</span></a></li>
-          <li class="mb-1"><a href="{{ url_for('custom_trips') }}"><span class="en">Custom Trips</span><span class="zh">定制旅行</span></a></li>
-          <li class="mb-1"><a href="{{ url_for('affiliate') }}"><span class="en">Affiliate Program</span><span class="zh">推荐分佣</span></a></li>
+          <li class="mb-2"><a href="{{ url_for('learn_chinese') }}"><span class="en">Learn Chinese</span><span class="zh">学中文</span></a></li>
+          <li class="mb-2"><a href="{{ url_for('tai_chi') }}"><span class="en">Tai Chi Course</span><span class="zh">太极拳课程</span></a></li>
+          <li class="mb-2"><a href="{{ url_for('custom_trips') }}"><span class="en">Custom Trips</span><span class="zh">定制旅行</span></a></li>
+          <li class="mb-2"><a href="{{ url_for('affiliate') }}"><span class="en">Affiliate Program</span><span class="zh">推荐分佣</span></a></li>
         </ul>
       </div>
-      <div class="col-md-3 mb-4">
-        <h6 class="fw-bold mb-3" style="color:var(--gold-subtle);font-size:.8rem;letter-spacing:1px;">CONTACT</h6>
-        <p class="small mb-1" style="color:rgba(255,255,255,.4)"><i class="bi bi-whatsapp"></i> WhatsApp</p>
-        <p class="small mb-1" style="color:rgba(255,255,255,.4)"><i class="bi bi-wechat"></i> WeChat</p>
-        <p class="small mb-1" style="color:rgba(255,255,255,.4)"><i class="bi bi-facebook"></i> Facebook</p>
+      <div class="col-md-3">
+        <h6 class="fw-bold mb-3" style="color:var(--gold-subtle);font-size:.75rem;letter-spacing:2px;">CONNECT</h6>
+        <div class="d-flex gap-3 mb-3">
+          <a href="#" style="color:rgba(255,255,255,.5);font-size:1.1rem;"><i class="bi bi-whatsapp"></i></a>
+          <a href="#" style="color:rgba(255,255,255,.5);font-size:1.1rem;"><i class="bi bi-wechat"></i></a>
+          <a href="#" style="color:rgba(255,255,255,.5);font-size:1.1rem;"><i class="bi bi-facebook"></i></a>
+          <a href="#" style="color:rgba(255,255,255,.5);font-size:1.1rem;"><i class="bi bi-instagram"></i></a>
+        </div>
+        <p class="small" style="color:rgba(255,255,255,.4);"><i class="bi bi-envelope me-1"></i> <span class="en">hello@wuderui.com</span><span class="zh">hello@wuderui.com</span></p>
       </div>
-      <div class="col-md-3 mb-4">
-        <h6 class="fw-bold mb-3" style="color:var(--gold-subtle);font-size:.8rem;letter-spacing:1px;">DISCOVER CHINA</h6>
-        <p class="small" style="color:rgba(255,255,255,.4)">Great Wall · Terracotta Warriors · Giant Pandas · Silk Road · Tai Chi</p>
+      <div class="col-md-3">
+        <h6 class="fw-bold mb-3" style="color:var(--gold-subtle);font-size:.75rem;letter-spacing:2px;">DISCOVER CHINA</h6>
+        <div class="d-flex flex-wrap gap-2">
+          <span class="badge rounded-pill" style="background:rgba(255,255,255,.1);color:rgba(255,255,255,.5);font-weight:400;">Great Wall</span>
+          <span class="badge rounded-pill" style="background:rgba(255,255,255,.1);color:rgba(255,255,255,.5);font-weight:400;">Pandas</span>
+          <span class="badge rounded-pill" style="background:rgba(255,255,255,.1);color:rgba(255,255,255,.5);font-weight:400;">Tai Chi</span>
+          <span class="badge rounded-pill" style="background:rgba(255,255,255,.1);color:rgba(255,255,255,.5);font-weight:400;">Silk Road</span>
+          <span class="badge rounded-pill" style="background:rgba(255,255,255,.1);color:rgba(255,255,255,.5);font-weight:400;">Terracotta</span>
+        </div>
       </div>
     </div>
-    <hr style="border-color:rgba(255,255,255,.1)">
-    <p class="text-center small mb-0" style="color:rgba(255,255,255,.3)">&copy; 2026 WuDeRuiBo 吴德瑞博 · <span class="en">All Rights Reserved.</span><span class="zh">版权所有</span></p>
+    <hr style="border-color:rgba(255,255,255,.08)" class="my-4">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <p class="small mb-0" style="color:rgba(255,255,255,.3);">&copy; 2026 WuDeRuiBo 吴德瑞博</p>
+      <p class="small mb-0" style="color:rgba(255,255,255,.3);">
+        <span class="en">Made with passion for Chinese culture</span>
+        <span class="zh">以对中国文化的热忱打造</span>
+      </p>
+    </div>
   </div>
 </footer>
 
-<!-- WhatsApp 浮动按钮 -->
-<a href="#" class="wa-float" title="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+<!-- WhatsApp Float -->
+<a href="#" class="wa-float" title="Chat on WhatsApp"><i class="bi bi-whatsapp"></i></a>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Navbar shadow on scroll
+window.addEventListener('scroll', () => {
+  document.querySelector('.navbar-ink').classList.toggle('scrolled', window.scrollY > 20);
+});
+// Fade-up animation on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('fade-up'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>

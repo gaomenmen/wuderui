@@ -13,7 +13,10 @@ def get_locale():
     lang = request.args.get('lang')
     if lang in app.config['BABEL_SUPPORTED_LOCALES']:
         session['lang'] = lang
-    return session.get('lang', 'en')
+    # Only use session if explicitly set by user; never auto-detect
+    if 'lang' in session:
+        return session['lang']
+    return 'en'
 
 babel = Babel(app, locale_selector=get_locale)
 app.jinja_env.globals['get_locale'] = get_locale

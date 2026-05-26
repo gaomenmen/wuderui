@@ -2,296 +2,401 @@
 {% block title %}<span class="en">Custom China Travel — WuDeRuiBo</span><span class="zh">定制中国旅行 — 吴德瑞博</span>{% endblock %}
 {% block extra_head %}
 <style>
-  .trip-img {
-    width: 100%; height: 260px; object-fit: cover; border-radius: 8px 8px 0 0;
+  .trip-hero-img {
+    width: 100%; height: 280px; object-fit: cover;
   }
   @media(min-width:768px) {
-    .trip-img { border-radius: 8px 0 0 8px; height: 100%; min-height: 280px; }
+    .trip-hero-img { height: 100%; min-height: 340px; }
+  }
+  .trip-card {
+    border-radius: 12px; overflow: hidden;
+    background: #fff; border: 1px solid rgba(0,0,0,.06);
+    transition: transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s;
+  }
+  .trip-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(0,0,0,.1);
+  }
+  .trip-tag {
+    display: inline-block; padding: 3px 10px; border-radius: 20px;
+    font-size: .68rem; background: var(--paper-warm); color: var(--ink-gray);
+    border: 1px solid rgba(0,0,0,.06);
   }
 </style>
 {% endblock %}
 {% block content %}
 
-<div class="hero-ink py-5">
-  <div class="container position-relative" style="z-index:1;">
-    <h1 class="fw-bold" style="font-family:'Noto Serif SC',serif;"><span class="en">Custom China Travel</span><span class="zh">定制中国旅行</span></h1>
-    <p class="lead" style="opacity:.8;"><span class="en">10 Curated Packages — Bespoke Itineraries for the Discerning Traveler</span><span class="zh">10大经典套餐——为品质旅行者量身定制</span></p>
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<div class="hero-photo">
+  <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1600&h=800&fit=crop');"></div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content py-5">
+    <div style="min-height:320px;" class="d-flex flex-column justify-content-center">
+      <p class="small text-uppercase mb-3 fade-up" style="letter-spacing:4px;color:var(--gold-subtle);">
+        <span class="en">10 Curated Packages</span>
+        <span class="zh">10大经典套餐</span>
+      </p>
+      <h1 class="fw-bold mb-3 fade-up d1" style="font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.15;">
+        <span class="en">Your China Journey<br>Starts Here.</span>
+        <span class="zh">你的中国之旅<br>从这里开始。</span>
+      </h1>
+      <p class="fade-up d2" style="font-size:1.05rem;opacity:.8;max-width:500px;">
+        <span class="en">Bespoke itineraries with professional photography, local food experiences, and English-speaking guides. From imperial Beijing to the roof of the world.</span>
+        <span class="zh">专属行程，专业摄影、当地美食体验和英文导游。从皇城北京到世界屋脊。</span>
+      </p>
+    </div>
   </div>
 </div>
 
-<div class="container py-5">
+<!-- ═══════════════════ INCLUDED ═══════════════════ -->
+<div class="container" style="margin-top:-2rem;position:relative;z-index:3;">
+  <div class="row g-2 mb-5">
+    <div class="col-6 col-md-3">
+      <div class="paper-section p-3 text-center">
+        <div style="color:var(--cinnabar);"><i class="bi bi-camera" style="font-size:1.3rem;"></i></div>
+        <div class="small fw-bold mt-1"><span class="en">Photography</span><span class="zh">专业摄影</span></div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="paper-section p-3 text-center">
+        <div style="color:var(--cinnabar);"><i class="bi bi-emoji-smile" style="font-size:1.3rem;"></i></div>
+        <div class="small fw-bold mt-1"><span class="en">Local Food</span><span class="zh">当地美食</span></div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="paper-section p-3 text-center">
+        <div style="color:var(--cinnabar);"><i class="bi bi-translate" style="font-size:1.3rem;"></i></div>
+        <div class="small fw-bold mt-1"><span class="en">English Guide</span><span class="zh">英文导游</span></div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="paper-section p-3 text-center">
+        <div style="color:var(--cinnabar);"><i class="bi bi-shield-check" style="font-size:1.3rem;"></i></div>
+        <div class="small fw-bold mt-1"><span class="en">24/7 Support</span><span class="zh">全天支持</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container py-3">
 
   <!-- 01 Beijing -->
-  <div class="card-ink mb-4 overflow-hidden">
+  <div class="trip-card mb-5">
     <div class="row g-0">
       <div class="col-md-5">
-        <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&h=500&fit=crop" alt="Great Wall of China" class="trip-img" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&h=500&fit=crop" alt="Great Wall of China" class="trip-hero-img" loading="lazy">
       </div>
-      <div class="col-md-7 p-4">
-        <div class="d-flex align-items-center mb-2">
-          <span class="seal me-2">京</span>
-          <small class="text-muted"><i class="bi bi-calendar3 me-1"></i><span class="en">4–6 days</span><span class="zh">4-6天</span> · <i class="bi bi-people me-1"></i><span class="en">All ages</span><span class="zh">所有年龄段</span></small>
+      <div class="col-md-7 p-4 d-flex flex-column justify-content-center">
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <span class="seal">京</span>
+          <span class="text-muted" style="font-size:.8rem;"><i class="bi bi-clock me-1"></i><span class="en">4–6 days</span><span class="zh">4-6天</span></span>
         </div>
-        <h4 class="fw-bold mb-2"><span class="en">Beijing — The Imperial City</span><span class="zh">北京 — 皇城文化之旅</span></h4>
-        <p class="text-muted small mb-3"><span class="en">Walk through the corridors of power where emperors ruled for over 500 years. From the vast courtyards of the Forbidden City to the watchtowers of the Great Wall snaking across mountain ridges.</span><span class="zh">走过帝王统治五百年的权力长廊。从故宫的辽阔庭院到蜿蜒山脊的长城烽火台。</span></p>
+        <h3 class="fw-bold mb-2"><span class="en">Beijing — The Imperial City</span><span class="zh">北京 — 皇城文化之旅</span></h3>
+        <p class="text-muted small mb-3"><span class="en">Walk through 500 years of imperial power. From the vast courtyards of the Forbidden City to the Great Wall snaking across mountain ridges — this is China at its most magnificent.</span><span class="zh">走过帝王统治五百年的权力长廊。从故宫的辽阔庭院到蜿蜒山脊的长城——这是中国最壮丽的一面。</span></p>
         <div class="d-flex flex-wrap gap-1 mb-3">
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">故宫 Forbidden City</span>
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">长城 Great Wall</span>
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">天坛 Temple of Heaven</span>
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">烤鸭 Peking Duck</span>
+          <span class="trip-tag">Forbidden City</span>
+          <span class="trip-tag">Great Wall</span>
+          <span class="trip-tag">Temple of Heaven</span>
+          <span class="trip-tag">Peking Duck</span>
         </div>
-        <p class="small mb-3"><strong><span class="en">Signature:</span><span class="zh">特色：</span></strong><span class="en">Private sunrise visit to a less-crowded Great Wall section, followed by a traditional hutong breakfast.</span><span class="zh">包场长城非热门段看日出，随后在胡同四合院享用传统北京早餐。</span></p>
-        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm"><span class="en">Inquire →</span><span class="zh">咨询 →</span></a>
+        <p class="small mb-3"><span style="color:var(--cinnabar);font-weight:600;">Signature:</span> <span class="text-muted"><span class="en">Private sunrise visit to an uncrowded Great Wall section, then a traditional hutong breakfast in a courtyard.</span><span class="zh">包场非热门段长城看日出，在胡同四合院享用传统北京早餐。</span></span></p>
+        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm align-self-start"><span class="en">Inquire →</span><span class="zh">咨询 →</span></a>
       </div>
     </div>
   </div>
 
   <!-- 02 Xi'an -->
-  <div class="card-ink mb-4 overflow-hidden">
+  <div class="trip-card mb-5">
     <div class="row g-0 flex-md-row-reverse">
       <div class="col-md-5">
-        <img src="https://images.unsplash.com/photo-1695272017377-fd7005895b3d?w=800&h=500&fit=crop" alt="Terracotta Warriors" class="trip-img" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1695272017377-fd7005895b3d?w=800&h=500&fit=crop" alt="Terracotta Warriors" class="trip-hero-img" loading="lazy">
       </div>
-      <div class="col-md-7 p-4">
-        <div class="d-flex align-items-center mb-2">
-          <span class="seal me-2">秦</span>
-          <small class="text-muted"><i class="bi bi-calendar3 me-1"></i><span class="en">3–5 days</span><span class="zh">3-5天</span> · <i class="bi bi-people me-1"></i><span class="en">History lovers</span><span class="zh">历史爱好者</span></small>
+      <div class="col-md-7 p-4 d-flex flex-column justify-content-center">
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <span class="seal">秦</span>
+          <span class="text-muted" style="font-size:.8rem;"><i class="bi bi-clock me-1"></i><span class="en">3–5 days</span><span class="zh">3-5天</span></span>
         </div>
-        <h4 class="fw-bold mb-2"><span class="en">Xi'an — Echoes of the Silk Road</span><span class="zh">西安 — 千年古都丝路回响</span></h4>
-        <p class="text-muted small mb-3"><span class="en">Stand face-to-face with 8,000 terracotta warriors guarding China's first emperor for over 2,000 years. Xi'an was the eastern terminus of the Silk Road and capital of 13 dynasties.</span><span class="zh">与8000兵马俑面对面，他们守护中国第一位皇帝已逾两千年。西安是丝绸之路的东方起点，十三朝古都。</span></p>
+        <h3 class="fw-bold mb-2"><span class="en">Xi'an — Echoes of the Silk Road</span><span class="zh">西安 — 千年古都丝路回响</span></h3>
+        <p class="text-muted small mb-3"><span class="en">Stand face-to-face with 8,000 terracotta warriors guarding China's first emperor for over 2,000 years. The ancient capital of 13 dynasties and eastern gateway to the Silk Road.</span><span class="zh">与8000兵马俑面对面，他们守护中国第一位皇帝已逾两千年。十三朝古都，丝绸之路的东方起点。</span></p>
         <div class="d-flex flex-wrap gap-1 mb-3">
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">兵马俑 Terracotta Army</span>
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">古城墙 City Wall</span>
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">回民街 Muslim Quarter</span>
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">肉夹馍 Roujiamo</span>
+          <span class="trip-tag">Terracotta Army</span>
+          <span class="trip-tag">City Wall</span>
+          <span class="trip-tag">Muslim Quarter</span>
+          <span class="trip-tag">Roujiamo</span>
         </div>
-        <p class="small mb-3"><strong><span class="en">Signature:</span><span class="zh">特色：</span></strong><span class="en">Cycle atop the 600-year-old Ming Dynasty city wall at sunset, then explore the vibrant Muslim Quarter's street food scene.</span><span class="zh">黄昏骑行600年明代古城墙，夜晚漫步回民街品尝地道小吃。</span></p>
-        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm"><span class="en">Inquire →</span><span class="zh">咨询 →</span></a>
+        <p class="small mb-3"><span style="color:var(--cinnabar);font-weight:600;">Signature:</span> <span class="text-muted"><span class="en">Cycle atop the 600-year-old Ming Dynasty city wall at sunset, then explore the vibrant Muslim Quarter's street food scene.</span><span class="zh">黄昏骑行600年明代古城墙，夜晚漫步回民街品尝地道小吃。</span></span></p>
+        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm align-self-start"><span class="en">Inquire →</span><span class="zh">咨询 →</span></a>
       </div>
     </div>
   </div>
 
   <!-- 03 Shanghai -->
-  <div class="card-ink mb-4 overflow-hidden">
+  <div class="trip-card mb-5">
     <div class="row g-0">
       <div class="col-md-5">
-        <img src="https://images.unsplash.com/photo-1748078096034-46086f5b87da?w=800&h=500&fit=crop" alt="Shanghai Bund Night" class="trip-img" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1748078096034-46086f5b87da?w=800&h=500&fit=crop" alt="Shanghai Bund Night" class="trip-hero-img" loading="lazy">
       </div>
-      <div class="col-md-7 p-4">
-        <div class="d-flex align-items-center mb-2">
-          <span class="seal me-2">沪</span>
-          <small class="text-muted"><i class="bi bi-calendar3 me-1"></i><span class="en">3–4 days</span><span class="zh">3-4天</span> · <i class="bi bi-people me-1"></i><span class="en">Urban explorers</span><span class="zh">都市探索者</span></small>
+      <div class="col-md-7 p-4 d-flex flex-column justify-content-center">
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <span class="seal">沪</span>
+          <span class="text-muted" style="font-size:.8rem;"><i class="bi bi-clock me-1"></i><span class="en">3–4 days</span><span class="zh">3-4天</span></span>
         </div>
-        <h4 class="fw-bold mb-2"><span class="en">Shanghai — Where East Meets West</span><span class="zh">上海 — 东西交汇的摩登都市</span></h4>
-        <p class="text-muted small mb-3"><span class="en">Art Deco colonial buildings on the Bund face futuristic towers of Pudong across the Huangpu River. Sip tea in a Ming Dynasty garden and shop on the world's busiest street in the same afternoon.</span><span class="zh">外滩的装饰艺术殖民建筑与浦东的未来摩天楼隔江相望。下午在明代园林品茶，在同一条街上购物。</span></p>
+        <h3 class="fw-bold mb-2"><span class="en">Shanghai — Where East Meets West</span><span class="zh">上海 — 东西交汇的摩登都市</span></h3>
+        <p class="text-muted small mb-3"><span class="en">Art Deco colonial buildings on the Bund face futuristic Pudong towers across the Huangpu River. Sip tea in a Ming Dynasty garden and shop on the world's busiest street in the same afternoon.</span><span class="zh">外滩的装饰艺术殖民建筑与浦东未来摩天楼隔江相望。下午在明代园林品茶，在同一条街上购物。</span></p>
         <div class="d-flex flex-wrap gap-1 mb-3">
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">外滩 The Bund</span>
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">豫园 Yu Garden</span>
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">法租界 French Concession</span>
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">小笼包 Xiaolongbao</span>
+          <span class="trip-tag">The Bund</span>
+          <span class="trip-tag">Yu Garden</span>
+          <span class="trip-tag">French Concession</span>
+          <span class="trip-tag">Xiaolongbao</span>
         </div>
-        <p class="small mb-3"><strong><span class="en">Signature:</span><span class="zh">特色：</span></strong><span class="en">Private cocktail hour on a Bund rooftop at sunset, followed by a guided tasting tour through hidden local eateries.</span><span class="zh">黄昏在私人外滩露台品酒，随后跟随向导探访隐秘的本地美食小店。</span></p>
-        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm"><span class="en">Inquire →</span><span class="zh">咨询 →</span></a>
+        <p class="small mb-3"><span style="color:var(--cinnabar);font-weight:600;">Signature:</span> <span class="text-muted"><span class="en">Private cocktail hour on a Bund rooftop at sunset, followed by a guided tasting tour through hidden local eateries.</span><span class="zh">黄昏在私人外滩露台品酒，跟随向导探访隐秘的本地美食小店。</span></span></p>
+        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm align-self-start"><span class="en">Inquire →</span><span class="zh">咨询 →</span></a>
       </div>
     </div>
   </div>
 
   <!-- 04 Guilin -->
-  <div class="card-ink mb-4 overflow-hidden">
+  <div class="trip-card mb-5">
     <div class="row g-0 flex-md-row-reverse">
       <div class="col-md-5">
-        <img src="https://images.unsplash.com/photo-1771967141873-8b714205f4bd?w=800&h=500&fit=crop" alt="Guilin Karst Mountains" class="trip-img" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1771967141873-8b714205f4bd?w=800&h=500&fit=crop" alt="Guilin Karst Mountains" class="trip-hero-img" loading="lazy">
       </div>
-      <div class="col-md-7 p-4">
-        <div class="d-flex align-items-center mb-2">
-          <span class="seal me-2">桂</span>
-          <small class="text-muted"><i class="bi bi-calendar3 me-1"></i><span class="en">3–5 days</span><span class="zh">3-5天</span> · <i class="bi bi-people me-1"></i><span class="en">Nature lovers</span><span class="zh">自然爱好者</span></small>
+      <div class="col-md-7 p-4 d-flex flex-column justify-content-center">
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <span class="seal">桂</span>
+          <span class="text-muted" style="font-size:.8rem;"><i class="bi bi-clock me-1"></i><span class="en">3–5 days</span><span class="zh">3-5天</span></span>
         </div>
-        <h4 class="fw-bold mb-2"><span class="en">Guilin — Painted Landscapes Come Alive</span><span class="zh">桂林 — 走进水墨画卷</span></h4>
+        <h3 class="fw-bold mb-2"><span class="en">Guilin — Painted Landscapes Come Alive</span><span class="zh">桂林 — 走进水墨画卷</span></h3>
         <p class="text-muted small mb-3"><span class="en">Cruise the Li River through a living Chinese ink painting — mist-shrouded karst peaks rise from emerald waters while water buffalo graze on the banks. This is the China you've seen in photographs.</span><span class="zh">乘船游漓江，穿行于活的山水画卷——雾罩的喀斯特峰林从碧水中拔起，水牛在岸边悠闲吃草。</span></p>
         <div class="d-flex flex-wrap gap-1 mb-3">
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">漓江 Li River</span>
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">阳朔 Yangshuo</span>
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">龙脊梯田 Rice Terraces</span>
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">芦笛岩 Reed Flute Cave</span>
+          <span class="trip-tag">Li River</span>
+          <span class="trip-tag">Yangshuo</span>
+          <span class="trip-tag">Rice Terraces</span>
+          <span class="trip-tag">Reed Flute Cave</span>
         </div>
-        <p class="small mb-3"><strong><span class="en">Signature:</span><span class="zh">特色：</span></strong><span class="en">Sunrise hot-air balloon over Yangshuo karst peaks, followed by a countryside cycling tour through rice paddies.</span><span class="zh">阳朔喀斯特峰林日出热气球，随后骑行穿越稻田和古朴村落。</span></p>
-        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm"><span class="en">Inquire →</span><span class="zh">咨询 →</span></a>
+        <p class="small mb-3"><span style="color:var(--cinnabar);font-weight:600;">Signature:</span> <span class="text-muted"><span class="en">Sunrise hot-air balloon over Yangshuo karst peaks, followed by a countryside cycling tour through rice paddies.</span><span class="zh">阳朔喀斯特峰林日出热气球，随后骑行穿越稻田和古朴村落。</span></span></p>
+        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm align-self-start"><span class="en">Inquire →</span><span class="zh">咨询 →</span></a>
       </div>
     </div>
   </div>
 
   <!-- 05 Chengdu -->
-  <div class="card-ink mb-4 overflow-hidden">
+  <div class="trip-card mb-5">
     <div class="row g-0">
       <div class="col-md-5">
-        <img src="https://images.unsplash.com/photo-1566487097168-e91a4f38bee2?w=800&h=500&fit=crop" alt="Giant Panda in Chengdu" class="trip-img" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1566487097168-e91a4f38bee2?w=800&h=500&fit=crop" alt="Giant Panda in Chengdu" class="trip-hero-img" loading="lazy">
       </div>
-      <div class="col-md-7 p-4">
-        <div class="d-flex align-items-center mb-2">
-          <span class="seal me-2">蜀</span>
-          <small class="text-muted"><i class="bi bi-calendar3 me-1"></i><span class="en">3–5 days</span><span class="zh">3-5天</span> · <i class="bi bi-people me-1"></i><span class="en">Families & foodies</span><span class="zh">家庭与美食家</span></small>
+      <div class="col-md-7 p-4 d-flex flex-column justify-content-center">
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <span class="seal">蜀</span>
+          <span class="text-muted" style="font-size:.8rem;"><i class="bi bi-clock me-1"></i><span class="en">3–5 days</span><span class="zh">3-5天</span></span>
         </div>
-        <h4 class="fw-bold mb-2"><span class="en">Chengdu — Pandas, Spice & Ancient Teahouses</span><span class="zh">成都 — 熊猫、麻辣与千年茶馆</span></h4>
-        <p class="text-muted small mb-3"><span class="en">Get up close with giant pandas at the world's premier breeding base, then lose yourself in a UNESCO City of Gastronomy. Fiery Sichuan hot pot and mysterious face-changing Sichuan Opera create an experience that's adorable and electrifying.</span><span class="zh">与世界顶级大熊猫基地的国宝亲密接触，然后迷失在联合国认证的"美食之都"。火辣的四川火锅和神秘的川剧变脸，可爱与刺激并存。</span></p>
+        <h3 class="fw-bold mb-2"><span class="en">Chengdu — Pandas, Spice & Ancient Teahouses</span><span class="zh">成都 — 熊猫、麻辣与千年茶馆</span></h3>
+        <p class="text-muted small mb-3"><span class="en">Get up close with giant pandas at the world's premier breeding base, then lose yourself in a UNESCO City of Gastronomy. Fiery Sichuan hot pot and mysterious face-changing Opera — adorable and electrifying.</span><span class="zh">与世界顶级大熊猫基地的国宝亲密接触，然后迷失在联合国认证的"美食之都"。火辣四川火锅和神秘川剧变脸。</span></p>
         <div class="d-flex flex-wrap gap-1 mb-3">
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">大熊猫 Panda Base</span>
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">火锅 Hot Pot</span>
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">乐山大佛 Leshan Buddha</span>
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">川剧变脸 Face-Changing</span>
+          <span class="trip-tag">Giant Pandas</span>
+          <span class="trip-tag">Hot Pot</span>
+          <span class="trip-tag">Leshan Buddha</span>
+          <span class="trip-tag">Face-Changing Opera</span>
         </div>
-        <p class="small mb-3"><strong><span class="en">Signature:</span><span class="zh">特色：</span></strong><span class="en">Early-morning VIP panda keeper experience — prepare bamboo before the crowds arrive, then share hot pot with a local family.</span><span class="zh">清晨VIP熊猫饲养员体验，在游客到来前准备竹子，晚间与当地家庭共享四川火锅。</span></p>
-        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm"><span class="en">Inquire →</span><span class="zh">咨询 →</span></a>
+        <p class="small mb-3"><span style="color:var(--cinnabar);font-weight:600;">Signature:</span> <span class="text-muted"><span class="en">Early-morning VIP panda keeper experience — prepare bamboo before the crowds arrive, then share hot pot with a local family.</span><span class="zh">清晨VIP熊猫饲养员体验，在游客到来前准备竹子，晚间与当地家庭共享四川火锅。</span></span></p>
+        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm align-self-start"><span class="en">Inquire →</span><span class="zh">咨询 →</span></a>
       </div>
     </div>
   </div>
 
   <!-- 06 Yunnan -->
-  <div class="card-ink mb-4 overflow-hidden">
+  <div class="trip-card mb-5">
     <div class="row g-0 flex-md-row-reverse">
       <div class="col-md-5">
-        <img src="https://images.pexels.com/photos/5186422/pexels-photo-5186422.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop" alt="Yunnan Monastery" class="trip-img" loading="lazy">
+        <img src="https://images.pexels.com/photos/5186422/pexels-photo-5186422.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop" alt="Yunnan Monastery" class="trip-hero-img" loading="lazy">
       </div>
-      <div class="col-md-7 p-4">
-        <div class="d-flex align-items-center mb-2">
-          <span class="seal me-2">滇</span>
-          <small class="text-muted"><i class="bi bi-calendar3 me-1"></i><span class="en">5–7 days</span><span class="zh">5-7天</span> · <i class="bi bi-people me-1"></i><span class="en">Culture seekers</span><span class="zh">文化探索者</span></small>
+      <div class="col-md-7 p-4 d-flex flex-column justify-content-center">
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <span class="seal">滇</span>
+          <span class="text-muted" style="font-size:.8rem;"><i class="bi bi-clock me-1"></i><span class="en">5–7 days</span><span class="zh">5-7天</span></span>
         </div>
-        <h4 class="fw-bold mb-2"><span class="en">Yunnan — China's Cultural Mosaic</span><span class="zh">云南 — 多彩民族秘境</span></h4>
-        <p class="text-muted small mb-3"><span class="en">Home to 25 of China's 56 ethnic minorities. Wander the cobblestone streets of Lijiang's UNESCO old town, gaze across the mirror-like Erhai Lake in Dali, and venture to the legendary Shangri-La at the foot of Jade Dragon Snow Mountain.</span><span class="zh">中国56个民族中25个聚居于此。漫步丽江古城石板路，凝望大理洱海如镜的湖面，深入传说中的香格里拉。</span></p>
+        <h3 class="fw-bold mb-2"><span class="en">Yunnan — China's Cultural Mosaic</span><span class="zh">云南 — 多彩民族秘境</span></h3>
+        <p class="text-muted small mb-3"><span class="en">Home to 25 of China's 56 ethnic minorities. Wander Lijiang's UNESCO cobblestone streets, gaze across the mirror-like Erhai Lake in Dali, and venture to the legendary Shangri-La.</span><span class="zh">中国56个民族中25个聚居于此。漫步丽江古城石板路，凝望大理洱海如镜的湖面，深入传说中的香格里拉。</span></p>
         <div class="d-flex flex-wrap gap-1 mb-3">
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">丽江古城 Lijiang</span>
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">大理洱海 Dali Erhai</span>
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">香格里拉 Shangri-La</span>
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">玉龙雪山 Jade Dragon</span>
+          <span class="trip-tag">Lijiang</span>
+          <span class="trip-tag">Dali Erhai</span>
+          <span class="trip-tag">Shangri-La</span>
+          <span class="trip-tag">Jade Dragon Snow</span>
         </div>
-        <p class="small mb-3"><strong><span class="en">Signature:</span><span class="zh">特色：</span></strong><span class="en">Visit a Naxi village, learn Dongba pictograph writing from a shaman, and share a home-cooked meal with a local ethnic family.</span><span class="zh">探访纳西族村落，向东巴祭司学习象形文字，与当地少数民族家庭共享家常菜。</span></p>
-        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm"><span class="en">Inquire →</span><span class="zh">咨询 →</span></a>
+        <p class="small mb-3"><span style="color:var(--cinnabar);font-weight:600;">Signature:</span> <span class="text-muted"><span class="en">Visit a Naxi village, learn Dongba pictograph writing from a shaman, and share a home-cooked meal with a local ethnic family.</span><span class="zh">探访纳西族村落，向东巴祭司学习象形文字，与当地少数民族家庭共享家常菜。</span></span></p>
+        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm align-self-start"><span class="en">Inquire →</span><span class="zh">咨询 →</span></a>
       </div>
     </div>
   </div>
 
   <!-- 07 Silk Road -->
-  <div class="card-ink mb-4 overflow-hidden">
+  <div class="trip-card mb-5">
     <div class="row g-0">
       <div class="col-md-5">
-        <img src="https://images.pexels.com/photos/8604523/pexels-photo-8604523.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop" alt="Silk Road" class="trip-img" loading="lazy">
+        <img src="https://images.pexels.com/photos/8604523/pexels-photo-8604523.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop" alt="Silk Road" class="trip-hero-img" loading="lazy">
       </div>
-      <div class="col-md-7 p-4">
-        <div class="d-flex align-items-center mb-2">
-          <span class="seal me-2">丝</span>
-          <small class="text-muted"><i class="bi bi-calendar3 me-1"></i><span class="en">5–8 days</span><span class="zh">5-8天</span> · <i class="bi bi-people me-1"></i><span class="en">Adventurers</span><span class="zh">探险爱好者</span></small>
+      <div class="col-md-7 p-4 d-flex flex-column justify-content-center">
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <span class="seal">丝</span>
+          <span class="text-muted" style="font-size:.8rem;"><i class="bi bi-clock me-1"></i><span class="en">5–8 days</span><span class="zh">5-8天</span></span>
         </div>
-        <h4 class="fw-bold mb-2"><span class="en">Silk Road — Tracing Ancient Trade Routes</span><span class="zh">丝绸之路 — 重走千年商道</span></h4>
-        <p class="text-muted small mb-3"><span class="en">Follow the legendary Silk Road to the Mogao Caves — the "Louvre of the East" — where 1,000 years of Buddhist art fill 735 caves. Ride camels across singing sand dunes and camp under stars at Crescent Lake.</span><span class="zh">沿传奇丝绸之路来到"东方卢浮宫"莫高窟——735个石窟中保存着千年的佛教艺术。骑骆驼穿越鸣沙山，在月牙泉星空下露营。</span></p>
+        <h3 class="fw-bold mb-2"><span class="en">Silk Road — Tracing Ancient Trade Routes</span><span class="zh">丝绸之路 — 重走千年商道</span></h3>
+        <p class="text-muted small mb-3"><span class="en">Follow the legendary Silk Road to the Mogao Caves — the "Louvre of the East" — where 1,000 years of Buddhist art fill 735 caves. Ride camels across singing sand dunes and camp under stars.</span><span class="zh">沿传奇丝绸之路来到"东方卢浮宫"莫高窟——735个石窟中保存着千年佛教艺术。骑骆驼穿越鸣沙山，在星空下露营。</span></p>
         <div class="d-flex flex-wrap gap-1 mb-3">
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">莫高窟 Mogao Caves</span>
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">月牙泉 Crescent Lake</span>
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">嘉峪关 Jiayuguan</span>
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">驼队体验 Camel Caravan</span>
+          <span class="trip-tag">Mogao Caves</span>
+          <span class="trip-tag">Crescent Lake</span>
+          <span class="trip-tag">Jiayuguan</span>
+          <span class="trip-tag">Camel Caravan</span>
         </div>
-        <p class="small mb-3"><strong><span class="en">Signature:</span><span class="zh">特色：</span></strong><span class="en">Exclusive after-hours Mogao Cave access with an art historian guide, followed by a desert sunset camel ride and Uyghur feast under the stars.</span><span class="zh">独家闭馆时段莫高窟专场，由艺术史专家讲解，随后在沙漠日落中骑骆驼，星空下享用维吾尔族盛宴。</span></p>
-        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm"><span class="en">Inquire →</span><span class="zh">咨询 →</span></a>
+        <p class="small mb-3"><span style="color:var(--cinnabar);font-weight:600;">Signature:</span> <span class="text-muted"><span class="en">Exclusive after-hours Mogao Cave access with an art historian guide, then a desert sunset camel ride and Uyghur feast under the stars.</span><span class="zh">独家闭馆时段莫高窟专场，由艺术史专家讲解，沙漠日落骑骆驼，星空下享用维吾尔族盛宴。</span></span></p>
+        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm align-self-start"><span class="en">Inquire →</span><span class="zh">咨询 →</span></a>
       </div>
     </div>
   </div>
 
   <!-- 08 Tibet -->
-  <div class="card-ink mb-4 overflow-hidden">
+  <div class="trip-card mb-5">
     <div class="row g-0 flex-md-row-reverse">
       <div class="col-md-5">
-        <img src="https://images.pexels.com/photos/31013239/pexels-photo-31013239.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop" alt="Potala Palace" class="trip-img" loading="lazy">
+        <img src="https://images.pexels.com/photos/31013239/pexels-photo-31013239.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop" alt="Potala Palace" class="trip-hero-img" loading="lazy">
       </div>
-      <div class="col-md-7 p-4">
-        <div class="d-flex align-items-center mb-2">
-          <span class="seal me-2">藏</span>
-          <small class="text-muted"><i class="bi bi-calendar3 me-1"></i><span class="en">5–7 days</span><span class="zh">5-7天</span> · <i class="bi bi-people me-1"></i><span class="en">Spiritual seekers</span><span class="zh">心灵探索者</span></small>
+      <div class="col-md-7 p-4 d-flex flex-column justify-content-center">
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <span class="seal">藏</span>
+          <span class="text-muted" style="font-size:.8rem;"><i class="bi bi-clock me-1"></i><span class="en">5–7 days</span><span class="zh">5-7天</span></span>
         </div>
-        <h4 class="fw-bold mb-2"><span class="en">Tibet — The Roof of the World</span><span class="zh">西藏 — 世界屋脊的圣洁之旅</span></h4>
-        <p class="text-muted small mb-3"><span class="en">The Potala Palace rises like a fortress above Lhasa, while prayer flags flutter across the vast Tibetan plateau. Beside the turquoise waters of Namtso Lake, you'll find a silence that exists nowhere else on Earth.</span><span class="zh">布达拉宫如堡垒般耸立于拉萨之上，经幡在辽阔的青藏高原上飘扬。在纳木错的碧蓝湖水旁，你会找到地球上独一无二的宁静。</span></p>
+        <h3 class="fw-bold mb-2"><span class="en">Tibet — The Roof of the World</span><span class="zh">西藏 — 世界屋脊的圣洁之旅</span></h3>
+        <p class="text-muted small mb-3"><span class="en">The Potala Palace rises like a fortress above Lhasa, while prayer flags flutter across the vast Tibetan plateau. Beside the turquoise waters of Namtso Lake, you'll find a silence that exists nowhere else on Earth.</span><span class="zh">布达拉宫如堡垒般耸立于拉萨之上，经幡在辽阔的青藏高原飘扬。在纳木错的碧蓝湖水旁，你会找到地球上独一无二的宁静。</span></p>
         <div class="d-flex flex-wrap gap-1 mb-3">
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">布达拉宫 Potala Palace</span>
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">大昭寺 Jokhang Temple</span>
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">纳木错 Namtso Lake</span>
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">酥油茶 Butter Tea</span>
+          <span class="trip-tag">Potala Palace</span>
+          <span class="trip-tag">Jokhang Temple</span>
+          <span class="trip-tag">Namtso Lake</span>
+          <span class="trip-tag">Butter Tea</span>
         </div>
-        <p class="small mb-3"><strong><span class="en">Signature:</span><span class="zh">特色：</span></strong><span class="en">Join pilgrims on a sacred kora around Jokhang Temple at dawn, then share yak butter tea with monks in a mountainside monastery.</span><span class="zh">黎明时分与藏族朝圣者一起在大昭寺转经，随后在山间寺院与僧人共享酥油茶和糌粑。</span></p>
-        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm"><span class="en">Inquire →</span><span class="zh">咨询 →</span></a>
+        <p class="small mb-3"><span style="color:var(--cinnabar);font-weight:600;">Signature:</span> <span class="text-muted"><span class="en">Join pilgrims on a sacred kora around Jokhang Temple at dawn, then share yak butter tea with monks in a mountainside monastery.</span><span class="zh">黎明与朝圣者在大昭寺转经，在山间寺院与僧人共享酥油茶。</span></span></p>
+        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm align-self-start"><span class="en">Inquire →</span><span class="zh">咨询 →</span></a>
       </div>
     </div>
   </div>
 
   <!-- 09 Zhangjiajie -->
-  <div class="card-ink mb-4 overflow-hidden">
+  <div class="trip-card mb-5">
     <div class="row g-0">
       <div class="col-md-5">
-        <img src="https://images.unsplash.com/photo-1762087144756-a72df49dc865?w=800&h=500&fit=crop" alt="Zhangjiajie Mountains" class="trip-img" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1762087144756-a72df49dc865?w=800&h=500&fit=crop" alt="Zhangjiajie Mountains" class="trip-hero-img" loading="lazy">
       </div>
-      <div class="col-md-7 p-4">
-        <div class="d-flex align-items-center mb-2">
-          <span class="seal me-2">湘</span>
-          <small class="text-muted"><i class="bi bi-calendar3 me-1"></i><span class="en">3–5 days</span><span class="zh">3-5天</span> · <i class="bi bi-people me-1"></i><span class="en">Thrill seekers</span><span class="zh">刺激爱好者</span></small>
+      <div class="col-md-7 p-4 d-flex flex-column justify-content-center">
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <span class="seal">湘</span>
+          <span class="text-muted" style="font-size:.8rem;"><i class="bi bi-clock me-1"></i><span class="en">3–5 days</span><span class="zh">3-5天</span></span>
         </div>
-        <h4 class="fw-bold mb-2"><span class="en">Zhangjiajie — Avatar's Floating Mountains</span><span class="zh">张家界 — 阿凡达悬浮仙境</span></h4>
-        <p class="text-muted small mb-3"><span class="en">Towering sandstone pillars so otherworldly they inspired the floating mountains in James Cameron's Avatar. Walk the world's longest glass bridge 300m above a canyon, ride the 1,000-meter Bailong Elevator built into a cliff.</span><span class="zh">石英砂岩峰林如此超凡脱俗，启发了《阿凡达》中的悬浮山。走上世界最高玻璃桥，乘坐嵌入岩壁的百龙天梯攀升千米。</span></p>
+        <h3 class="fw-bold mb-2"><span class="en">Zhangjiajie — Avatar's Floating Mountains</span><span class="zh">张家界 — 阿凡达悬浮仙境</span></h3>
+        <p class="text-muted small mb-3"><span class="en">Towering sandstone pillars so otherworldly they inspired the floating mountains in James Cameron's Avatar. Walk the world's longest glass bridge 300m above a canyon.</span><span class="zh">石英砂岩峰林如此超凡脱俗，启发了《阿凡达》中的悬浮山。走上世界最高玻璃桥，乘坐嵌入岩壁的百龙天梯攀升千米。</span></p>
         <div class="d-flex flex-wrap gap-1 mb-3">
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">阿凡达山 Avatar Mountain</span>
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">玻璃桥 Glass Bridge</span>
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">天子山 Tianzi Mountain</span>
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">百龙天梯 Bailong Elevator</span>
+          <span class="trip-tag">Avatar Mountain</span>
+          <span class="trip-tag">Glass Bridge</span>
+          <span class="trip-tag">Tianzi Mountain</span>
+          <span class="trip-tag">Bailong Elevator</span>
         </div>
-        <p class="small mb-3"><strong><span class="en">Signature:</span><span class="zh">特色：</span></strong><span class="en">Private sunrise photography session at Tianzi Mountain summit, capturing the sea of clouds between sandstone pillars.</span><span class="zh">天子山顶私人日出摄影，捕捉云海与砂岩峰林之间的光影。</span></p>
-        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm"><span class="en">Inquire →</span><span class="zh">咨询 →</span></a>
+        <p class="small mb-3"><span style="color:var(--cinnabar);font-weight:600;">Signature:</span> <span class="text-muted"><span class="en">Private sunrise photography session at Tianzi Mountain summit, capturing the sea of clouds between sandstone pillars.</span><span class="zh">天子山顶私人日出摄影，捕捉云海与砂岩峰林之间的光影。</span></span></p>
+        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm align-self-start"><span class="en">Inquire →</span><span class="zh">咨询 →</span></a>
       </div>
     </div>
   </div>
 
   <!-- 10 Huangshan -->
-  <div class="card-ink mb-4 overflow-hidden">
+  <div class="trip-card mb-5">
     <div class="row g-0 flex-md-row-reverse">
       <div class="col-md-5">
-        <img src="https://images.pexels.com/photos/14734162/pexels-photo-14734162.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop" alt="Huangshan Mountains" class="trip-img" loading="lazy">
+        <img src="https://images.pexels.com/photos/14734162/pexels-photo-14734162.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop" alt="Huangshan Mountains" class="trip-hero-img" loading="lazy">
       </div>
-      <div class="col-md-7 p-4">
-        <div class="d-flex align-items-center mb-2">
-          <span class="seal me-2">徽</span>
-          <small class="text-muted"><i class="bi bi-calendar3 me-1"></i><span class="en">3–4 days</span><span class="zh">3-4天</span> · <i class="bi bi-people me-1"></i><span class="en">Poetic souls</span><span class="zh">诗意旅行者</span></small>
+      <div class="col-md-7 p-4 d-flex flex-column justify-content-center">
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <span class="seal">徽</span>
+          <span class="text-muted" style="font-size:.8rem;"><i class="bi bi-clock me-1"></i><span class="en">3–4 days</span><span class="zh">3-4天</span></span>
         </div>
-        <h4 class="fw-bold mb-2"><span class="en">Huangshan — Sea of Clouds & Ancient Villages</span><span class="zh">黄山 — 云海仙境与古村落</span></h4>
-        <p class="text-muted small mb-3"><span class="en">China's most painted mountain for over a thousand years — gnarled pines clinging to granite cliffs above rolling oceans of cloud. At its foot lies Hongcun, a 900-year-old UNESCO village with white-walled Hui-style architecture reflected in a crescent pond.</span><span class="zh">千年来中国被画得最多的山——扭曲的苍松攀附在花岗岩绝壁上，脚下是翻涌的云海。山脚下的宏村是900年的世界文化遗产村落。</span></p>
+        <h3 class="fw-bold mb-2"><span class="en">Huangshan — Sea of Clouds & Ancient Villages</span><span class="zh">黄山 — 云海仙境与古村落</span></h3>
+        <p class="text-muted small mb-3"><span class="en">China's most painted mountain for over 1,000 years — gnarled pines clinging to granite cliffs above rolling oceans of cloud. At its foot lies Hongcun, a 900-year-old UNESCO village.</span><span class="zh">千年来中国被画得最多的山——扭曲的苍松攀附在花岗岩绝壁上，脚下是翻涌的云海。山脚下是900年的世界文化遗产宏村。</span></p>
         <div class="d-flex flex-wrap gap-1 mb-3">
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">云海 Sea of Clouds</span>
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">宏村 Hongcun Village</span>
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">迎客松 Guest-Greeting Pine</span>
-          <span class="badge rounded-pill" style="background:var(--ink-black);font-size:.7rem;">徽菜 Hui Cuisine</span>
+          <span class="trip-tag">Sea of Clouds</span>
+          <span class="trip-tag">Hongcun Village</span>
+          <span class="trip-tag">Guest-Greeting Pine</span>
+          <span class="trip-tag">Hui Cuisine</span>
         </div>
-        <p class="small mb-3"><strong><span class="en">Signature:</span><span class="zh">特色：</span></strong><span class="en">Watch the legendary Huangshan sunrise from a private viewing platform, then descend to Hongcun for a Hui-style lunch and a calligraphy workshop with a local master.</span><span class="zh">私人观景台等候黄山日出，下山后在宏村享用徽菜午餐，跟随当地大师学习书法。</span></p>
-        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm"><span class="en">Inquire →</span><span class="zh">咨询 →</span></a>
+        <p class="small mb-3"><span style="color:var(--cinnabar);font-weight:600;">Signature:</span> <span class="text-muted"><span class="en">Watch the legendary Huangshan sunrise from a private viewing platform, then descend to Hongcun for a Hui-style lunch and calligraphy workshop.</span><span class="zh">私人观景台等候黄山日出，在宏村享用徽菜午餐，跟随当地大师学习书法。</span></span></p>
+        <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-sm align-self-start"><span class="en">Inquire →</span><span class="zh">咨询 →</span></a>
       </div>
     </div>
   </div>
 
+  <!-- ═══════════════════ EVERY TRIP INCLUDES ═══════════════════ -->
   <div class="ink-divider"><span class="seal">定制</span></div>
 
-  <div class="paper-section p-4 mb-5">
-    <h6 class="fw-bold mb-3"><span class="en">Every Package Includes</span><span class="zh">每个套餐包含</span></h6>
-    <div class="row">
-      <div class="col-md-3 mb-2"><small><i class="bi bi-check me-1"></i> <span class="en">Professional Photography</span><span class="zh">专业摄影</span></small></div>
-      <div class="col-md-3 mb-2"><small><i class="bi bi-check me-1"></i> <span class="en">Local Food Experience</span><span class="zh">当地美食体验</span></small></div>
-      <div class="col-md-3 mb-2"><small><i class="bi bi-check me-1"></i> <span class="en">Airport Transfers</span><span class="zh">机场接送</span></small></div>
-      <div class="col-md-3 mb-2"><small><i class="bi bi-check me-1"></i> <span class="en">English-Speaking Guide</span><span class="zh">英文导游</span></small></div>
-      <div class="col-md-3 mb-2"><small><i class="bi bi-check me-1"></i> <span class="en">24/7 Booking Support</span><span class="zh">24小时预订支持</span></small></div>
-      <div class="col-md-3 mb-2"><small><i class="bi bi-check me-1"></i> <span class="en">Handpicked Hotels</span><span class="zh">精选酒店</span></small></div>
-      <div class="col-md-3 mb-2"><small><i class="bi bi-check me-1"></i> <span class="en">Flexible Itinerary</span><span class="zh">灵活行程</span></small></div>
-      <div class="col-md-3 mb-2"><small><i class="bi bi-check me-1"></i> <span class="en">Mix & Match Destinations</span><span class="zh">自由组合目的地</span></small></div>
+  <div class="row g-4 mb-5">
+    <div class="col-md-8">
+      <h2 class="fw-bold mb-3">
+        <span class="en">Every Package Includes</span>
+        <span class="zh">每个套餐包含</span>
+      </h2>
+      <p class="text-muted mb-4"><span class="en">All our trips are fully customizable. Mix and match destinations, add experiences, and we'll craft the perfect itinerary for you.</span><span class="zh">所有行程均可完全定制。自由组合目的地，添加体验项目，我们为您打造完美行程。</span></p>
+      <div class="row g-3">
+        <div class="col-sm-6 d-flex align-items-start gap-2">
+          <i class="bi bi-check-circle-fill" style="color:var(--cinnabar);margin-top:2px;"></i>
+          <small><span class="en">Professional Photography</span><span class="zh">专业摄影</span></small>
+        </div>
+        <div class="col-sm-6 d-flex align-items-start gap-2">
+          <i class="bi bi-check-circle-fill" style="color:var(--cinnabar);margin-top:2px;"></i>
+          <small><span class="en">Local Food Experiences</span><span class="zh">当地美食体验</span></small>
+        </div>
+        <div class="col-sm-6 d-flex align-items-start gap-2">
+          <i class="bi bi-check-circle-fill" style="color:var(--cinnabar);margin-top:2px;"></i>
+          <small><span class="en">English-Speaking Guide</span><span class="zh">英文导游</span></small>
+        </div>
+        <div class="col-sm-6 d-flex align-items-start gap-2">
+          <i class="bi bi-check-circle-fill" style="color:var(--cinnabar);margin-top:2px;"></i>
+          <small><span class="en">Airport Transfers</span><span class="zh">机场接送</span></small>
+        </div>
+        <div class="col-sm-6 d-flex align-items-start gap-2">
+          <i class="bi bi-check-circle-fill" style="color:var(--cinnabar);margin-top:2px;"></i>
+          <small><span class="en">Handpicked Hotels</span><span class="zh">精选酒店</span></small>
+        </div>
+        <div class="col-sm-6 d-flex align-items-start gap-2">
+          <i class="bi bi-check-circle-fill" style="color:var(--cinnabar);margin-top:2px;"></i>
+          <small><span class="en">24/7 Booking Support</span><span class="zh">24小时预订支持</span></small>
+        </div>
+        <div class="col-sm-6 d-flex align-items-start gap-2">
+          <i class="bi bi-check-circle-fill" style="color:var(--cinnabar);margin-top:2px;"></i>
+          <small><span class="en">Flexible Itinerary</span><span class="zh">灵活行程</span></small>
+        </div>
+        <div class="col-sm-6 d-flex align-items-start gap-2">
+          <i class="bi bi-check-circle-fill" style="color:var(--cinnabar);margin-top:2px;"></i>
+          <small><span class="en">Mix & Match Destinations</span><span class="zh">自由组合目的地</span></small>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="paper-section p-4 h-100 d-flex flex-column justify-content-center">
+        <h5 class="fw-bold mb-3"><span class="en">Plan Your Trip</span><span class="zh">规划你的旅行</span></h5>
+        <p class="text-muted small mb-3"><span class="en">Tell us your interests, dates, and group size — we'll craft a bespoke itinerary just for you.</span><span class="zh">告诉我们你的兴趣、日期和人数——我们为你量身定制行程。</span></p>
+        <a href="{{ url_for('contact') }}" class="btn btn-cinnabar"><i class="bi bi-whatsapp me-1"></i> <span class="en">Get a Quote</span><span class="zh">获取报价</span></a>
+      </div>
     </div>
   </div>
 
-  <div class="text-center py-4">
-    <h4 class="fw-bold mb-3"><span class="en">Plan Your China Trip</span><span class="zh">规划你的中国之旅</span></h4>
-    <p class="text-muted mb-3"><span class="en">Tell us your interests — we'll craft a bespoke itinerary just for you.</span><span class="zh">告诉我们你的兴趣，我们为你量身定制行程。</span></p>
-    <a href="{{ url_for('contact') }}" class="btn btn-cinnabar btn-lg"><i class="bi bi-whatsapp me-1"></i> <span class="en">Get a Quote</span><span class="zh">获取报价</span></a>
+  <!-- CTA -->
+  <div class="text-center py-5 mb-3">
+    <h3 class="fw-bold mb-3">
+      <span class="en">Can't Decide? Let Us Help.</span>
+      <span class="zh">不知道选哪个？让我们来帮你。</span>
+    </h3>
+    <p class="text-muted mb-4"><span class="en">Share your travel dreams with us — we'll recommend the perfect package.</span><span class="zh">告诉我们你的旅行梦想——我们推荐最适合的套餐。</span></p>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+      <a href="{{ url_for('contact') }}" class="btn btn-cinnabar btn-lg"><i class="bi bi-whatsapp me-1"></i> <span class="en">WhatsApp Us</span><span class="zh">WhatsApp咨询</span></a>
+      <a href="{{ url_for('contact') }}" class="btn btn-outline-ink btn-lg"><span class="en">Send Inquiry</span><span class="zh">提交咨询</span></a>
+    </div>
   </div>
+
 </div>
 
 {% endblock %}
