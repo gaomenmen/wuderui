@@ -264,7 +264,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-ink sticky-top">
   <div class="container">
-    <a class="navbar-brand" href="{{ url_for('home') }}">
+    <a class="navbar-brand" href="{{ url_for('main.home') }}">
       <span class="seal me-1">吴德瑞博</span>
       <span style="font-family:'Inter',sans-serif;font-size:.78rem;font-weight:500;color:var(--ink-light);">WuDeRuiBo</span>
     </a>
@@ -273,15 +273,15 @@
     </button>
     <div class="collapse navbar-collapse" id="navContent">
       <ul class="navbar-nav me-auto ms-3">
-        <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}"><span class="en">Home</span><span class="zh">首页</span></a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ url_for('learn_chinese') }}"><span class="en">Learn Chinese</span><span class="zh">学中文</span></a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ url_for('tai_chi') }}"><span class="en">Tai Chi</span><span class="zh">太极拳</span></a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ url_for('custom_trips') }}"><span class="en">Custom Trips</span><span class="zh">定制旅行</span></a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}"><span class="en">About</span><span class="zh">关于我们</span></a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}"><span class="en">Contact</span><span class="zh">联系我们</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('main.home') }}"><span class="en">Home</span><span class="zh">首页</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('main.learn_chinese') }}"><span class="en">Learn Chinese</span><span class="zh">学中文</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('main.tai_chi') }}"><span class="en">Tai Chi</span><span class="zh">太极拳</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('main.custom_trips') }}"><span class="en">Custom Trips</span><span class="zh">定制旅行</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('main.about') }}"><span class="en">About</span><span class="zh">关于我们</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('contact.contact') }}"><span class="en">Contact</span><span class="zh">联系我们</span></a></li>
       </ul>
       <div class="d-flex align-items-center gap-3">
-        <a href="{{ url_for('affiliate') }}" class="text-decoration-none" style="font-size:.82rem;font-weight:600;color:var(--cinnabar);">
+        <a href="{{ url_for('main.affiliate') }}" class="text-decoration-none" style="font-size:.82rem;font-weight:600;color:var(--cinnabar);">
           <span class="en">Affiliate</span><span class="zh">推荐分佣</span>
         </a>
         <div class="lang-toggle">
@@ -307,10 +307,10 @@
       <div class="col-md-3">
         <h6 class="fw-bold mb-3" style="color:var(--gold-subtle);font-size:.75rem;letter-spacing:2px;">EXPLORE</h6>
         <ul class="list-unstyled small">
-          <li class="mb-2"><a href="{{ url_for('learn_chinese') }}"><span class="en">Learn Chinese</span><span class="zh">学中文</span></a></li>
-          <li class="mb-2"><a href="{{ url_for('tai_chi') }}"><span class="en">Tai Chi Course</span><span class="zh">太极拳课程</span></a></li>
-          <li class="mb-2"><a href="{{ url_for('custom_trips') }}"><span class="en">Custom Trips</span><span class="zh">定制旅行</span></a></li>
-          <li class="mb-2"><a href="{{ url_for('affiliate') }}"><span class="en">Affiliate Program</span><span class="zh">推荐分佣</span></a></li>
+          <li class="mb-2"><a href="{{ url_for('main.learn_chinese') }}"><span class="en">Learn Chinese</span><span class="zh">学中文</span></a></li>
+          <li class="mb-2"><a href="{{ url_for('main.tai_chi') }}"><span class="en">Tai Chi Course</span><span class="zh">太极拳课程</span></a></li>
+          <li class="mb-2"><a href="{{ url_for('main.custom_trips') }}"><span class="en">Custom Trips</span><span class="zh">定制旅行</span></a></li>
+          <li class="mb-2"><a href="{{ url_for('main.affiliate') }}"><span class="en">Affiliate Program</span><span class="zh">推荐分佣</span></a></li>
         </ul>
       </div>
       <div class="col-md-3">
