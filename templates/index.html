@@ -1,19 +1,45 @@
 {% extends "base.html" %}
-{% block title %}WuDeRuiBo - {{ _('Learn Chinese. Experience China.') }}{% endblock %}
+{% block title %}WuDeRuiBo - 学中文·太极·中国旅行{% endblock %}
 {% block content %}
-<div class="jumbotron text-center">
-    <h1 class="display-4">{{ _('Learn Chinese. Experience China.') }}</h1>
-    <p>{{ _('Champion Tai Chi, systematic Chinese courses, and premium custom tours. Explore Chinese aesthetics and expert service.') }}</p>
-    <p>
-        <a class="btn btn-primary btn-lg" href="{{ url_for('learn_chinese') }}">{{ _('Trial Chinese Lesson') }}</a>
-        <a class="btn btn-success btn-lg" href="{{ url_for('tai_chi') }}">{{ _('Tai Chi Free Preview') }}</a>
-    </p>
+<div class="py-5 text-center bg-light rounded-3">
+    <h1>Learn Chinese. Experience China.</h1>
+    <p class="lead">冠军太极 · 体系化中文课程 · 精品定制游</p>
+    <a class="btn btn-primary btn-lg me-2" href="{{ url_for('learn_chinese') }}">免费试听中文课</a>
+    <a class="btn btn-success btn-lg" href="{{ url_for('tai_chi') }}">太极免费预览</a>
 </div>
-<div class="row text-center">
-    <div class="col"><b>24</b><br>{{ _('Tai Chi class steps') }}</div>
-    <div class="col"><b>10</b><br>{{ _('Travel packages') }}</div>
-    <div class="col"><b>5–10%</b><br>{{ _('Referral commission') }}</div>
-    <div class="col"><b>WhatsApp</b><br>{{ _('One-on-one support') }}</div>
+<div class="row my-5 text-center">
+    <div class="col"><h2 class="display-6">24</h2><span>太极拳课</span></div>
+    <div class="col"><h2 class="display-6">10</h2><span>特色旅行套餐</span></div>
+    <div class="col"><h2 class="display-6">5-10%</h2><span>推荐分佣</span></div>
+    <div class="col"><h2 class="display-6">WhatsApp</h2><span>一对一支持</span></div>
 </div>
-<!-- 可添加更多卡片/简要介绍各主入口 -->
+<div class="row my-4">
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">学中文</h5>
+                <p class="card-text">体系化课程，拼音到对话，适合儿童与成人。随时一键WhatsApp咨询。</p>
+                <a href="{{ url_for('learn_chinese') }}" class="btn btn-outline-primary">详情</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">太极拳课</h5>
+                <p class="card-text">24式课程，前两式免费试听，后续PayPal/Stripe解锁。</p>
+                <a href="{{ url_for('tai_chi') }}" class="btn btn-outline-success">详情</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">定制中国旅行</h5>
+                <p class="card-text">10大主题套餐，管家式规划，顶级服务体验。</p>
+                <a href="{{ url_for('custom_trips') }}" class="btn btn-outline-dark">详情</a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
