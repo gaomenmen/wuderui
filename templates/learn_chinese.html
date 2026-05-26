@@ -5,22 +5,50 @@
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <div class="hero-photo">
-  <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=1600&h=800&fit=crop');"></div>
-  <div class="hero-overlay"></div>
+  <div class="hero-bg" style="background:linear-gradient(135deg,#1a1a1a 0%,#2a2a2a 50%,#1a1a1a 100%);"></div>
+  <div class="hero-overlay" style="background:none;"></div>
   <div class="container hero-content py-5">
-    <div style="min-height:300px;" class="d-flex flex-column justify-content-center">
-      <p class="small text-uppercase mb-3 fade-up" style="letter-spacing:4px;color:var(--gold-subtle);">
-        <span class="en">Mandarin Courses</span>
-        <span class="zh">中文课程</span>
-      </p>
-      <h1 class="fw-bold mb-3 fade-up d1" style="font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.15;">
-        <span class="en">From Pinyin<br>to Conversation.</span>
-        <span class="zh">从拼音<br>到日常对话。</span>
-      </h1>
-      <p class="fade-up d2" style="font-size:1.05rem;opacity:.8;max-width:500px;">
-        <span class="en">Structured courses for kids, adults, and heritage families. Native teachers, proven methods, real results.</span>
-        <span class="zh">适合儿童、成人及华裔家庭的体系化课程。母语教师，成熟方法，真实效果。</span>
-      </p>
+    <div class="row align-items-center" style="min-height:300px;">
+      <div class="col-md-7 mb-4 mb-md-0">
+        <p class="small text-uppercase mb-3 fade-up" style="letter-spacing:4px;color:var(--gold-subtle);">
+          <span class="en">Mandarin Courses</span>
+          <span class="zh">中文课程</span>
+        </p>
+        <h1 class="fw-bold mb-3 fade-up d1" style="font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.15;">
+          <span class="en">From Pinyin<br>to Conversation.</span>
+          <span class="zh">从拼音<br>到日常对话。</span>
+        </h1>
+        <p class="fade-up d2" style="font-size:1.05rem;opacity:.8;max-width:500px;">
+          <span class="en">Structured courses for kids, adults, and heritage families. Native teachers, proven methods, real results.</span>
+          <span class="zh">适合儿童、成人及华裔家庭的体系化课程。母语教师，成熟方法，真实效果。</span>
+        </p>
+      </div>
+      <div class="col-md-5 text-center fade-up d3">
+        <!-- 米字格 SVG -->
+        <svg viewBox="0 0 420 220" xmlns="http://www.w3.org/2000/svg" style="max-width:400px;width:100%;filter:drop-shadow(0 4px 20px rgba(0,0,0,.3));">
+          <!-- 米字格边框 -->
+          <rect x="10" y="10" width="180" height="180" fill="#faf8f3" stroke="#c4b99a" stroke-width="2" rx="4"/>
+          <rect x="220" y="10" width="180" height="180" fill="#faf8f3" stroke="#c4b99a" stroke-width="2" rx="4"/>
+          <!-- 米字格辅助线 -->
+          <line x1="100" y1="10" x2="100" y2="190" stroke="#d4c9a8" stroke-width="1" stroke-dasharray="6,4"/>
+          <line x1="10" y1="100" x2="190" y2="100" stroke="#d4c9a8" stroke-width="1" stroke-dasharray="6,4"/>
+          <line x1="10" y1="10" x2="190" y2="190" stroke="#d4c9a8" stroke-width="1" stroke-dasharray="6,4"/>
+          <line x1="190" y1="10" x2="10" y2="190" stroke="#d4c9a8" stroke-width="1" stroke-dasharray="6,4"/>
+          <line x1="310" y1="10" x2="310" y2="190" stroke="#d4c9a8" stroke-width="1" stroke-dasharray="6,4"/>
+          <line x1="220" y1="100" x2="400" y2="100" stroke="#d4c9a8" stroke-width="1" stroke-dasharray="6,4"/>
+          <line x1="220" y1="10" x2="400" y2="190" stroke="#d4c9a8" stroke-width="1" stroke-dasharray="6,4"/>
+          <line x1="400" y1="10" x2="220" y2="190" stroke="#d4c9a8" stroke-width="1" stroke-dasharray="6,4"/>
+          <!-- 拼音标注 -->
+          <text x="100" y="0" text-anchor="middle" font-family="Inter,sans-serif" font-size="18" fill="#b5362e" font-weight="600">zhōng</text>
+          <text x="310" y="0" text-anchor="middle" font-family="Inter,sans-serif" font-size="18" fill="#b5362e" font-weight="600">guó</text>
+          <!-- 汉字 -->
+          <text x="100" y="125" text-anchor="middle" font-family="'Noto Serif SC',serif" font-size="110" fill="#1a1a1a">中</text>
+          <text x="310" y="125" text-anchor="middle" font-family="'Noto Serif SC',serif" font-size="110" fill="#1a1a1a">国</text>
+          <!-- 英文释义 -->
+          <text x="100" y="205" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#8a8a8a">China / Middle</text>
+          <text x="310" y="205" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#8a8a8a">Country / Nation</text>
+        </svg>
+      </div>
     </div>
   </div>
 </div>
