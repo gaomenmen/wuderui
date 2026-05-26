@@ -8,14 +8,14 @@ app.secret_key = os.urandom(24)
 # Babel 配置
 app.config['BABEL_DEFAULT_LOCALE'] = 'zh'
 app.config['BABEL_SUPPORTED_LOCALES'] = ['en', 'zh']
-babel = Babel(app)
 
-@babel.locale_selector
 def get_locale():
     lang = request.args.get('lang')
     if lang:
         session['lang'] = lang
     return session.get('lang', 'zh')
+
+babel = Babel(app, locale_selector=get_locale)
 
 @app.route("/")
 def home():
