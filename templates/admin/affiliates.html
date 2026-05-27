@@ -1,13 +1,13 @@
 {% extends "admin/base.html" %}
 {% block admin_content %}
 <div class="d-flex justify-content-between align-items-center mb-4">
-  <h2 class="fw-bold mb-0">Affiliates</h2>
-  <a href="{{ url_for('admin.affiliate_form') }}" class="btn btn-cinnabar btn-sm">+ New Affiliate</a>
+  <h2 class="fw-bold mb-0"><span class="en">Affiliates</span><span class="zh">推荐合伙人</span></h2>
+  <a href="{{ url_for('admin.affiliate_form') }}" class="btn btn-cinnabar btn-sm"><span class="en">+ New Affiliate</span><span class="zh">+ 新建合伙人</span></a>
 </div>
 <div class="table-responsive">
   <table class="admin-table">
     <thead>
-      <tr><th>Name</th><th>Code</th><th>Email</th><th>Status</th><th>Created</th><th></th></tr>
+      <tr><th><span class="en">Name</span><span class="zh">姓名</span></th><th><span class="en">Code</span><span class="zh">推荐码</span></th><th><span class="en">Email</span><span class="zh">邮箱</span></th><th><span class="en">Status</span><span class="zh">状态</span></th><th><span class="en">Created</span><span class="zh">创建时间</span></th><th></th></tr>
     </thead>
     <tbody>
       {% for aff in affiliates %}
@@ -18,7 +18,7 @@
         <td><span class="badge-status badge-{{ aff.status }}">{{ aff.status }}</span></td>
         <td class="text-muted small">{{ aff.created_at.strftime('%Y-%m-%d') }}</td>
         <td>
-          <a href="{{ url_for('admin.affiliate_form', id=aff.id) }}" class="btn btn-sm btn-outline-ink">Edit</a>
+          <a href="{{ url_for('admin.affiliate_form', id=aff.id) }}" class="btn btn-sm btn-outline-ink"><span class="en">Edit</span><span class="zh">编辑</span></a>
         </td>
       </tr>
       {% endfor %}

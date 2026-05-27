@@ -21,6 +21,18 @@
     font-size: .9rem; letter-spacing: 1px; border-bottom: 1px solid rgba(255,255,255,.1);
     margin-bottom: .5rem; color: var(--gold-subtle);
   }
+  .admin-sidebar .sidebar-lang {
+    padding: .5rem 1.25rem;
+  }
+  .admin-sidebar .sidebar-lang .lang-toggle {
+    border-color: rgba(255,255,255,.2);
+  }
+  .admin-sidebar .sidebar-lang .lang-toggle a {
+    color: rgba(255,255,255,.5); display: inline-block; padding: 2px 10px;
+  }
+  .admin-sidebar .sidebar-lang .lang-toggle a:hover {
+    color: #fff;
+  }
   .admin-content { flex: 1; padding: 1.5rem 2rem; }
   .admin-stat {
     background: #fff; border-radius: 10px; padding: 1.25rem;
@@ -68,15 +80,21 @@
 {% block content %}
 <div class="admin-wrap">
   <nav class="admin-sidebar">
-    <div class="sidebar-brand">管理后台</div>
-    <a href="{{ url_for('admin.dashboard') }}" class="{{ 'active' if request.endpoint == 'admin.dashboard' }}">Dashboard</a>
-    <a href="{{ url_for('admin.inquiries') }}" class="{{ 'active' if 'inquir' in (request.endpoint or '') }}">Inquiries</a>
-    <a href="{{ url_for('admin.affiliates') }}" class="{{ 'active' if 'affiliate' in (request.endpoint or '') }}">Affiliates</a>
-    <a href="{{ url_for('admin.commissions') }}" class="{{ 'active' if 'commission' in (request.endpoint or '') }}">Commissions</a>
-    <a href="{{ url_for('admin.reports') }}" class="{{ 'active' if 'report' in (request.endpoint or '') }}">Reports</a>
-    <a href="{{ url_for('admin.settlements') }}" class="{{ 'active' if 'settlement' in (request.endpoint or '') }}">Settlements</a>
-    <a href="{{ url_for('main.home') }}" style="margin-top:1rem;border-top:1px solid rgba(255,255,255,.1);padding-top:.75rem;">← Back to Site</a>
-    <a href="{{ url_for('auth.logout') }}">Logout</a>
+    <div class="sidebar-brand"><span class="en">Admin Panel</span><span class="zh">管理后台</span></div>
+    <a href="{{ url_for('admin.dashboard') }}" class="{{ 'active' if request.endpoint == 'admin.dashboard' }}"><span class="en">Dashboard</span><span class="zh">控制面板</span></a>
+    <a href="{{ url_for('admin.inquiries') }}" class="{{ 'active' if 'inquir' in (request.endpoint or '') }}"><span class="en">Inquiries</span><span class="zh">咨询管理</span></a>
+    <a href="{{ url_for('admin.affiliates') }}" class="{{ 'active' if 'affiliate' in (request.endpoint or '') }}"><span class="en">Affiliates</span><span class="zh">推荐合伙人</span></a>
+    <a href="{{ url_for('admin.commissions') }}" class="{{ 'active' if 'commission' in (request.endpoint or '') }}"><span class="en">Commissions</span><span class="zh">佣金管理</span></a>
+    <a href="{{ url_for('admin.reports') }}" class="{{ 'active' if 'report' in (request.endpoint or '') }}"><span class="en">Reports</span><span class="zh">月度报表</span></a>
+    <a href="{{ url_for('admin.settlements') }}" class="{{ 'active' if 'settlement' in (request.endpoint or '') }}"><span class="en">Settlements</span><span class="zh">结算记录</span></a>
+    <a href="{{ url_for('main.home') }}" style="margin-top:1rem;border-top:1px solid rgba(255,255,255,.1);padding-top:.75rem;"><span class="en">← Back to Site</span><span class="zh">← 返回网站</span></a>
+    <a href="{{ url_for('auth.logout') }}"><span class="en">Logout</span><span class="zh">退出登录</span></a>
+    <div class="sidebar-lang" style="margin-top:.75rem;border-top:1px solid rgba(255,255,255,.1);padding-top:.75rem;">
+      <div class="lang-toggle">
+        <a href="?lang=en">EN</a>
+        <a href="?lang=zh">中文</a>
+      </div>
+    </div>
   </nav>
   <main class="admin-content">
     {% block admin_content %}{% endblock %}

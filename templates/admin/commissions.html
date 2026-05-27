@@ -1,13 +1,13 @@
 {% extends "admin/base.html" %}
 {% block admin_content %}
 <div class="d-flex justify-content-between align-items-center mb-4">
-  <h2 class="fw-bold mb-0">Commissions</h2>
+  <h2 class="fw-bold mb-0"><span class="en">Commissions</span><span class="zh">佣金管理</span></h2>
   <div class="d-flex gap-2">
-    <a href="{{ url_for('admin.commissions') }}" class="btn btn-sm {{ 'btn-cinnabar' if not status else 'btn-outline-ink' }}">All</a>
-    <a href="?status=pending" class="btn btn-sm {{ 'btn-cinnabar' if status=='pending' else 'btn-outline-ink' }}">Pending</a>
-    <a href="?status=approved" class="btn btn-sm {{ 'btn-cinnabar' if status=='approved' else 'btn-outline-ink' }}">Approved</a>
-    <a href="?status=paid" class="btn btn-sm {{ 'btn-cinnabar' if status=='paid' else 'btn-outline-ink' }}">Paid</a>
-    <a href="{{ url_for('admin.commission_new') }}" class="btn btn-cinnabar btn-sm">+ New</a>
+    <a href="{{ url_for('admin.commissions') }}" class="btn btn-sm {{ 'btn-cinnabar' if not status else 'btn-outline-ink' }}"><span class="en">All</span><span class="zh">全部</span></a>
+    <a href="?status=pending" class="btn btn-sm {{ 'btn-cinnabar' if status=='pending' else 'btn-outline-ink' }}"><span class="en">Pending</span><span class="zh">待审核</span></a>
+    <a href="?status=approved" class="btn btn-sm {{ 'btn-cinnabar' if status=='approved' else 'btn-outline-ink' }}"><span class="en">Approved</span><span class="zh">已批准</span></a>
+    <a href="?status=paid" class="btn btn-sm {{ 'btn-cinnabar' if status=='paid' else 'btn-outline-ink' }}"><span class="en">Paid</span><span class="zh">已支付</span></a>
+    <a href="{{ url_for('admin.commission_new') }}" class="btn btn-cinnabar btn-sm"><span class="en">+ New</span><span class="zh">+ 新建</span></a>
   </div>
 </div>
 
@@ -17,7 +17,7 @@
     <thead>
       <tr>
         <th><input type="checkbox" id="selectAll"></th>
-        <th>Affiliate</th><th>Inquiry</th><th>Service</th><th>Sale</th><th>Rate</th><th>Commission</th><th>Status</th><th>Date</th>
+        <th><span class="en">Affiliate</span><span class="zh">合伙人</span></th><th><span class="en">Inquiry</span><span class="zh">咨询</span></th><th><span class="en">Service</span><span class="zh">服务</span></th><th><span class="en">Sale</span><span class="zh">销售额</span></th><th><span class="en">Rate</span><span class="zh">比例</span></th><th><span class="en">Commission</span><span class="zh">佣金</span></th><th><span class="en">Status</span><span class="zh">状态</span></th><th><span class="en">Date</span><span class="zh">日期</span></th>
       </tr>
     </thead>
     <tbody>
@@ -38,14 +38,20 @@
   </table>
 </div>
 <div class="d-flex justify-content-between align-items-center mt-3">
-  <button type="submit" class="btn btn-cinnabar btn-sm" onclick="return confirm('Mark selected as paid?')">Mark Selected as Paid</button>
-  <span class="small text-muted">Page {{ commissions.page }} of {{ commissions.pages }}</span>
+  <button type="submit" class="btn btn-cinnabar btn-sm" id="bulkPayBtn"><span class="en">Mark Selected as Paid</span><span class="zh">标记已支付</span></button>
+  <span class="small text-muted"><span class="en">Page {{ commissions.page }} of {{ commissions.pages }}</span><span class="zh">第 {{ commissions.page }} 页 / 共 {{ commissions.pages }} 页</span></span>
 </div>
 </form>
 
 <script>
 document.getElementById('selectAll').addEventListener('change', function(){
   document.querySelectorAll('.row-check:not(:disabled)').forEach(cb => cb.checked = this.checked);
+});
+document.getElementById('bulkPayBtn').addEventListener('click', function(e){
+  var msg = document.documentElement.classList.contains('zh')
+    ? '确认将所选标记为已支付？'
+    : 'Mark selected as paid?';
+  if(!confirm(msg)) e.preventDefault();
 });
 </script>
 {% endblock %}

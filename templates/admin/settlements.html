@@ -1,16 +1,16 @@
 {% extends "admin/base.html" %}
 {% block admin_content %}
-<h2 class="fw-bold mb-4">Settlements</h2>
+<h2 class="fw-bold mb-4"><span class="en">Settlements</span><span class="zh">结算记录</span></h2>
 
 <div class="admin-stat mb-4" style="display:inline-block;">
-  <div class="small text-muted">Total Paid Out</div>
+  <div class="small text-muted"><span class="en">Total Paid Out</span><span class="zh">总支付金额</span></div>
   <div class="stat-val">${{ "%.2f"|format(total_paid) }}</div>
 </div>
 
 <div class="table-responsive">
   <table class="admin-table">
     <thead>
-      <tr><th>Affiliate</th><th>Inquiry</th><th>Service</th><th>Sale</th><th>Commission</th><th>Paid On</th></tr>
+      <tr><th><span class="en">Affiliate</span><span class="zh">合伙人</span></th><th><span class="en">Inquiry</span><span class="zh">咨询</span></th><th><span class="en">Service</span><span class="zh">服务</span></th><th><span class="en">Sale</span><span class="zh">销售额</span></th><th><span class="en">Commission</span><span class="zh">佣金</span></th><th><span class="en">Paid On</span><span class="zh">支付日期</span></th></tr>
     </thead>
     <tbody>
       {% for c in paid.items %}
@@ -23,7 +23,7 @@
         <td class="text-muted small">{{ c.paid_at.strftime('%Y-%m-%d') if c.paid_at else '-' }}</td>
       </tr>
       {% else %}
-      <tr><td colspan="6" class="text-muted text-center">No settlements yet.</td></tr>
+      <tr><td colspan="6" class="text-muted text-center"><span class="en">No settlements yet.</span><span class="zh">暂无结算记录。</span></td></tr>
       {% endfor %}
     </tbody>
   </table>

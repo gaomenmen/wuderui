@@ -1,20 +1,20 @@
 {% extends "admin/base.html" %}
 {% block admin_content %}
 <div class="d-flex justify-content-between align-items-center mb-4">
-  <h2 class="fw-bold mb-0">Inquiries</h2>
+  <h2 class="fw-bold mb-0"><span class="en">Inquiries</span><span class="zh">咨询管理</span></h2>
   <div class="d-flex gap-2">
-    <a href="{{ url_for('admin.inquiries') }}" class="btn btn-sm {{ 'btn-cinnabar' if not status else 'btn-outline-ink' }}">All</a>
-    <a href="?status=new" class="btn btn-sm {{ 'btn-cinnabar' if status=='new' else 'btn-outline-ink' }}">New</a>
-    <a href="?status=contacted" class="btn btn-sm {{ 'btn-cinnabar' if status=='contacted' else 'btn-outline-ink' }}">Contacted</a>
-    <a href="?status=converted" class="btn btn-sm {{ 'btn-cinnabar' if status=='converted' else 'btn-outline-ink' }}">Converted</a>
-    <a href="?status=closed" class="btn btn-sm {{ 'btn-cinnabar' if status=='closed' else 'btn-outline-ink' }}">Closed</a>
+    <a href="{{ url_for('admin.inquiries') }}" class="btn btn-sm {{ 'btn-cinnabar' if not status else 'btn-outline-ink' }}"><span class="en">All</span><span class="zh">全部</span></a>
+    <a href="?status=new" class="btn btn-sm {{ 'btn-cinnabar' if status=='new' else 'btn-outline-ink' }}"><span class="en">New</span><span class="zh">新咨询</span></a>
+    <a href="?status=contacted" class="btn btn-sm {{ 'btn-cinnabar' if status=='contacted' else 'btn-outline-ink' }}"><span class="en">Contacted</span><span class="zh">已联系</span></a>
+    <a href="?status=converted" class="btn btn-sm {{ 'btn-cinnabar' if status=='converted' else 'btn-outline-ink' }}"><span class="en">Converted</span><span class="zh">已转化</span></a>
+    <a href="?status=closed" class="btn btn-sm {{ 'btn-cinnabar' if status=='closed' else 'btn-outline-ink' }}"><span class="en">Closed</span><span class="zh">已关闭</span></a>
   </div>
 </div>
 
 <div class="table-responsive">
   <table class="admin-table">
     <thead>
-      <tr><th>#</th><th>Name</th><th>Email</th><th>Interests</th><th>Referred By</th><th>Status</th><th>Date</th><th></th></tr>
+      <tr><th>#</th><th><span class="en">Name</span><span class="zh">姓名</span></th><th><span class="en">Email</span><span class="zh">邮箱</span></th><th><span class="en">Interests</span><span class="zh">兴趣</span></th><th><span class="en">Referred By</span><span class="zh">推荐人</span></th><th><span class="en">Status</span><span class="zh">状态</span></th><th><span class="en">Date</span><span class="zh">日期</span></th><th></th></tr>
     </thead>
     <tbody>
       {% for inq in inquiries.items %}
@@ -26,7 +26,7 @@
         <td>{{ inq.affiliate.name if inq.affiliate else '-' }}</td>
         <td><span class="badge-status badge-{{ inq.status }}">{{ inq.status }}</span></td>
         <td class="text-muted small">{{ inq.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
-        <td><a href="{{ url_for('admin.inquiry_detail', id=inq.id) }}" class="btn btn-sm btn-outline-ink">View</a></td>
+        <td><a href="{{ url_for('admin.inquiry_detail', id=inq.id) }}" class="btn btn-sm btn-outline-ink"><span class="en">View</span><span class="zh">查看</span></a></td>
       </tr>
       {% endfor %}
     </tbody>
@@ -36,11 +36,11 @@
 {% if inquiries.has_prev or inquiries.has_next %}
 <div class="d-flex justify-content-center gap-2 mt-3">
   {% if inquiries.has_prev %}
-  <a href="?page={{ inquiries.prev_num }}{% if status %}&status={{ status }}{% endif %}" class="btn btn-sm btn-outline-ink">← Prev</a>
+  <a href="?page={{ inquiries.prev_num }}{% if status %}&status={{ status }}{% endif %}" class="btn btn-sm btn-outline-ink"><span class="en">← Prev</span><span class="zh">← 上一页</span></a>
   {% endif %}
-  <span class="small text-muted align-self-center">Page {{ inquiries.page }} of {{ inquiries.pages }}</span>
+  <span class="small text-muted align-self-center"><span class="en">Page {{ inquiries.page }} of {{ inquiries.pages }}</span><span class="zh">第 {{ inquiries.page }} 页 / 共 {{ inquiries.pages }} 页</span></span>
   {% if inquiries.has_next %}
-  <a href="?page={{ inquiries.next_num }}{% if status %}&status={{ status }}{% endif %}" class="btn btn-sm btn-outline-ink">Next →</a>
+  <a href="?page={{ inquiries.next_num }}{% if status %}&status={{ status }}{% endif %}" class="btn btn-sm btn-outline-ink"><span class="en">Next →</span><span class="zh">下一页 →</span></a>
   {% endif %}
 </div>
 {% endif %}

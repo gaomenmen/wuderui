@@ -1,18 +1,18 @@
 {% extends "admin/base.html" %}
 {% block admin_content %}
 <div class="d-flex justify-content-between align-items-center mb-4">
-  <h2 class="fw-bold mb-0">Monthly Reports</h2>
+  <h2 class="fw-bold mb-0"><span class="en">Monthly Reports</span><span class="zh">月度报表</span></h2>
 </div>
 
 <div class="card-ink p-4 mb-4">
-  <h6 class="fw-bold mb-3">Generate Report</h6>
+  <h6 class="fw-bold mb-3"><span class="en">Generate Report</span><span class="zh">生成报表</span></h6>
   <form method="POST" action="{{ url_for('admin.report_generate') }}" class="row g-3 align-items-end">
     <div class="col-md-3">
-      <label class="form-label small">Year</label>
+      <label class="form-label small"><span class="en">Year</span><span class="zh">年份</span></label>
       <input type="number" name="year" class="form-control form-control-sm" value="2026" required>
     </div>
     <div class="col-md-3">
-      <label class="form-label small">Month</label>
+      <label class="form-label small"><span class="en">Month</span><span class="zh">月份</span></label>
       <select name="month" class="form-select form-select-sm" required>
         {% for m in range(1,13) %}
         <option value="{{ m }}" {{ 'selected' if m == 5 }}>{{ m }}</option>
@@ -20,16 +20,16 @@
       </select>
     </div>
     <div class="col-md-3">
-      <label class="form-label small">Affiliate (blank = all)</label>
+      <label class="form-label small"><span class="en">Affiliate (blank = all)</span><span class="zh">合伙人（空 = 全部）</span></label>
       <select name="affiliate_id" class="form-select form-select-sm">
-        <option value="">All Affiliates</option>
+        <option value=""><span class="en">All Affiliates</span><span class="zh">全部合伙人</span></option>
         {% for aff in affiliates %}
         <option value="{{ aff.id }}">{{ aff.name }}</option>
         {% endfor %}
       </select>
     </div>
     <div class="col-md-3">
-      <button type="submit" class="btn btn-cinnabar btn-sm">Generate</button>
+      <button type="submit" class="btn btn-cinnabar btn-sm"><span class="en">Generate</span><span class="zh">生成</span></button>
     </div>
   </form>
 </div>
@@ -37,7 +37,7 @@
 <div class="table-responsive">
   <table class="admin-table">
     <thead>
-      <tr><th>Period</th><th>Affiliate</th><th>Clicks</th><th>Inquiries</th><th>Commissions</th><th>Total Earned</th><th>Total Paid</th><th>Generated</th></tr>
+      <tr><th><span class="en">Period</span><span class="zh">周期</span></th><th><span class="en">Affiliate</span><span class="zh">合伙人</span></th><th><span class="en">Clicks</span><span class="zh">点击</span></th><th><span class="en">Inquiries</span><span class="zh">咨询</span></th><th><span class="en">Commissions</span><span class="zh">佣金数</span></th><th><span class="en">Total Earned</span><span class="zh">总佣金</span></th><th><span class="en">Total Paid</span><span class="zh">已支付</span></th><th><span class="en">Generated</span><span class="zh">生成时间</span></th></tr>
     </thead>
     <tbody>
       {% for r in reports %}
@@ -52,7 +52,7 @@
         <td class="text-muted small">{{ r.generated_at.strftime('%Y-%m-%d %H:%M') if r.generated_at else '-' }}</td>
       </tr>
       {% else %}
-      <tr><td colspan="8" class="text-muted text-center">No reports yet. Generate one above.</td></tr>
+      <tr><td colspan="8" class="text-muted text-center"><span class="en">No reports yet. Generate one above.</span><span class="zh">暂无报表，请在上方生成。</span></td></tr>
       {% endfor %}
     </tbody>
   </table>

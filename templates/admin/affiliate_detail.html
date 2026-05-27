@@ -4,37 +4,37 @@
 
 <div class="row g-4 mb-4">
   <div class="col-6 col-md-3">
-    <div class="admin-stat"><div class="stat-val">{{ affiliate.clicks.count() }}</div><div class="small text-muted mt-1">Clicks</div></div>
+    <div class="admin-stat"><div class="stat-val">{{ affiliate.clicks.count() }}</div><div class="small text-muted mt-1"><span class="en">Clicks</span><span class="zh">点击</span></div></div>
   </div>
   <div class="col-6 col-md-3">
-    <div class="admin-stat"><div class="stat-val">{{ affiliate.inquiries.count() }}</div><div class="small text-muted mt-1">Inquiries</div></div>
+    <div class="admin-stat"><div class="stat-val">{{ affiliate.inquiries.count() }}</div><div class="small text-muted mt-1"><span class="en">Inquiries</span><span class="zh">咨询</span></div></div>
   </div>
   <div class="col-6 col-md-3">
-    <div class="admin-stat"><div class="stat-val">${{ "%.2f"|format(total_earned) }}</div><div class="small text-muted mt-1">Earned</div></div>
+    <div class="admin-stat"><div class="stat-val">${{ "%.2f"|format(total_earned) }}</div><div class="small text-muted mt-1"><span class="en">Earned</span><span class="zh">已赚取</span></div></div>
   </div>
   <div class="col-6 col-md-3">
-    <div class="admin-stat"><div class="stat-val">${{ "%.2f"|format(total_paid) }}</div><div class="small text-muted mt-1">Paid Out</div></div>
+    <div class="admin-stat"><div class="stat-val">${{ "%.2f"|format(total_paid) }}</div><div class="small text-muted mt-1"><span class="en">Paid Out</span><span class="zh">已支付</span></div></div>
   </div>
 </div>
 
 <div class="card-ink p-4 mb-4">
   <div class="row g-3">
-    <div class="col-sm-4"><small class="text-muted d-block">Email</small>{{ affiliate.email }}</div>
-    <div class="col-sm-4"><small class="text-muted d-block">Referral Code</small><code>{{ affiliate.referral_code }}</code></div>
-    <div class="col-sm-4"><small class="text-muted d-block">Referral Link</small><code>{{ request.host_url }}?ref={{ affiliate.referral_code }}</code></div>
-    <div class="col-sm-4"><small class="text-muted d-block">Rates</small>{{ (affiliate.commission_rate_chinese*100)|round }}% / {{ (affiliate.commission_rate_taichi*100)|round }}% / {{ (affiliate.commission_rate_travel*100)|round }}%</div>
-    <div class="col-sm-4"><small class="text-muted d-block">Status</small><span class="badge-status badge-{{ affiliate.status }}">{{ affiliate.status }}</span></div>
-    <div class="col-sm-4"><small class="text-muted d-block">PayPal</small>{{ affiliate.paypal_email or '-' }}</div>
+    <div class="col-sm-4"><small class="text-muted d-block"><span class="en">Email</span><span class="zh">邮箱</span></small>{{ affiliate.email }}</div>
+    <div class="col-sm-4"><small class="text-muted d-block"><span class="en">Referral Code</span><span class="zh">推荐码</span></small><code>{{ affiliate.referral_code }}</code></div>
+    <div class="col-sm-4"><small class="text-muted d-block"><span class="en">Referral Link</span><span class="zh">推荐链接</span></small><code>{{ request.host_url }}?ref={{ affiliate.referral_code }}</code></div>
+    <div class="col-sm-4"><small class="text-muted d-block"><span class="en">Rates</span><span class="zh">佣金比例</span></small>{{ (affiliate.commission_rate_chinese*100)|round }}% / {{ (affiliate.commission_rate_taichi*100)|round }}% / {{ (affiliate.commission_rate_travel*100)|round }}%</div>
+    <div class="col-sm-4"><small class="text-muted d-block"><span class="en">Status</span><span class="zh">状态</span></small><span class="badge-status badge-{{ affiliate.status }}">{{ affiliate.status }}</span></div>
+    <div class="col-sm-4"><small class="text-muted d-block"><span class="en">PayPal</span><span class="zh">PayPal</span></small>{{ affiliate.paypal_email or '-' }}</div>
   </div>
   <div class="mt-3">
-    <a href="{{ url_for('admin.affiliate_form', id=affiliate.id) }}" class="btn btn-outline-ink btn-sm">Edit</a>
+    <a href="{{ url_for('admin.affiliate_form', id=affiliate.id) }}" class="btn btn-outline-ink btn-sm"><span class="en">Edit</span><span class="zh">编辑</span></a>
   </div>
 </div>
 
-<h5 class="fw-bold mb-2">Inquiries ({{ inquiries|length }})</h5>
+<h5 class="fw-bold mb-2"><span class="en">Inquiries</span><span class="zh">咨询</span> ({{ inquiries|length }})</h5>
 <div class="table-responsive mb-4">
   <table class="admin-table">
-    <thead><tr><th>Name</th><th>Interests</th><th>Status</th><th>Date</th></tr></thead>
+    <thead><tr><th><span class="en">Name</span><span class="zh">姓名</span></th><th><span class="en">Interests</span><span class="zh">兴趣</span></th><th><span class="en">Status</span><span class="zh">状态</span></th><th><span class="en">Date</span><span class="zh">日期</span></th></tr></thead>
     <tbody>
       {% for inq in inquiries %}
       <tr>
@@ -48,10 +48,10 @@
   </table>
 </div>
 
-<h5 class="fw-bold mb-2">Commissions ({{ commissions|length }})</h5>
+<h5 class="fw-bold mb-2"><span class="en">Commissions</span><span class="zh">佣金</span> ({{ commissions|length }})</h5>
 <div class="table-responsive">
   <table class="admin-table">
-    <thead><tr><th>Service</th><th>Sale</th><th>Rate</th><th>Commission</th><th>Status</th><th>Date</th></tr></thead>
+    <thead><tr><th><span class="en">Service</span><span class="zh">服务</span></th><th><span class="en">Sale</span><span class="zh">销售额</span></th><th><span class="en">Rate</span><span class="zh">比例</span></th><th><span class="en">Commission</span><span class="zh">佣金</span></th><th><span class="en">Status</span><span class="zh">状态</span></th><th><span class="en">Date</span><span class="zh">日期</span></th></tr></thead>
     <tbody>
       {% for c in commissions %}
       <tr>

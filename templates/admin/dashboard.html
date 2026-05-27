@@ -1,46 +1,46 @@
 {% extends "admin/base.html" %}
 {% block admin_content %}
-<h2 class="fw-bold mb-4">Dashboard</h2>
+<h2 class="fw-bold mb-4"><span class="en">Dashboard</span><span class="zh">控制面板</span></h2>
 
 <div class="row g-3 mb-4">
   <div class="col-6 col-md-3">
     <div class="admin-stat">
       <div class="stat-val">{{ total_inquiries }}</div>
-      <div class="small text-muted mt-1">Total Inquiries</div>
+      <div class="small text-muted mt-1"><span class="en">Total Inquiries</span><span class="zh">总咨询数</span></div>
     </div>
   </div>
   <div class="col-6 col-md-3">
     <div class="admin-stat">
       <div class="stat-val" style="color:var(--cinnabar);">{{ new_inquiries }}</div>
-      <div class="small text-muted mt-1">New (Unread)</div>
+      <div class="small text-muted mt-1"><span class="en">New (Unread)</span><span class="zh">新咨询（未读）</span></div>
     </div>
   </div>
   <div class="col-6 col-md-3">
     <div class="admin-stat">
       <div class="stat-val">{{ active_affiliates }}</div>
-      <div class="small text-muted mt-1">Active Affiliates</div>
+      <div class="small text-muted mt-1"><span class="en">Active Affiliates</span><span class="zh">活跃合伙人</span></div>
     </div>
   </div>
   <div class="col-6 col-md-3">
     <div class="admin-stat">
       <div class="stat-val">${{ "%.2f"|format(month_commission_total) }}</div>
-      <div class="small text-muted mt-1">Commissions (This Month)</div>
+      <div class="small text-muted mt-1"><span class="en">Commissions (This Month)</span><span class="zh">佣金（本月）</span></div>
     </div>
   </div>
 </div>
 
 {% if pending_total > 0 %}
 <div class="alert alert-warning small py-2">
-  <strong>${{ "%.2f"|format(pending_total) }}</strong> in pending commissions awaiting approval/payment.
-  <a href="{{ url_for('admin.commissions', status='pending') }}">View →</a>
+  <strong>${{ "%.2f"|format(pending_total) }}</strong> <span class="en">in pending commissions awaiting approval/payment.</span><span class="zh">待审核/支付的佣金。</span>
+  <a href="{{ url_for('admin.commissions', status='pending') }}"><span class="en">View →</span><span class="zh">查看 →</span></a>
 </div>
 {% endif %}
 
-<h5 class="fw-bold mb-3">Recent Inquiries</h5>
+<h5 class="fw-bold mb-3"><span class="en">Recent Inquiries</span><span class="zh">最新咨询</span></h5>
 <div class="table-responsive mb-4">
   <table class="admin-table">
     <thead>
-      <tr><th>Name</th><th>Email</th><th>Interests</th><th>Affiliate</th><th>Status</th><th>Date</th></tr>
+      <tr><th><span class="en">Name</span><span class="zh">姓名</span></th><th><span class="en">Email</span><span class="zh">邮箱</span></th><th><span class="en">Interests</span><span class="zh">兴趣</span></th><th><span class="en">Affiliate</span><span class="zh">推荐人</span></th><th><span class="en">Status</span><span class="zh">状态</span></th><th><span class="en">Date</span><span class="zh">日期</span></th></tr>
     </thead>
     <tbody>
       {% for inq in recent_inquiries %}
@@ -57,11 +57,11 @@
   </table>
 </div>
 
-<h5 class="fw-bold mb-3">Recent Commissions</h5>
+<h5 class="fw-bold mb-3"><span class="en">Recent Commissions</span><span class="zh">最新佣金</span></h5>
 <div class="table-responsive">
   <table class="admin-table">
     <thead>
-      <tr><th>Affiliate</th><th>Service</th><th>Sale</th><th>Commission</th><th>Status</th></tr>
+      <tr><th><span class="en">Affiliate</span><span class="zh">合伙人</span></th><th><span class="en">Service</span><span class="zh">服务</span></th><th><span class="en">Sale</span><span class="zh">销售额</span></th><th><span class="en">Commission</span><span class="zh">佣金</span></th><th><span class="en">Status</span><span class="zh">状态</span></th></tr>
     </thead>
     <tbody>
       {% for c in recent_commissions %}
@@ -73,7 +73,7 @@
         <td><span class="badge-status badge-{{ c.status }}">{{ c.status }}</span></td>
       </tr>
       {% else %}
-      <tr><td colspan="5" class="text-muted text-center">No commissions yet.</td></tr>
+      <tr><td colspan="5" class="text-muted text-center"><span class="en">No commissions yet.</span><span class="zh">暂无佣金记录。</span></td></tr>
       {% endfor %}
     </tbody>
   </table>

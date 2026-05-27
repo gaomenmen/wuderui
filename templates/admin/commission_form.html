@@ -1,39 +1,39 @@
 {% extends "admin/base.html" %}
 {% block admin_content %}
-<h2 class="fw-bold mb-4">Create Commission</h2>
+<h2 class="fw-bold mb-4"><span class="en">Create Commission</span><span class="zh">创建佣金</span></h2>
 <form method="POST">
 <div class="row">
   <div class="col-md-8">
     <div class="card-ink p-4">
       <div class="mb-3">
-        <label class="form-label small fw-bold">Select Inquiry</label>
+        <label class="form-label small fw-bold"><span class="en">Select Inquiry</span><span class="zh">选择咨询</span></label>
         <select name="inquiry_id" class="form-select form-select-sm" required>
-          <option value="">-- Choose an inquiry --</option>
+          <option value="">-- <span class="en">Choose an inquiry</span><span class="zh">选择咨询</span> --</option>
           {% for inq in inquiries %}
           <option value="{{ inq.id }}" {{ 'selected' if request.args.get('inquiry_id')|string == inq.id|string }}>
-            #{{ inq.id }} {{ inq.name }} — {{ inq.interests or 'No interests' }} ({{ inq.affiliate.name if inq.affiliate else 'No affiliate' }})
+            #{{ inq.id }} {{ inq.name }} — {{ inq.interests or '<span class="en">No interests</span><span class="zh">无兴趣</span>' }} (<span class="en">{{ inq.affiliate.name if inq.affiliate else 'No affiliate' }}</span><span class="zh">{{ inq.affiliate.name if inq.affiliate else '无推荐人' }}</span>)
           </option>
           {% endfor %}
         </select>
-        <small class="text-muted">Only inquiries with an affiliate are shown.</small>
+        <small class="text-muted"><span class="en">Only inquiries with an affiliate are shown.</span><span class="zh">仅显示有推荐人的咨询。</span></small>
       </div>
       <div class="row g-3">
         <div class="col-md-6">
-          <label class="form-label small fw-bold">Service Type</label>
+          <label class="form-label small fw-bold"><span class="en">Service Type</span><span class="zh">服务类型</span></label>
           <select name="service_type" class="form-select form-select-sm" required>
-            <option value="chinese">Chinese Course (5%)</option>
-            <option value="taichi">Tai Chi Course (8%)</option>
-            <option value="travel">Custom Travel (10%)</option>
+            <option value="chinese"><span class="en">Chinese Course (5%)</span><span class="zh">中文课程 (5%)</span></option>
+            <option value="taichi"><span class="en">Tai Chi Course (8%)</span><span class="zh">太极拳课程 (8%)</span></option>
+            <option value="travel"><span class="en">Custom Travel (10%)</span><span class="zh">定制旅行 (10%)</span></option>
           </select>
         </div>
         <div class="col-md-6">
-          <label class="form-label small fw-bold">Sale Amount ($)</label>
+          <label class="form-label small fw-bold"><span class="en">Sale Amount ($)</span><span class="zh">销售金额 ($)</span></label>
           <input type="number" step="0.01" min="0" name="sale_amount" class="form-control form-control-sm" required placeholder="0.00">
         </div>
       </div>
       <div class="mt-3">
-        <button type="submit" class="btn btn-cinnabar">Create Commission</button>
-        <a href="{{ url_for('admin.commissions') }}" class="btn btn-outline-ink ms-2">Cancel</a>
+        <button type="submit" class="btn btn-cinnabar"><span class="en">Create Commission</span><span class="zh">创建佣金</span></button>
+        <a href="{{ url_for('admin.commissions') }}" class="btn btn-outline-ink ms-2"><span class="en">Cancel</span><span class="zh">取消</span></a>
       </div>
     </div>
   </div>
