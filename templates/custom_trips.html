@@ -30,6 +30,7 @@
     .trip-card .p-4 { padding: 1rem !important; }
     .trip-card h3 { font-size: 1.2rem; }
   }
+  .svc-card .svc-hint i { transition: transform .3s ease; display: inline-block; }
 </style>
 {% endblock %}
 {% block content %}
@@ -87,40 +88,40 @@
 {% endif %}
 
 <!-- ═══════════════════ INCLUDED ═══════════════════ -->
-<div class="container" style="margin-top:-2rem;position:relative;z-index:3;">
+<div class="container" style="margin-top:-2rem;position:relative;z-index:3;" id="includedAccordion">
   <div class="row g-2 mb-2">
     <div class="col-6 col-md-3">
-      <div class="paper-section p-3 text-center" style="cursor:pointer;border:1px solid rgba(0,0,0,.06);transition:all .3s;" data-bs-toggle="collapse" data-bs-target="#detailPhoto" aria-expanded="false">
+      <div class="paper-section p-3 text-center svc-card" style="cursor:pointer;border:2px solid transparent;transition:all .3s;" data-bs-toggle="collapse" data-bs-target="#detailPhoto" aria-expanded="false">
         <div style="color:var(--cinnabar);"><i class="bi bi-camera" style="font-size:1.3rem;"></i></div>
         <div class="small fw-bold mt-1"><span class="en">Photography</span><span class="zh">专业摄影</span></div>
-        <div class="text-muted" style="font-size:.65rem;margin-top:2px;"><span class="en">Click to expand</span><span class="zh">点击展开</span></div>
+        <div class="svc-hint text-muted" style="font-size:.65rem;margin-top:2px;"><i class="bi bi-chevron-down" style="font-size:.55rem;"></i> <span class="en">Details</span><span class="zh">详情</span></div>
       </div>
     </div>
     <div class="col-6 col-md-3">
-      <div class="paper-section p-3 text-center" style="cursor:pointer;border:1px solid rgba(0,0,0,.06);transition:all .3s;" data-bs-toggle="collapse" data-bs-target="#detailFood" aria-expanded="false">
+      <div class="paper-section p-3 text-center svc-card" style="cursor:pointer;border:2px solid transparent;transition:all .3s;" data-bs-toggle="collapse" data-bs-target="#detailFood" aria-expanded="false">
         <div style="color:var(--cinnabar);"><i class="bi bi-emoji-smile" style="font-size:1.3rem;"></i></div>
         <div class="small fw-bold mt-1"><span class="en">Local Food</span><span class="zh">当地美食</span></div>
-        <div class="text-muted" style="font-size:.65rem;margin-top:2px;"><span class="en">Click to expand</span><span class="zh">点击展开</span></div>
+        <div class="svc-hint text-muted" style="font-size:.65rem;margin-top:2px;"><i class="bi bi-chevron-down" style="font-size:.55rem;"></i> <span class="en">Details</span><span class="zh">详情</span></div>
       </div>
     </div>
     <div class="col-6 col-md-3">
-      <div class="paper-section p-3 text-center" style="cursor:pointer;border:1px solid rgba(0,0,0,.06);transition:all .3s;" data-bs-toggle="collapse" data-bs-target="#detailGuide" aria-expanded="false">
+      <div class="paper-section p-3 text-center svc-card" style="cursor:pointer;border:2px solid transparent;transition:all .3s;" data-bs-toggle="collapse" data-bs-target="#detailGuide" aria-expanded="false">
         <div style="color:var(--cinnabar);"><i class="bi bi-translate" style="font-size:1.3rem;"></i></div>
         <div class="small fw-bold mt-1"><span class="en">English Guide</span><span class="zh">英文导游</span></div>
-        <div class="text-muted" style="font-size:.65rem;margin-top:2px;"><span class="en">Click to expand</span><span class="zh">点击展开</span></div>
+        <div class="svc-hint text-muted" style="font-size:.65rem;margin-top:2px;"><i class="bi bi-chevron-down" style="font-size:.55rem;"></i> <span class="en">Details</span><span class="zh">详情</span></div>
       </div>
     </div>
     <div class="col-6 col-md-3">
-      <div class="paper-section p-3 text-center" style="cursor:pointer;border:1px solid rgba(0,0,0,.06);transition:all .3s;" data-bs-toggle="collapse" data-bs-target="#detailSupport" aria-expanded="false">
+      <div class="paper-section p-3 text-center svc-card" style="cursor:pointer;border:2px solid transparent;transition:all .3s;" data-bs-toggle="collapse" data-bs-target="#detailSupport" aria-expanded="false">
         <div style="color:var(--cinnabar);"><i class="bi bi-shield-check" style="font-size:1.3rem;"></i></div>
         <div class="small fw-bold mt-1"><span class="en">24/7 Support</span><span class="zh">全天支持</span></div>
-        <div class="text-muted" style="font-size:.65rem;margin-top:2px;"><span class="en">Click to expand</span><span class="zh">点击展开</span></div>
+        <div class="svc-hint text-muted" style="font-size:.65rem;margin-top:2px;"><i class="bi bi-chevron-down" style="font-size:.55rem;"></i> <span class="en">Details</span><span class="zh">详情</span></div>
       </div>
     </div>
   </div>
 
   <!-- ═══ PHOTOGRAPHY DETAIL ═══ -->
-  <div class="collapse mb-3" id="detailPhoto" data-bs-parent="">
+  <div class="collapse mb-3" id="detailPhoto" data-bs-parent="#includedAccordion">
     <div class="paper-section p-4">
       <div class="d-flex align-items-center gap-2 mb-3">
         <div style="width:40px;height:40px;border-radius:10px;background:var(--cinnabar);color:#fff;display:flex;align-items:center;justify-content:center;"><i class="bi bi-camera"></i></div>
@@ -154,7 +155,7 @@
   </div>
 
   <!-- ═══ LOCAL FOOD DETAIL ═══ -->
-  <div class="collapse mb-3" id="detailFood" data-bs-parent="">
+  <div class="collapse mb-3" id="detailFood" data-bs-parent="#includedAccordion">
     <div class="paper-section p-4">
       <div class="d-flex align-items-center gap-2 mb-3">
         <div style="width:40px;height:40px;border-radius:10px;background:var(--cinnabar);color:#fff;display:flex;align-items:center;justify-content:center;"><i class="bi bi-emoji-smile"></i></div>
@@ -197,18 +198,6 @@
         </div>
         <div class="col-md-6 col-lg-4">
           <div class="card-ink p-2 mb-2">
-            <div class="small fw-bold"><span class="en">Guangzhou 广州</span></div>
-            <small class="text-muted"><span class="en">Dim Sum at a traditional tea house, Wonton noodles at Mak Man Kee, roast goose in Shamian</span><span class="zh">传统茶楼早茶点心、麦文记云吞面、沙面烧鹅</span></small>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="card-ink p-2 mb-2">
-            <div class="small fw-bold"><span class="en">Hangzhou 杭州</span></div>
-            <small class="text-muted"><span class="en">West Lake Vinegar Fish at Lou Wai Lou (since 1848), Longjing shrimp, Beggar's Chicken</span><span class="zh">楼外楼西湖醋鱼（始于1848年）、龙井虾仁、叫花鸡</span></small>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="card-ink p-2 mb-2">
             <div class="small fw-bold"><span class="en">Dunhuang 敦煌</span></div>
             <small class="text-muted"><span class="en">Silk Road lamb kebabs, donkey meat noodles, apricot peel tea, Uyghur naan bread</span><span class="zh">丝绸之路羊肉串、驴肉黄面、杏皮水、维吾尔族馕</span></small>
           </div>
@@ -221,8 +210,20 @@
         </div>
         <div class="col-md-6 col-lg-4">
           <div class="card-ink p-2 mb-2">
-            <div class="small fw-bold"><span class="en">Suzhou 苏州</span></div>
-            <small class="text-muted"><span class="en">Squirrel-shaped mandarin fish, Biluochun tea-pairing dessert, Shantang Street midnight snacks</span><span class="zh">松鼠鳜鱼、碧螺春茶配点心、山塘街深夜小吃</span></small>
+            <div class="small fw-bold"><span class="en">Yunnan 云南</span></div>
+            <small class="text-muted"><span class="en">Crossing-the-bridge noodles in Kunming, Naxi fire pit banquet in Lijiang, Dali goat cheese (Rushan)</span><span class="zh">昆明过桥米线、丽江纳西族火塘宴、大理乳扇</span></small>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card-ink p-2 mb-2">
+            <div class="small fw-bold"><span class="en">Zhangjiajie 张家界</span></div>
+            <small class="text-muted"><span class="en">Tujia-style cured meat stew, stone-fried fish, wild mountain vegetable dishes, rice wine tasting</span><span class="zh">土家族腊肉炖菜、石耳炖鸡、野山菌、米酒品鉴</span></small>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card-ink p-2 mb-2">
+            <div class="small fw-bold"><span class="en">Huangshan 黄山</span></div>
+            <small class="text-muted"><span class="en">Hui-style braised pork (Maojian), stinky mandarin fish, bamboo shoots, Hongcun farmhouse meal</span><span class="zh">徽式毛尖红烧肉、臭鳜鱼、春笋炒肉、宏村农家菜</span></small>
           </div>
         </div>
       </div>
@@ -230,7 +231,7 @@
   </div>
 
   <!-- ═══ ENGLISH GUIDE DETAIL ═══ -->
-  <div class="collapse mb-3" id="detailGuide" data-bs-parent="">
+  <div class="collapse mb-3" id="detailGuide" data-bs-parent="#includedAccordion">
     <div class="paper-section p-4">
       <div class="d-flex align-items-center gap-2 mb-3">
         <div style="width:40px;height:40px;border-radius:10px;background:var(--cinnabar);color:#fff;display:flex;align-items:center;justify-content:center;"><i class="bi bi-translate"></i></div>
@@ -265,7 +266,7 @@
   </div>
 
   <!-- ═══ 24/7 SUPPORT DETAIL ═══ -->
-  <div class="collapse mb-3" id="detailSupport" data-bs-parent="">
+  <div class="collapse mb-3" id="detailSupport" data-bs-parent="#includedAccordion">
     <div class="paper-section p-4">
       <div class="d-flex align-items-center gap-2 mb-3">
         <div style="width:40px;height:40px;border-radius:10px;background:var(--cinnabar);color:#fff;display:flex;align-items:center;justify-content:center;"><i class="bi bi-shield-check"></i></div>
@@ -313,7 +314,44 @@
   </div>
 </div>
 
-<div class="container py-3">
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var accordion = document.getElementById('includedAccordion');
+  if (!accordion) return;
+  var cards = accordion.querySelectorAll('.svc-card');
+  var collapses = accordion.querySelectorAll('.collapse');
+
+  collapses.forEach(function(panel) {
+    panel.addEventListener('show.bs.collapse', function() {
+      var target = this.id;
+      cards.forEach(function(card) {
+        if (card.getAttribute('data-bs-target') === '#' + target) {
+          card.style.borderColor = 'var(--cinnabar)';
+          card.style.boxShadow = '0 4px 15px rgba(181,54,46,.15)';
+          card.style.transform = 'translateY(-2px)';
+          var hint = card.querySelector('.svc-hint i');
+          if (hint) hint.style.transform = 'rotate(180deg)';
+        } else {
+          card.style.borderColor = 'transparent';
+          card.style.boxShadow = 'none';
+          card.style.transform = '';
+          var hint = card.querySelector('.svc-hint i');
+          if (hint) hint.style.transform = '';
+        }
+      });
+    });
+    panel.addEventListener('hide.bs.collapse', function() {
+      cards.forEach(function(card) {
+        card.style.borderColor = 'transparent';
+        card.style.boxShadow = 'none';
+        card.style.transform = '';
+        var hint = card.querySelector('.svc-hint i');
+        if (hint) hint.style.transform = '';
+      });
+    });
+  });
+});
+</script>
 
   <!-- 01 Beijing -->
   <div class="trip-card mb-5">
