@@ -12,7 +12,7 @@ Chinese cultural exchange platform — Learn Mandarin, practice Tai Chi, explore
 - **Auth**: Flask-Login (single admin account)
 - **i18n**: Flask-Babel (EN/ZH bilingual toggle)
 - **Frontend**: Bootstrap 5, Jinja2 templates, inline SVG
-- **Deployment**: Render.com + Gunicorn + GitHub auto-deploy
+- **Deployment**: Gunicorn + any PaaS (Render, Railway, Fly.io, etc.)
 
 ## Project Structure
 
@@ -52,7 +52,7 @@ wuderui/
         └── ...
 ```
 
-## Local Development
+## Quick Start
 
 ### Prerequisites
 
@@ -79,49 +79,71 @@ Open http://127.0.0.1:5000
 
 Default admin: `admin` / `changeme123`
 
-## Deploy to Render.com
+## Local Verification
 
-### 1. Create Render account
-
-Sign up at https://render.com and connect your GitHub account.
-
-### 2. Create PostgreSQL database
-
-- Dashboard → New → PostgreSQL
-- Note the **Internal Database URL** (e.g. `postgresql://user:pass@host/db`)
-
-### 3. Create Web Service
-
-- Dashboard → New → Web Service
-- Connect your GitHub repo
-- Settings:
-  - **Build Command**: `pip install -r requirements.txt`
-  - **Start Command**: `gunicorn app:app`
-  - **Environment**: Python 3
-
-### 4. Set Environment Variables
-
-In Render Web Service → Environment:
-
-| Key | Value |
-|-----|-------|
-| `SECRET_KEY` | Random 32+ char string (e.g. `openssl rand -hex 32`) |
-| `DATABASE_URL` | PostgreSQL Internal URL from step 2 |
-
-### 5. Deploy
-
-Render auto-deploys on every `git push` to `main`.
-
-First deploy will:
-- Create all database tables
-- Create default admin user (`admin` / `changeme123`)
-
-**Change the admin password immediately after first login.**
-
-### 6. Create additional admin (optional)
+### Run the app
 
 ```bash
-# Using Render Shell
+flask run
+```
+
+First run will auto-create SQLite database (`instance/wuderui.db`) and all tables, plus a default admin user.
+
+### Verify pages
+
+| Page | URL | What to check |
+|------|-----|---------------|
+| Homepage | `/` | Hero, 3 service cards, destination grid, testimonials |
+| Learn Chinese | `/learn-chinese` | Course categories, pricing tiers, teacher cards |
+| Tai Chi | `/tai-chi` | 24-form grid, pricing, benefits |
+| Custom Trips | `/custom-trips` | 10 trip cards with prices, service detail panels |
+| About | `/about` | Story, philosophy |
+| Contact | `/contact` | Contact methods with links, inquiry form |
+| Affiliate | `/affiliate` | Referral program info |
+| Admin Login | `/admin/login` | Login with `admin` / `changeme123` |
+
+### Verify admin panel
+
+1. Login at `/admin/login` with `admin` / `changeme123`
+2. **Dashboard** — check stats display
+3. **Content** → click "Sync All Defaults" → verify 27 sections created across 7 pages
+4. Edit a section title → visit the public page → confirm updated text appears
+5. Delete a section → public page reverts to default
+6. **Affiliates** → create one → verify referral code generated
+7. Visit `/?ref=WDR-XXXX` → check referral click logged in admin
+8. Submit contact form → inquiry appears in admin panel
+9. Convert inquiry → create commission → mark as paid
+
+### Verify new features
+
+#### CMS Content Management
+
+1. Login to admin → **Content** → click "Sync All Defaults"
+2. Select a page (e.g. Homepage) → edit a section's English/Chinese title
+3. Visit the public page → confirm the updated text appears
+4. Toggle a section invisible → public page shows the hardcoded fallback
+5. Delete a section → public page fully reverts to default
+6. Drag-and-drop to reorder sections → public page reflects new order
+
+#### Custom Trips — Clickable Service Panels
+
+1. Visit `/custom-trips`
+2. Scroll to the 4 service cards: Photography, Local Food, English Guide, 24/7 Support
+3. Click each card — panel expands with detailed content, previous panel auto-collapses
+4. Active card shows highlighted border and lift animation
+5. The Local Food panel lists dishes from the same 10 destinations as the trip cards
+
+#### Service Pricing
+
+All three service pages now include pricing:
+
+- **Learn Chinese** (`/learn-chinese`): 3 tiers — Free / ¥1,680 Standard / ¥4,200 Intensive
+- **Tai Chi** (`/tai-chi`): 3 tiers — Free / $49 Full Course / $129 Private Coaching
+- **Custom Trips** (`/custom-trips`): 10 destinations, ¥4,800–¥12,800 per person
+
+### Create additional admin
+
+```bash
 flask create-admin <username> <password>
 ```
 
@@ -129,24 +151,14 @@ flask create-admin <username> <password>
 
 Login at `/admin/login`
 
-### Dashboard
-
-Overview stats: total inquiries, new inquiries, active affiliates, monthly commission total.
-
 ### Content Management (CMS)
 
 Manage page content without editing code.
 
-1. **Content** → Select a page (Home, Learn Chinese, Tai Chi, etc.)
-2. **New Section** → Fill in bilingual fields:
-   - `section_key`: identifier (e.g. `hero`, `pricing`, `cta`)
-   - `section_type`: `hero`, `card`, `text_block`, `stats`, `cta`, `faq`
-   - Title, subtitle, body — English and Chinese
-   - Image URL, button text, button URL
-   - `extra_data`: JSON for flexible content (tags, stat values)
-3. Sections appear on the public page; delete a section to revert to default
-
-All 7 public pages support CMS hero editing. Content falls back to hardcoded defaults when no CMS section exists.
+1. **Content** → click "Sync All Defaults" to import existing content
+2. Select a page → edit section titles, body text, images, buttons
+3. Toggle sections visible/hidden, reorder via drag-and-drop
+4. Delete a section to revert to hardcoded default
 
 ### Inquiries
 
@@ -183,12 +195,22 @@ The site supports English/Chinese toggle:
 - Template pattern: `<span class="en">English</span><span class="zh">中文</span>`
 - CSS hides one language based on `<html>` class
 
-## Environment Variables Reference
+## Deployment
 
-| Variable | Required | Default | Description |
-|----------|----------|---------|-------------|
-| `SECRET_KEY` | Production | `wuderui-dev-secret-key-2024` | Flask session encryption |
-| `DATABASE_URL` | Production | `sqlite:///wuderui.db` | Database connection string |
+The app is ready for deployment with Gunicorn:
+
+```bash
+gunicorn app:app
+```
+
+Set environment variables on your hosting platform:
+
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `SECRET_KEY` | Yes | Random 32+ char string for session encryption |
+| `DATABASE_URL` | Yes | PostgreSQL connection string (auto-creates tables on first run) |
+
+Compatible with any Python-friendly PaaS (Render, Railway, Fly.io, Heroku, etc.).
 
 ## Test Contact Info (Demo)
 
