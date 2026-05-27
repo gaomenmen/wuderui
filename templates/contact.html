@@ -118,7 +118,7 @@
     <div class="col-md-7">
       <div class="paper-section p-4">
         <h4 class="fw-bold mb-4"><span class="en">Quick Inquiry</span><span class="zh">快速咨询</span></h4>
-        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% with messages = get_flashed_messages(with_categories=true, category_filter=['success','error']) %}
           {% if messages %}
             {% for category, message in messages %}
               <div class="alert alert-{{ 'danger' if category == 'error' else 'success' }} small py-2">{{ message }}</div>
@@ -185,46 +185,127 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="accordion" id="faqAccordion">
+
+        <!-- FAQ 1: Visa -->
         <div class="card-ink mb-3">
           <div class="accordion-header p-3">
             <button class="btn btn-link text-decoration-none text-dark text-start w-100 p-0 fw-bold small" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-              <span class="en">Do I need any prior Chinese knowledge?</span><span class="zh">需要中文基础吗？</span>
+              <span class="en">Do I need a visa to visit China?</span><span class="zh">去中国需要签证吗？</span>
             </button>
           </div>
           <div id="faq1" class="collapse" data-bs-parent="#faqAccordion">
-            <div class="px-3 pb-3 small text-muted"><span class="en">No! Our courses are designed for complete beginners.</span><span class="zh">不需要！我们的课程专为零基础学员设计。</span></div>
+            <div class="px-3 pb-3 small text-muted"><span class="en">Most nationalities need a tourist visa (L visa). We provide <strong>visa application guidance and an official invitation letter</strong> as part of every travel package. China also offers <strong>144-hour transit-free entry</strong> in cities like Shanghai, Beijing, and Chengdu — perfect for a short trip. Check our <a href="{{ url_for('contact.contact') }}" class="text-decoration-underline">travel concierge service</a> for full visa support.</span><span class="zh">大多数国籍需要旅游签证（L签）。每个旅行套餐都包含<strong>签证申请指导和官方邀请函</strong>。中国还在上海、北京、成都等城市提供<strong>144小时过境免签</strong>——非常适合短途旅行。</span></div>
           </div>
         </div>
+
+        <!-- FAQ 2: Safety -->
         <div class="card-ink mb-3">
           <div class="accordion-header p-3">
             <button class="btn btn-link text-decoration-none text-dark text-start w-100 p-0 fw-bold small" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-              <span class="en">Is Tai Chi suitable for seniors?</span><span class="zh">太极拳适合老年人吗？</span>
+              <span class="en">Is China safe for Western tourists?</span><span class="zh">中国对外国游客安全吗？</span>
             </button>
           </div>
           <div id="faq2" class="collapse" data-bs-parent="#faqAccordion">
-            <div class="px-3 pb-3 small text-muted"><span class="en">Absolutely! Tai Chi is gentle and low-impact, suitable for all ages.</span><span class="zh">非常适合！太极拳柔和低冲击，适合所有年龄段。</span></div>
+            <div class="px-3 pb-3 small text-muted"><span class="en">China is one of the <strong>safest countries for tourists</strong> in the world. Violent crime against foreigners is extremely rare. Cities are well-lit at night, public transport is safe and modern, and street food is generally safe to eat. Our <strong>English-speaking guide</strong> accompanies you throughout, handling everything from WeChat Pay setup to hospital visits if needed.</span><span class="zh">中国是全球<strong>对游客最安全的国家之一</strong>。针对外国人的暴力犯罪极为罕见。城市夜间照明良好，公共交通安全现代化，街头食品通常安全。我们的<strong>英文导游</strong>全程陪同，从微信支付设置到医院就医翻译，一切都有人帮你。</span></div>
           </div>
         </div>
+
+        <!-- FAQ 3: No Chinese -->
         <div class="card-ink mb-3">
           <div class="accordion-header p-3">
             <button class="btn btn-link text-decoration-none text-dark text-start w-100 p-0 fw-bold small" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-              <span class="en">Can I customize my travel package?</span><span class="zh">旅行套餐可以定制吗？</span>
+              <span class="en">I don't speak any Chinese. Can I still travel?</span><span class="zh">我不会中文，可以旅行吗？</span>
             </button>
           </div>
           <div id="faq3" class="collapse" data-bs-parent="#faqAccordion">
-            <div class="px-3 pb-3 small text-muted"><span class="en">Yes! All packages can be mixed and matched to your preferences.</span><span class="zh">可以！所有套餐都可以根据您的需求自由组合。</span></div>
+            <div class="px-3 pb-3 small text-muted"><span class="en">Absolutely! This is exactly why we exist. Every trip includes a <strong>licensed English-speaking guide</strong> who handles all communication — ordering food, bargaining at markets, reading signs, buying train tickets. We also give you a <strong>pre-loaded SIM card with VPN</strong> and set up <strong>WeChat Pay on your phone</strong> so you can function independently too. Most visitors are surprised how easy it is with the right support.</span><span class="zh">当然可以！这正是我们存在的原因。每次旅行都配备<strong>持证英文导游</strong>，处理所有沟通——点菜、砍价、看路标、买火车票。我们还提供<strong>预装VPN的SIM卡</strong>，帮你在手机上设置<strong>微信支付</strong>，让你也能独立行动。</span></div>
           </div>
         </div>
+
+        <!-- FAQ 4: Internet -->
         <div class="card-ink mb-3">
           <div class="accordion-header p-3">
             <button class="btn btn-link text-decoration-none text-dark text-start w-100 p-0 fw-bold small" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
-              <span class="en">What payment methods do you accept?</span><span class="zh">支持哪些支付方式？</span>
+              <span class="en">Can I use Google, WhatsApp, and Instagram in China?</span><span class="zh">在中国能用Google、WhatsApp和Instagram吗？</span>
             </button>
           </div>
           <div id="faq4" class="collapse" data-bs-parent="#faqAccordion">
-            <div class="px-3 pb-3 small text-muted"><span class="en">We primarily support PayPal. Stripe coming soon.</span><span class="zh">主要支持PayPal，Stripe即将上线。</span></div>
+            <div class="px-3 pb-3 small text-muted"><span class="en">These services are blocked in China, but <strong>we've got you covered</strong>. Every traveler receives a <strong>pre-configured SIM card with a working VPN</strong> at the airport — Google, WhatsApp, Instagram, YouTube all work normally. Your guide also carries a backup hotspot. Most of our guests report no internet issues at all during their trip.</span><span class="zh">这些服务在中国被屏蔽，但<strong>我们帮你解决了</strong>。每位旅客在机场领取一张<strong>预配置VPN的SIM卡</strong>——Google、WhatsApp、Instagram、YouTube全部正常使用。导游还携带备用热点。我们的大多数客人旅行期间完全没有网络问题。</span></div>
           </div>
         </div>
+
+        <!-- FAQ 5: Chinese course -->
+        <div class="card-ink mb-3">
+          <div class="accordion-header p-3">
+            <button class="btn btn-link text-decoration-none text-dark text-start w-100 p-0 fw-bold small" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+              <span class="en">Do I need prior Chinese knowledge for the courses?</span><span class="zh">中文课程需要基础吗？</span>
+            </button>
+          </div>
+          <div id="faq5" class="collapse" data-bs-parent="#faqAccordion">
+            <div class="px-3 pb-3 small text-muted"><span class="en"><strong>Not at all!</strong> Our courses start from absolute zero — pinyin, tones, basic greetings. We have paths for kids, adults, and heritage families. Our native teachers use proven methods: you'll be ordering food and asking directions after just a few lessons. <strong>Try a free trial lesson</strong> first — no credit card, no commitment.</span><span class="zh"><strong>完全不需要！</strong>我们的课程从零开始——拼音、声调、基本问候。有儿童、成人和华裔家庭的专属路径。母语教师使用成熟方法，几节课后你就能点菜和问路。<strong>免费试听</strong>——无需信用卡，无需承诺。</span></div>
+          </div>
+        </div>
+
+        <!-- FAQ 6: Tai Chi -->
+        <div class="card-ink mb-3">
+          <div class="accordion-header p-3">
+            <button class="btn btn-link text-decoration-none text-dark text-start w-100 p-0 fw-bold small" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+              <span class="en">Is Tai Chi suitable for older adults or beginners?</span><span class="zh">太极拳适合老年人和初学者吗？</span>
+            </button>
+          </div>
+          <div id="faq6" class="collapse" data-bs-parent="#faqAccordion">
+            <div class="px-3 pb-3 small text-muted"><span class="en">Tai Chi is <strong>ideal for all ages and fitness levels</strong>. Often called "meditation in motion," it's gentle on joints while improving balance, flexibility, and mental focus. Our 24-form course is taught by a <strong>national Tai Chi champion</strong> and was specifically designed for beginners. Two lessons are free to try — experience it yourself before committing. Many of our students are in their 50s–70s.</span><span class="zh">太极拳<strong>适合所有年龄和健身水平</strong>。常被称为"移动的冥想"，对关节温和，同时提高平衡、柔韧和精神专注。我们的24式课程由<strong>全国太极拳冠军</strong>教学，专为初学者设计。前两式免费试看——先体验再决定。很多学员在50-70岁之间。</span></div>
+          </div>
+        </div>
+
+        <!-- FAQ 7: Payment -->
+        <div class="card-ink mb-3">
+          <div class="accordion-header p-3">
+            <button class="btn btn-link text-decoration-none text-dark text-start w-100 p-0 fw-bold small" type="button" data-bs-toggle="collapse" data-bs-target="#faq7">
+              <span class="en">How do I pay? Do I need Chinese currency?</span><span class="zh">怎么付款？需要人民币吗？</span>
+            </button>
+          </div>
+          <div id="faq7" class="collapse" data-bs-parent="#faqAccordion">
+            <div class="px-3 pb-3 small text-muted"><span class="en">We accept <strong>PayPal and major international credit cards</strong> — pay in your own currency, no Chinese bank account needed. For in-country spending, we set up <strong>WeChat Pay linked to your foreign card</strong> on day one, so you can pay for anything from street food to souvenirs with a phone scan. No cash needed.</span><span class="zh">我们接受<strong>PayPal和国际信用卡</strong>——用你自己的货币支付，不需要中国银行账户。在国内消费方面，第一天就帮你设置<strong>绑定外卡的微信支付</strong>，手机扫码就能支付从街边小吃到纪念品的一切。不需要现金。</span></div>
+          </div>
+        </div>
+
+        <!-- FAQ 8: Custom trip -->
+        <div class="card-ink mb-3">
+          <div class="accordion-header p-3">
+            <button class="btn btn-link text-decoration-none text-dark text-start w-100 p-0 fw-bold small" type="button" data-bs-toggle="collapse" data-bs-target="#faq8">
+              <span class="en">Can I combine destinations or create my own itinerary?</span><span class="zh">可以组合目的地或自创行程吗？</span>
+            </button>
+          </div>
+          <div id="faq8" class="collapse" data-bs-parent="#faqAccordion">
+            <div class="px-3 pb-3 small text-muted"><span class="en"><strong>That's the whole point!</strong> All 10 travel packages are starting templates — mix Beijing + Xi'an, add a Guilin river cruise to a Chengdu food trip, whatever you want. Every trip includes <strong>professional photography, local food experiences, and a dedicated English guide</strong>. Tell us your interests, dates, and budget — we handle the rest.</span><span class="zh"><strong>这正是我们的特色！</strong>10个旅行套餐只是起点模板——随意组合北京+西安，在成都美食之旅里加上桂林漓江游船，想怎么搭配都行。每次旅行都包含<strong>专业摄影、当地美食体验和专属英文导游</strong>。告诉我们你的兴趣、日期和预算——剩下的交给我们。</span></div>
+          </div>
+        </div>
+
+        <!-- FAQ 9: Group size -->
+        <div class="card-ink mb-3">
+          <div class="accordion-header p-3">
+            <button class="btn btn-link text-decoration-none text-dark text-start w-100 p-0 fw-bold small" type="button" data-bs-toggle="collapse" data-bs-target="#faq9">
+              <span class="en">Solo traveler, couple, or group — what works?</span><span class="zh">一个人、情侣还是团体都可以吗？</span>
+            </button>
+          </div>
+          <div id="faq9" class="collapse" data-bs-parent="#faqAccordion">
+            <div class="px-3 pb-3 small text-muted"><span class="en">We cater to <strong>all group sizes</strong>. Solo travelers get a private guide (many say it's the best way to experience China). Couples love our photography-included packages. Families and friend groups of 4–10 get custom pricing. We've hosted everyone from honeymooners to 70th birthday celebrations. <strong>Tell us your situation and we'll tailor the perfect experience.</strong></span><span class="zh">我们<strong>适合所有人数</strong>。独行旅客配专属导游（很多人说这是体验中国的最佳方式）。情侣喜欢我们的含摄影套餐。4-10人的家庭和朋友团体有定制价格。我们接待过从蜜月旅行到70岁寿宴的各种需求。<strong>告诉我们你的情况，我们量身定制。</strong></span></div>
+          </div>
+        </div>
+
+        <!-- FAQ 10: Best time -->
+        <div class="card-ink mb-3">
+          <div class="accordion-header p-3">
+            <button class="btn btn-link text-decoration-none text-dark text-start w-100 p-0 fw-bold small" type="button" data-bs-toggle="collapse" data-bs-target="#faq10">
+              <span class="en">When is the best time to visit China?</span><span class="zh">什么时候去中国最好？</span>
+            </button>
+          </div>
+          <div id="faq10" class="collapse" data-bs-parent="#faqAccordion">
+            <div class="px-3 pb-3 small text-muted"><span class="en"><strong>Spring (April–May) and autumn (September–November)</strong> offer the best weather — mild temperatures, blue skies, and beautiful scenery (cherry blossoms or fall colors). Summer is hot but great for Tibet and Inner Mongolia. Winter is perfect for Harbin Ice Festival and fewer crowds at major sites. Our travel concierge will recommend the best season based on your chosen destinations.</span><span class="zh"><strong>春季（4-5月）和秋季（9-11月）</strong>天气最好——温度宜人、蓝天白云、风景优美（樱花或秋色）。夏季炎热但适合西藏和内蒙古。冬季适合哈尔滨冰雪节，热门景点人少。我们的旅行管家会根据你选择的目的地推荐最佳季节。</span></div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
