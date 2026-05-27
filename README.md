@@ -2,6 +2,8 @@
 
 Chinese cultural exchange platform — Learn Mandarin, practice Tai Chi, explore China on bespoke cultural journeys.
 
+> 中文版: [README_zh.md](README_zh.md)
+
 ## Tech Stack
 
 - **Backend**: Flask (application factory pattern)
