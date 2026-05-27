@@ -2,6 +2,7 @@
 {% block admin_content %}
 <h2 class="fw-bold mb-4"><span class="en">Create Commission</span><span class="zh">创建佣金</span></h2>
 <form method="POST">
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 <div class="row">
   <div class="col-md-8">
     <div class="card-ink p-4">

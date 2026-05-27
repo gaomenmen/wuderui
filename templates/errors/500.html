@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Server Error — WuDeRuiBo{% endblock %}
+{% block title_zh %}服务器错误 — 吴德瑞博{% endblock %}
+
+{% block content %}
+<div class="container py-5 text-center" style="min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+  <div style="font-family:'Noto Serif SC',serif;font-size:6rem;line-height:1;color:var(--cinnabar);opacity:.15;font-weight:900;">500</div>
+  <h2 class="fw-bold mt-2 mb-2">
+    <span class="en">Something Went Wrong</span>
+    <span class="zh">服务器出错了</span>
+  </h2>
+  <p class="text-muted mb-4">
+    <span class="en">We're experiencing a temporary issue. Please try again in a moment.</span>
+    <span class="zh">我们正在处理一个临时问题，请稍后再试。</span>
+  </p>
+  <a href="{{ url_for('main.home') }}" class="btn btn-cinnabar">
+    <span class="en">← Back to Home</span>
+    <span class="zh">← 返回首页</span>
+  </a>
+</div>
+{% endblock %}
