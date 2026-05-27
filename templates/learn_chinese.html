@@ -187,7 +187,7 @@
 
 <div class="container py-5">
 
-  <!-- ═══════════════════ COURSE CATEGORIES ═══════════════════ -->
+  <!-- ═══════════════════ 1. COURSE CATEGORIES ═══════════════════ -->
   <div class="text-center mb-5">
     <p class="small text-uppercase mb-2" style="letter-spacing:3px;color:var(--cinnabar);">
       <span class="en">Course Categories</span><span class="zh">课程分类</span>
@@ -243,7 +243,7 @@
     </div>
   </div>
 
-  <!-- Row 2: additional categories from PDF -->
+  <!-- Row 2: additional categories -->
   <div class="row g-4 mb-5">
     <div class="col-md-4">
       <div class="card-ink p-4 h-100">
@@ -289,75 +289,158 @@
     </div>
   </div>
 
-  <div class="ink-divider"><span class="seal">价格</span></div>
+  <div class="ink-divider"><span class="seal">课程</span></div>
 
-  <!-- ═══════════════════ PRICING ═══════════════════ -->
+  <!-- ═══════════════════ 2. WHAT YOU'LL LEARN ═══════════════════ -->
   <div class="text-center mb-5">
     <p class="small text-uppercase mb-2" style="letter-spacing:3px;color:var(--cinnabar);">
-      <span class="en">Pricing</span><span class="zh">课程价格</span>
+      <span class="en">What You'll Learn</span><span class="zh">学习内容</span>
     </p>
     <h2 class="fw-bold">
-      <span class="en">Simple, Transparent Pricing</span>
-      <span class="zh">简单透明的价格</span>
+      <span class="en">Your Learning Roadmap</span>
+      <span class="zh">你的学习路线图</span>
     </h2>
   </div>
 
-  <div class="row g-4 mb-5 justify-content-center">
-    <div class="col-md-4">
-      <div class="card-ink p-4 h-100 text-center">
-        <h6 class="fw-bold mb-1"><span class="en">Trial Lesson</span><span class="zh">试听课</span></h6>
-        <p class="text-muted small mb-3"><span class="en">30-min one-on-one</span><span class="zh">30分钟一对一</span></p>
-        <div class="mb-3">
-          <span style="font-size:2.2rem;font-weight:700;color:var(--cinnabar);">Free</span>
+  <div class="row g-4 mb-5">
+    <!-- Left: Vertical Timeline -->
+    <div class="col-md-8 mb-4">
+      <div class="paper-section p-4">
+        <div class="d-flex align-items-center gap-2 mb-4">
+          <span class="seal">程</span>
+          <h6 class="fw-bold mb-0"><span class="en">Your Learning Roadmap</span><span class="zh">你的学习路线图</span></h6>
         </div>
-        <ul class="list-unstyled small text-muted text-start mb-4">
-          <li class="mb-1"><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">Level assessment</span><span class="zh">水平评估</span></li>
-          <li class="mb-1"><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">Customized study plan</span><span class="zh">定制学习计划</span></li>
-          <li><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">No commitment</span><span class="zh">无需承诺</span></li>
-        </ul>
-        <a href="{{ url_for('contact.contact') }}" class="btn btn-outline-ink w-100"><span class="en">Book Now</span><span class="zh">立即预约</span></a>
+        <!-- Timeline -->
+        <div class="position-relative" style="padding-left:40px;">
+          <!-- Vertical line -->
+          <div style="position:absolute;left:18px;top:8px;bottom:8px;width:2px;background:var(--cinnabar);opacity:.3;"></div>
+
+          <!-- Phase 1 -->
+          <div class="position-relative mb-4">
+            <div style="position:absolute;left:-32px;top:4px;width:28px;height:28px;border-radius:50%;background:var(--cinnabar);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;">1</div>
+            <div class="card-ink p-3">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <small class="fw-bold" style="color:var(--cinnabar);"><span class="en">Phase 1: Foundations</span><span class="zh">第一阶段：基础</span></small>
+                <span class="badge" style="background:var(--paper-warm);color:var(--ink-black);font-size:.65rem;"><span class="en">4 weeks</span><span class="zh">4周</span></span>
+              </div>
+              <p class="small text-muted mb-2"><span class="en">Build a solid foundation in Mandarin pronunciation and basic communication.</span><span class="zh">打下扎实的普通话发音和基础沟通能力。</span></p>
+              <div class="d-flex flex-wrap gap-1">
+                <span class="badge" style="background:var(--paper-warm);color:var(--ink-black);font-size:.65rem;"><span class="en">Pinyin</span><span class="zh">拼音</span></span>
+                <span class="badge" style="background:var(--paper-warm);color:var(--ink-black);font-size:.65rem;"><span class="en">Tones</span><span class="zh">声调</span></span>
+                <span class="badge" style="background:var(--paper-warm);color:var(--ink-black);font-size:.65rem;"><span class="en">Numbers</span><span class="zh">数字</span></span>
+                <span class="badge" style="background:var(--paper-warm);color:var(--ink-black);font-size:.65rem;"><span class="en">Greetings</span><span class="zh">打招呼</span></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phase 2 -->
+          <div class="position-relative mb-4">
+            <div style="position:absolute;left:-32px;top:4px;width:28px;height:28px;border-radius:50%;background:var(--cinnabar);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;">2</div>
+            <div class="card-ink p-3">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <small class="fw-bold" style="color:var(--cinnabar);"><span class="en">Phase 2: Daily Life</span><span class="zh">第二阶段：日常</span></small>
+                <span class="badge" style="background:var(--paper-warm);color:var(--ink-black);font-size:.65rem;"><span class="en">6 weeks</span><span class="zh">6周</span></span>
+              </div>
+              <p class="small text-muted mb-2"><span class="en">Handle everyday situations with confidence — ordering, shopping, getting around.</span><span class="zh">自信应对日常场景——点餐、购物、出行。</span></p>
+              <div class="d-flex flex-wrap gap-1">
+                <span class="badge" style="background:var(--paper-warm);color:var(--ink-black);font-size:.65rem;"><span class="en">Ordering</span><span class="zh">点餐</span></span>
+                <span class="badge" style="background:var(--paper-warm);color:var(--ink-black);font-size:.65rem;"><span class="en">Directions</span><span class="zh">问路</span></span>
+                <span class="badge" style="background:var(--paper-warm);color:var(--ink-black);font-size:.65rem;"><span class="en">Shopping</span><span class="zh">购物</span></span>
+                <span class="badge" style="background:var(--paper-warm);color:var(--ink-black);font-size:.65rem;"><span class="en">Transport</span><span class="zh">交通</span></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phase 3 -->
+          <div class="position-relative mb-4">
+            <div style="position:absolute;left:-32px;top:4px;width:28px;height:28px;border-radius:50%;background:var(--cinnabar);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;">3</div>
+            <div class="card-ink p-3">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <small class="fw-bold" style="color:var(--cinnabar);"><span class="en">Phase 3: Fluency</span><span class="zh">第三阶段：流利</span></small>
+                <span class="badge" style="background:var(--paper-warm);color:var(--ink-black);font-size:.65rem;"><span class="en">8 weeks</span><span class="zh">8周</span></span>
+              </div>
+              <p class="small text-muted mb-2"><span class="en">Express complex thoughts, discuss culture, and navigate professional settings.</span><span class="zh">表达复杂想法，讨论文化话题，驾驭职场场景。</span></p>
+              <div class="d-flex flex-wrap gap-1">
+                <span class="badge" style="background:var(--paper-warm);color:var(--ink-black);font-size:.65rem;"><span class="en">Storytelling</span><span class="zh">讲故事</span></span>
+                <span class="badge" style="background:var(--paper-warm);color:var(--ink-black);font-size:.65rem;"><span class="en">Culture</span><span class="zh">文化</span></span>
+                <span class="badge" style="background:var(--paper-warm);color:var(--ink-black);font-size:.65rem;"><span class="en">Business</span><span class="zh">商务</span></span>
+                <span class="badge" style="background:var(--paper-warm);color:var(--ink-black);font-size:.65rem;"><span class="en">Reading</span><span class="zh">阅读</span></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phase 4 -->
+          <div class="position-relative">
+            <div style="position:absolute;left:-32px;top:4px;width:28px;height:28px;border-radius:50%;background:var(--cinnabar);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;">4</div>
+            <div class="card-ink p-3">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <small class="fw-bold" style="color:var(--cinnabar);"><span class="en">Phase 4: Mastery</span><span class="zh">第四阶段：精通</span></small>
+                <span class="badge" style="background:var(--paper-warm);color:var(--ink-black);font-size:.65rem;"><span class="en">ongoing</span><span class="zh">持续进行</span></span>
+              </div>
+              <p class="small text-muted mb-2"><span class="en">Reach professional-level proficiency with exam prep, idioms, and advanced writing.</span><span class="zh">通过考试准备、成语学习和高级写作达到专业水平。</span></p>
+              <div class="d-flex flex-wrap gap-1">
+                <span class="badge" style="background:var(--paper-warm);color:var(--ink-black);font-size:.65rem;"><span class="en">HSK</span><span class="zh">HSK考试</span></span>
+                <span class="badge" style="background:var(--paper-warm);color:var(--ink-black);font-size:.65rem;"><span class="en">Idioms</span><span class="zh">成语</span></span>
+                <span class="badge" style="background:var(--paper-warm);color:var(--ink-black);font-size:.65rem;"><span class="en">Writing</span><span class="zh">写作</span></span>
+                <span class="badge" style="background:var(--paper-warm);color:var(--ink-black);font-size:.65rem;"><span class="en">Professional</span><span class="zh">专业领域</span></span>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="card-ink p-4 h-100 text-center position-relative" style="border:2px solid var(--cinnabar);">
-        <span class="position-absolute top-0 start-50 translate-middle badge" style="background:var(--cinnabar);font-size:.7rem;"><span class="en">POPULAR</span><span class="zh">热门</span></span>
-        <h6 class="fw-bold mb-1"><span class="en">Standard Package</span><span class="zh">标准套餐</span></h6>
-        <p class="text-muted small mb-3"><span class="en">10 lessons × 50 min</span><span class="zh">10节课 × 50分钟</span></p>
-        <div class="mb-1">
-          <span style="font-size:2.2rem;font-weight:700;color:var(--cinnabar);">¥1,680</span>
+
+    <!-- Right: Lesson 1 Preview -->
+    <div class="col-md-4 mb-4">
+      <div class="paper-section p-4 h-100 d-flex flex-column">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <span class="seal">课</span>
+          <h6 class="fw-bold mb-0"><span class="en">Lesson 1 Preview</span><span class="zh">第一课预览</span></h6>
         </div>
-        <small class="text-muted mb-3 d-block"><span class="en">¥168/lesson</span><span class="zh">¥168/节</span></small>
-        <ul class="list-unstyled small text-muted text-start mb-4">
-          <li class="mb-1"><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">1-on-1 live sessions</span><span class="zh">一对一在线授课</span></li>
-          <li class="mb-1"><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">Customized materials</span><span class="zh">定制教材</span></li>
-          <li class="mb-1"><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">Homework & feedback</span><span class="zh">作业与反馈</span></li>
-          <li><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">Flexible scheduling</span><span class="zh">灵活排课</span></li>
-        </ul>
-        <a href="{{ url_for('contact.contact') }}" class="btn btn-cinnabar w-100"><span class="en">Get Started</span><span class="zh">开始学习</span></a>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card-ink p-4 h-100 text-center">
-        <h6 class="fw-bold mb-1"><span class="en">Intensive Package</span><span class="zh">强化套餐</span></h6>
-        <p class="text-muted small mb-3"><span class="en">30 lessons × 50 min</span><span class="zh">30节课 × 50分钟</span></p>
-        <div class="mb-1">
-          <span style="font-size:2.2rem;font-weight:700;color:var(--cinnabar);">¥4,200</span>
+
+        <!-- Tones -->
+        <div class="card-ink p-3 mb-2">
+          <small class="fw-bold" style="color:var(--cinnabar);"><i class="bi bi-volume-up me-1"></i><span class="en">Tones</span><span class="zh">声调</span></small>
+          <div class="mt-2 mb-1" style="font-size:1.1rem;letter-spacing:2px;font-family:'Noto Serif SC',serif;color:var(--cinnabar);">mā &nbsp; má &nbsp; mǎ &nbsp; mà</div>
+          <div class="d-flex flex-wrap gap-1">
+            <span class="badge" style="background:var(--paper-warm);color:var(--ink-black);font-size:.6rem;"><span class="en">1st flat —</span><span class="zh">一声平</span></span>
+            <span class="badge" style="background:var(--paper-warm);color:var(--ink-black);font-size:.6rem;"><span class="en">2nd rising /</span><span class="zh">二声扬</span></span>
+            <span class="badge" style="background:var(--paper-warm);color:var(--ink-black);font-size:.6rem;"><span class="en">3rd dipping v</span><span class="zh">三声拐</span></span>
+            <span class="badge" style="background:var(--paper-warm);color:var(--ink-black);font-size:.6rem;"><span class="en">4th falling \</span><span class="zh">四声降</span></span>
+          </div>
         </div>
-        <small class="text-muted mb-3 d-block"><span class="en">¥140/lesson · Save 17%</span><span class="zh">¥140/节 · 省17%</span></small>
-        <ul class="list-unstyled small text-muted text-start mb-4">
-          <li class="mb-1"><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">Everything in Standard</span><span class="zh">包含标准套餐全部内容</span></li>
-          <li class="mb-1"><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">Priority scheduling</span><span class="zh">优先排课</span></li>
-          <li class="mb-1"><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">Progress report every 10 lessons</span><span class="zh">每10节课出具进度报告</span></li>
-          <li><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">Cultural workshop access</span><span class="zh">文化活动参与权</span></li>
-        </ul>
-        <a href="{{ url_for('contact.contact') }}" class="btn btn-outline-ink w-100"><span class="en">Get Started</span><span class="zh">开始学习</span></a>
+
+        <!-- Characters -->
+        <div class="card-ink p-3 mb-2">
+          <small class="fw-bold" style="color:var(--cinnabar);"><i class="bi bi-pencil me-1"></i><span class="en">Characters</span><span class="zh">汉字</span></small>
+          <p class="small text-muted mb-1 mt-1"><span style="font-size:1.3rem;font-family:'Noto Serif SC',serif;">你好</span> <strong>nǐ hǎo</strong> — <span class="en">Hello</span><span class="zh">你好</span></p>
+          <p class="small text-muted mb-1"><span style="font-size:1.3rem;font-family:'Noto Serif SC',serif;">我叫...</span> <strong>wǒ jiào...</strong> — <span class="en">My name is...</span><span class="zh">我叫...</span></p>
+          <p class="small text-muted mb-0"><span style="font-size:1.3rem;font-family:'Noto Serif SC',serif;">很高兴认识你</span> <strong>hěn gāoxìng rènshi nǐ</strong> — <span class="en">Nice to meet you</span><span class="zh">很高兴认识你</span></p>
+        </div>
+
+        <!-- Dialogue -->
+        <div class="card-ink p-3 mb-3">
+          <small class="fw-bold" style="color:var(--cinnabar);"><i class="bi bi-chat-dots me-1"></i><span class="en">Dialogue</span><span class="zh">对话</span></small>
+          <div class="small text-muted mt-1">
+            <p class="mb-1"><strong>A:</strong> <span style="font-family:'Noto Serif SC',serif;">你好！我叫Tom。</span> <span class="en">(Hello! My name is Tom.)</span></p>
+            <p class="mb-1"><strong>B:</strong> <span style="font-family:'Noto Serif SC',serif;">你好Tom！我是李老师。</span> <span class="en">(Hello Tom! I'm Teacher Li.)</span></p>
+            <p class="mb-0"><strong>A:</strong> <span style="font-family:'Noto Serif SC',serif;">李老师，很高兴认识你！</span> <span class="en">(Teacher Li, nice to meet you!)</span></p>
+          </div>
+        </div>
+
+        <div class="mt-auto">
+          <a href="{{ url_for('contact.contact') }}" class="btn btn-cinnabar w-100">
+            <span class="en">Try Full Lesson Free</span><span class="zh">免费体验完整课程</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="ink-divider"><span class="seal">师资</span></div>
 
-  <!-- ═══════════════════ TEACHERS ═══════════════════ -->
+  <!-- ═══════════════════ 3. TEACHERS ═══════════════════ -->
   <div class="text-center mb-5">
     <p class="small text-uppercase mb-2" style="letter-spacing:3px;color:var(--cinnabar);">
       <span class="en">Our Teachers</span><span class="zh">师资展示</span>
@@ -411,41 +494,9 @@
     </div>
   </div>
 
-  <div class="ink-divider"><span class="seal">试听</span></div>
-
-  <!-- ═══════════════════ SAMPLE LESSON ═══════════════════ -->
-  <div class="row align-items-center my-5">
-    <div class="col-md-6 mb-4">
-      <p class="small text-uppercase mb-2" style="letter-spacing:3px;color:var(--cinnabar);">
-        <span class="en">Free Trial</span><span class="zh">免费试听</span>
-      </p>
-      <h2 class="fw-bold mb-3">
-        <span class="en">Try a Lesson<br>Before You Commit.</span>
-        <span class="zh">先试听<br>再决定。</span>
-      </h2>
-      <p class="text-muted mb-4">
-        <span class="en">Experience our teaching style with a complimentary trial lesson. No credit card, no commitment.</span>
-        <span class="zh">免费体验我们的教学风格。无需信用卡，无需承诺。</span>
-      </p>
-      <a href="{{ url_for('contact.contact') }}" class="btn btn-cinnabar btn-lg">
-        <span class="en">Book Free Trial</span><span class="zh">预约免费试听</span>
-      </a>
-    </div>
-    <div class="col-md-6 mb-4">
-      <div class="position-relative rounded overflow-hidden" style="background:var(--ink-black);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;">
-        <div class="text-center p-4">
-          <div class="mb-3" style="width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;margin:0 auto;cursor:pointer;backdrop-filter:blur(4px);">
-            <i class="bi bi-play-fill" style="font-size:1.8rem;color:#fff;margin-left:4px;"></i>
-          </div>
-          <p class="text-white small mb-0" style="opacity:.7;"><span class="en">Trial Lesson Video — Coming Soon</span><span class="zh">试听课程视频 — 即将上线</span></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══════════════════ TEACHING METHOD ═══════════════════ -->
   <div class="ink-divider"><span class="seal">方法</span></div>
 
+  <!-- ═══════════════════ 4. TEACHING METHOD ═══════════════════ -->
   <div class="text-center mb-5">
     <p class="small text-uppercase mb-2" style="letter-spacing:3px;color:var(--cinnabar);">
       <span class="en">Our Approach</span><span class="zh">教学方法</span>
@@ -495,69 +546,142 @@
     </div>
   </div>
 
-  <!-- ═══════════════════ SAMPLE LESSON CONTENT ═══════════════════ -->
-  <div class="row mb-5">
+  <div class="ink-divider"><span class="seal">试听</span></div>
+
+  <!-- ═══════════════════ 5. FREE TRIAL ═══════════════════ -->
+  <div class="row align-items-center my-5">
     <div class="col-md-6 mb-4">
-      <div class="paper-section p-4">
-        <div class="d-flex align-items-center gap-2 mb-3">
-          <span class="seal">课</span>
-          <h6 class="fw-bold mb-0"><span class="en">Lesson 1: Greetings</span><span class="zh">第一课：打招呼</span></h6>
-        </div>
-        <div class="card-ink p-3 mb-2">
-          <small class="fw-bold" style="color:var(--cinnabar);"><i class="bi bi-volume-up me-1"></i><span class="en">Tones</span><span class="zh">声调</span></small>
-          <p class="small text-muted mb-0 mt-1" style="font-size:1.1rem;letter-spacing:2px;">mā &nbsp; má &nbsp; mǎ &nbsp; mà</p>
-          <small class="text-muted"><span class="en">1st flat · 2nd rising · 3rd dipping · 4th falling</span><span class="zh">一声平 · 二声扬 · 三声拐 · 四声降</span></small>
-        </div>
-        <div class="card-ink p-3 mb-2">
-          <small class="fw-bold" style="color:var(--cinnabar);"><i class="bi bi-pencil me-1"></i><span class="en">Characters</span><span class="zh">汉字</span></small>
-          <p class="small text-muted mb-1 mt-1"><span style="font-size:1.3rem;font-family:'Noto Serif SC',serif;">你好</span> <strong>nǐ hǎo</strong> — <span class="en">Hello</span><span class="zh">你好</span></p>
-          <p class="small text-muted mb-1"><span style="font-size:1.3rem;font-family:'Noto Serif SC',serif;">我叫...</span> <strong>wǒ jiào...</strong> — <span class="en">My name is...</span><span class="zh">我叫…</span></p>
-          <p class="small text-muted mb-0"><span style="font-size:1.3rem;font-family:'Noto Serif SC',serif;">很高兴认识你</span> <strong>hěn gāoxìng rènshi nǐ</strong> — <span class="en">Nice to meet you</span><span class="zh">很高兴认识你</span></p>
-        </div>
-        <div class="card-ink p-3">
-          <small class="fw-bold" style="color:var(--cinnabar);"><i class="bi bi-chat-dots me-1"></i><span class="en">Dialogue Practice</span><span class="zh">对话练习</span></small>
-          <div class="small text-muted mt-1">
-            <p class="mb-1"><strong>A:</strong> <span style="font-family:'Noto Serif SC',serif;">你好！我叫Tom。</span> <span class="en">(Hello! My name is Tom.)</span></p>
-            <p class="mb-1"><strong>B:</strong> <span style="font-family:'Noto Serif SC',serif;">你好Tom！我是李老师。</span> <span class="en">(Hello Tom! I'm Teacher Li.)</span></p>
-            <p class="mb-0"><strong>A:</strong> <span style="font-family:'Noto Serif SC',serif;">李老师，很高兴认识你！</span> <span class="en">(Teacher Li, nice to meet you!)</span></p>
+      <p class="small text-uppercase mb-2" style="letter-spacing:3px;color:var(--cinnabar);">
+        <span class="en">Free Trial</span><span class="zh">免费试听</span>
+      </p>
+      <h2 class="fw-bold mb-3">
+        <span class="en">Try a Lesson<br>Before You Commit.</span>
+        <span class="zh">先试听<br>再决定。</span>
+      </h2>
+      <p class="text-muted mb-4">
+        <span class="en">Experience our teaching style with a complimentary trial lesson. No credit card, no commitment.</span>
+        <span class="zh">免费体验我们的教学风格。无需信用卡，无需承诺。</span>
+      </p>
+      <ul class="list-unstyled mb-4">
+        <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color:var(--cinnabar);"></i><span class="en">Free level assessment</span><span class="zh">免费水平评估</span></li>
+        <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color:var(--cinnabar);"></i><span class="en">Personalized study plan</span><span class="zh">定制学习计划</span></li>
+        <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color:var(--cinnabar);"></i><span class="en">No credit card needed</span><span class="zh">无需信用卡</span></li>
+      </ul>
+      <a href="{{ url_for('contact.contact') }}" class="btn btn-cinnabar btn-lg">
+        <span class="en">Book Free Trial</span><span class="zh">预约免费试听</span>
+      </a>
+    </div>
+    <div class="col-md-6 mb-4">
+      <div class="position-relative rounded overflow-hidden" style="background:var(--ink-black);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;">
+        <div class="text-center p-4">
+          <div class="mb-3" style="width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;margin:0 auto;cursor:pointer;backdrop-filter:blur(4px);">
+            <i class="bi bi-play-fill" style="font-size:1.8rem;color:#fff;margin-left:4px;"></i>
           </div>
+          <p class="text-white small mb-0" style="opacity:.7;"><span class="en">Trial Lesson Video — Coming Soon</span><span class="zh">试听课程视频 — 即将上线</span></p>
         </div>
       </div>
     </div>
-    <div class="col-md-6 mb-4">
-      <div class="paper-section p-4 h-100">
-        <div class="d-flex align-items-center gap-2 mb-3">
-          <span class="seal">程</span>
-          <h6 class="fw-bold mb-0"><span class="en">Course Structure</span><span class="zh">课程结构</span></h6>
+  </div>
+
+  <div class="ink-divider"><span class="seal">价格</span></div>
+
+  <!-- ═══════════════════ 6. PRICING (BOTTOM) ═══════════════════ -->
+  <div class="text-center mb-4">
+    <p class="small text-uppercase mb-2" style="letter-spacing:3px;color:var(--cinnabar);">
+      <span class="en">Pricing</span><span class="zh">课程价格</span>
+    </p>
+    <h2 class="fw-bold">
+      <span class="en">Invest in Your Chinese Journey.</span>
+      <span class="zh">投资你的中文之旅。</span>
+    </h2>
+    <p class="text-muted mt-2">
+      <span class="en">Simple, transparent pricing. No hidden fees. Pay via PayPal or bank transfer.</span>
+      <span class="zh">简单透明的价格，无隐藏费用。支持PayPal或银行转账。</span>
+    </p>
+  </div>
+
+  <div class="row g-4 mb-4 justify-content-center">
+    <!-- Trial -->
+    <div class="col-md-4">
+      <div class="card-ink p-4 h-100 text-center">
+        <h6 class="fw-bold mb-1"><span class="en">Trial Lesson</span><span class="zh">试听课</span></h6>
+        <p class="text-muted small mb-3"><span class="en">30-min one-on-one</span><span class="zh">30分钟一对一</span></p>
+        <div class="mb-3">
+          <span style="font-size:2.2rem;font-weight:700;color:var(--cinnabar);"><span class="en">Free</span><span class="zh">免费</span></span>
         </div>
-        <div class="card-ink p-3 mb-2">
-          <div class="d-flex justify-content-between align-items-center">
-            <small class="fw-bold" style="color:var(--cinnabar);"><span class="en">Phase 1: Foundations</span><span class="zh">第一阶段：基础</span></small>
-            <span class="badge" style="background:var(--paper-warm);color:var(--ink-black);font-size:.65rem;">4 weeks</span>
-          </div>
-          <p class="small text-muted mb-0 mt-1"><span class="en">Pinyin system (initials, finals, tones), basic strokes, numbers, greetings, self-introduction.</span><span class="zh">拼音系统（声母、韵母、声调）、基本笔画、数字、打招呼、自我介绍。</span></p>
+        <ul class="list-unstyled small text-muted text-start mb-4">
+          <li class="mb-1"><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">Level assessment</span><span class="zh">水平评估</span></li>
+          <li class="mb-1"><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">Customized study plan</span><span class="zh">定制学习计划</span></li>
+          <li><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">No commitment</span><span class="zh">无需承诺</span></li>
+        </ul>
+        <a href="{{ url_for('contact.contact') }}" class="btn btn-outline-ink w-100"><span class="en">Book Now</span><span class="zh">立即预约</span></a>
+      </div>
+    </div>
+    <!-- Standard (POPULAR) -->
+    <div class="col-md-4">
+      <div class="card-ink p-4 h-100 text-center position-relative" style="border:2px solid var(--cinnabar);">
+        <span class="position-absolute top-0 start-50 translate-middle badge" style="background:var(--cinnabar);font-size:.7rem;"><span class="en">POPULAR</span><span class="zh">热门</span></span>
+        <h6 class="fw-bold mb-1"><span class="en">Standard Package</span><span class="zh">标准套餐</span></h6>
+        <p class="text-muted small mb-3"><span class="en">10 lessons × 50 min</span><span class="zh">10节课 × 50分钟</span></p>
+        <div class="mb-1">
+          <span style="font-size:2.2rem;font-weight:700;color:var(--cinnabar);">¥1,680</span>
         </div>
-        <div class="card-ink p-3 mb-2">
-          <div class="d-flex justify-content-between align-items-center">
-            <small class="fw-bold" style="color:var(--cinnabar);"><span class="en">Phase 2: Daily Life</span><span class="zh">第二阶段：日常</span></small>
-            <span class="badge" style="background:var(--paper-warm);color:var(--ink-black);font-size:.65rem;">6 weeks</span>
-          </div>
-          <p class="small text-muted mb-0 mt-1"><span class="en">Ordering food, asking directions, shopping, transportation, time & dates, making phone calls.</span><span class="zh">点餐、问路、购物、交通、时间日期、打电话。</span></p>
+        <small class="text-muted mb-3 d-block"><span class="en">≈ $230 USD · ¥168/lesson</span><span class="zh">≈ $230 USD · ¥168/节</span></small>
+        <ul class="list-unstyled small text-muted text-start mb-4">
+          <li class="mb-1"><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">1-on-1 with certified teacher</span><span class="zh">认证教师一对一授课</span></li>
+          <li class="mb-1"><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">Customized materials for your level</span><span class="zh">根据水平定制教材</span></li>
+          <li class="mb-1"><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">Homework correction & voice feedback</span><span class="zh">作业批改与语音反馈</span></li>
+          <li class="mb-1"><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">Flexible scheduling timezone-friendly</span><span class="zh">跨时区灵活排课</span></li>
+          <li><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">WeChat support between lessons</span><span class="zh">课后微信答疑</span></li>
+        </ul>
+        <a href="{{ url_for('contact.contact') }}" class="btn btn-cinnabar w-100"><i class="bi bi-whatsapp me-1"></i><span class="en">Get Started</span><span class="zh">开始学习</span></a>
+      </div>
+    </div>
+    <!-- Intensive -->
+    <div class="col-md-4">
+      <div class="card-ink p-4 h-100 text-center">
+        <h6 class="fw-bold mb-1"><span class="en">Intensive Package</span><span class="zh">强化套餐</span></h6>
+        <p class="text-muted small mb-3"><span class="en">30 lessons × 50 min</span><span class="zh">30节课 × 50分钟</span></p>
+        <div class="mb-1">
+          <span style="font-size:2.2rem;font-weight:700;color:var(--cinnabar);">¥4,200</span>
         </div>
-        <div class="card-ink p-3 mb-2">
-          <div class="d-flex justify-content-between align-items-center">
-            <small class="fw-bold" style="color:var(--cinnabar);"><span class="en">Phase 3: Fluency</span><span class="zh">第三阶段：流利</span></small>
-            <span class="badge" style="background:var(--paper-warm);color:var(--ink-black);font-size:.65rem;">8 weeks</span>
-          </div>
-          <p class="small text-muted mb-0 mt-1"><span class="en">Complex sentences, storytelling, cultural topics, travel planning, business communication basics.</span><span class="zh">复杂句型、讲故事、文化话题、旅行规划、商务沟通基础。</span></p>
-        </div>
-        <div class="card-ink p-3">
-          <div class="d-flex justify-content-between align-items-center">
-            <small class="fw-bold" style="color:var(--cinnabar);"><span class="en">Phase 4: Mastery</span><span class="zh">第四阶段：精通</span></small>
-            <span class="badge" style="background:var(--paper-warm);color:var(--ink-black);font-size:.65rem;">ongoing</span>
-          </div>
-          <p class="small text-muted mb-0 mt-1"><span class="en">HSK exam prep, newspaper reading, formal writing, idioms (成语), advanced conversation.</span><span class="zh">HSK考试准备、报纸阅读、正式写作、成语学习、高级会话。</span></p>
-        </div>
+        <small class="text-muted mb-3 d-block"><span class="en">≈ $575 USD · Save 17%</span><span class="zh">≈ $575 USD · 省17%</span></small>
+        <ul class="list-unstyled small text-muted text-start mb-4">
+          <li class="mb-1"><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">Everything in Standard plus:</span><span class="zh">包含标准套餐全部内容：</span></li>
+          <li class="mb-1"><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">Priority scheduling</span><span class="zh">优先排课</span></li>
+          <li class="mb-1"><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">Progress report every 10 lessons</span><span class="zh">每10节课出具进度报告</span></li>
+          <li class="mb-1"><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">Free cultural workshop</span><span class="zh">免费文化活动</span></li>
+          <li><i class="bi bi-check2 me-2" style="color:var(--cinnabar);"></i><span class="en">HSK mock test included</span><span class="zh">含HSK模拟考试</span></li>
+        </ul>
+        <a href="{{ url_for('contact.contact') }}" class="btn btn-outline-ink w-100"><i class="bi bi-whatsapp me-1"></i><span class="en">Get Started</span><span class="zh">开始学习</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trust Badges -->
+  <div class="row g-3 mb-5 justify-content-center text-center">
+    <div class="col-6 col-md-3">
+      <div class="card-ink p-3">
+        <i class="bi bi-shield-check d-block mb-1" style="font-size:1.3rem;color:var(--cinnabar);"></i>
+        <small class="text-muted"><span class="en">Secure Payment</span><span class="zh">安全支付</span></small>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="card-ink p-3">
+        <i class="bi bi-paypal d-block mb-1" style="font-size:1.3rem;color:var(--cinnabar);"></i>
+        <small class="text-muted"><span class="en">PayPal Accepted</span><span class="zh">支持PayPal</span></small>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="card-ink p-3">
+        <i class="bi bi-arrow-counterclockwise d-block mb-1" style="font-size:1.3rem;color:var(--cinnabar);"></i>
+        <small class="text-muted"><span class="en">7-Day Money Back</span><span class="zh">7天退款保证</span></small>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="card-ink p-3">
+        <i class="bi bi-chat-left-text d-block mb-1" style="font-size:1.3rem;color:var(--cinnabar);"></i>
+        <small class="text-muted"><span class="en">Free Consultation</span><span class="zh">免费咨询</span></small>
       </div>
     </div>
   </div>
