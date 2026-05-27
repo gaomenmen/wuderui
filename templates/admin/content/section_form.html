@@ -1,0 +1,112 @@
+{% extends "admin/base.html" %}
+{% block title %}{% if section %}Edit{% else %}New{% endif %} Section — WuDeRuiBo{% endblock %}
+{% block admin_content %}
+
+<div class="mb-4">
+  <a href="{{ url_for('admin.content_sections', page=page) }}" class="small text-muted"><span class="en">← Sections</span><span class="zh">← 版块列表</span></a>
+  <h4 class="fw-bold mt-1">
+    {% if section %}
+      <span class="en">Edit Section: {{ section.section_key }}</span><span class="zh">编辑版块: {{ section.section_key }}</span>
+    {% else %}
+      <span class="en">New Section</span><span class="zh">新建版块</span>
+    {% endif %}
+  </h4>
+</div>
+
+<form method="POST">
+  <div class="row g-3 mb-4">
+    <!-- Left: English -->
+    <div class="col-md-6">
+      <h6 class="fw-bold mb-3" style="color:var(--cinnabar);">English</h6>
+      <div class="mb-3">
+        <label class="form-label small fw-bold">Section Key</label>
+        {% if section %}
+          <input type="text" class="form-control form-control-sm" value="{{ section.section_key }}" disabled>
+        {% else %}
+          <input type="text" name="section_key" class="form-control form-control-sm" required placeholder="e.g. hero, pricing, cta">
+        {% endif %}
+      </div>
+      <div class="row g-2 mb-2">
+        <div class="col-6">
+          <label class="form-label small fw-bold">Section Type</label>
+          <select name="section_type" class="form-select form-select-sm">
+            {% for t in section_types %}
+            <option value="{{ t }}" {% if section and section.section_type == t %}selected{% endif %}>{{ t }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col-6">
+          <label class="form-label small fw-bold">Sort Order</label>
+          <input type="number" name="sort_order" class="form-control form-control-sm" value="{{ section.sort_order if section else 0 }}">
+        </div>
+      </div>
+      <div class="mb-2">
+        <label class="form-label small fw-bold">Title (EN)</label>
+        <input type="text" name="title_en" class="form-control form-control-sm" value="{{ section.title_en if section else '' }}">
+      </div>
+      <div class="mb-2">
+        <label class="form-label small fw-bold">Subtitle (EN)</label>
+        <input type="text" name="subtitle_en" class="form-control form-control-sm" value="{{ section.subtitle_en if section else '' }}">
+      </div>
+      <div class="mb-2">
+        <label class="form-label small fw-bold">Body (EN)</label>
+        <textarea name="body_en" class="form-control form-control-sm" rows="4">{{ section.body_en if section else '' }}</textarea>
+      </div>
+      <div class="mb-2">
+        <label class="form-label small fw-bold">Button Text (EN)</label>
+        <input type="text" name="button_text_en" class="form-control form-control-sm" value="{{ section.button_text_en if section else '' }}">
+      </div>
+    </div>
+    <!-- Right: Chinese -->
+    <div class="col-md-6">
+      <h6 class="fw-bold mb-3" style="color:var(--ink-gray);">中文</h6>
+      <div class="mb-2" style="height:38px;"></div>
+      <div class="mb-2">
+        <label class="form-label small fw-bold">标题（中文）</label>
+        <input type="text" name="title_zh" class="form-control form-control-sm" value="{{ section.title_zh if section else '' }}">
+      </div>
+      <div class="mb-2">
+        <label class="form-label small fw-bold">副标题（中文）</label>
+        <input type="text" name="subtitle_zh" class="form-control form-control-sm" value="{{ section.subtitle_zh if section else '' }}">
+      </div>
+      <div class="mb-2">
+        <label class="form-label small fw-bold">正文（中文）</label>
+        <textarea name="body_zh" class="form-control form-control-sm" rows="4">{{ section.body_zh if section else '' }}</textarea>
+      </div>
+      <div class="mb-2">
+        <label class="form-label small fw-bold">按钮文字（中文）</label>
+        <input type="text" name="button_text_zh" class="form-control form-control-sm" value="{{ section.button_text_zh if section else '' }}">
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared fields -->
+  <div class="row g-3 mb-4">
+    <div class="col-md-6">
+      <label class="form-label small fw-bold">Image URL</label>
+      <input type="text" name="image_url" class="form-control form-control-sm" value="{{ section.image_url if section else '' }}" placeholder="https://...">
+    </div>
+    <div class="col-md-6">
+      <label class="form-label small fw-bold">Button URL</label>
+      <input type="text" name="button_url" class="form-control form-control-sm" value="{{ section.button_url if section else '' }}" placeholder="{{ url_for('contact.contact') }}">
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <label class="form-label small fw-bold">Extra Data (JSON)</label>
+    <textarea name="extra_data" class="form-control form-control-sm font-monospace" rows="3" placeholder='{"tags": ["tag1", "tag2"], "stat_value": "24"}'>{{ section.extra_data if section else '' }}</textarea>
+    <small class="text-muted">Optional JSON for tags, stat values, FAQ pairs, etc.</small>
+  </div>
+
+  <div class="form-check mb-4">
+    <input class="form-check-input" type="checkbox" name="is_visible" id="visCheck" {% if not section or section.is_visible %}checked{% endif %}>
+    <label class="form-check-label small" for="visCheck"><span class="en">Visible on page</span><span class="zh">在页面上显示</span></label>
+  </div>
+
+  <div class="d-flex gap-2">
+    <button type="submit" class="btn btn-cinnabar"><span class="en">Save Section</span><span class="zh">保存版块</span></button>
+    <a href="{{ url_for('admin.content_sections', page=page) }}" class="btn btn-outline-ink"><span class="en">Cancel</span><span class="zh">取消</span></a>
+  </div>
+</form>
+
+{% endblock %}

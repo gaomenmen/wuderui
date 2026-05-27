@@ -4,6 +4,8 @@
 {% block content %}
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
+{% set hero = cms_section('tai_chi', 'hero') %}
+{% if hero is none %}
 <div class="hero-photo">
   <div class="hero-bg" style="background:#0a0a0a;">
     <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;" preserveAspectRatio="xMidYMid slice">
@@ -43,6 +45,53 @@
     </div>
   </div>
 </div>
+{% else %}
+<div class="hero-photo">
+  <div class="hero-bg" style="background:#0a0a0a;">
+    <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;" preserveAspectRatio="xMidYMid slice">
+      <defs><radialGradient id="tjBg3" cx="50%" cy="50%" r="65%"><stop offset="0%" stop-color="#222"/><stop offset="100%" stop-color="#0a0a0a"/></radialGradient></defs>
+      <rect width="400" height="320" fill="url(#tjBg3)"/>
+      <circle cx="60" cy="50" r="40" fill="#fff" opacity=".015"/><circle cx="340" cy="280" r="50" fill="#fff" opacity=".02"/>
+      <g opacity=".22" fill="none" stroke="#f5f0e8" stroke-linecap="round"><circle cx="188" cy="48" r="11" fill="#f5f0e8" stroke="none"/><path d="M188,59 C187,74 185,96 184,120 C183,140 183,154 184,164" stroke-width="5"/><path d="M186,78 C172,72 150,62 128,55 C115,50 102,46 88,42" stroke-width="3.5"/><path d="M88,42 C82,40 78,44 76,50 C74,56 78,62 84,64" stroke-width="2.5" opacity=".5"/><path d="M190,84 C210,90 234,104 254,120 C265,129 274,140 280,148" stroke-width="3.5"/><path d="M280,148 C285,145 289,148 290,153 C291,158 288,161 283,162" stroke-width="2.5" opacity=".6"/><path d="M183,164 C170,186 152,212 135,232 C127,242 120,250 114,258" stroke-width="5.5"/><path d="M186,164 C204,190 228,214 252,230 C263,237 273,242 282,244" stroke-width="5.5"/></g>
+      <circle cx="200" cy="160" r="128" fill="none" stroke="#c8a96e" stroke-width="1" opacity=".3"/>
+      <circle cx="200" cy="160" r="123" fill="none" stroke="#c8a96e" stroke-width=".5" opacity=".15"/>
+      <g transform="translate(200,62)"><line x1="-14" y1="-6" x2="14" y2="-6" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/><line x1="-14" y1="0" x2="14" y2="0" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/><line x1="-14" y1="6" x2="14" y2="6" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/></g>
+      <g transform="translate(269,91)"><line x1="-14" y1="-6" x2="-3" y2="-6" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/><line x1="3" y1="-6" x2="14" y2="-6" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/><line x1="-14" y1="0" x2="14" y2="0" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/><line x1="-14" y1="6" x2="14" y2="6" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/></g>
+      <g transform="translate(298,160)"><line x1="-14" y1="-6" x2="14" y2="-6" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/><line x1="-14" y1="0" x2="-3" y2="0" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/><line x1="3" y1="0" x2="14" y2="0" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/><line x1="-14" y1="6" x2="14" y2="6" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/></g>
+      <g transform="translate(269,229)"><line x1="-14" y1="-6" x2="-3" y2="-6" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/><line x1="3" y1="-6" x2="14" y2="-6" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/><line x1="-14" y1="0" x2="-3" y2="0" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/><line x1="3" y1="0" x2="14" y2="0" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/><line x1="-14" y1="6" x2="14" y2="6" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/></g>
+      <g transform="translate(200,258)"><line x1="-14" y1="-6" x2="-3" y2="-6" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/><line x1="3" y1="-6" x2="14" y2="-6" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/><line x1="-14" y1="0" x2="-3" y2="0" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/><line x1="3" y1="0" x2="14" y2="0" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/><line x1="-14" y1="6" x2="-3" y2="6" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/><line x1="3" y1="6" x2="14" y2="6" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/></g>
+      <g transform="translate(131,229)"><line x1="-14" y1="-6" x2="14" y2="-6" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/><line x1="-14" y1="0" x2="-3" y2="0" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/><line x1="3" y1="0" x2="14" y2="0" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/><line x1="-14" y1="6" x2="-3" y2="6" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/><line x1="3" y1="6" x2="14" y2="6" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/></g>
+      <g transform="translate(102,160)"><line x1="-14" y1="-6" x2="-3" y2="-6" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/><line x1="3" y1="-6" x2="14" y2="-6" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/><line x1="-14" y1="0" x2="14" y2="0" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/><line x1="-14" y1="6" x2="-3" y2="6" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/><line x1="3" y1="6" x2="14" y2="6" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/></g>
+      <g transform="translate(131,91)"><line x1="-14" y1="-6" x2="14" y2="-6" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/><line x1="-14" y1="0" x2="14" y2="0" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/><line x1="-14" y1="6" x2="-3" y2="6" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/><line x1="3" y1="6" x2="14" y2="6" stroke="#c8a96e" stroke-width="2.5" stroke-linecap="round"/></g>
+      <g transform="translate(200,160)"><circle r="55" fill="#f5f0e8"/><path d="M0,-55 A27.5,27.5 0 0,1 0,0 A27.5,27.5 0 0,0 0,55 A55,55 0 0,1 0,-55" fill="#1a1a1a"/><circle cy="-27.5" r="8" fill="#f5f0e8"/><circle cy="27.5" r="8" fill="#1a1a1a"/><circle r="55" fill="none" stroke="#c8a96e" stroke-width=".8" opacity=".5"/></g>
+      <text x="200" y="312" text-anchor="middle" font-family="'Noto Serif SC',serif" font-size="12" fill="#c8a96e" opacity=".3" letter-spacing="6">太极八卦</text>
+    </svg>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content py-5">
+    <div style="min-height:300px;" class="d-flex flex-column justify-content-center">
+      <p class="small text-uppercase mb-3 fade-up" style="letter-spacing:4px;color:var(--gold-subtle);">
+        <span class="en">{{ hero.subtitle_en or 'Online Course' }}</span>
+        <span class="zh">{{ hero.subtitle_zh or '在线课程' }}</span>
+      </p>
+      <h1 class="fw-bold mb-3 fade-up d1" style="font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.15;">
+        <span class="en">{{ hero.title_en or '24-Form Tai Chi.<br>National Champion<br>Instruction.' }}</span>
+        <span class="zh">{{ hero.title_zh or '24式太极拳。<br>全国冠军<br>亲自教学。' }}</span>
+      </h1>
+      <p class="fade-up d2" style="font-size:1.05rem;opacity:.8;max-width:500px;">
+        <span class="en">{{ hero.body_en or '"Meditation in motion" — gentle exercise combining physical movement with mental focus. 2 free lessons to start.' }}</span>
+        <span class="zh">{{ hero.body_zh or '"移动的冥想"——柔和的体育锻炼与精神专注的结合。前两式免费试看。' }}</span>
+      </p>
+      {% if hero.button_text_en or hero.button_text_zh %}
+      <a href="{{ hero.button_url or '#' }}" class="btn btn-cinnabar btn-lg fade-up d2 mt-2">
+        <span class="en">{{ hero.button_text_en or '' }}</span>
+        <span class="zh">{{ hero.button_text_zh or '' }}</span>
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endif %}
 
 <div class="container py-5">
 

@@ -3,7 +3,9 @@
 {% block title_zh %}推荐分佣 — 吴德瑞博{% endblock %}
 {% block content %}
 
+{% set hero = cms_section('affiliate', 'hero') %}
 <!-- ═══════════════════ HERO ═══════════════════ -->
+{% if hero is none %}
 <div class="hero-ink py-5">
   <div class="container position-relative py-4" style="z-index:1;">
     <p class="small text-uppercase mb-3 fade-up" style="letter-spacing:4px;color:var(--gold-subtle);">
@@ -19,6 +21,30 @@
     </p>
   </div>
 </div>
+{% else %}
+<div class="hero-ink py-5">
+  <div class="container position-relative py-4" style="z-index:1;">
+    <p class="small text-uppercase mb-3 fade-up" style="letter-spacing:4px;color:var(--gold-subtle);">
+      <span class="en">{{ hero.subtitle_en or '' }}</span>
+      <span class="zh">{{ hero.subtitle_zh or '' }}</span>
+    </p>
+    <h1 class="fw-bold mb-2 fade-up d1">
+      <span class="en">{{ hero.title_en or '' }}</span>
+      <span class="zh">{{ hero.title_zh or '' }}</span>
+    </h1>
+    <p class="lead fade-up d2" style="opacity:.8;max-width:500px;">
+      <span class="en">{{ hero.body_en or '' }}</span>
+      <span class="zh">{{ hero.body_zh or '' }}</span>
+    </p>
+    {% if hero.button_text_en or hero.button_text_zh %}
+    <a href="{{ hero.button_url or '#' }}" class="btn btn-cinnabar mt-3 fade-up d3">
+      <span class="en">{{ hero.button_text_en or '' }}</span>
+      <span class="zh">{{ hero.button_text_zh or '' }}</span>
+    </a>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
 
 <div class="container py-5">
 

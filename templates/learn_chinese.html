@@ -4,6 +4,8 @@
 {% block content %}
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
+{% set hero = cms_section('learn_chinese', 'hero') %}
+{% if hero is none %}
 <div class="hero-photo">
   <div class="hero-bg" style="background:linear-gradient(160deg,#1a1a1a 0%,#222 40%,#1a1a1a 100%);"></div>
   <div class="hero-overlay" style="background:none;"></div>
@@ -89,6 +91,99 @@
     </div>
   </div>
 </div>
+{% else %}
+<div class="hero-photo">
+  <div class="hero-bg" style="background:linear-gradient(160deg,#1a1a1a 0%,#222 40%,#1a1a1a 100%);"></div>
+  <div class="hero-overlay" style="background:none;"></div>
+  <div class="container hero-content py-5">
+    <div class="row align-items-center" style="min-height:340px;">
+      <div class="col-md-7 mb-4 mb-md-0">
+        <p class="small text-uppercase mb-3 fade-up" style="letter-spacing:4px;color:var(--gold-subtle);">
+          <span class="en">{{ hero.subtitle_en or 'Mandarin Courses' }}</span>
+          <span class="zh">{{ hero.subtitle_zh or '中文课程' }}</span>
+        </p>
+        <h1 class="fw-bold mb-3 fade-up d1" style="font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.15;">
+          <span class="en">{{ hero.title_en or 'From Pinyin<br>to Conversation.' }}</span>
+          <span class="zh">{{ hero.title_zh or '从拼音<br>到日常对话。' }}</span>
+        </h1>
+        <p class="fade-up d2" style="font-size:1.05rem;opacity:.8;max-width:500px;">
+          <span class="en">{{ hero.body_en or 'Structured courses for kids, adults, and heritage families. Native teachers, proven methods, real results.' }}</span>
+          <span class="zh">{{ hero.body_zh or '适合儿童、成人及华裔家庭的体系化课程。母语教师，成熟方法，真实效果。' }}</span>
+        </p>
+        {% if hero.button_text_en or hero.button_text_zh %}
+        <a href="{{ hero.button_url or '#' }}" class="btn btn-cinnabar btn-lg fade-up d2 mt-2">
+          <span class="en">{{ hero.button_text_en or '' }}</span>
+          <span class="zh">{{ hero.button_text_zh or '' }}</span>
+        </a>
+        {% endif %}
+      </div>
+      <div class="col-md-5 text-center fade-up d3">
+        <svg viewBox="0 0 440 340" xmlns="http://www.w3.org/2000/svg" style="max-width:420px;width:100%;filter:drop-shadow(0 8px 30px rgba(0,0,0,.4));">
+          <defs>
+            <linearGradient id="inkWash" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#f8f5f0"/>
+              <stop offset="100%" stop-color="#f0ebe3"/>
+            </linearGradient>
+          </defs>
+          <!-- 墨迹装饰 左上 -->
+          <circle cx="30" cy="30" r="40" fill="#1a1a1a" opacity=".06"/>
+          <circle cx="410" cy="310" r="50" fill="#1a1a1a" opacity=".05"/>
+          <!-- 主标题 -->
+          <text x="220" y="28" text-anchor="middle" font-family="'Noto Serif SC',serif" font-size="14" fill="#c9a96e" letter-spacing="6">中国书法练习</text>
+          <!-- ── 上排：你好 ── -->
+          <!-- 格1: 你 -->
+          <rect x="30" y="48" width="130" height="130" fill="url(#inkWash)" stroke="#c4b99a" stroke-width="1.5" rx="3"/>
+          <line x1="95" y1="48" x2="95" y2="178" stroke="#ddd3be" stroke-width=".8" stroke-dasharray="5,4"/>
+          <line x1="30" y1="113" x2="160" y2="113" stroke="#ddd3be" stroke-width=".8" stroke-dasharray="5,4"/>
+          <line x1="30" y1="48" x2="160" y2="178" stroke="#ddd3be" stroke-width=".8" stroke-dasharray="5,4"/>
+          <line x1="160" y1="48" x2="30" y2="178" stroke="#ddd3be" stroke-width=".8" stroke-dasharray="5,4"/>
+          <text x="95" y="68" text-anchor="middle" font-family="Inter,sans-serif" font-size="16" fill="#b5362e" font-weight="600">nǐ</text>
+          <text x="95" y="140" text-anchor="middle" font-family="'Noto Serif SC',serif" font-size="80" fill="#1a1a1a">你</text>
+          <text x="95" y="194" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#aaa">you</text>
+          <!-- 格2: 好 -->
+          <rect x="178" y="48" width="130" height="130" fill="url(#inkWash)" stroke="#c4b99a" stroke-width="1.5" rx="3"/>
+          <line x1="243" y1="48" x2="243" y2="178" stroke="#ddd3be" stroke-width=".8" stroke-dasharray="5,4"/>
+          <line x1="178" y1="113" x2="308" y2="113" stroke="#ddd3be" stroke-width=".8" stroke-dasharray="5,4"/>
+          <line x1="178" y1="48" x2="308" y2="178" stroke="#ddd3be" stroke-width=".8" stroke-dasharray="5,4"/>
+          <line x1="308" y1="48" x2="178" y2="178" stroke="#ddd3be" stroke-width=".8" stroke-dasharray="5,4"/>
+          <text x="243" y="68" text-anchor="middle" font-family="Inter,sans-serif" font-size="16" fill="#b5362e" font-weight="600">hǎo</text>
+          <text x="243" y="140" text-anchor="middle" font-family="'Noto Serif SC',serif" font-size="80" fill="#1a1a1a">好</text>
+          <text x="243" y="194" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#aaa">good</text>
+          <!-- 右侧印章 -->
+          <rect x="330" y="70" width="52" height="52" fill="none" stroke="#c23a2a" stroke-width="2.5" rx="2" transform="rotate(-4,356,96)"/>
+          <text x="356" y="104" text-anchor="middle" font-family="'Noto Serif SC',serif" font-size="24" fill="#c23a2a" transform="rotate(-4,356,96)">你好</text>
+          <!-- 声调说明 -->
+          <text x="356" y="140" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,.4)">3rd tone</text>
+          <text x="356" y="153" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,.4)">ˇ ˇ</text>
+          <!-- ── 下排：中国 ── -->
+          <!-- 格3: 中 -->
+          <rect x="30" y="215" width="130" height="100" fill="url(#inkWash)" stroke="#c4b99a" stroke-width="1.5" rx="3"/>
+          <line x1="95" y1="215" x2="95" y2="315" stroke="#ddd3be" stroke-width=".8" stroke-dasharray="5,4"/>
+          <line x1="30" y1="265" x2="160" y2="265" stroke="#ddd3be" stroke-width=".8" stroke-dasharray="5,4"/>
+          <text x="95" y="237" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" fill="#b5362e" font-weight="600">zhōng</text>
+          <text x="95" y="296" text-anchor="middle" font-family="'Noto Serif SC',serif" font-size="60" fill="#1a1a1a">中</text>
+          <!-- 格4: 国 -->
+          <rect x="178" y="215" width="130" height="100" fill="url(#inkWash)" stroke="#c4b99a" stroke-width="1.5" rx="3"/>
+          <line x1="243" y1="215" x2="243" y2="315" stroke="#ddd3be" stroke-width=".8" stroke-dasharray="5,4"/>
+          <line x1="178" y1="265" x2="308" y2="265" stroke="#ddd3be" stroke-width=".8" stroke-dasharray="5,4"/>
+          <text x="243" y="237" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" fill="#b5362e" font-weight="600">guó</text>
+          <text x="243" y="296" text-anchor="middle" font-family="'Noto Serif SC',serif" font-size="60" fill="#1a1a1a">国</text>
+          <!-- 下排右：声调图示 -->
+          <g transform="translate(330,220)">
+            <text x="0" y="0" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,.5)" font-weight="600">TONES</text>
+            <text x="0" y="20" font-family="Inter,sans-serif" font-size="13" fill="#c23a2a">mā</text><text x="28" y="20" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,.35)">1st —</text>
+            <text x="0" y="38" font-family="Inter,sans-serif" font-size="13" fill="#c23a2a">má</text><text x="28" y="38" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,.35)">2nd /</text>
+            <text x="0" y="56" font-family="Inter,sans-serif" font-size="13" fill="#c23a2a">mǎ</text><text x="28" y="56" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,.35)">3rd v</text>
+            <text x="0" y="74" font-family="Inter,sans-serif" font-size="13" fill="#c23a2a">mà</text><text x="28" y="74" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,.35)">4th \</text>
+          </g>
+          <!-- 底部标注 -->
+          <text x="220" y="335" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,.3)" letter-spacing="2">HELLO, CHINA</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
 
 <div class="container py-5">
 

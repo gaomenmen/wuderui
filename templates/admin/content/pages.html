@@ -1,0 +1,28 @@
+{% extends "admin/base.html" %}
+{% block title %}Content Manager — WuDeRuiBo{% endblock %}
+{% block admin_content %}
+
+<h4 class="fw-bold mb-4">
+  <span class="en">Content Manager</span><span class="zh">内容管理</span>
+</h4>
+
+<div class="row g-3">
+  {% for p in pages %}
+  <div class="col-md-4 col-sm-6">
+    <div class="admin-stat">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h6 class="fw-bold mb-0">
+          <span class="en">{{ p.en }}</span><span class="zh">{{ p.zh }}</span>
+        </h6>
+        <span class="badge-status badge-pending">{{ p.count }}</span>
+      </div>
+      <small class="text-muted d-block mb-2">{{ p.key }}</small>
+      <a href="{{ url_for('admin.content_sections', page=p.key) }}" class="btn btn-sm btn-outline-ink w-100">
+        <span class="en">Manage Sections</span><span class="zh">管理版块</span>
+      </a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

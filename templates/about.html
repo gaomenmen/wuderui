@@ -3,7 +3,9 @@
 {% block title_zh %}关于我们 — 吴德瑞博{% endblock %}
 {% block content %}
 
+{% set hero = cms_section('about', 'hero') %}
 <!-- ═══════════════════ HERO ═══════════════════ -->
+{% if hero is none %}
 <div class="hero-photo">
   <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=1600&h=800&fit=crop');"></div>
   <div class="hero-overlay"></div>
@@ -19,6 +21,36 @@
     </div>
   </div>
 </div>
+{% else %}
+<div class="hero-photo">
+  <div class="hero-bg" style="background-image:url('{{ hero.image_url or 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=1600&h=800&fit=crop' }}');"></div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content py-5">
+    <div style="min-height:280px;" class="d-flex flex-column justify-content-center">
+      <p class="small text-uppercase mb-3 fade-up" style="letter-spacing:4px;color:var(--gold-subtle);">
+        <span class="en">{{ hero.subtitle_en or '' }}</span>
+        <span class="zh">{{ hero.subtitle_zh or '' }}</span>
+      </p>
+      <h1 class="fw-bold mb-3 fade-up d1" style="font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.15;">
+        <span class="en">{{ hero.title_en or '' }}</span>
+        <span class="zh">{{ hero.title_zh or '' }}</span>
+      </h1>
+      {% if hero.body_en or hero.body_zh %}
+      <p class="fade-up d2" style="font-size:1.05rem;opacity:.8;max-width:500px;">
+        <span class="en">{{ hero.body_en or '' }}</span>
+        <span class="zh">{{ hero.body_zh or '' }}</span>
+      </p>
+      {% endif %}
+      {% if hero.button_text_en or hero.button_text_zh %}
+      <a href="{{ hero.button_url or '#' }}" class="btn btn-cinnabar mt-3 fade-up d3 align-self-start">
+        <span class="en">{{ hero.button_text_en or '' }}</span>
+        <span class="zh">{{ hero.button_text_zh or '' }}</span>
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endif %}
 
 <div class="container py-5">
 

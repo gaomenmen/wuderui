@@ -1,0 +1,81 @@
+{% extends "admin/base.html" %}
+{% block title %}{{ page }} Sections — WuDeRuiBo{% endblock %}
+{% block admin_content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div>
+    <a href="{{ url_for('admin.content_pages') }}" class="small text-muted"><span class="en">← Content</span><span class="zh">← 内容管理</span></a>
+    <h4 class="fw-bold mt-1">
+      <span class="en">{{ page_name[1] }} Sections</span><span class="zh">{{ page_name[2] }}版块管理</span>
+    </h4>
+  </div>
+  <a href="{{ url_for('admin.content_section_new', page=page) }}" class="btn btn-cinnabar btn-sm">
+    <i class="bi bi-plus-lg me-1"></i><span class="en">New Section</span><span class="zh">新建版块</span>
+  </a>
+</div>
+
+{% if sections %}
+<form id="reorderForm" method="POST" action="{{ url_for('admin.content_reorder', page=page) }}">
+<table class="admin-table">
+  <thead>
+    <tr>
+      <th style="width:30px;"></th>
+      <th><span class="en">Key</span><span class="zh">标识</span></th>
+      <th><span class="en">Type</span><span class="zh">类型</span></th>
+      <th><span class="en">Title</span><span class="zh">标题</span></th>
+      <th><span class="en">Order</span><span class="zh">排序</span></th>
+      <th><span class="en">Visible</span><span class="zh">显示</span></th>
+      <th><span class="en">Actions</span><span class="zh">操作</span></th>
+    </tr>
+  </thead>
+  <tbody id="sectionsList">
+    {% for s in sections %}
+    <tr draggable="true" data-id="{{ s.id }}" style="cursor:grab;">
+      <td><i class="bi bi-grip-vertical text-muted"></i></td>
+      <td><code>{{ s.section_key }}</code></td>
+      <td><span class="badge-status badge-pending">{{ s.section_type }}</span></td>
+      <td class="small">{{ (s.title_en or '')[:50] }}{% if s.title_en and s.title_en|length > 50 %}…{% endif %}</td>
+      <td>{{ s.sort_order }}</td>
+      <td>
+        {% if s.is_visible %}
+          <span class="badge-status badge-active"><span class="en">Visible</span><span class="zh">显示</span></span>
+        {% else %}
+          <span class="badge-status badge-inactive"><span class="en">Hidden</span><span class="zh">隐藏</span></span>
+        {% endif %}
+      </td>
+      <td>
+        <a href="{{ url_for('admin.content_section_edit', page=page, section_key=s.section_key) }}" class="btn btn-sm btn-outline-ink py-0 px-2"><span class="en">Edit</span><span class="zh">编辑</span></a>
+        <form method="POST" action="{{ url_for('admin.content_section_toggle', page=page, section_key=s.section_key) }}" style="display:inline;">
+          <button type="submit" class="btn btn-sm btn-outline-ink py-0 px-2" title="Toggle"><i class="bi bi-eye{{ '' if s.is_visible else '-slash' }}"></i></button>
+        </form>
+        <form method="POST" action="{{ url_for('admin.content_section_delete', page=page, section_key=s.section_key) }}" style="display:inline;" onsubmit="return confirm('Delete this section? The page will revert to its default content.');">
+          <button type="submit" class="btn btn-sm py-0 px-2" style="color:var(--cinnabar);"><i class="bi bi-trash"></i></button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</form>
+{% else %}
+<div class="text-center py-5">
+  <p class="text-muted mb-3"><span class="en">No sections yet. Add sections to make page content editable.</span><span class="zh">暂无版块。添加版块以使页面内容可编辑。</span></p>
+  <a href="{{ url_for('admin.content_section_new', page=page) }}" class="btn btn-cinnabar">
+    <i class="bi bi-plus-lg me-1"></i><span class="en">New Section</span><span class="zh">新建版块</span>
+  </a>
+</div>
+{% endif %}
+
+<script>
+const list = document.getElementById('sectionsList');
+if (list) {
+  let dragged = null;
+  list.querySelectorAll('tr').forEach(row => {
+    row.addEventListener('dragstart', e => { dragged = row; row.style.opacity = '.4'; });
+    row.addEventListener('dragend', () => { dragged.style.opacity = ''; dragged = null; });
+    row.addEventListener('dragover', e => { e.preventDefault(); if (dragged && dragged !== row) list.insertBefore(dragged, row); });
+  });
+}
+</script>
+
+{% endblock %}

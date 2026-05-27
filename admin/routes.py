@@ -6,6 +6,7 @@ from models.inquiry import Inquiry
 from models.commission import Commission
 from models.referral_click import ReferralClick
 from models.monthly_report import MonthlyReport
+from models.page_section import PageSection
 from datetime import datetime, timezone
 from sqlalchemy import func
 
@@ -236,3 +237,127 @@ def settlements():
     paid = Commission.query.filter_by(status='paid').order_by(Commission.paid_at.desc()).paginate(page=page, per_page=20, error_out=False)
     total_paid = db.session.query(func.coalesce(func.sum(Commission.commission_amount), 0)).filter_by(status='paid').scalar() or 0
     return render_template('admin/settlements.html', paid=paid, total_paid=total_paid)
+
+
+# ─── CONTENT MANAGEMENT ───
+
+CMS_PAGES = [
+    ('index', 'Home', '首页'),
+    ('learn_chinese', 'Learn Chinese', '学中文'),
+    ('tai_chi', 'Tai Chi', '太极拳'),
+    ('custom_trips', 'Custom Trips', '定制旅行'),
+    ('about', 'About', '关于我们'),
+    ('contact', 'Contact', '联系我们'),
+    ('affiliate', 'Affiliate', '推荐分佣'),
+]
+
+SECTION_TYPES = ['hero', 'card', 'text_block', 'stats', 'cta', 'gallery', 'testimonial', 'faq']
+
+
+@admin_bp.route('/content')
+@login_required
+def content_pages():
+    pages_info = []
+    for key, en, zh in CMS_PAGES:
+        count = PageSection.query.filter_by(page=key).count()
+        pages_info.append({'key': key, 'en': en, 'zh': zh, 'count': count})
+    return render_template('admin/content/pages.html', pages=pages_info)
+
+
+@admin_bp.route('/content/<page>')
+@login_required
+def content_sections(page):
+    if page not in [p[0] for p in CMS_PAGES]:
+        flash('Unknown page.', 'error')
+        return redirect(url_for('admin.content_pages'))
+    sections = PageSection.query.filter_by(page=page).order_by(PageSection.sort_order).all()
+    page_name = next((p for p in CMS_PAGES if p[0] == page), (page, page, page))
+    return render_template('admin/content/sections.html', sections=sections, page=page, page_name=page_name)
+
+
+@admin_bp.route('/content/<page>/new', methods=['GET', 'POST'])
+@login_required
+def content_section_new(page):
+    if page not in [p[0] for p in CMS_PAGES]:
+        return redirect(url_for('admin.content_pages'))
+    if request.method == 'POST':
+        section = PageSection(
+            page=page,
+            section_key=request.form.get('section_key', '').strip(),
+            section_type=request.form.get('section_type', 'text_block'),
+            title_en=request.form.get('title_en', '').strip(),
+            title_zh=request.form.get('title_zh', '').strip(),
+            subtitle_en=request.form.get('subtitle_en', '').strip(),
+            subtitle_zh=request.form.get('subtitle_zh', '').strip(),
+            body_en=request.form.get('body_en', '').strip(),
+            body_zh=request.form.get('body_zh', '').strip(),
+            image_url=request.form.get('image_url', '').strip(),
+            button_text_en=request.form.get('button_text_en', '').strip(),
+            button_text_zh=request.form.get('button_text_zh', '').strip(),
+            button_url=request.form.get('button_url', '').strip(),
+            sort_order=int(request.form.get('sort_order') or 0),
+            is_visible='is_visible' in request.form,
+            extra_data=request.form.get('extra_data', '').strip() or None,
+        )
+        db.session.add(section)
+        db.session.commit()
+        flash('Section created.', 'success')
+        return redirect(url_for('admin.content_sections', page=page))
+    return render_template('admin/content/section_form.html', section=None, page=page, section_types=SECTION_TYPES)
+
+
+@admin_bp.route('/content/<page>/<section_key>/edit', methods=['GET', 'POST'])
+@login_required
+def content_section_edit(page, section_key):
+    section = PageSection.query.filter_by(page=page, section_key=section_key).first_or_404()
+    if request.method == 'POST':
+        section.section_type = request.form.get('section_type', section.section_type)
+        section.title_en = request.form.get('title_en', '').strip()
+        section.title_zh = request.form.get('title_zh', '').strip()
+        section.subtitle_en = request.form.get('subtitle_en', '').strip()
+        section.subtitle_zh = request.form.get('subtitle_zh', '').strip()
+        section.body_en = request.form.get('body_en', '').strip()
+        section.body_zh = request.form.get('body_zh', '').strip()
+        section.image_url = request.form.get('image_url', '').strip()
+        section.button_text_en = request.form.get('button_text_en', '').strip()
+        section.button_text_zh = request.form.get('button_text_zh', '').strip()
+        section.button_url = request.form.get('button_url', '').strip()
+        section.sort_order = int(request.form.get('sort_order') or 0)
+        section.is_visible = 'is_visible' in request.form
+        section.extra_data = request.form.get('extra_data', '').strip() or None
+        db.session.commit()
+        flash('Section updated.', 'success')
+        return redirect(url_for('admin.content_sections', page=page))
+    return render_template('admin/content/section_form.html', section=section, page=page, section_types=SECTION_TYPES)
+
+
+@admin_bp.route('/content/<page>/<section_key>/toggle', methods=['POST'])
+@login_required
+def content_section_toggle(page, section_key):
+    section = PageSection.query.filter_by(page=page, section_key=section_key).first_or_404()
+    section.is_visible = not section.is_visible
+    db.session.commit()
+    flash(f'Section {"shown" if section.is_visible else "hidden"}.', 'success')
+    return redirect(url_for('admin.content_sections', page=page))
+
+
+@admin_bp.route('/content/<page>/<section_key>/delete', methods=['POST'])
+@login_required
+def content_section_delete(page, section_key):
+    section = PageSection.query.filter_by(page=page, section_key=section_key).first_or_404()
+    db.session.delete(section)
+    db.session.commit()
+    flash('Section deleted.', 'success')
+    return redirect(url_for('admin.content_sections', page=page))
+
+
+@admin_bp.route('/content/<page>/reorder', methods=['POST'])
+@login_required
+def content_reorder(page):
+    items = request.form.getlist('order[]')
+    for i, section_id in enumerate(items):
+        s = PageSection.query.get(int(section_id))
+        if s and s.page == page:
+            s.sort_order = i
+    db.session.commit()
+    return '', 204

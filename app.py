@@ -29,6 +29,10 @@ def create_app():
 
     app.jinja_env.globals['get_locale'] = get_locale
 
+    from models.page_section import PageSection
+    app.jinja_env.globals['cms_section'] = lambda page, key: PageSection.query.filter_by(page=page, section_key=key, is_visible=True).first()
+    app.jinja_env.globals['cms_sections'] = lambda page: PageSection.query.filter_by(page=page, is_visible=True).order_by(PageSection.sort_order).all()
+
     from routes.main import main_bp
     from routes.contact import contact_bp
     from routes.auth import auth_bp
