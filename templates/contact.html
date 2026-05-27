@@ -126,6 +126,7 @@
           {% endif %}
         {% endwith %}
         <form method="POST" action="{{ url_for('contact.contact') }}">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
           <input type="hidden" name="source_page" value="contact">
           <div class="row g-3">
             <div class="col-md-6">

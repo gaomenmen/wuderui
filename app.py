@@ -1,8 +1,8 @@
 import os
 import click
-from flask import Flask
+from flask import Flask, render_template
 from config import Config
-from extensions import db, login_manager, babel, migrate
+from extensions import db, login_manager, babel, migrate, csrf
 
 
 def get_locale():
@@ -27,6 +27,7 @@ def create_app():
     login_manager.init_app(app)
     babel.init_app(app, locale_selector=get_locale)
     migrate.init_app(app, db)
+    csrf.init_app(app)
 
     app.jinja_env.globals['get_locale'] = get_locale
 
@@ -48,6 +49,15 @@ def create_app():
         if not os.environ.get('FLASK_SKIP_DB_CREATE'):
             db.create_all()
             _ensure_admin(app)
+
+    @app.errorhandler(404)
+    def page_not_found(e):
+        return render_template('errors/404.html'), 404
+
+    @app.errorhandler(500)
+    def internal_error(e):
+        db.session.rollback()
+        return render_template('errors/500.html'), 500
 
     return app
 

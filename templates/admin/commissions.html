@@ -12,6 +12,7 @@
 </div>
 
 <form method="POST" action="{{ url_for('admin.commission_bulk_pay') }}">
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 <div class="table-responsive">
   <table class="admin-table">
     <thead>
