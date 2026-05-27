@@ -361,3 +361,159 @@ def content_reorder(page):
             s.sort_order = i
     db.session.commit()
     return '', 204
+
+
+@admin_bp.route('/content/seed', methods=['POST'])
+@login_required
+def content_seed():
+    _seed_sections()
+    flash('Default content synced to database.', 'success')
+    return redirect(url_for('admin.content_pages'))
+
+
+@admin_bp.route('/content/<page>/seed', methods=['POST'])
+@login_required
+def content_seed_page(page):
+    if page not in [p[0] for p in CMS_PAGES]:
+        return redirect(url_for('admin.content_pages'))
+    _seed_sections(page)
+    flash('Default content synced.', 'success')
+    return redirect(url_for('admin.content_sections', page=page))
+
+
+def _seed_sections(page_filter=None):
+    """Seed PageSection records from hardcoded template content."""
+    sections = [
+        # ── index ──
+        ('index', 'hero', 'hero', 0,
+         'Discover China. Ancient Wisdom, Modern Access.', '发现中国。千年智慧，触手可及。',
+         'Chinese Culture · Global Access', '中国文化 · 全球共享',
+         'Learn Mandarin with native teachers, practice Tai Chi with national champions, and explore China on bespoke cultural journeys.', '跟随母语教师学中文，与全国冠军练太极，踏上定制的中国文化之旅。',
+         '', 'Start Free Trial', '免费试听', ''),
+        ('index', 'tai_chi_preview', 'text_block', 10,
+         '24-Form Tai Chi by National Champions', '全国冠军 24式太极拳',
+         'Online Course', '在线课程',
+         'Often called "meditation in motion." Start with 2 free lessons — experience the ancient art before committing to the full course.', '常被称为"移动的冥想"。前两式免费试看，体验古老养生功法后再决定是否解锁全套。',
+         '', 'Start Free Preview', '免费试看', ''),
+        ('index', 'destinations', 'text_block', 20,
+         'Iconic Places, Unforgettable Experiences', '标志性目的地，难忘的体验',
+         'Destinations', '目的地', '', '', '', '', '', ''),
+        ('index', 'testimonials', 'text_block', 30,
+         'What Travelers Say', '旅行者怎么说',
+         'Testimonials', '客户评价', '', '', '', '', '', ''),
+        ('index', 'cta_free_pack', 'cta', 40,
+         'Ready to Explore China?', '准备好探索中国了吗？',
+         'Free Resource Pack', '免费资源包',
+         'Get a trial Chinese lesson, Tai Chi PDF guide, and China travel tips — completely free.', '免费领取中文试听课、太极PDF指南和中国旅行攻略。',
+         '', 'Get Free Pack', '免费领取', ''),
+        # ── learn_chinese ──
+        ('learn_chinese', 'hero', 'hero', 0,
+         'From Pinyin to Conversation.', '从拼音到日常对话。',
+         'Mandarin Courses', '中文课程',
+         'Structured courses for kids, adults, and heritage families. Native teachers, proven methods, real results.', '适合儿童、成人及华裔家庭的体系化课程。母语教师，成熟方法，真实效果。',
+         '', '', '', ''),
+        ('learn_chinese', 'course_categories', 'text_block', 10,
+         'Choose Your Path', '选择你的学习路径',
+         'Course Categories', '课程分类', '', '', '', '', '', ''),
+        ('learn_chinese', 'pricing', 'text_block', 20,
+         'Simple, Transparent Pricing', '简单透明的价格',
+         'Pricing', '课程价格', '', '', '', '', '', ''),
+        ('learn_chinese', 'teachers', 'text_block', 30,
+         'Learn from the Best', '向最优秀的老师学习',
+         'Our Teachers', '师资展示', '', '', '', '', '', ''),
+        ('learn_chinese', 'free_trial', 'cta', 40,
+         'Try a Lesson Before You Commit.', '先试听再决定。',
+         'Free Trial', '免费试听',
+         'Experience our teaching style with a complimentary trial lesson. No credit card, no commitment.', '免费体验我们的教学风格。无需信用卡，无需承诺。',
+         '', 'Book Free Trial', '预约免费试听', ''),
+        ('learn_chinese', 'teaching_method', 'text_block', 50,
+         'How We Teach', '我们的教学方式',
+         'Our Approach', '教学方法', '', '', '', '', '', ''),
+        # ── tai_chi ──
+        ('tai_chi', 'hero', 'hero', 0,
+         '24-Form Tai Chi. National Champion Instruction.', '24式太极拳。全国冠军亲自教学。',
+         'Online Course', '在线课程',
+         '"Meditation in motion" — gentle exercise combining physical movement with mental focus. 2 free lessons to start.', '"移动的冥想"——柔和的体育锻炼与精神专注的结合。前两式免费试看。',
+         '', '', '', ''),
+        ('tai_chi', 'about_course', 'text_block', 10,
+         'Ancient Wisdom, Modern Access.', '古老智慧，触手可及。',
+         'About the Course', '课程介绍',
+         'Our 24-form Tai Chi course is taught by a national Tai Chi champion. This simplified form was designed for beginners and is perfect for international learners of all ages.', '24式太极拳课程由全国太极拳冠军录制教学。这套简化套路专为初学者设计，适合所有年龄段。',
+         '', '', '', ''),
+        ('tai_chi', 'pricing', 'text_block', 20,
+         'Course Pricing', '课程价格', '', '', '', '', '', '', '', ''),
+        ('tai_chi', 'benefits', 'text_block', 30,
+         'Why Tai Chi?', '太极的好处', '', '', '', '', '', '', '', ''),
+        # ── custom_trips ──
+        ('custom_trips', 'hero', 'hero', 0,
+         'Your China Journey Starts Here.', '你的中国之旅从这里开始。',
+         '10 Curated Packages', '10大经典套餐',
+         'Bespoke itineraries with professional photography, local food experiences, and English-speaking guides. From imperial Beijing to the roof of the world.', '专属行程，专业摄影、当地美食体验和英文导游。从皇城北京到世界屋脊。',
+         '', '', '', ''),
+        ('custom_trips', 'every_trip_includes', 'text_block', 10,
+         'Every Package Includes', '每个套餐包含', '', '',
+         'All our trips are fully customizable. Mix and match destinations, add experiences, and we\'ll craft the perfect itinerary for you.', '所有行程均可完全定制。自由组合目的地，添加体验项目，我们为您打造完美行程。',
+         '', '', '', ''),
+        ('custom_trips', 'cta_help', 'cta', 20,
+         "Can't Decide? Let Us Help.", '不知道选哪个？让我们来帮你。', '', '',
+         'Share your travel dreams with us — we\'ll recommend the perfect package.', '告诉我们你的旅行梦想——我们推荐最适合的套餐。',
+         '', 'WhatsApp Us', 'WhatsApp咨询', ''),
+        # ── about ──
+        ('about', 'hero', 'hero', 0,
+         'Bridging Chinese Culture & the World.', '连接中国文化与世界。',
+         'About Us', '关于我们', '', '', '', '', '', ''),
+        ('about', 'our_story', 'text_block', 10,
+         'WuDeRuiBo', '吴德瑞博',
+         'Our Story', '品牌故事',
+         'A cultural exchange platform founded with a clear mission: to make authentic Chinese culture — language, Tai Chi, and travel — accessible to people worldwide.', '一个文化交流平台，使命是让真正的中国文化——语言、太极拳和旅行——走向全世界。',
+         '', '', '', ''),
+        ('about', 'philosophy', 'text_block', 20,
+         'Our Philosophy', '我们的理念', '', '', '', '', '', '', '', ''),
+        ('about', 'cta_free_pack', 'cta', 30,
+         'Free Resource Pack', '免费资源包', '', '',
+         'Trial Chinese lesson, Tai Chi PDF guide, and China travel tips — all free.', '中文试听课、太极PDF指南和中国旅行攻略——全部免费。',
+         '', 'Claim Your Free Pack', '免费领取', ''),
+        # ── contact ──
+        ('contact', 'hero', 'hero', 0,
+         "We'd Love to Hear from You.", '期待您的来信。',
+         'Get in Touch', '联系我们',
+         'Whether you want to learn Chinese, try Tai Chi, or plan a China trip — we\'re here to help.', '无论您想学中文、练太极还是计划中国旅行——我们随时为您服务。',
+         '', '', '', ''),
+        # ── affiliate ──
+        ('affiliate', 'hero', 'hero', 0,
+         'Earn 5-10% Sharing Chinese Culture.', '分享中国文化赚取5-10%佣金。',
+         'Partner Program', '合伙人计划',
+         'Join our affiliate program and earn commission by sharing authentic Chinese cultural experiences.', '加入推荐分佣计划，分享真正的中国文化体验，赚取佣金。',
+         '', '', '', ''),
+        ('affiliate', 'how_it_works', 'text_block', 10,
+         '4 Simple Steps', '简单4步',
+         'How It Works', '运作流程', '', '', '', '', '', ''),
+        ('affiliate', 'commission_rates', 'text_block', 20,
+         'Commission Rates', '佣金比例', '', '', '', '', '', '', '', ''),
+        ('affiliate', 'cta_join', 'cta', 30,
+         'Become an Affiliate Partner', '成为推荐合伙人', '', '',
+         'Start earning by sharing authentic Chinese culture with the world.', '向世界分享真正的中国文化，开始赚钱。',
+         '', 'Apply Now', '立即申请', ''),
+    ]
+
+    count = 0
+    for row in sections:
+        p, key, stype, order = row[0], row[1], row[2], row[3]
+        if page_filter and p != page_filter:
+            continue
+        existing = PageSection.query.filter_by(page=p, section_key=key).first()
+        if existing:
+            continue
+        s = PageSection(
+            page=p, section_key=key, section_type=stype, sort_order=order,
+            title_en=row[4], title_zh=row[5],
+            subtitle_en=row[6], subtitle_zh=row[7],
+            body_en=row[8], body_zh=row[9],
+            image_url=row[10],
+            button_text_en=row[11], button_text_zh=row[12],
+            button_url=row[13],
+        )
+        db.session.add(s)
+        count += 1
+    db.session.commit()
+    return count

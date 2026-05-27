@@ -12,6 +12,11 @@
   <a href="{{ url_for('admin.content_section_new', page=page) }}" class="btn btn-cinnabar btn-sm">
     <i class="bi bi-plus-lg me-1"></i><span class="en">New Section</span><span class="zh">新建版块</span>
   </a>
+  <form method="POST" action="{{ url_for('admin.content_seed_page', page=page) }}" style="display:inline;">
+    <button type="submit" class="btn btn-outline-ink btn-sm">
+      <i class="bi bi-arrow-repeat me-1"></i><span class="en">Sync Defaults</span><span class="zh">同步默认内容</span>
+    </button>
+  </form>
 </div>
 
 {% if sections %}
