@@ -9,9 +9,11 @@ Chinese cultural exchange platform — Learn Mandarin, practice Tai Chi, explore
 - **Backend**: Flask (application factory pattern)
 - **Database**: SQLite (development) / PostgreSQL (production)
 - **ORM**: Flask-SQLAlchemy
+- **Migrations**: Flask-Migrate (Alembic)
 - **Auth**: Flask-Login (single admin account)
 - **i18n**: Flask-Babel (EN/ZH bilingual toggle)
 - **Frontend**: Bootstrap 5, Jinja2 templates, inline SVG
+- **Testing**: pytest
 - **Deployment**: Gunicorn + any PaaS (Render, Railway, Fly.io, etc.)
 
 ## Project Structure
@@ -20,7 +22,7 @@ Chinese cultural exchange platform — Learn Mandarin, practice Tai Chi, explore
 wuderui/
 ├── app.py                  # Application factory + CLI commands
 ├── config.py               # Config class (env-based)
-├── extensions.py           # db, login_manager, babel
+├── extensions.py           # db, login_manager, babel, migrate
 ├── requirements.txt
 ├── admin/
 │   └── routes.py           # Admin panel routes (14+ routes)
@@ -72,12 +74,13 @@ venv\Scripts\activate
 source venv/bin/activate
 
 pip install -r requirements.txt
+pip install pytest  # for running tests
 flask run
 ```
 
 Open http://127.0.0.1:5000
 
-Default admin: `admin` / `changeme123`
+Default admin: `admin` / `changeme123` (you will be prompted to change it on first login)
 
 ## Local Verification
 
@@ -147,6 +150,38 @@ All three service pages now include pricing:
 flask create-admin <username> <password>
 ```
 
+## Running Tests
+
+```bash
+pip install pytest
+python -m pytest tests/ -v
+```
+
+15 tests cover: model logic (password hashing, commission rates, CMS sections), route handling (contact form, referral tracking, admin auth), and admin CRUD operations.
+
+## Database Migrations
+
+Schema changes are managed with Flask-Migrate:
+
+```bash
+flask db migrate -m "description of change"  # generate migration
+flask db upgrade                               # apply migration
+```
+
+For development, `db.create_all()` runs automatically on startup. For production, use `flask db upgrade` to apply migrations safely.
+
+## Production Security Checklist
+
+Before deploying to production:
+
+- [ ] Set `SECRET_KEY` to a strong random string (32+ chars)
+- [ ] Set `DATABASE_URL` to a PostgreSQL connection string
+- [ ] Change default admin password (first login forces password change)
+- [ ] Set `ADMIN_PASSWORD` env var for initial admin password
+- [ ] Ensure `FLASK_DEBUG` is not enabled
+- [ ] Use HTTPS (most PaaS platforms handle this automatically)
+- [ ] Review contact information in templates — replace demo data with real info
+
 ## Admin Panel Guide
 
 Login at `/admin/login`
@@ -208,9 +243,16 @@ Set environment variables on your hosting platform:
 | Variable | Required | Description |
 |----------|----------|-------------|
 | `SECRET_KEY` | Yes | Random 32+ char string for session encryption |
-| `DATABASE_URL` | Yes | PostgreSQL connection string (auto-creates tables on first run) |
+| `DATABASE_URL` | Yes | PostgreSQL connection string |
+| `ADMIN_PASSWORD` | No | Initial admin password (default: `changeme123`) |
+
+See [.env.example](.env.example) for a full configuration template.
 
 Compatible with any Python-friendly PaaS (Render, Railway, Fly.io, Heroku, etc.).
+
+### Media File Storage
+
+CMS image URLs point to external hosts. The app does not currently handle file uploads. If you add image upload in the future, use cloud storage (S3, Cloudflare R2, etc.) — PaaS filesystems are ephemeral and will lose uploaded files on restart.
 
 ## Test Contact Info (Demo)
 
@@ -220,3 +262,5 @@ Compatible with any Python-friendly PaaS (Render, Railway, Fly.io, Heroku, etc.)
 | WeChat ID | WuDeRuiBo2026 |
 | Facebook | facebook.com/wuderuibo |
 | Email | hello@wuderuibo.com |
+
+These are demo/test values. Replace with real contact info before going live.

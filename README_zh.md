@@ -9,9 +9,11 @@
 - **后端**: Flask（应用工厂模式）
 - **数据库**: SQLite（开发环境）/ PostgreSQL（生产环境）
 - **ORM**: Flask-SQLAlchemy
+- **数据库迁移**: Flask-Migrate (Alembic)
 - **认证**: Flask-Login（单管理员账户）
 - **国际化**: Flask-Babel（中英双语切换）
 - **前端**: Bootstrap 5、Jinja2 模板、内联 SVG 水墨风设计
+- **测试**: pytest
 - **部署**: Gunicorn + 任意 PaaS 平台（Render、Railway、Fly.io 等）
 
 ## 项目结构
@@ -20,7 +22,7 @@
 wuderui/
 ├── app.py                  # 应用工厂 + CLI 命令
 ├── config.py               # 配置类（基于环境变量）
-├── extensions.py           # db、login_manager、babel 实例
+├── extensions.py           # db、login_manager、babel、migrate 实例
 ├── requirements.txt        # Python 依赖
 ├── admin/
 │   └── routes.py           # 管理后台路由（14+ 个）
@@ -72,12 +74,13 @@ venv\Scripts\activate
 source venv/bin/activate
 
 pip install -r requirements.txt
+pip install pytest  # 用于运行测试
 flask run
 ```
 
 启动后访问 http://127.0.0.1:5000
 
-默认管理员账号: `admin` / `changeme123`
+默认管理员账号: `admin` / `changeme123`（首次登录会强制要求修改密码）
 
 ## 本地验证
 
@@ -147,6 +150,38 @@ flask run
 flask create-admin <用户名> <密码>
 ```
 
+## 运行测试
+
+```bash
+pip install pytest
+python -m pytest tests/ -v
+```
+
+15 个测试覆盖：模型逻辑（密码哈希、佣金计算、CMS 版块）、路由处理（联系表单、推荐追踪、管理认证）、管理后台 CRUD 操作。
+
+## 数据库迁移
+
+使用 Flask-Migrate 管理数据库结构变更：
+
+```bash
+flask db migrate -m "变更描述"   # 生成迁移文件
+flask db upgrade                # 应用迁移
+```
+
+开发环境启动时自动运行 `db.create_all()`。生产环境请使用 `flask db upgrade` 安全应用迁移。
+
+## 生产环境安全检查清单
+
+部署到生产环境前务必完成：
+
+- [ ] 设置 `SECRET_KEY` 为强随机字符串（32位以上）
+- [ ] 设置 `DATABASE_URL` 为 PostgreSQL 连接字符串
+- [ ] 修改默认管理员密码（首次登录会强制修改）
+- [ ] 通过 `ADMIN_PASSWORD` 环境变量设置初始密码
+- [ ] 确保 `FLASK_DEBUG` 未启用
+- [ ] 使用 HTTPS（大部分 PaaS 平台默认提供）
+- [ ] 检查模板中的联系信息 — 将演示数据替换为真实信息
+
 ## 管理后台使用指南
 
 登录地址: `/admin/login`
@@ -208,9 +243,16 @@ gunicorn app:app
 | 变量 | 是否必填 | 说明 |
 |------|----------|------|
 | `SECRET_KEY` | 是 | 随机32位以上字符串，用于会话加密 |
-| `DATABASE_URL` | 是 | PostgreSQL 连接字符串（首次运行自动建表） |
+| `DATABASE_URL` | 是 | PostgreSQL 连接字符串 |
+| `ADMIN_PASSWORD` | 否 | 初始管理员密码（默认: `changeme123`） |
+
+完整配置示例请参考 [.env.example](.env.example)。
 
 兼容任何支持 Python 的 PaaS 平台（Render、Railway、Fly.io、Heroku 等）。
+
+### 媒体文件存储
+
+CMS 图片 URL 指向外部主机，当前应用不处理文件上传。如后续添加图片上传功能，请使用云存储（S3、Cloudflare R2 等）——PaaS 文件系统是临时的，重启后上传文件会丢失。
 
 ## 测试联系方式（演示数据）
 
@@ -220,3 +262,5 @@ gunicorn app:app
 | 微信 ID | WuDeRuiBo2026 |
 | Facebook | facebook.com/wuderuibo |
 | 邮箱 | hello@wuderuibo.com |
+
+以上为演示/测试数据，正式上线前请替换为真实联系方式。

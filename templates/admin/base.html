@@ -89,6 +89,7 @@
     <a href="{{ url_for('admin.reports') }}" class="{{ 'active' if 'report' in (request.endpoint or '') }}"><span class="en">Reports</span><span class="zh">月度报表</span></a>
     <a href="{{ url_for('admin.settlements') }}" class="{{ 'active' if 'settlement' in (request.endpoint or '') }}"><span class="en">Settlements</span><span class="zh">结算记录</span></a>
     <a href="{{ url_for('main.home') }}" style="margin-top:1rem;border-top:1px solid rgba(255,255,255,.1);padding-top:.75rem;"><span class="en">← Back to Site</span><span class="zh">← 返回网站</span></a>
+    <a href="{{ url_for('auth.change_password') }}"><span class="en">Change Password</span><span class="zh">修改密码</span></a>
     <a href="{{ url_for('auth.logout') }}"><span class="en">Logout</span><span class="zh">退出登录</span></a>
     <div class="sidebar-lang" style="margin-top:.75rem;border-top:1px solid rgba(255,255,255,.1);padding-top:.75rem;">
       <div class="lang-toggle">

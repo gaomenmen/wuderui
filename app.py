@@ -2,7 +2,7 @@ import os
 import click
 from flask import Flask
 from config import Config
-from extensions import db, login_manager, babel
+from extensions import db, login_manager, babel, migrate
 
 
 def get_locale():
@@ -26,6 +26,7 @@ def create_app():
     db.init_app(app)
     login_manager.init_app(app)
     babel.init_app(app, locale_selector=get_locale)
+    migrate.init_app(app, db)
 
     app.jinja_env.globals['get_locale'] = get_locale
 
@@ -44,20 +45,22 @@ def create_app():
     app.register_blueprint(admin_bp, url_prefix='/admin')
 
     with app.app_context():
-        db.create_all()
-        _ensure_admin(app)
+        if not os.environ.get('FLASK_SKIP_DB_CREATE'):
+            db.create_all()
+            _ensure_admin(app)
 
     return app
 
 
 def _ensure_admin(app):
     from models.admin_user import AdminUser
+    password = os.environ.get('ADMIN_PASSWORD', 'changeme123')
     if AdminUser.query.first() is None:
-        admin = AdminUser(username='admin')
-        admin.set_password('changeme123')
+        admin = AdminUser(username='admin', must_change_password=True)
+        admin.password_hash = __import__('werkzeug.security', fromlist=['generate_password_hash']).generate_password_hash(password)
         db.session.add(admin)
         db.session.commit()
-        app.logger.info('Default admin created: admin / changeme123 — change password immediately!')
+        app.logger.info('Default admin created: admin / %s — change password immediately!', password)
 
 
 app = create_app()
