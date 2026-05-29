@@ -82,7 +82,12 @@
   <nav class="admin-sidebar">
     <div class="sidebar-brand"><span class="en">Admin Panel</span><span class="zh">管理后台</span></div>
     <a href="{{ url_for('admin.dashboard') }}" class="{{ 'active' if request.endpoint == 'admin.dashboard' }}"><span class="en">Dashboard</span><span class="zh">控制面板</span></a>
-    <a href="{{ url_for('admin.content_pages') }}" class="{{ 'active' if 'content' in (request.endpoint or '') }}"><span class="en">Content</span><span class="zh">内容管理</span></a>
+    <a href="{{ url_for('admin.content_pages') }}" class="{{ 'active' if 'content' in (request.endpoint or '') }}"><span class="en">Content (CMS)</span><span class="zh">页面内容</span></a>
+    <a href="{{ url_for('admin.teachers') }}" class="{{ 'active' if 'teacher' in (request.endpoint or '') }}"><span class="en">Teachers</span><span class="zh">师资管理</span></a>
+    <a href="{{ url_for('admin.chinese_courses') }}" class="{{ 'active' if 'chinese_course' in (request.endpoint or '') }}"><span class="en">Chinese Courses</span><span class="zh">中文课程</span></a>
+    <a href="{{ url_for('admin.tai_chi_lessons') }}" class="{{ 'active' if 'tai_chi' in (request.endpoint or '') }}"><span class="en">Tai Chi (24)</span><span class="zh">太极 24 式</span></a>
+    <a href="{{ url_for('admin.trips') }}" class="{{ 'active' if 'trip' in (request.endpoint or '') }}"><span class="en">Trip Packages</span><span class="zh">旅游套餐</span></a>
+    <a href="{{ url_for('admin.orders') }}" class="{{ 'active' if 'order' in (request.endpoint or '') }}"><span class="en">Orders</span><span class="zh">订单管理</span></a>
     <a href="{{ url_for('admin.inquiries') }}" class="{{ 'active' if 'inquir' in (request.endpoint or '') }}"><span class="en">Inquiries</span><span class="zh">咨询管理</span></a>
     <a href="{{ url_for('admin.affiliates') }}" class="{{ 'active' if 'affiliate' in (request.endpoint or '') }}"><span class="en">Affiliates</span><span class="zh">推荐合伙人</span></a>
     <a href="{{ url_for('admin.commissions') }}" class="{{ 'active' if 'commission' in (request.endpoint or '') }}"><span class="en">Commissions</span><span class="zh">佣金管理</span></a>

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Checkout — WuDeRuiBo{% endblock %}
+{% block title_zh %}结账 — 吴德瑞博{% endblock %}
+{% block content %}
+<div class="container py-5" style="max-width:600px;">
+  <h2 class="fw-bold mb-3"><span class="en">Secure Checkout</span><span class="zh">安全结账</span></h2>
+  <div class="card-ink p-4">
+    <p class="text-muted small mb-2"><span class="en">You are purchasing:</span><span class="zh">您正在购买：</span></p>
+    <h4 class="fw-bold">{{ label }}</h4>
+    <p class="stat-number my-3">{{ currency }} {{ '%.2f'|format(amount) }}</p>
+
+    {% if not paypal_configured %}
+    <div class="alert alert-warning small">
+      <span class="en">⚠️ Online payment is not yet configured. Your order will be recorded and our team will contact you to complete payment manually.</span>
+      <span class="zh">⚠️ 在线支付尚未配置。订单将被记录，团队将与您联系手动完成付款。</span>
+    </div>
+    {% endif %}
+
+    <form method="POST" action="{{ url_for('checkout.checkout_start', item_type=item_type, item_id=item_id) if item_id else url_for('checkout.checkout_start', item_type=item_type) }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <div class="mb-3">
+        <label class="form-label small fw-bold"><span class="en">Your name</span><span class="zh">您的姓名</span></label>
+        <input name="name" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label small fw-bold"><span class="en">Your email</span><span class="zh">邮箱（用于交付）</span></label>
+        <input name="email" type="email" class="form-control" required>
+      </div>
+      <button class="btn btn-cinnabar btn-lg w-100">
+        <span class="en">Continue to PayPal</span><span class="zh">前往 PayPal 支付</span>
+      </button>
+    </form>
+    <p class="text-muted small mt-3 mb-0 text-center">
+      <i class="bi bi-shield-lock"></i>
+      <span class="en">Payments processed securely by PayPal.</span>
+      <span class="zh">通过 PayPal 安全处理付款。</span>
+    </p>
+  </div>
+</div>
+{% endblock %}

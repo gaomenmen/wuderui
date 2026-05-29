@@ -1,0 +1,37 @@
+{% extends "admin/base.html" %}
+{% block admin_content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h2 class="fw-bold mb-0"><span class="en">Chinese Courses</span><span class="zh">中文课程</span></h2>
+  <a href="{{ url_for('admin.chinese_course_form') }}" class="btn btn-cinnabar btn-sm">+ New</a>
+</div>
+<div class="table-responsive">
+  <table class="admin-table">
+    <thead><tr>
+      <th>#</th><th><span class="en">Name</span><span class="zh">名称</span></th>
+      <th><span class="en">Category</span><span class="zh">类别</span></th>
+      <th><span class="en">Price</span><span class="zh">价格</span></th>
+      <th><span class="en">Status</span><span class="zh">状态</span></th><th></th>
+    </tr></thead>
+    <tbody>
+    {% for c in items %}
+      <tr>
+        <td class="text-muted">{{ c.sort_order }}</td>
+        <td><strong>{{ c.name_en }}</strong> <span class="text-muted small">{{ c.name_zh or '' }}</span></td>
+        <td class="small">{{ c.category }}</td>
+        <td class="small">{{ c.currency }} {{ '%.2f'|format(c.price) if c.price else '—' }}</td>
+        <td><span class="badge-status badge-{{ 'active' if c.is_active else 'inactive' }}">{{ 'active' if c.is_active else 'inactive' }}</span></td>
+        <td>
+          <a href="{{ url_for('admin.chinese_course_form', id=c.id) }}" class="btn btn-sm btn-outline-ink">Edit</a>
+          <form method="POST" action="{{ url_for('admin.chinese_course_delete', id=c.id) }}" class="d-inline" onsubmit="return confirm('Delete?');">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <button class="btn btn-sm btn-outline-danger">Delete</button>
+          </form>
+        </td>
+      </tr>
+    {% else %}
+      <tr><td colspan="6" class="text-muted text-center py-4">No courses yet.</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

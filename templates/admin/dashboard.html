@@ -1,6 +1,15 @@
 {% extends "admin/base.html" %}
 {% block admin_content %}
-<h2 class="fw-bold mb-4"><span class="en">Dashboard</span><span class="zh">控制面板</span></h2>
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h2 class="fw-bold mb-0"><span class="en">Dashboard</span><span class="zh">控制面板</span></h2>
+  <form method="POST" action="{{ url_for('admin.seed_business_data') }}" class="d-inline" onsubmit="return confirm('Seed default Tai Chi lessons, trip packages, teachers, and Chinese courses? Existing rows will not be overwritten.');">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <button class="btn btn-sm btn-outline-ink">
+      <i class="bi bi-database-fill-add"></i>
+      <span class="en">Seed Business Data</span><span class="zh">填充示例数据</span>
+    </button>
+  </form>
+</div>
 
 <div class="row g-3 mb-4">
   <div class="col-6 col-md-3">

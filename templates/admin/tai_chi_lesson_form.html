@@ -1,0 +1,25 @@
+{% extends "admin/base.html" %}
+{% block admin_content %}
+<h2 class="fw-bold mb-4">{% if item %}Edit Lesson #{{ item.number }}{% else %}New Lesson{% endif %}</h2>
+<form method="POST" class="card-ink p-4">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <div class="row g-3">
+    <div class="col-md-2"><label class="form-label small fw-bold">Number</label><input name="number" type="number" min="1" max="99" class="form-control form-control-sm" value="{{ item.number if item else '' }}" required></div>
+    <div class="col-md-5"><label class="form-label small fw-bold">Name (EN)</label><input name="name_en" class="form-control form-control-sm" value="{{ item.name_en if item else '' }}" required></div>
+    <div class="col-md-5"><label class="form-label small fw-bold">Name (ZH)</label><input name="name_zh" class="form-control form-control-sm" value="{{ item.name_zh if item else '' }}"></div>
+    <div class="col-md-8"><label class="form-label small fw-bold">Video URL (MP4 / HLS)</label><input name="video_url" class="form-control form-control-sm" value="{{ item.video_url if item else '' }}"></div>
+    <div class="col-md-4"><label class="form-label small fw-bold">Duration (sec)</label><input name="duration_seconds" type="number" class="form-control form-control-sm" value="{{ item.duration_seconds if item and item.duration_seconds else '' }}"></div>
+    <div class="col-12"><label class="form-label small fw-bold">Thumbnail URL</label><input name="thumbnail_url" class="form-control form-control-sm" value="{{ item.thumbnail_url if item else '' }}"></div>
+    <div class="col-md-6"><label class="form-label small fw-bold">Description (EN)</label><textarea name="description_en" rows="3" class="form-control form-control-sm">{{ item.description_en if item else '' }}</textarea></div>
+    <div class="col-md-6"><label class="form-label small fw-bold">Description (ZH)</label><textarea name="description_zh" rows="3" class="form-control form-control-sm">{{ item.description_zh if item else '' }}</textarea></div>
+    <div class="col-md-6"><label class="form-label small fw-bold">Key Points (EN)</label><textarea name="key_points_en" rows="3" class="form-control form-control-sm">{{ item.key_points_en if item else '' }}</textarea></div>
+    <div class="col-md-6"><label class="form-label small fw-bold">Key Points (ZH)</label><textarea name="key_points_zh" rows="3" class="form-control form-control-sm">{{ item.key_points_zh if item else '' }}</textarea></div>
+    <div class="col-md-3"><div class="form-check"><input id="is_free" type="checkbox" name="is_free" class="form-check-input" {{ 'checked' if item and item.is_free }}><label for="is_free" class="form-check-label small">Free preview</label></div></div>
+    <div class="col-md-3"><div class="form-check"><input id="is_active" type="checkbox" name="is_active" class="form-check-input" {{ 'checked' if (item is none) or item.is_active }}><label for="is_active" class="form-check-label small">Active</label></div></div>
+  </div>
+  <div class="mt-3">
+    <button class="btn btn-cinnabar">Save</button>
+    <a href="{{ url_for('admin.tai_chi_lessons') }}" class="btn btn-outline-ink ms-2">Cancel</a>
+  </div>
+</form>
+{% endblock %}

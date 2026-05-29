@@ -10,7 +10,8 @@ class Commission(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     affiliate_id = db.Column(db.Integer, db.ForeignKey('affiliate.id'), nullable=False)
-    inquiry_id = db.Column(db.Integer, db.ForeignKey('inquiry.id'), nullable=False)
+    inquiry_id = db.Column(db.Integer, db.ForeignKey('inquiry.id'), nullable=True)
+    order_id = db.Column(db.Integer, db.ForeignKey('order.id'), nullable=True)
     service_type = db.Column(db.String(20), nullable=False)
     sale_amount = db.Column(db.Float, nullable=False)
     commission_rate = db.Column(db.Float, nullable=False)
@@ -20,3 +21,4 @@ class Commission(db.Model):
     created_at = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
 
     inquiry = db.relationship('Inquiry', backref='commissions')
+    order = db.relationship('Order', backref='commissions')

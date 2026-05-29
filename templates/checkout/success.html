@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5 text-center" style="max-width:600px;">
+  <i class="bi bi-check-circle-fill" style="font-size:4rem;color:#2e7d32;"></i>
+  <h2 class="fw-bold mt-3"><span class="en">Thank you!</span><span class="zh">感谢您！</span></h2>
+  <p class="text-muted">
+    <span class="en">Order <code>{{ order.order_no }}</code> — status: <strong>{{ order.status }}</strong></span>
+    <span class="zh">订单号 <code>{{ order.order_no }}</code> — 状态：<strong>{{ order.status }}</strong></span>
+  </p>
+  {% if order.item_type == 'taichi_full' and order.status == 'paid' %}
+  <div class="alert alert-success">
+    <span class="en">🎉 The full 24-form Tai Chi course is now unlocked for <code>{{ order.user_email }}</code>.</span>
+    <span class="zh">🎉 太极 24 式完整课程已为 <code>{{ order.user_email }}</code> 解锁。</span>
+  </div>
+  <a href="{{ url_for('main.tai_chi') }}?unlock_email={{ order.user_email }}" class="btn btn-cinnabar">
+    <span class="en">Go to Tai Chi Course</span><span class="zh">前往太极课程</span>
+  </a>
+  {% else %}
+  <a href="{{ url_for('main.home') }}" class="btn btn-outline-ink"><span class="en">Back to home</span><span class="zh">返回首页</span></a>
+  {% endif %}
+</div>
+{% endblock %}

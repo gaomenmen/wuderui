@@ -1,0 +1,45 @@
+{% extends "admin/base.html" %}
+{% block admin_content %}
+<a href="{{ url_for('admin.orders') }}" class="text-decoration-none small">&larr; Back to orders</a>
+<h2 class="fw-bold mb-4 mt-2">Order <code>{{ order.order_no }}</code></h2>
+<div class="row g-3">
+  <div class="col-md-6">
+    <div class="card-ink p-4">
+      <h6 class="fw-bold">Buyer</h6>
+      <p class="mb-1">{{ order.user_name or '—' }}</p>
+      <p class="mb-0 text-muted small">{{ order.user_email }}</p>
+      <hr>
+      <h6 class="fw-bold">Item</h6>
+      <p class="mb-1">{{ order.item_label }}</p>
+      <p class="text-muted small mb-0">{{ order.item_type }} / id={{ order.item_id or '—' }}</p>
+      <hr>
+      <h6 class="fw-bold">Amount</h6>
+      <p class="mb-0 stat-number">{{ order.currency }} {{ '%.2f'|format(order.amount) }}</p>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card-ink p-4">
+      <h6 class="fw-bold">Status</h6>
+      <p><span class="badge-status badge-{{ 'paid' if order.status == 'paid' else 'pending' }}">{{ order.status }}</span></p>
+      <h6 class="fw-bold mt-3">PayPal Order ID</h6>
+      <p class="small text-muted">{{ order.paypal_order_id or '—' }}</p>
+      <h6 class="fw-bold mt-3">Affiliate</h6>
+      <p class="small">{{ order.referral_code or '—' }}</p>
+      <h6 class="fw-bold mt-3">Timestamps</h6>
+      <p class="small text-muted mb-0">Created: {{ order.created_at.strftime('%Y-%m-%d %H:%M') }}</p>
+      {% if order.paid_at %}<p class="small text-muted mb-0">Paid: {{ order.paid_at.strftime('%Y-%m-%d %H:%M') }}</p>{% endif %}
+    </div>
+  </div>
+</div>
+<h5 class="fw-bold mt-4">Payments</h5>
+<table class="admin-table">
+  <thead><tr><th>Provider</th><th>Txn ID</th><th>Status</th><th>Amount</th><th>Captured</th></tr></thead>
+  <tbody>
+  {% for p in payments %}
+    <tr><td>{{ p.provider }}</td><td><code class="small">{{ p.transaction_id or '—' }}</code></td><td>{{ p.status }}</td><td>{{ p.currency }} {{ '%.2f'|format(p.amount or 0) }}</td><td class="small text-muted">{{ p.captured_at.strftime('%Y-%m-%d %H:%M') if p.captured_at else '—' }}</td></tr>
+  {% else %}
+    <tr><td colspan="5" class="text-center text-muted py-3">No payment records.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

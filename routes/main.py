@@ -2,6 +2,10 @@ from flask import Blueprint, render_template, request, g, session
 from extensions import babel
 from models.affiliate import Affiliate
 from models.referral_click import ReferralClick
+from models.teacher import Teacher
+from models.chinese_course import ChineseCourse
+from models.tai_chi_lesson import TaiChiLesson
+from models.trip_package import TripPackage
 
 main_bp = Blueprint('main', __name__)
 
@@ -48,17 +52,21 @@ def home():
 
 @main_bp.route('/learn-chinese')
 def learn_chinese():
-    return render_template('learn_chinese.html')
+    teachers = Teacher.query.filter_by(is_active=True).order_by(Teacher.sort_order).all()
+    courses = ChineseCourse.query.filter_by(is_active=True).order_by(ChineseCourse.sort_order).all()
+    return render_template('learn_chinese.html', teachers=teachers, courses=courses)
 
 
 @main_bp.route('/tai-chi')
 def tai_chi():
-    return render_template('tai_chi.html')
+    lessons = TaiChiLesson.query.filter_by(is_active=True).order_by(TaiChiLesson.number).all()
+    return render_template('tai_chi.html', lessons=lessons)
 
 
 @main_bp.route('/custom-trips')
 def custom_trips():
-    return render_template('custom_trips.html')
+    packages = TripPackage.query.filter_by(is_active=True).order_by(TripPackage.sort_order).all()
+    return render_template('custom_trips.html', packages=packages)
 
 
 @main_bp.route('/about')
@@ -69,3 +77,4 @@ def about():
 @main_bp.route('/affiliate')
 def affiliate():
     return render_template('affiliate.html')
+

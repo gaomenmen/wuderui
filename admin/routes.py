@@ -7,6 +7,11 @@ from models.commission import Commission
 from models.referral_click import ReferralClick
 from models.monthly_report import MonthlyReport
 from models.page_section import PageSection
+from models.teacher import Teacher
+from models.chinese_course import ChineseCourse
+from models.tai_chi_lesson import TaiChiLesson
+from models.trip_package import TripPackage
+from models.order import Order, Payment
 from datetime import datetime, timezone
 from sqlalchemy import func
 
@@ -517,3 +522,229 @@ def _seed_sections(page_filter=None):
         count += 1
     db.session.commit()
     return count
+
+
+# ─── TEACHERS ───
+
+@admin_bp.route('/teachers')
+@login_required
+def teachers():
+    items = Teacher.query.order_by(Teacher.sort_order, Teacher.id).all()
+    return render_template('admin/teachers.html', items=items)
+
+
+@admin_bp.route('/teachers/new', methods=['GET', 'POST'])
+@admin_bp.route('/teachers/<int:id>/edit', methods=['GET', 'POST'])
+@login_required
+def teacher_form(id=None):
+    t = Teacher.query.get_or_404(id) if id else None
+    if request.method == 'POST':
+        if t is None:
+            t = Teacher()
+            db.session.add(t)
+        t.name_en = request.form.get('name_en', '').strip()
+        t.name_zh = request.form.get('name_zh', '').strip()
+        t.photo_url = request.form.get('photo_url', '').strip()
+        t.specialty_en = request.form.get('specialty_en', '').strip()
+        t.specialty_zh = request.form.get('specialty_zh', '').strip()
+        t.bio_en = request.form.get('bio_en', '').strip()
+        t.bio_zh = request.form.get('bio_zh', '').strip()
+        t.experience_en = request.form.get('experience_en', '').strip()
+        t.experience_zh = request.form.get('experience_zh', '').strip()
+        t.languages = request.form.get('languages', '').strip()
+        t.sort_order = int(request.form.get('sort_order') or 0)
+        t.is_active = 'is_active' in request.form
+        db.session.commit()
+        flash('Teacher saved.', 'success')
+        return redirect(url_for('admin.teachers'))
+    return render_template('admin/teacher_form.html', item=t)
+
+
+@admin_bp.route('/teachers/<int:id>/delete', methods=['POST'])
+@login_required
+def teacher_delete(id):
+    t = Teacher.query.get_or_404(id)
+    db.session.delete(t)
+    db.session.commit()
+    flash('Teacher deleted.', 'success')
+    return redirect(url_for('admin.teachers'))
+
+
+# ─── CHINESE COURSES ───
+
+@admin_bp.route('/chinese-courses')
+@login_required
+def chinese_courses():
+    items = ChineseCourse.query.order_by(ChineseCourse.sort_order, ChineseCourse.id).all()
+    return render_template('admin/chinese_courses.html', items=items)
+
+
+@admin_bp.route('/chinese-courses/new', methods=['GET', 'POST'])
+@admin_bp.route('/chinese-courses/<int:id>/edit', methods=['GET', 'POST'])
+@login_required
+def chinese_course_form(id=None):
+    c = ChineseCourse.query.get_or_404(id) if id else None
+    if request.method == 'POST':
+        if c is None:
+            c = ChineseCourse()
+            db.session.add(c)
+        c.name_en = request.form.get('name_en', '').strip()
+        c.name_zh = request.form.get('name_zh', '').strip()
+        c.category = request.form.get('category', 'adult')
+        c.description_en = request.form.get('description_en', '').strip()
+        c.description_zh = request.form.get('description_zh', '').strip()
+        c.sample_video_url = request.form.get('sample_video_url', '').strip()
+        c.cover_image = request.form.get('cover_image', '').strip()
+        c.price = float(request.form.get('price') or 0) or None
+        c.currency = request.form.get('currency', 'USD')
+        c.sort_order = int(request.form.get('sort_order') or 0)
+        c.is_active = 'is_active' in request.form
+        db.session.commit()
+        flash('Course saved.', 'success')
+        return redirect(url_for('admin.chinese_courses'))
+    return render_template('admin/chinese_course_form.html', item=c, categories=ChineseCourse.CATEGORIES)
+
+
+@admin_bp.route('/chinese-courses/<int:id>/delete', methods=['POST'])
+@login_required
+def chinese_course_delete(id):
+    c = ChineseCourse.query.get_or_404(id)
+    db.session.delete(c)
+    db.session.commit()
+    flash('Course deleted.', 'success')
+    return redirect(url_for('admin.chinese_courses'))
+
+
+# ─── TAI CHI LESSONS ───
+
+@admin_bp.route('/tai-chi/lessons')
+@login_required
+def tai_chi_lessons():
+    items = TaiChiLesson.query.order_by(TaiChiLesson.number).all()
+    return render_template('admin/tai_chi_lessons.html', items=items)
+
+
+@admin_bp.route('/tai-chi/lessons/<int:id>/edit', methods=['GET', 'POST'])
+@admin_bp.route('/tai-chi/lessons/new', methods=['GET', 'POST'])
+@login_required
+def tai_chi_lesson_form(id=None):
+    lesson = TaiChiLesson.query.get_or_404(id) if id else None
+    if request.method == 'POST':
+        if lesson is None:
+            lesson = TaiChiLesson(number=int(request.form.get('number') or 1))
+            db.session.add(lesson)
+        lesson.number = int(request.form.get('number') or lesson.number)
+        lesson.name_en = request.form.get('name_en', '').strip()
+        lesson.name_zh = request.form.get('name_zh', '').strip()
+        lesson.video_url = request.form.get('video_url', '').strip()
+        lesson.thumbnail_url = request.form.get('thumbnail_url', '').strip()
+        lesson.duration_seconds = int(request.form.get('duration_seconds') or 0) or None
+        lesson.description_en = request.form.get('description_en', '').strip()
+        lesson.description_zh = request.form.get('description_zh', '').strip()
+        lesson.key_points_en = request.form.get('key_points_en', '').strip()
+        lesson.key_points_zh = request.form.get('key_points_zh', '').strip()
+        lesson.is_free = 'is_free' in request.form
+        lesson.is_active = 'is_active' in request.form
+        db.session.commit()
+        flash('Lesson saved.', 'success')
+        return redirect(url_for('admin.tai_chi_lessons'))
+    return render_template('admin/tai_chi_lesson_form.html', item=lesson)
+
+
+@admin_bp.route('/tai-chi/lessons/<int:id>/toggle-free', methods=['POST'])
+@login_required
+def tai_chi_lesson_toggle_free(id):
+    lesson = TaiChiLesson.query.get_or_404(id)
+    lesson.is_free = not lesson.is_free
+    db.session.commit()
+    flash(f'Lesson #{lesson.number} is now {"free" if lesson.is_free else "paid"}.', 'success')
+    return redirect(url_for('admin.tai_chi_lessons'))
+
+
+# ─── TRIP PACKAGES ───
+
+@admin_bp.route('/trips')
+@login_required
+def trips():
+    items = TripPackage.query.order_by(TripPackage.sort_order, TripPackage.code).all()
+    return render_template('admin/trips.html', items=items)
+
+
+@admin_bp.route('/trips/new', methods=['GET', 'POST'])
+@admin_bp.route('/trips/<int:id>/edit', methods=['GET', 'POST'])
+@login_required
+def trip_form(id=None):
+    p = TripPackage.query.get_or_404(id) if id else None
+    if request.method == 'POST':
+        if p is None:
+            p = TripPackage(code=request.form.get('code', '').strip())
+            db.session.add(p)
+        p.code = request.form.get('code', '').strip()
+        p.title_en = request.form.get('title_en', '').strip()
+        p.title_zh = request.form.get('title_zh', '').strip()
+        p.destination_en = request.form.get('destination_en', '').strip()
+        p.destination_zh = request.form.get('destination_zh', '').strip()
+        p.days = int(request.form.get('days') or 0) or None
+        p.price_min = float(request.form.get('price_min') or 0) or None
+        p.price_max = float(request.form.get('price_max') or 0) or None
+        p.currency = request.form.get('currency', 'USD')
+        p.audience_en = request.form.get('audience_en', '').strip()
+        p.audience_zh = request.form.get('audience_zh', '').strip()
+        p.highlights_en = request.form.get('highlights_en', '').strip()
+        p.highlights_zh = request.form.get('highlights_zh', '').strip()
+        p.services_en = request.form.get('services_en', '').strip()
+        p.services_zh = request.form.get('services_zh', '').strip()
+        p.cover_image = request.form.get('cover_image', '').strip()
+        p.sort_order = int(request.form.get('sort_order') or 0)
+        p.is_active = 'is_active' in request.form
+        db.session.commit()
+        flash('Trip package saved.', 'success')
+        return redirect(url_for('admin.trips'))
+    return render_template('admin/trip_form.html', item=p)
+
+
+@admin_bp.route('/trips/<int:id>/delete', methods=['POST'])
+@login_required
+def trip_delete(id):
+    p = TripPackage.query.get_or_404(id)
+    db.session.delete(p)
+    db.session.commit()
+    flash('Trip package deleted.', 'success')
+    return redirect(url_for('admin.trips'))
+
+
+# ─── ORDERS ───
+
+@admin_bp.route('/orders')
+@login_required
+def orders():
+    page = request.args.get('page', 1, type=int)
+    status = request.args.get('status')
+    q = Order.query
+    if status:
+        q = q.filter_by(status=status)
+    orders_page = q.order_by(Order.created_at.desc()).paginate(page=page, per_page=20, error_out=False)
+    return render_template('admin/orders.html', orders=orders_page, status=status)
+
+
+@admin_bp.route('/orders/<int:id>')
+@login_required
+def order_detail(id):
+    order = Order.query.get_or_404(id)
+    payments = Payment.query.filter_by(order_id=id).order_by(Payment.created_at.desc()).all()
+    return render_template('admin/order_detail.html', order=order, payments=payments)
+
+
+# ─── SEED ───
+
+@admin_bp.route('/seed-business-data', methods=['POST'])
+@login_required
+def seed_business_data():
+    from admin.seed_data import seed_tai_chi, seed_trips, seed_teachers, seed_chinese_courses
+    n_lessons = seed_tai_chi()
+    n_trips = seed_trips()
+    n_teachers = seed_teachers()
+    n_courses = seed_chinese_courses()
+    flash(f'Seeded {n_lessons} Tai Chi lessons, {n_trips} trip packages, '
+          f'{n_teachers} teachers, {n_courses} Chinese courses.', 'success')
+    return redirect(url_for('admin.dashboard'))

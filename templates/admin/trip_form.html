@@ -1,0 +1,31 @@
+{% extends "admin/base.html" %}
+{% block admin_content %}
+<h2 class="fw-bold mb-4">{% if item %}Edit Trip Package{% else %}New Trip Package{% endif %}</h2>
+<form method="POST" class="card-ink p-4">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <div class="row g-3">
+    <div class="col-md-2"><label class="form-label small fw-bold">Code</label><input name="code" class="form-control form-control-sm" value="{{ item.code if item else '' }}" required></div>
+    <div class="col-md-5"><label class="form-label small fw-bold">Title (EN)</label><input name="title_en" class="form-control form-control-sm" value="{{ item.title_en if item else '' }}" required></div>
+    <div class="col-md-5"><label class="form-label small fw-bold">Title (ZH)</label><input name="title_zh" class="form-control form-control-sm" value="{{ item.title_zh if item else '' }}"></div>
+    <div class="col-md-6"><label class="form-label small fw-bold">Destination (EN)</label><input name="destination_en" class="form-control form-control-sm" value="{{ item.destination_en if item else '' }}"></div>
+    <div class="col-md-6"><label class="form-label small fw-bold">Destination (ZH)</label><input name="destination_zh" class="form-control form-control-sm" value="{{ item.destination_zh if item else '' }}"></div>
+    <div class="col-md-2"><label class="form-label small fw-bold">Days</label><input name="days" type="number" class="form-control form-control-sm" value="{{ item.days if item else '' }}"></div>
+    <div class="col-md-3"><label class="form-label small fw-bold">Price min</label><input name="price_min" type="number" step="1" class="form-control form-control-sm" value="{{ item.price_min if item and item.price_min else '' }}"></div>
+    <div class="col-md-3"><label class="form-label small fw-bold">Price max</label><input name="price_max" type="number" step="1" class="form-control form-control-sm" value="{{ item.price_max if item and item.price_max else '' }}"></div>
+    <div class="col-md-2"><label class="form-label small fw-bold">Currency</label><input name="currency" class="form-control form-control-sm" value="{{ item.currency if item else 'USD' }}"></div>
+    <div class="col-md-2"><label class="form-label small fw-bold">Order</label><input name="sort_order" type="number" class="form-control form-control-sm" value="{{ item.sort_order if item else 0 }}"></div>
+    <div class="col-md-6"><label class="form-label small fw-bold">Audience (EN)</label><input name="audience_en" class="form-control form-control-sm" value="{{ item.audience_en if item else '' }}"></div>
+    <div class="col-md-6"><label class="form-label small fw-bold">Audience (ZH)</label><input name="audience_zh" class="form-control form-control-sm" value="{{ item.audience_zh if item else '' }}"></div>
+    <div class="col-12"><label class="form-label small fw-bold">Cover Image URL</label><input name="cover_image" class="form-control form-control-sm" value="{{ item.cover_image if item else '' }}"></div>
+    <div class="col-md-6"><label class="form-label small fw-bold">Highlights (EN)</label><textarea name="highlights_en" rows="3" class="form-control form-control-sm">{{ item.highlights_en if item else '' }}</textarea></div>
+    <div class="col-md-6"><label class="form-label small fw-bold">Highlights (ZH)</label><textarea name="highlights_zh" rows="3" class="form-control form-control-sm">{{ item.highlights_zh if item else '' }}</textarea></div>
+    <div class="col-md-6"><label class="form-label small fw-bold">Services (EN)</label><textarea name="services_en" rows="3" class="form-control form-control-sm">{{ item.services_en if item else '' }}</textarea></div>
+    <div class="col-md-6"><label class="form-label small fw-bold">Services (ZH)</label><textarea name="services_zh" rows="3" class="form-control form-control-sm">{{ item.services_zh if item else '' }}</textarea></div>
+    <div class="col-12"><div class="form-check"><input id="is_active" type="checkbox" name="is_active" class="form-check-input" {{ 'checked' if (item is none) or item.is_active }}><label for="is_active" class="form-check-label small">Active</label></div></div>
+  </div>
+  <div class="mt-3">
+    <button class="btn btn-cinnabar">Save</button>
+    <a href="{{ url_for('admin.trips') }}" class="btn btn-outline-ink ms-2">Cancel</a>
+  </div>
+</form>
+{% endblock %}

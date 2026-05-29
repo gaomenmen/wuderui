@@ -1,0 +1,41 @@
+{% extends "admin/base.html" %}
+{% block admin_content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h2 class="fw-bold mb-0"><span class="en">24-Form Tai Chi Lessons</span><span class="zh">24式太极拳课程</span></h2>
+  <a href="{{ url_for('admin.tai_chi_lesson_form') }}" class="btn btn-cinnabar btn-sm">+ New</a>
+</div>
+<div class="table-responsive">
+  <table class="admin-table">
+    <thead><tr>
+      <th>#</th><th><span class="en">Name (EN)</span><span class="zh">名称 EN</span></th>
+      <th><span class="en">Name (ZH)</span><span class="zh">名称 ZH</span></th>
+      <th><span class="en">Free</span><span class="zh">免费</span></th>
+      <th><span class="en">Active</span><span class="zh">启用</span></th>
+      <th><span class="en">Video</span><span class="zh">视频</span></th><th></th>
+    </tr></thead>
+    <tbody>
+    {% for l in items %}
+      <tr>
+        <td><strong>{{ l.number }}</strong></td>
+        <td>{{ l.name_en }}</td>
+        <td class="text-muted">{{ l.name_zh or '' }}</td>
+        <td>
+          <form method="POST" action="{{ url_for('admin.tai_chi_lesson_toggle_free', id=l.id) }}" class="d-inline">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <button class="btn btn-sm {{ 'btn-success' if l.is_free else 'btn-outline-secondary' }}">{{ '🔓 Free' if l.is_free else '🔒 Paid' }}</button>
+          </form>
+        </td>
+        <td>{{ '✅' if l.is_active else '⛔' }}</td>
+        <td class="small text-muted">{{ '✓' if l.video_url else '—' }}</td>
+        <td><a href="{{ url_for('admin.tai_chi_lesson_form', id=l.id) }}" class="btn btn-sm btn-outline-ink">Edit</a></td>
+      </tr>
+    {% else %}
+      <tr><td colspan="7" class="text-center py-4 text-muted">
+        <span class="en">No lessons. Run "Seed business data" from the dashboard.</span>
+        <span class="zh">尚无课程。请在 Dashboard 点击 "Seed business data"。</span>
+      </td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

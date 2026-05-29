@@ -1,0 +1,46 @@
+{% extends "admin/base.html" %}
+{% block admin_content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h2 class="fw-bold mb-0"><span class="en">Orders</span><span class="zh">订单管理</span></h2>
+  <div>
+    <a href="{{ url_for('admin.orders') }}" class="btn btn-sm {{ 'btn-cinnabar' if not status else 'btn-outline-ink' }}">All</a>
+    <a href="{{ url_for('admin.orders', status='paid') }}" class="btn btn-sm {{ 'btn-cinnabar' if status == 'paid' else 'btn-outline-ink' }}">Paid</a>
+    <a href="{{ url_for('admin.orders', status='pending_payment') }}" class="btn btn-sm {{ 'btn-cinnabar' if status == 'pending_payment' else 'btn-outline-ink' }}">Pending</a>
+    <a href="{{ url_for('admin.orders', status='failed') }}" class="btn btn-sm {{ 'btn-cinnabar' if status == 'failed' else 'btn-outline-ink' }}">Failed</a>
+  </div>
+</div>
+<div class="table-responsive">
+  <table class="admin-table">
+    <thead><tr>
+      <th>Order #</th><th><span class="en">Buyer</span><span class="zh">买家</span></th>
+      <th><span class="en">Item</span><span class="zh">商品</span></th>
+      <th><span class="en">Amount</span><span class="zh">金额</span></th>
+      <th><span class="en">Status</span><span class="zh">状态</span></th>
+      <th><span class="en">Affiliate</span><span class="zh">推荐人</span></th>
+      <th><span class="en">Created</span><span class="zh">创建时间</span></th>
+    </tr></thead>
+    <tbody>
+    {% for o in orders.items %}
+      <tr>
+        <td><a href="{{ url_for('admin.order_detail', id=o.id) }}"><code>{{ o.order_no }}</code></a></td>
+        <td class="small">{{ o.user_name or '' }}<br><span class="text-muted">{{ o.user_email }}</span></td>
+        <td class="small">{{ o.item_label or o.item_type }}</td>
+        <td>{{ o.currency }} {{ '%.2f'|format(o.amount) }}</td>
+        <td><span class="badge-status badge-{{ 'paid' if o.status == 'paid' else 'pending' if 'pending' in o.status else 'inactive' }}">{{ o.status }}</span></td>
+        <td class="small text-muted">{{ o.referral_code or '—' }}</td>
+        <td class="small text-muted">{{ o.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+      </tr>
+    {% else %}
+      <tr><td colspan="7" class="text-muted text-center py-4">No orders yet.</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% if orders.pages > 1 %}
+<nav class="mt-3"><ul class="pagination pagination-sm">
+  {% for p in range(1, orders.pages + 1) %}
+    <li class="page-item {{ 'active' if p == orders.page }}"><a class="page-link" href="?page={{ p }}{% if status %}&status={{ status }}{% endif %}">{{ p }}</a></li>
+  {% endfor %}
+</ul></nav>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "admin/base.html" %}
+{% block admin_content %}
+<h2 class="fw-bold mb-4">
+  {% if item %}<span class="en">Edit Teacher</span><span class="zh">编辑师资</span>
+  {% else %}<span class="en">New Teacher</span><span class="zh">新建师资</span>{% endif %}
+</h2>
+<form method="POST" class="card-ink p-4">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <div class="row g-3">
+    <div class="col-md-6"><label class="form-label small fw-bold"><span class="en">Name (EN)</span><span class="zh">英文姓名</span></label><input name="name_en" class="form-control form-control-sm" value="{{ item.name_en if item else '' }}" required></div>
+    <div class="col-md-6"><label class="form-label small fw-bold"><span class="en">Name (ZH)</span><span class="zh">中文姓名</span></label><input name="name_zh" class="form-control form-control-sm" value="{{ item.name_zh if item else '' }}"></div>
+    <div class="col-12"><label class="form-label small fw-bold"><span class="en">Photo URL</span><span class="zh">头像 URL</span></label><input name="photo_url" class="form-control form-control-sm" value="{{ item.photo_url if item else '' }}"></div>
+    <div class="col-md-6"><label class="form-label small fw-bold"><span class="en">Specialty (EN)</span><span class="zh">擅长 EN</span></label><input name="specialty_en" class="form-control form-control-sm" value="{{ item.specialty_en if item else '' }}"></div>
+    <div class="col-md-6"><label class="form-label small fw-bold"><span class="en">Specialty (ZH)</span><span class="zh">擅长 ZH</span></label><input name="specialty_zh" class="form-control form-control-sm" value="{{ item.specialty_zh if item else '' }}"></div>
+    <div class="col-md-6"><label class="form-label small fw-bold"><span class="en">Experience (EN)</span><span class="zh">经验 EN</span></label><input name="experience_en" class="form-control form-control-sm" value="{{ item.experience_en if item else '' }}"></div>
+    <div class="col-md-6"><label class="form-label small fw-bold"><span class="en">Experience (ZH)</span><span class="zh">经验 ZH</span></label><input name="experience_zh" class="form-control form-control-sm" value="{{ item.experience_zh if item else '' }}"></div>
+    <div class="col-md-8"><label class="form-label small fw-bold"><span class="en">Languages</span><span class="zh">语言</span></label><input name="languages" class="form-control form-control-sm" value="{{ item.languages if item else '' }}" placeholder="Mandarin, English, French"></div>
+    <div class="col-md-2"><label class="form-label small fw-bold"><span class="en">Order</span><span class="zh">顺序</span></label><input name="sort_order" type="number" class="form-control form-control-sm" value="{{ item.sort_order if item else 0 }}"></div>
+    <div class="col-md-2 d-flex align-items-end"><div class="form-check"><input type="checkbox" id="is_active" name="is_active" class="form-check-input" {{ 'checked' if (item is none) or item.is_active }}><label for="is_active" class="form-check-label small">Active</label></div></div>
+    <div class="col-md-6"><label class="form-label small fw-bold"><span class="en">Bio (EN)</span><span class="zh">简介 EN</span></label><textarea name="bio_en" class="form-control form-control-sm" rows="4">{{ item.bio_en if item else '' }}</textarea></div>
+    <div class="col-md-6"><label class="form-label small fw-bold"><span class="en">Bio (ZH)</span><span class="zh">简介 ZH</span></label><textarea name="bio_zh" class="form-control form-control-sm" rows="4">{{ item.bio_zh if item else '' }}</textarea></div>
+  </div>
+  <div class="mt-3">
+    <button class="btn btn-cinnabar"><span class="en">Save</span><span class="zh">保存</span></button>
+    <a href="{{ url_for('admin.teachers') }}" class="btn btn-outline-ink ms-2"><span class="en">Cancel</span><span class="zh">取消</span></a>
+  </div>
+</form>
+{% endblock %}

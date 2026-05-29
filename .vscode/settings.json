@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^Set-Location \"c:\\\\Users\\\\gao-menmen\\\\Documents\\\\zhuye\\\\wuderui\"; python -m pytest tests -q$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}

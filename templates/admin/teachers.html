@@ -1,0 +1,39 @@
+{% extends "admin/base.html" %}
+{% block admin_content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h2 class="fw-bold mb-0"><span class="en">Teachers</span><span class="zh">师资管理</span></h2>
+  <a href="{{ url_for('admin.teacher_form') }}" class="btn btn-cinnabar btn-sm"><span class="en">+ New Teacher</span><span class="zh">+ 新建</span></a>
+</div>
+<div class="table-responsive">
+  <table class="admin-table">
+    <thead><tr>
+      <th>#</th>
+      <th><span class="en">Name</span><span class="zh">姓名</span></th>
+      <th><span class="en">Specialty</span><span class="zh">擅长</span></th>
+      <th><span class="en">Languages</span><span class="zh">语言</span></th>
+      <th><span class="en">Status</span><span class="zh">状态</span></th>
+      <th></th>
+    </tr></thead>
+    <tbody>
+      {% for t in items %}
+      <tr>
+        <td class="text-muted">{{ t.sort_order }}</td>
+        <td><strong>{{ t.name_en }}</strong> <span class="text-muted small">{{ t.name_zh or '' }}</span></td>
+        <td class="small">{{ t.specialty_en or '' }}</td>
+        <td class="small text-muted">{{ t.languages or '' }}</td>
+        <td><span class="badge-status badge-{{ 'active' if t.is_active else 'inactive' }}">{{ 'active' if t.is_active else 'inactive' }}</span></td>
+        <td>
+          <a href="{{ url_for('admin.teacher_form', id=t.id) }}" class="btn btn-sm btn-outline-ink"><span class="en">Edit</span><span class="zh">编辑</span></a>
+          <form method="POST" action="{{ url_for('admin.teacher_delete', id=t.id) }}" class="d-inline" onsubmit="return confirm('Delete?');">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <button class="btn btn-sm btn-outline-danger"><span class="en">Delete</span><span class="zh">删除</span></button>
+          </form>
+        </td>
+      </tr>
+      {% else %}
+      <tr><td colspan="6" class="text-muted text-center py-4"><span class="en">No teachers yet.</span><span class="zh">尚无师资记录。</span></td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

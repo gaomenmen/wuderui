@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "mcp__zread__search_doc",
+      "WebSearch",
+      "Bash(git commit *)",
+      "Bash(curl -sL -o /tmp/outline.pdf \"https://maas-log-prod.cn-wlcb.ufileos.com/anthropic/f536c606-e4ae-4f7f-ba40-8c192bd14e46/432f9d65600ce87f30fffb4fa5cb4d83.pdf?UCloudPublicKey=TOKEN_e15ba47a-d098-4fbd-9afc-a0dcf0e4e621&Expires=1779779247&Signature=dR8R84t1O6ZsH+WvXUlKeFudC3w=\")",
+      "Read(//tmp/**)",
+      "Bash(curl -sL -o \"c:/Users/gao-menmen/Documents/zhuye/wuderui/outline.pdf\" \"https://maas-log-prod.cn-wlcb.ufileos.com/anthropic/f536c606-e4ae-4f7f-ba40-8c192bd14e46/432f9d65600ce87f30fffb4fa5cb4d83.pdf?UCloudPublicKey=TOKEN_e15ba47a-d098-4fbd-9afc-a0dcf0e4e621&Expires=1779779247&Signature=dR8R84t1O6ZsH+WvXUlKeFudC3w=\")",
+      "Bash(python3 -c ' *)",
+      "Bash(python -c ' *)",
+      "mcp__web-reader__webReader",
+      "mcp__web-search-prime__web_search_prime"
+    ]
+  }
+}

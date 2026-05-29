@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip install *)",
+      "Bash(python -c \"from app import app; print\\('App created successfully'\\); print\\('Routes:', [rule.rule for rule in app.url_map.iter_rules\\(\\)]\\)\")"
+    ]
+  }
+}
