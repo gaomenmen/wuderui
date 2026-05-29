@@ -14,7 +14,7 @@
 </div>
 
 <form method="POST">
-  <div class="row g-3 mb-4">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <!-- Left: English -->
     <div class="col-md-6">
       <h6 class="fw-bold mb-3" style="color:var(--cinnabar);">English</h6>

@@ -36,7 +36,7 @@
   </div>
   <div class="col-md-4">
     <form method="POST">
-      <div class="card-ink p-4 mb-3">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <h6 class="fw-bold mb-3"><span class="en">Update Status</span><span class="zh">更新状态</span></h6>
         <label class="form-label small"><span class="en">Status</span><span class="zh">状态</span></label>
         <select name="status" class="form-select form-select-sm mb-3">

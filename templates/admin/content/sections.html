@@ -52,9 +52,11 @@
       <td>
         <a href="{{ url_for('admin.content_section_edit', page=page, section_key=s.section_key) }}" class="btn btn-sm btn-outline-ink py-0 px-2"><span class="en">Edit</span><span class="zh">编辑</span></a>
         <form method="POST" action="{{ url_for('admin.content_section_toggle', page=page, section_key=s.section_key) }}" style="display:inline;">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
           <button type="submit" class="btn btn-sm btn-outline-ink py-0 px-2" title="Toggle"><i class="bi bi-eye{{ '' if s.is_visible else '-slash' }}"></i></button>
         </form>
         <form method="POST" action="{{ url_for('admin.content_section_delete', page=page, section_key=s.section_key) }}" style="display:inline;" onsubmit="return confirm('Delete this section? The page will revert to its default content.');">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
           <button type="submit" class="btn btn-sm py-0 px-2" style="color:var(--cinnabar);"><i class="bi bi-trash"></i></button>
         </form>
       </td>

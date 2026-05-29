@@ -7,7 +7,7 @@
 <div class="card-ink p-4 mb-4">
   <h6 class="fw-bold mb-3"><span class="en">Generate Report</span><span class="zh">生成报表</span></h6>
   <form method="POST" action="{{ url_for('admin.report_generate') }}" class="row g-3 align-items-end">
-    <div class="col-md-3">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       <label class="form-label small"><span class="en">Year</span><span class="zh">年份</span></label>
       <input type="number" name="year" class="form-control form-control-sm" value="2026" required>
     </div>
